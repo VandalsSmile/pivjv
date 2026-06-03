@@ -1,183 +1,131 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Phone, Check } from "lucide-react";
+import { Phone, Check } from "lucide-react";
 import { SITE_CONFIG, CONTACT, PRICING } from "@/lib/constants";
+
+// Huntsville IV images
+const IMAGES = {
+  receptionDesk: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PIV%2Bann%2Bbehind%2Bcounter-nfD9wGJQ0aMLfkIdKtnbCSfZsvileV.jpg",
+  ivBagOnStand: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PIVJV%2BIV-E9HwwSFOpEDZ5G25bKBw3Xq2tgcN4q.png",
+  nurseHelping: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PIVJV%2BIV%2Bhelp-AgKswevjak3keZJB9dMGC1pedKRs0d.png",
+};
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden">
-      {/* Hero Image Section */}
-      <div className="relative h-[300px] md:h-[400px]">
-        <Image
-          src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2068&auto=format&fit=crop"
-          alt="Prime IV Hydration & Wellness spa interior"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/60 to-primary/80" />
-        <div className="absolute bottom-4 left-4 md:bottom-8 md:left-8">
-          <p className="text-white text-sm md:text-base font-medium">
-            Your Path to Wellness Starts Here
-          </p>
-        </div>
-      </div>
-
-      {/* Content Section */}
-      <div className="bg-white">
-        <div className="container-custom mx-auto px-4 py-8 md:py-12">
-          <div className="text-center max-w-2xl mx-auto">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight text-balance mb-6">
-              Feel Better, Faster — Premium IV Therapy in{" "}
-              {CONTACT.address.city}, AL
+    <section className="relative overflow-hidden bg-primary">
+      <div className="container-custom mx-auto px-4 py-12 lg:py-16">
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
+          {/* Left Content */}
+          <div className="text-white">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
+              <span className="text-secondary italic">Feel Better, Faster</span> — Premium IV Therapy in {CONTACT.address.city}, AL
             </h1>
-
-            <div className="flex flex-col gap-3 mb-8">
-              <Link
-                href="/specials"
-                className="btn-primary w-full justify-center text-lg py-4 rounded-full"
-              >
-                Book ${PRICING.introOffer.price} VIP IV
-              </Link>
-              <Link
-                href="/specials"
-                className="w-full py-4 px-6 border-2 border-border text-foreground font-semibold rounded-full hover:bg-background-alt transition-colors text-center"
-              >
-                Check out June Specials!
-              </Link>
-            </div>
-
-            <div className="mb-8">
-              <h2 className="text-xl md:text-2xl font-bold text-foreground mb-3">
-                Better wellness. Better life.
-              </h2>
-              <p className="text-foreground-muted leading-relaxed">
-                {SITE_CONFIG.description}
-              </p>
-            </div>
-
-            <div className="flex flex-col items-center gap-3 mb-8">
-              <div className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-accent" />
-                <span className="text-foreground">Medical-grade ingredients</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-accent" />
-                <span className="text-foreground">Licensed professionals</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-accent" />
-                <span className="text-foreground">Same-day appointments</span>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-3">
-              <Link
-                href="/contact"
-                className="btn-primary w-full justify-center py-4 rounded-full"
-              >
-                Book Your First Session
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href={`tel:${CONTACT.phoneClean}`}
-                className="w-full py-4 px-6 border-2 border-foreground text-foreground font-semibold rounded-full hover:bg-foreground hover:text-white transition-colors flex items-center justify-center gap-2"
-              >
-                <Phone className="w-4 h-4" />
-                Call {CONTACT.phone}
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Special Offer Card */}
-      <div className="bg-gradient-to-r from-orange-400 via-orange-500 to-yellow-400 py-6">
-        <div className="container-custom mx-auto px-4">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div>
-              <span className="inline-block bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full mb-2">
-                June Special - $50 OFF
-              </span>
-              <h3 className="text-white text-xl font-bold">The Travel Defense</h3>
-              <div className="flex items-baseline gap-2 mt-1">
-                <span className="text-white text-3xl font-bold">$200</span>
-                <span className="text-white/70 line-through">$250</span>
-              </div>
-            </div>
-            <div className="flex flex-col gap-2 text-white/90 text-sm">
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4" />
-                <span>Immunity Armor Drip</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4" />
-                <span>FREE Taurine shot</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4" />
-                <span>Immune support</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4" />
-                <span>Hydration + energy</span>
-              </div>
-            </div>
-            <Link
-              href="/specials"
-              className="bg-white text-secondary font-semibold px-6 py-3 rounded-full hover:bg-white/90 transition-colors text-center"
+            
+            <p className="text-lg mb-4 font-medium">Book now:</p>
+            <Link 
+              href={`tel:${CONTACT.phoneClean}`}
+              className="text-2xl md:text-3xl font-bold text-secondary hover:text-secondary-light transition-colors underline mb-8 block"
             >
-              Call to Book Now
+              {CONTACT.phone}
+            </Link>
+
+            <div className="space-y-3 mb-8">
+              <div className="flex items-center gap-3">
+                <Check className="w-6 h-6 text-accent" />
+                <span className="text-lg">Medical-grade ingredients</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Check className="w-6 h-6 text-accent" />
+                <span className="text-lg">Administered by licensed healthcare professionals</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Check className="w-6 h-6 text-accent" />
+                <span className="text-lg">Same-day appointments available</span>
+              </div>
+            </div>
+
+            <Link
+              href="/contact"
+              className="btn-secondary inline-flex items-center gap-2 text-lg py-4 px-8 rounded-full"
+            >
+              Book Your First Session
             </Link>
           </div>
-          <p className="text-white/70 text-xs mt-3">
-            Book 2-3 days before travel for best results.
-          </p>
+
+          {/* Right Content - Reception Desk Image */}
+          <div className="relative">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
+              <Image
+                src={IMAGES.receptionDesk}
+                alt="Prime IV Huntsville reception desk with friendly staff"
+                width={600}
+                height={450}
+                className="w-full h-auto object-cover"
+                priority
+              />
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* VIP Offer Card */}
-      <div className="bg-primary py-8">
+      {/* Benefits Bar */}
+      <div className="bg-white py-8">
         <div className="container-custom mx-auto px-4">
-          <div className="bg-white rounded-2xl p-6 md:p-8 max-w-lg mx-auto text-center shadow-xl">
-            <div className="flex items-baseline justify-center gap-2 mb-2">
-              <span className="text-4xl font-bold text-foreground">
-                ${PRICING.introOffer.price}
-              </span>
-              <span className="text-lg text-foreground-muted line-through">
-                ${PRICING.introOffer.regularPrice}
-              </span>
-            </div>
-
-            <h3 className="text-xl font-bold text-foreground mb-3">
-              {PRICING.introOffer.description}
-            </h3>
-
-            <p className="text-foreground-muted mb-6">
-              Includes a primary IV drip, use the zero-gravity massage chair,
-              and get a free vitamin consult.
-            </p>
-
-            <div className="flex gap-3">
-              <Link
-                href="/specials"
-                className="flex-1 btn-primary justify-center py-4 rounded-full"
-              >
-                Claim Your First IV
-              </Link>
-              <Link
-                href={`tel:${CONTACT.phoneClean}`}
-                className="flex items-center justify-center w-14 h-14 bg-foreground text-white rounded-full hover:bg-foreground/90 transition-colors"
-              >
-                <Phone className="w-5 h-5" />
-              </Link>
-            </div>
-
-            <p className="text-xs text-foreground-muted mt-4">
-              *One-time state-mandated ${PRICING.medicalClearance} telehealth
-              screening required at first visit.
+          <div className="text-center mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+              Better wellness. Better life.
+            </h2>
+            <p className="text-foreground-muted max-w-2xl mx-auto">
+              {SITE_CONFIG.description}
             </p>
           </div>
+        </div>
+      </div>
+
+      {/* Massage Chairs Section */}
+      <div className="relative h-[300px] md:h-[400px]">
+        <Image
+          src={IMAGES.ivBagOnStand}
+          alt="IV therapy treatment room with massage chairs"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+      </div>
+
+      {/* VIP Offer Section */}
+      <div className="bg-primary py-12">
+        <div className="container-custom mx-auto px-4">
+          <div className="text-center text-white mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-2">
+              Your First IV Therapy for ${PRICING.introOffer.price}
+            </h2>
+            <p className="text-white/80 max-w-2xl mx-auto">
+              Start feeling better, faster with doctor-supervised IV therapy in {CONTACT.address.city}. 
+              Choose your intro IV and enjoy premium hydration, energy, and recovery support for just{" "}
+              <span className="font-bold">${PRICING.introOffer.price}</span> (regular ${PRICING.introOffer.regularPrice}).
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-6">
+            <Link
+              href="/specials"
+              className="bg-white text-primary font-semibold px-8 py-4 rounded-full hover:bg-white/90 transition-colors text-center text-lg"
+            >
+              Claim Your First IV
+            </Link>
+            <Link
+              href={`tel:${CONTACT.phoneClean}`}
+              className="border-2 border-white text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 transition-colors text-center text-lg flex items-center justify-center gap-2"
+            >
+              <Phone className="w-5 h-5" />
+              Call {CONTACT.phone}
+            </Link>
+          </div>
+
+          <p className="text-center text-white/60 text-sm">
+            Note: For your safety, medical clearance costing ${PRICING.medicalClearance} may be required on your first IV visit.
+          </p>
         </div>
       </div>
     </section>

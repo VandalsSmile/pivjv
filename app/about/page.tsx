@@ -1,9 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Check, Phone, ArrowRight, Users, Heart, Award } from "lucide-react";
 import { CONTACT, WHY_PRIME_IV, TRUST_SIGNALS } from "@/lib/constants";
 import { CtaSection } from "@/components/sections/cta-section";
 import { ReviewsSection } from "@/components/sections/reviews-section";
+
+const IMAGES = {
+  owners: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_8654-sSSe1uP2SUZ01VrOvVSTJPrS77Cngg.jpeg",
+  team: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_20260211_134131--284-29-cae55c3e-vYBVkXUDmxqmmHmCH9BwUXRjOi75DB.png",
+  storefront: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PIV%2BOUTSIDE%2B-aGyuXgH9wn19gHbBMYHUzZckqI97vX.jpg",
+  nursePrepping: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PIVJV-IV--281-29-msErquamFvKcEdfTaz0uhNcfeCmVDA.png",
+  ivBagFruits: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/how%2Bdoes%2Biv%2Btherapy%2Bwork-tbWr1MbIWPfBBcJvjLxQEgVLBPhsUC.png",
+  nurseHelping: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PIVJV%2BIV%2Bhelp-AgKswevjak3keZJB9dMGC1pedKRs0d.png",
+};
 
 export const metadata: Metadata = {
   title: "About Us | Why Choose Prime IV Hydration & Wellness",
@@ -41,10 +51,20 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Story */}
+      {/* Owners Section */}
       <section className="section-padding bg-background">
         <div className="container-custom mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src={IMAGES.owners}
+                alt="Prime IV Huntsville owners in front of the storefront"
+                width={600}
+                height={450}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+
             <div>
               <p className="text-sm font-semibold text-secondary uppercase tracking-wide mb-2">
                 Family-Owned & Local
@@ -111,33 +131,70 @@ export default function AboutPage() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="bg-primary rounded-2xl p-8 text-white">
-              <div className="text-center">
-                <div className="w-32 h-32 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Users className="w-16 h-16 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4">
-                  Meet Our {CONTACT.address.city} Team
-                </h3>
-                <p className="text-white/80 mb-6">
-                  Our dedicated team of wellness professionals is here to guide
-                  you on your health journey. From your first consultation to
-                  your ongoing treatments, we&apos;re committed to your
-                  well-being.
-                </p>
-                <Link href="/contact" className="btn-primary">
-                  Schedule a Visit
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
+      {/* Team Section */}
+      <section className="section-padding bg-background-alt">
+        <div className="container-custom mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-sm font-semibold text-secondary uppercase tracking-wide mb-2">
+                Meet the Team
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance">
+                Expert Care from Licensed Professionals
+              </h2>
+              <p className="text-foreground-muted mb-6">
+                Our dedicated team of wellness professionals is here to guide
+                you on your health journey. From your first consultation to
+                your ongoing treatments, we&apos;re committed to your
+                well-being.
+              </p>
+              <p className="text-foreground-muted mb-8">
+                Every member of our team is a licensed healthcare professional
+                with specialized training in IV therapy. We maintain the highest
+                standards of safety and care in everything we do.
+              </p>
+              <Link href="/contact" className="btn-primary">
+                Schedule a Visit
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            <div className="relative rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src={IMAGES.team}
+                alt="Prime IV Huntsville nursing team"
+                width={600}
+                height={450}
+                className="w-full h-auto object-cover"
+              />
             </div>
           </div>
         </div>
       </section>
 
+      {/* Storefront Section */}
+      <section className="relative h-[400px] md:h-[500px]">
+        <Image
+          src={IMAGES.storefront}
+          alt="Prime IV Hydration & Wellness Huntsville storefront"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-8 text-white text-center">
+          <h3 className="text-2xl md:text-3xl font-bold mb-2">
+            Visit Us in {CONTACT.address.city}
+          </h3>
+          <p className="text-white/80">{CONTACT.address.street}, {CONTACT.address.city}, {CONTACT.address.state} {CONTACT.address.zip}</p>
+        </div>
+      </section>
+
       {/* Why Prime IV */}
-      <section id="why-prime-iv" className="section-padding bg-background-alt">
+      <section id="why-prime-iv" className="section-padding bg-background">
         <div className="container-custom mx-auto">
           <div className="text-center mb-12">
             <p className="text-sm font-semibold text-secondary uppercase tracking-wide mb-2">
@@ -157,7 +214,7 @@ export default function AboutPage() {
             {WHY_PRIME_IV.map((item, index) => (
               <div
                 key={index}
-                className="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm border border-border"
+                className="flex items-start gap-4 p-6 bg-background-alt rounded-xl shadow-sm border border-border"
               >
                 <div className="flex-shrink-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center">
                   <Check className="w-5 h-5 text-white" />
@@ -200,81 +257,133 @@ export default function AboutPage() {
       </section>
 
       {/* What is IV Therapy */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-background-alt">
         <div className="container-custom mx-auto">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance">
                 What is IV Therapy?
               </h2>
-            </div>
+              <div className="space-y-4 text-foreground-muted">
+                <p>
+                  IV (intravenous) therapy delivers vitamins, minerals, and
+                  hydration directly into your bloodstream, bypassing the
+                  digestive system for faster, more efficient absorption. This
+                  means your body can utilize up to 100% of the nutrients,
+                  compared to just 20-50% through oral supplements.
+                </p>
+                <p>
+                  At Prime IV {CONTACT.address.city}, we use only medical-grade
+                  ingredients administered by licensed healthcare professionals.
+                  Each treatment is customized to your specific needs, and our
+                  comfortable spa-like environment ensures a relaxing experience.
+                </p>
+              </div>
 
-            <div className="prose prose-lg max-w-none text-foreground-muted">
-              <p>
-                IV (intravenous) therapy delivers vitamins, minerals, and
-                hydration directly into your bloodstream, bypassing the
-                digestive system for faster, more efficient absorption. This
-                means your body can utilize up to 100% of the nutrients,
-                compared to just 20-50% through oral supplements.
-              </p>
-
-              <div className="grid md:grid-cols-2 gap-8 my-8 not-prose">
-                <div className="bg-background-alt rounded-xl p-6">
-                  <h3 className="text-lg font-bold text-foreground mb-4">
-                    Benefits of IV Therapy
-                  </h3>
-                  <ul className="space-y-2">
-                    {[
-                      "Rapid hydration and nutrient delivery",
-                      "100% bioavailability",
-                      "Immediate effects felt during treatment",
-                      "Customized formulas for your needs",
-                      "Supports energy, immunity, and recovery",
-                      "Safe and administered by professionals",
-                    ].map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-sm">
-                        <Check className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
-                        <span className="text-foreground-muted">{item}</span>
-                      </li>
-                    ))}
+              <div className="grid grid-cols-2 gap-4 mt-8">
+                <div className="bg-white rounded-xl p-4 shadow-sm">
+                  <h4 className="font-bold text-foreground mb-2">Benefits</h4>
+                  <ul className="space-y-1 text-sm text-foreground-muted">
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-accent" />
+                      100% bioavailability
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-accent" />
+                      Rapid hydration
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-accent" />
+                      Immediate effects
+                    </li>
                   </ul>
                 </div>
-
-                <div className="bg-background-alt rounded-xl p-6">
-                  <h3 className="text-lg font-bold text-foreground mb-4">
-                    Who Can Benefit?
-                  </h3>
-                  <ul className="space-y-2">
-                    {[
-                      "Busy professionals needing energy boosts",
-                      "Athletes seeking faster recovery",
-                      "Travelers combating jet lag",
-                      "Anyone fighting cold or flu symptoms",
-                      "Those seeking beauty and anti-aging support",
-                      "People with chronic fatigue or dehydration",
-                    ].map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-sm">
-                        <Check className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
-                        <span className="text-foreground-muted">{item}</span>
-                      </li>
-                    ))}
+                <div className="bg-white rounded-xl p-4 shadow-sm">
+                  <h4 className="font-bold text-foreground mb-2">Who Benefits</h4>
+                  <ul className="space-y-1 text-sm text-foreground-muted">
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-accent" />
+                      Busy professionals
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-accent" />
+                      Athletes
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-accent" />
+                      Travelers
+                    </li>
                   </ul>
                 </div>
               </div>
 
-              <p>
-                At Prime IV {CONTACT.address.city}, we use only medical-grade
-                ingredients administered by licensed healthcare professionals.
-                Each treatment is customized to your specific needs, and our
-                comfortable spa-like environment ensures a relaxing experience.
-              </p>
+              <div className="mt-8">
+                <Link href="/iv-therapy" className="btn-secondary">
+                  Explore Our Treatments
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
             </div>
 
-            <div className="text-center mt-8">
-              <Link href="/iv-therapy" className="btn-secondary">
-                Explore Our Treatments
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+            <div className="relative rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src={IMAGES.ivBagFruits}
+                alt="IV bag with vitamins and nutrients illustration"
+                width={500}
+                height={600}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Nurse Prepping Section */}
+      <section className="section-padding bg-background">
+        <div className="container-custom mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl order-2 lg:order-1">
+              <Image
+                src={IMAGES.nursePrepping}
+                alt="Licensed nurse preparing IV treatment in sterile environment"
+                width={600}
+                height={450}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+
+            <div className="order-1 lg:order-2">
+              <p className="text-sm font-semibold text-secondary uppercase tracking-wide mb-2">
+                Safety First
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance">
+                Medical-Grade Standards
+              </h2>
+              <p className="text-foreground-muted mb-6">
+                Every IV treatment at Prime IV {CONTACT.address.city} is
+                prepared in a sterile environment by licensed healthcare
+                professionals. We use only the highest quality, medical-grade
+                ingredients to ensure your safety and the effectiveness of your
+                treatment.
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-accent" />
+                  <span className="text-foreground">Sterile preparation environment</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-accent" />
+                  <span className="text-foreground">Medical-grade ingredients only</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-accent" />
+                  <span className="text-foreground">Licensed healthcare professionals</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-accent" />
+                  <span className="text-foreground">Strict safety protocols</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

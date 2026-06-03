@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Zap,
   Dumbbell,
@@ -11,8 +12,16 @@ import {
   Phone,
   Check,
 } from "lucide-react";
-import { SERVICES, CONTACT, PRICING, SITE_CONFIG } from "@/lib/constants";
+import { SERVICES, CONTACT, PRICING } from "@/lib/constants";
 import { CtaSection } from "@/components/sections/cta-section";
+
+const IMAGES = {
+  ivBag: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PIVJV%2BIV-E9HwwSFOpEDZ5G25bKBw3Xq2tgcN4q.png",
+  ivPens: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PIVJV%2BIV%2Bpens-rdp9UNRT3Dj1HJuEZD5NHa9Tq3JcWu.png",
+  niagen: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/niagen-goQclfnIu1moCbzYigEyoIOsRxrOOl.png",
+  nursePrepping: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PIVJV-IV--281-29-msErquamFvKcEdfTaz0uhNcfeCmVDA.png",
+  womanStretching: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/womany%2Bmyers%2Bstrech-OznxzzjU3jCqziV37gFGRbsUVdnt5X.jpeg",
+};
 
 export const metadata: Metadata = {
   title: "IV Therapy Services | Vitamin Drips & Hydration Treatments",
@@ -205,30 +214,41 @@ export default function IVTherapyPage() {
       {/* Hero Section */}
       <section className="bg-primary text-white py-16 lg:py-24">
         <div className="container-custom mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-secondary font-semibold uppercase tracking-wide mb-3">
-              Our IV Therapy Menu
-            </p>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-              Premium IV Therapy Treatments in {CONTACT.address.city}, AL
-            </h1>
-            <p className="text-white/80 text-lg mb-8">
-              Discover our comprehensive menu of IV therapies designed to help
-              you feel your best. From energy and recovery to beauty and
-              advanced cellular therapies.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/specials" className="btn-primary">
-                Book ${PRICING.introOffer.price} VIP IV
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href={`tel:${CONTACT.phoneClean}`}
-                className="btn-outline"
-              >
-                <Phone className="w-4 h-4" />
-                Call {CONTACT.phone}
-              </Link>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-secondary font-semibold uppercase tracking-wide mb-3">
+                Our IV Therapy Menu
+              </p>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
+                Premium IV Therapy Treatments in {CONTACT.address.city}, AL
+              </h1>
+              <p className="text-white/80 text-lg mb-8">
+                Discover our comprehensive menu of IV therapies designed to help
+                you feel your best. From energy and recovery to beauty and
+                advanced cellular therapies.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link href="/specials" className="btn-primary">
+                  Book ${PRICING.introOffer.price} VIP IV
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href={`tel:${CONTACT.phoneClean}`}
+                  className="btn-outline"
+                >
+                  <Phone className="w-4 h-4" />
+                  Call {CONTACT.phone}
+                </Link>
+              </div>
+            </div>
+            <div className="relative rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src={IMAGES.ivBag}
+                alt="IV therapy treatment in progress"
+                width={500}
+                height={500}
+                className="w-full h-auto object-cover"
+              />
             </div>
           </div>
         </div>
@@ -323,20 +343,14 @@ export default function IVTherapyPage() {
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
-            <div className="bg-white/10 rounded-2xl p-8">
-              <div className="text-center">
-                <div className="w-24 h-24 bg-secondary/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Dumbbell className="w-12 h-12 text-secondary" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4">
-                  Perfect For Everyone
-                </h3>
-                <p className="text-white/70">
-                  Whether you&apos;re an athlete, busy professional, or just
-                  looking to optimize your health, the Myers&apos; Cocktail is a
-                  great starting point for your IV therapy journey.
-                </p>
-              </div>
+            <div className="relative rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src={IMAGES.womanStretching}
+                alt="Woman feeling energized after Myers Cocktail IV therapy"
+                width={600}
+                height={400}
+                className="w-full h-auto object-cover"
+              />
             </div>
           </div>
         </div>

@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, Check, ArrowRight, Loader2 } from "lucide-react";
+import Image from "next/image";
+import { Phone, Check, ArrowRight } from "lucide-react";
 import { CONTACT, PRICING } from "@/lib/constants";
 import { SpecialsForm } from "./specials-form";
+
+const IMAGES = {
+  myersMigraine: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/myers%20migraine-a6w3PKSJ45owEpJ2wUfmM9ovDxTSLv.png",
+  nurseHelping: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PIVJV%2BIV%2Bhelp-AgKswevjak3keZJB9dMGC1pedKRs0d.png",
+  ivPens: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PIVJV%2BIV%2Bpens-rdp9UNRT3Dj1HJuEZD5NHa9Tq3JcWu.png",
+};
 
 export const metadata: Metadata = {
   title: "IV Therapy Specials & Promotions | Monthly Deals",
@@ -256,6 +263,56 @@ export default function SpecialsPage() {
                   Book 2-3 days before departure for best results.
                 </p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Myers Migraine Special */}
+      <section className="section-padding bg-background">
+        <div className="container-custom mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src={IMAGES.myersMigraine}
+                alt="Myers Migraine IV Treatment - Weather triggering migraines"
+                width={600}
+                height={600}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+            <div>
+              <span className="inline-block bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full mb-4">
+                Featured Treatment
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Myers Migraine IV
+              </h2>
+              <p className="text-foreground-muted mb-6">
+                Weather triggering migraines? Our Myers Migraine IV is specially formulated 
+                to help combat weather-related headaches and migraines. Get relief fast with 
+                our targeted IV therapy.
+              </p>
+              <ul className="space-y-3 mb-6">
+                {[
+                  "Magnesium for muscle relaxation",
+                  "B vitamins for nerve support",
+                  "High-dose hydration",
+                  "Fast-acting relief",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-3">
+                    <Check className="w-5 h-5 text-secondary flex-shrink-0" />
+                    <span className="text-foreground">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href={`tel:${CONTACT.phoneClean}`}
+                className="btn-primary"
+              >
+                <Phone className="w-4 h-4" />
+                Book Now: {CONTACT.phone}
+              </Link>
             </div>
           </div>
         </div>

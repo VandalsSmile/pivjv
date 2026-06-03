@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
 import { CONTACT, HOURS, SOCIAL_LINKS } from "@/lib/constants";
 import { ContactForm } from "./contact-form";
+
+const IMAGES = {
+  storefront: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PIV%2BOUTSIDE%2B-aGyuXgH9wn19gHbBMYHUzZckqI97vX.jpg",
+};
 
 export const metadata: Metadata = {
   title: "Contact Us | Book Your IV Therapy Appointment",
@@ -161,21 +166,14 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Map Placeholder */}
-              <div className="bg-background-alt rounded-xl p-4 h-64 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="w-12 h-12 text-primary/30 mx-auto mb-3" />
-                  <p className="text-foreground-muted">
-                    <Link
-                      href={`https://maps.google.com/?q=${encodeURIComponent(CONTACT.address.full)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:underline"
-                    >
-                      View on Google Maps
-                    </Link>
-                  </p>
-                </div>
+              {/* Storefront Image */}
+              <div className="relative rounded-xl overflow-hidden h-64">
+                <Image
+                  src={IMAGES.storefront}
+                  alt="Prime IV Hydration & Wellness Huntsville storefront"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </div>
 
