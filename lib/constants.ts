@@ -24,7 +24,7 @@ export const CONTACT = {
 };
 
 export const LOGO_URL =
-  "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/prime-iv-logo-white-TR9g8OTAtrJhOr4pwdZv4bdUtUgbNH.png";
+  "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/prime-iv-logo-color-h2TWva3CXZY82Gnqlk3s0fDSSKrSUa.webp";
 
 export const PRICING = {
   introOffer: {

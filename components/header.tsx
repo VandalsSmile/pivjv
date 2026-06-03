@@ -43,7 +43,7 @@ export function Header() {
       <header className="sticky top-0 z-50 bg-white shadow-sm">
         <div className="container-custom mx-auto px-4">
           <div className="flex items-center justify-between h-16 lg:h-20">
-            {/* Logo - using colored version */}
+            {/* Logo - colored version */}
             <Link href="/" className="flex-shrink-0">
               <Image
                 src={LOGO_URL}
@@ -51,7 +51,6 @@ export function Header() {
                 width={140}
                 height={50}
                 className="h-12 lg:h-14 w-auto"
-                style={{ filter: "invert(1) sepia(1) saturate(3) hue-rotate(175deg) brightness(0.35)" }}
                 priority
               />
             </Link>
