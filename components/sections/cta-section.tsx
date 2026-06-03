@@ -52,7 +52,7 @@ export function CtaSection() {
               </Link>
               <Link
                 href={`tel:${CONTACT.phoneClean}`}
-                className="btn-outline"
+                className="btn-outline text-white border-white hover:bg-white hover:text-primary"
               >
                 <Phone className="w-4 h-4" />
                 Call {CONTACT.phone}
