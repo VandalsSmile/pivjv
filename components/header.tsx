@@ -12,8 +12,8 @@ export function Header() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   return (
-    <>
-      {/* Top Banner - Dark teal */}
+    <div className="sticky top-0 z-50">
+      {/* Top Banner - Dark blue */}
       <div className="bg-primary text-white">
         <div className="container-custom mx-auto px-4">
           <div className="flex items-center justify-between py-2 text-sm">
@@ -40,7 +40,7 @@ export function Header() {
       </div>
 
       {/* Main Header - White background */}
-      <header className="sticky top-0 z-50 bg-white shadow-sm">
+      <header className="bg-white shadow-sm">
         <div className="container-custom mx-auto px-4">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo - colored version */}
@@ -196,6 +196,6 @@ export function Header() {
           </nav>
         </div>
       </header>
-    </>
+    </div>
   );
 }
