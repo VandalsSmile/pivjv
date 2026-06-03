@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  /* Bluebell IV Exact Color Scheme */
-  --color-primary: #0d3b4c;
-  --color-primary-dark: #092a38;
-  --color-primary-light: #0f4a5e;
+  /* Huntsville IV Color Scheme */
+  --color-primary: #1f3a5f;
+  --color-primary-dark: #162942;
+  --color-primary-light: #2a4d7a;
   
-  --color-secondary: #f97316;
-  --color-secondary-dark: #ea580c;
-  --color-secondary-light: #fb923c;
+  --color-secondary: #0c7995;
+  --color-secondary-dark: #0a6179;
+  --color-secondary-light: #0e91b1;
   
-  --color-accent: #1a9ba3;
-  --color-accent-dark: #158a91;
-  --color-accent-light: #20b2bb;
+  --color-accent: #0887a7;
+  --color-accent-dark: #066d87;
+  --color-accent-light: #0aa1c7;
   
   --color-background: #ffffff;
-  --color-background-alt: #f8fafc;
-  --color-background-dark: #0d3b4c;
+  --color-background-alt: #e1f7fb;
+  --color-background-dark: #1f3a5f;
   
   --color-foreground: #334155;
   --color-foreground-muted: #64748b;
