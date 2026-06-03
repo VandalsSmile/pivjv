@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { StickyCTABar } from "@/components/sticky-cta-bar";
 import { SITE_CONFIG, CONTACT } from "@/lib/constants";
 
 const inter = Inter({
@@ -56,7 +57,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0d4a4a",
+  themeColor: "#0d3b4c",
   width: "device-width",
   initialScale: 1,
 };
@@ -68,10 +69,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} bg-background`}>
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased pb-16 lg:pb-0">
         <Header />
         <main>{children}</main>
         <Footer />
+        <StickyCTABar />
       </body>
     </html>
   );
