@@ -17,6 +17,11 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_CONFIG.name} ${CONTACT.address.city}`,
   },
   description: SITE_CONFIG.description,
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
   keywords: [
     "IV therapy",
     "IV hydration",
