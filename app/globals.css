@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  /* Huntsville IV Color Scheme */
-  --color-primary: #1f3a5f;
-  --color-primary-dark: #162942;
-  --color-primary-light: #2a4d7a;
+  /* Bluebell IV Exact Color Scheme */
+  --color-primary: #0d4955;
+  --color-primary-dark: #0a3a44;
+  --color-primary-light: #0f5a68;
   
   --color-secondary: #ff7200;
   --color-secondary-dark: #e56600;
   --color-secondary-light: #ff8c33;
   
-  --color-accent: #0887a7;
-  --color-accent-dark: #066d87;
-  --color-accent-light: #0aa1c7;
+  --color-accent: #14b8a6;
+  --color-accent-dark: #0d9488;
+  --color-accent-light: #2dd4bf;
   
   --color-background: #ffffff;
-  --color-background-alt: #e1f7fb;
-  --color-background-dark: #1f3a5f;
+  --color-background-alt: #f0fafb;
+  --color-background-dark: #0d4955;
   
-  --color-foreground: #334155;
+  --color-foreground: #1e293b;
   --color-foreground-muted: #64748b;
   --color-foreground-light: #ffffff;
   
@@ -59,16 +59,24 @@
 }
 
 @layer components {
+  /* Primary button - Dark teal (like Book $99 VIP IV) */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-secondary text-white font-semibold rounded-lg hover:bg-secondary-dark transition-colors duration-200;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary-dark transition-colors duration-200;
   }
   
+  /* Secondary button - Orange (like Our Specials!) */
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-colors duration-200;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-secondary text-white font-semibold rounded-full hover:bg-secondary-dark transition-colors duration-200;
   }
   
+  /* Outline button - Light border (like Check out June Specials!) */
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary transition-colors duration-200;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-border text-foreground font-semibold rounded-full hover:bg-background-alt transition-colors duration-200;
+  }
+  
+  /* Dark outline button (on dark backgrounds) */
+  .btn-outline-dark {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white/10 transition-colors duration-200;
   }
   
   .section-padding {

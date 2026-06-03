@@ -13,37 +13,45 @@ export function Header() {
 
   return (
     <>
-      {/* Top Banner */}
+      {/* Top Banner - Dark teal */}
       <div className="bg-primary text-white">
         <div className="container-custom mx-auto px-4">
-          <Link
-            href="/iv-therapy#myers"
-            className="flex items-center justify-center gap-2 py-2 text-sm hover:text-secondary transition-colors"
-          >
-            <span className="hidden sm:inline">
-              Get the most popular and time-tested IV in history —
-            </span>
-            <span className="font-semibold text-secondary">
-              {"The Myers' Cocktail"}
-            </span>
-            <span className="text-xs ml-2 underline">Learn More</span>
-          </Link>
+          <div className="flex items-center justify-between py-2 text-sm">
+            <Link
+              href="/iv-therapy#myers"
+              className="flex items-center gap-2 hover:text-secondary transition-colors"
+            >
+              <span className="text-accent">&#10024;</span>
+              <span className="hidden sm:inline">
+                Get the most popular and time-tested IV in history —
+              </span>
+              <span className="font-semibold text-secondary">
+                {"The Myers' Cocktail"}
+              </span>
+            </Link>
+            <Link
+              href="/iv-therapy#myers"
+              className="hidden sm:inline-flex items-center gap-1 px-4 py-1 border border-white/30 rounded-full text-xs hover:bg-white/10 transition-colors"
+            >
+              Learn More
+            </Link>
+          </div>
         </div>
       </div>
 
-      {/* Main Header */}
+      {/* Main Header - White background */}
       <header className="sticky top-0 z-50 bg-white shadow-sm">
         <div className="container-custom mx-auto px-4">
           <div className="flex items-center justify-between h-16 lg:h-20">
-            {/* Logo - dark blue filter for white logo on white bg */}
+            {/* Logo - using colored version */}
             <Link href="/" className="flex-shrink-0">
               <Image
                 src={LOGO_URL}
                 alt="Prime IV Hydration & Wellness - Huntsville"
                 width={140}
                 height={50}
-                className="h-10 lg:h-12 w-auto"
-                style={{ filter: "invert(1) sepia(1) saturate(3) hue-rotate(190deg) brightness(0.4)" }}
+                className="h-12 lg:h-14 w-auto"
+                style={{ filter: "invert(1) sepia(1) saturate(3) hue-rotate(175deg) brightness(0.35)" }}
                 priority
               />
             </Link>
@@ -87,7 +95,7 @@ export function Header() {
             </nav>
 
             {/* Desktop CTA */}
-            <div className="hidden lg:flex items-center gap-3">
+            <div className="hidden lg:flex items-center gap-4">
               <Link
                 href={`tel:${CONTACT.phoneClean}`}
                 className="flex items-center gap-2 text-foreground hover:text-primary font-medium"
@@ -95,8 +103,9 @@ export function Header() {
                 <Phone className="w-4 h-4" />
                 {CONTACT.phone}
               </Link>
-              <Link href="/specials" className="btn-primary text-sm">
-                Book ${PRICING.introOffer.price} VIP IV
+              {/* Orange button like Bluebell's "Our Specials!" */}
+              <Link href="/specials" className="btn-secondary text-sm">
+                <span>&#127881;</span> Our Specials!
               </Link>
             </div>
 
@@ -179,10 +188,10 @@ export function Header() {
               </Link>
               <Link
                 href="/specials"
-                className="btn-primary w-full justify-center"
+                className="btn-secondary w-full justify-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Book ${PRICING.introOffer.price} VIP IV
+                <span>&#127881;</span> Our Specials!
               </Link>
             </div>
           </nav>
