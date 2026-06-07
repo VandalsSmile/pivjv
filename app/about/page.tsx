@@ -144,7 +144,7 @@ export default function AboutPage() {
                 Meet the Team
               </p>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance">
-                Expert Care from Licensed Professionals
+                Expert Care from Medically Licensed Professionals
               </h2>
               <p className="text-foreground-muted mb-6">
                 Our dedicated team of wellness professionals is here to guide

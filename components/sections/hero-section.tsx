@@ -59,7 +59,7 @@ export function HeroSection() {
               </div>
               <div className="flex items-center gap-2">
                 <Check className="w-5 h-5 text-accent" />
-                <span className="text-foreground text-sm">Licensed professionals</span>
+                <span className="text-foreground text-sm">Medically licensed professionals</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check className="w-5 h-5 text-accent" />

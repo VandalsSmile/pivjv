@@ -34,7 +34,7 @@ const STEPS = [
     number: "3",
     title: "Relax & Recharge",
     description:
-      "Settle into a zero-gravity massage chair while a licensed professional administers your treatment.",
+      "Settle into a zero-gravity massage chair while a medically licensed professional administers your treatment.",
   },
 ];
 
