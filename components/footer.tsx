@@ -114,10 +114,16 @@ export function Footer() {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <nav className="space-y-2">
               <Link
-                href="/iv-therapy"
+                href="/menu"
                 className="block text-white/90 hover:text-secondary transition-colors"
               >
-                IV Therapies
+                Menu
+              </Link>
+              <Link
+                href="/iv-matcher"
+                className="block text-white/90 hover:text-secondary transition-colors"
+              >
+                IV Matcher
               </Link>
               <Link
                 href="/specials"
@@ -126,16 +132,40 @@ export function Footer() {
                 Specials
               </Link>
               <Link
+                href="/weight-loss"
+                className="block text-white/90 hover:text-secondary transition-colors"
+              >
+                Weight Loss
+              </Link>
+              <Link
+                href="/nad-and-niagen"
+                className="block text-white/90 hover:text-secondary transition-colors"
+              >
+                NAD+ and Niagen
+              </Link>
+              <Link
                 href="/memberships"
                 className="block text-white/90 hover:text-secondary transition-colors"
               >
-                Memberships
+                Membership
               </Link>
               <Link
                 href="/about"
                 className="block text-white/90 hover:text-secondary transition-colors"
               >
-                Why Prime IV
+                About
+              </Link>
+              <Link
+                href="/our-location"
+                className="block text-white/90 hover:text-secondary transition-colors"
+              >
+                Our Location
+              </Link>
+              <Link
+                href="/blog"
+                className="block text-white/90 hover:text-secondary transition-colors"
+              >
+                Blog
               </Link>
               <Link
                 href="/faq"

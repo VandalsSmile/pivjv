@@ -52,38 +52,41 @@ export const NAV_LINKS = [
     label: "What We Offer",
     href: "#",
     children: [
-      { label: "IV Therapies", href: "/iv-therapy" },
+      { label: "IV Matcher", href: "/iv-matcher" },
+      { label: "Menu", href: "/menu" },
       { label: "Specials", href: "/specials" },
-      { label: "Memberships", href: "/memberships" },
-    ],
-  },
-  {
-    label: "How We Help",
-    href: "#",
-    children: [
-      { label: "Energy & Performance", href: "/iv-therapy#energy" },
-      { label: "Recovery & Hydration", href: "/iv-therapy#recovery" },
-      { label: "Immunity & Wellness", href: "/iv-therapy#immunity" },
-      { label: "Beauty & Anti-Aging", href: "/iv-therapy#beauty" },
+      { label: "Weight Loss", href: "/weight-loss" },
+      { label: "NAD+ and Niagen", href: "/nad-and-niagen" },
+      { label: "Membership", href: "/memberships" },
     ],
   },
   {
     label: "Who We Are",
     href: "#",
     children: [
-      { label: "About Us", href: "/about" },
-      { label: "Why Prime IV", href: "/about#why-prime-iv" },
-      { label: "Meet Our Team", href: "/about#team" },
+      { label: "About", href: "/about" },
+      { label: "FAQ", href: "/faq" },
+      { label: "Our Location", href: "/our-location" },
     ],
   },
   {
-    label: "Learn More",
+    label: "How We Help",
     href: "#",
     children: [
-      { label: "FAQ", href: "/faq" },
-      { label: "Contact", href: "/contact" },
+      { label: "Health & Wellness", href: "/how-iv-therapy-helps#wellness" },
+      {
+        label: "Hangover & Illness Recovery",
+        href: "/how-iv-therapy-helps#recovery",
+      },
+      { label: "Beauty & Aging", href: "/how-iv-therapy-helps#beauty" },
+      {
+        label: "Fitness & Exercise Recovery",
+        href: "/how-iv-therapy-helps#fitness",
+      },
     ],
   },
+  { label: "Learn More", href: "/blog" },
+  { label: "Book", href: "/book" },
 ];
 
 export const SERVICES = [

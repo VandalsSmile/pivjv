@@ -57,40 +57,43 @@ export function Header() {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-1">
-              <Link
-                href="/"
-                className="px-4 py-2 text-foreground hover:text-primary font-medium transition-colors"
-              >
-                Home
-              </Link>
+              {NAV_LINKS.map((link) =>
+                link.children ? (
+                  <div
+                    key={link.label}
+                    className="relative"
+                    onMouseEnter={() => setOpenDropdown(link.label)}
+                    onMouseLeave={() => setOpenDropdown(null)}
+                  >
+                    <button className="flex items-center gap-1 px-4 py-2 text-foreground hover:text-primary font-medium transition-colors">
+                      {link.label}
+                      <ChevronDown className="w-4 h-4" />
+                    </button>
 
-              {NAV_LINKS.filter((link) => link.children).map((link) => (
-                <div
-                  key={link.label}
-                  className="relative"
-                  onMouseEnter={() => setOpenDropdown(link.label)}
-                  onMouseLeave={() => setOpenDropdown(null)}
-                >
-                  <button className="flex items-center gap-1 px-4 py-2 text-foreground hover:text-primary font-medium transition-colors">
+                    {openDropdown === link.label && link.children && (
+                      <div className="absolute top-full left-0 w-56 bg-white shadow-lg rounded-lg py-2 border border-border">
+                        {link.children.map((child) => (
+                          <Link
+                            key={child.label}
+                            href={child.href}
+                            className="block px-4 py-2 text-foreground hover:bg-background-alt hover:text-primary transition-colors"
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className="px-4 py-2 text-foreground hover:text-primary font-medium transition-colors"
+                  >
                     {link.label}
-                    <ChevronDown className="w-4 h-4" />
-                  </button>
-
-                  {openDropdown === link.label && link.children && (
-                    <div className="absolute top-full left-0 w-56 bg-white shadow-lg rounded-lg py-2 border border-border">
-                      {link.children.map((child) => (
-                        <Link
-                          key={child.label}
-                          href={child.href}
-                          className="block px-4 py-2 text-foreground hover:bg-background-alt hover:text-primary transition-colors"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
+                  </Link>
+                )
+              )}
             </nav>
 
             {/* Desktop CTA */}
@@ -133,49 +136,52 @@ export function Header() {
           )}
         >
           <nav className="container-custom mx-auto px-4 py-4">
-            <Link
-              href="/"
-              className="block py-3 text-foreground font-medium border-b border-border"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Home
-            </Link>
+            {NAV_LINKS.map((link) =>
+              link.children ? (
+                <div key={link.label} className="border-b border-border">
+                  <button
+                    className="flex items-center justify-between w-full py-3 text-foreground font-medium"
+                    onClick={() =>
+                      setOpenDropdown(
+                        openDropdown === link.label ? null : link.label
+                      )
+                    }
+                  >
+                    {link.label}
+                    <ChevronDown
+                      className={cn(
+                        "w-4 h-4 transition-transform",
+                        openDropdown === link.label && "rotate-180"
+                      )}
+                    />
+                  </button>
 
-            {NAV_LINKS.filter((link) => link.children).map((link) => (
-              <div key={link.label} className="border-b border-border">
-                <button
-                  className="flex items-center justify-between w-full py-3 text-foreground font-medium"
-                  onClick={() =>
-                    setOpenDropdown(
-                      openDropdown === link.label ? null : link.label
-                    )
-                  }
+                  {openDropdown === link.label && link.children && (
+                    <div className="pb-3 pl-4">
+                      {link.children.map((child) => (
+                        <Link
+                          key={child.label}
+                          href={child.href}
+                          className="block py-2 text-foreground-muted hover:text-primary"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="block py-3 text-foreground font-medium border-b border-border"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}
-                  <ChevronDown
-                    className={cn(
-                      "w-4 h-4 transition-transform",
-                      openDropdown === link.label && "rotate-180"
-                    )}
-                  />
-                </button>
-
-                {openDropdown === link.label && link.children && (
-                  <div className="pb-3 pl-4">
-                    {link.children.map((child) => (
-                      <Link
-                        key={child.label}
-                        href={child.href}
-                        className="block py-2 text-foreground-muted hover:text-primary"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
+                </Link>
+              )
+            )}
 
             <div className="pt-4 space-y-3">
               <Link
