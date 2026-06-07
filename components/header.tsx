@@ -105,13 +105,10 @@ export function Header() {
                 <Phone className="w-4 h-4" />
                 {CONTACT.phone}
               </Link>
-              {/* CTA button with HSA/FSA badge beneath */}
-              <div className="flex flex-col items-stretch gap-2">
-                <Link href="/specials" className="btn-secondary text-sm">
-                  <span>&#127881;</span> Our Specials!
-                </Link>
-                <HsaFsaBadge />
-              </div>
+              {/* Orange button like Bluebell's "Our Specials!" */}
+              <Link href="/specials" className="btn-secondary text-sm">
+                <span>&#127881;</span> Our Specials!
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -205,30 +202,6 @@ export function Header() {
           </nav>
         </div>
       </header>
-    </div>
-  );
-}
-
-function HsaFsaBadge() {
-  return (
-    <div className="flex items-center justify-center gap-2 rounded-lg border-2 border-primary bg-white px-3 py-1.5">
-      <svg
-        viewBox="0 0 24 24"
-        className="h-6 w-6 flex-shrink-0 text-primary"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        aria-hidden="true"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="m8 12 3 3 5-6" />
-      </svg>
-      <div className="flex flex-col leading-none text-primary">
-        <span className="text-sm font-bold tracking-tight">HSA/FSA</span>
-        <span className="text-sm font-medium tracking-tight">Eligible</span>
-      </div>
     </div>
   );
 }
