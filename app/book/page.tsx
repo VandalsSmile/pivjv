@@ -143,8 +143,23 @@ export default function BookPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-primary text-white">
-        <div className="container-custom mx-auto py-16 lg:py-20">
+      <section className="relative bg-primary text-white overflow-hidden">
+        {/* Calendar background image */}
+        <Image
+          src="/images/book-calendar-bg.png"
+          alt=""
+          fill
+          priority
+          aria-hidden="true"
+          className="object-cover opacity-25"
+          sizes="100vw"
+        />
+        {/* Navy overlay for text contrast */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-primary/70"
+        />
+        <div className="relative container-custom mx-auto py-16 lg:py-20">
           <div className="max-w-3xl">
             <p className="text-secondary font-semibold tracking-wider text-sm mb-3">
               BOOK YOUR SESSION
