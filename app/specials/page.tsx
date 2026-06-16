@@ -18,6 +18,93 @@ export const metadata: Metadata = {
   ],
 };
 
+const MONTHLY_SPECIALS = [
+  {
+    name: "The Travel Defense",
+    category: "Health & Wellness Special",
+    discount: "$50 OFF",
+    price: 160,
+    regularPrice: 210,
+    savingsLabel: "Save $50",
+    description:
+      "Stay ready for wherever summer takes you. Built for travel, busy schedules, hydration support, immune wellness, energy, and recovery.",
+    features: [
+      "Immunity Armor IV — reg. $180",
+      "Taurine IV Additive — reg. $30",
+      "Energy, immunity & hydration support",
+      "Best for travel, long flights & heat",
+    ],
+    addOns: [
+      {
+        name: "Amino Acid Blend Injection",
+        detail: "Supports mental clarity and energy production.",
+        price: "$30",
+      },
+      {
+        name: "NAD+ 100mg",
+        detail:
+          "Supports energy production, cellular repair, metabolism, and overall wellness.",
+        price: "$75",
+      },
+      {
+        name: "The Liver Cleanse Amplifier IV Bag",
+        detail:
+          "Includes Glutathione and Acetylcysteine for extra daily detoxification support.",
+        price: "$40 non-members / $35 members",
+      },
+    ],
+    bestFor:
+      "Summer travel, busy schedules, long flights, heat, dehydration, disrupted sleep, and anyone wanting to stay ready for wherever summer takes them.",
+    theme: {
+      card: "bg-accent",
+      badge: "bg-white text-accent",
+      button: "text-accent",
+    },
+  },
+  {
+    name: "The Summer Slim",
+    category: "Beauty & Aging Special",
+    discount: "20% OFF",
+    price: 120,
+    regularPrice: 150,
+    savingsLabel: "Save 20%",
+    description:
+      "Save 20% on The Skinny Drip IV this summer. Designed for energy, confidence, metabolism support, and overall wellness.",
+    features: [
+      "The Skinny Drip IV — reg. $150",
+      "Metabolism & energy support",
+      "Feel lighter, brighter & energized",
+      "Best for vacations, pool days & events",
+    ],
+    addOns: [
+      {
+        name: "Biotin",
+        detail:
+          "Supports energy metabolism, healthy hair, skin, nails, and overall cellular function.",
+        price: "$30",
+      },
+      {
+        name: "NAD+ 100mg",
+        detail:
+          "Supports energy production, cellular repair, metabolism, and overall wellness.",
+        price: "$75",
+      },
+      {
+        name: "The Alpha Amplifier IV Bag",
+        detail: "For clients wanting additional metabolic wellness support.",
+        price: "$40 non-members / $35 members",
+      },
+    ],
+    bestFor:
+      "Warmer weather, vacations, pool days, events, and anyone focused on feeling lighter, brighter, and more energized this June.",
+    theme: {
+      card: "bg-pink",
+      badge: "bg-white text-pink",
+      button: "text-pink",
+    },
+  },
+];
+
 export default function SpecialsPage() {
   return (
     <>
@@ -135,128 +222,91 @@ export default function SpecialsPage() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
-            {/* Summer Slim Special */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-border">
-              <div className="bg-primary p-4">
-                <span className="inline-block bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full">
-                  Beauty & Aging - 40% OFF
-                </span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-foreground mb-2">
-                  The Summer Slim
-                </h3>
-                <p className="text-foreground-muted text-sm mb-4">
-                  The Skinny Drip
-                </p>
-                <div className="flex items-baseline gap-2 mb-4">
-                  <span className="text-3xl font-bold text-primary">$105</span>
-                  <span className="text-foreground-muted line-through">
-                    $175
-                  </span>
-                  <span className="text-secondary font-semibold">Save 40%</span>
-                </div>
-                <p className="text-foreground-muted mb-4">
-                  Feel lighter, brighter, and more energized this June. Warmer
-                  weather means more events, vacations, pool days, and time
-                  outdoors.
-                </p>
-                <div className="mb-4">
-                  <p className="font-semibold text-foreground text-sm mb-2">
-                    {"What's Included:"}
-                  </p>
-                  <p className="text-sm text-foreground-muted">
-                    The Skinny Drip ($175) — now $105 this month. A metabolism-
-                    and energy-focused IV designed to help you feel lighter and
-                    more confident.
-                  </p>
-                </div>
-                <Link
-                  href={`tel:${CONTACT.phoneClean}`}
-                  className="btn-secondary w-full justify-center mb-4"
+            {MONTHLY_SPECIALS.map((special) => (
+              <div
+                key={special.name}
+                className={`relative overflow-hidden rounded-2xl shadow-lg text-white ${special.theme.card}`}
+              >
+                {/* Decorative bubbles */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0"
                 >
-                  <Phone className="w-4 h-4" />
-                  Claim Promo
-                </Link>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    "Metabolism support",
-                    "Energy + vitality",
-                    "Confidence",
-                    "Beauty + wellness",
-                  ].map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                  <span className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/10" />
+                  <span className="absolute top-24 -left-12 w-32 h-32 rounded-full bg-white/10" />
+                  <span className="absolute bottom-8 right-10 w-20 h-20 rounded-full bg-white/10" />
+                  <span className="absolute -bottom-12 left-16 w-36 h-36 rounded-full bg-white/5" />
+                  <span className="absolute top-1/2 right-1/3 w-12 h-12 rounded-full bg-white/10" />
                 </div>
-              </div>
-            </div>
 
-            {/* Travel Defense Special */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-border">
-              <div className="bg-primary p-4">
-                <span className="inline-block bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full">
-                  Health & Wellness - $50 OFF
-                </span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-foreground mb-2">
-                  The Travel Defense
-                </h3>
-                <p className="text-foreground-muted text-sm mb-4">
-                  Immunity Armor Drip + FREE Taurine Injection
-                </p>
-                <div className="flex items-baseline gap-2 mb-4">
-                  <span className="text-3xl font-bold text-primary">$200</span>
-                  <span className="text-foreground-muted line-through">
-                    $250
+                <div className="relative p-8">
+                  <span
+                    className={`inline-block ${special.theme.badge} text-xs font-bold px-3 py-1 rounded-full mb-3`}
+                  >
+                    {special.discount} · {special.category}
                   </span>
-                  <span className="text-secondary font-semibold">Save $50</span>
-                </div>
-                <p className="text-foreground-muted mb-4">
-                  Hydrate. Recharge. Stay ready for wherever summer takes you.
-                  Long flights, busy schedules, and crowded environments can
-                  leave you run down.
-                </p>
-                <div className="mb-4">
-                  <p className="font-semibold text-foreground text-sm mb-2">
-                    {"What's Included:"}
-                  </p>
-                  <ul className="text-sm text-foreground-muted space-y-1">
-                    <li className="flex items-center gap-2">
-                      <Check className="w-3 h-3 text-secondary" />
-                      Immunity Armor Drip
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Check className="w-3 h-3 text-secondary" />
-                      FREE Taurine Injection
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Check className="w-3 h-3 text-secondary" />
-                      High-dose Vitamin C
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Check className="w-3 h-3 text-secondary" />
-                      Zinc immune defense
-                    </li>
+                  <h3 className="text-2xl font-bold mb-2">{special.name}</h3>
+                  <div className="flex items-baseline gap-2 mb-6">
+                    <span className="text-3xl font-bold">${special.price}</span>
+                    <span className="text-white/60 line-through">
+                      ${special.regularPrice}
+                    </span>
+                    <span className="font-semibold text-white/90">
+                      {special.savingsLabel}
+                    </span>
+                  </div>
+
+                  <p className="text-white/90 mb-4">{special.description}</p>
+                  <ul className="space-y-2 mb-6">
+                    {special.features.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-center gap-2 text-sm text-white/90"
+                      >
+                        <Check className="w-4 h-4 flex-shrink-0 text-white" />
+                        {item}
+                      </li>
+                    ))}
                   </ul>
+
+                  <div className="rounded-xl bg-white/15 p-5 mb-6">
+                    <h4 className="text-sm font-bold uppercase tracking-wide mb-3">
+                      Recommended Add-Ons
+                    </h4>
+                    <ul className="space-y-3">
+                      {special.addOns.map((addOn) => (
+                        <li key={addOn.name} className="text-sm">
+                          <div className="flex items-baseline justify-between gap-3">
+                            <span className="font-semibold">{addOn.name}</span>
+                            <span className="flex-shrink-0 font-semibold text-white/90">
+                              {addOn.price}
+                            </span>
+                          </div>
+                          <p className="text-white/80">{addOn.detail}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <p className="text-sm text-white/90 mb-6">
+                    <span className="font-bold">Best For: </span>
+                    {special.bestFor}
+                  </p>
+
+                  <Link
+                    href={`tel:${CONTACT.phoneClean}`}
+                    className={`inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold transition-colors duration-200 hover:bg-white/90 ${special.theme.button}`}
+                  >
+                    <Phone className="w-4 h-4" />
+                    Call to Book
+                  </Link>
+                  <p className="text-xs text-white/70 text-center mt-3">
+                    Telehealth medical clearance may be required and is not
+                    included in this special.
+                  </p>
                 </div>
-                <Link
-                  href={`tel:${CONTACT.phoneClean}`}
-                  className="btn-secondary w-full justify-center mb-4"
-                >
-                  <Phone className="w-4 h-4" />
-                  Claim Promo
-                </Link>
-                <p className="text-xs text-foreground-muted text-center">
-                  Book 2-3 days before departure for best results.
-                </p>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
