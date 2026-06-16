@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, Check, ArrowRight, Clock, UserCheck, Award } from "lucide-react";
-import { CONTACT, PRICING, SITE_CONFIG } from "@/lib/constants";
+import { Phone, Check, Clock, UserCheck, Award } from "lucide-react";
+import { CONTACT, SITE_CONFIG } from "@/lib/constants";
 import { CtaSection } from "@/components/sections/cta-section";
 
 export const metadata: Metadata = {
@@ -175,11 +175,7 @@ export default function MyersIVPage() {
               {CONTACT.address.city}, AL.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/specials" className="btn-primary">
-                Book ${PRICING.introOffer.price} VIP IV
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link href={`tel:${CONTACT.phoneClean}`} className="btn-outline">
+              <Link href={`tel:${CONTACT.phoneClean}`} className="btn-primary">
                 <Phone className="w-4 h-4" />
                 Call {CONTACT.phone}
               </Link>
