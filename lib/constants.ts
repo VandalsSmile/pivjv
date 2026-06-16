@@ -53,7 +53,7 @@ export const NAV_LINKS = [
     href: "#",
     children: [
       { label: "$85 IV Intro Offer", href: "/intro-offer" },
-      { label: "NAD+ & Niagen 25% OFF", href: "/nad-niagen-special" },
+      { label: "NAD+ & Niagen", href: "/nad-niagen-special" },
       { label: "Full Menu", href: "/menu" },
       { label: "Medical Weight Loss", href: "/medical-weight-loss" },
       { label: "America's Favorite IV", href: "/myers-iv-therapy" },
