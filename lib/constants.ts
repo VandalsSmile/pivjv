@@ -20,6 +20,8 @@ export const CONTACT = {
     state: "AL",
     zip: "35802",
     full: "2626 Carl T. Jones Drive Suite B, Huntsville, AL 35802",
+    mapsUrl:
+      "https://www.google.com/maps/place/Prime+IV+Hydration+%26+Wellness+-+Huntsville-Jones+Valley/@34.6775269,-86.5522675,882m/data=!3m2!1e3!4b1!4m6!3m5!1s0x88621363143910ed:0xc72bf3e141cf1e70!8m2!3d34.6775225!4d-86.5496926!16s%2Fg%2F11mdztgr4n",
   },
 };
 
