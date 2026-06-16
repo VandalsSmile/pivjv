@@ -4,7 +4,7 @@ import { REVIEWS } from "@/lib/constants";
 
 export function ReviewsSection() {
   return (
-    <section className="section-padding bg-background">
+    <section id="testimonials" className="section-padding bg-background scroll-mt-24">
       <div className="container-custom mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">

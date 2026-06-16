@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 export function MembershipsSection() {
   return (
-    <section className="section-padding bg-background-alt">
+    <section id="membership" className="section-padding bg-background-alt scroll-mt-24">
       <div className="container-custom mx-auto">
         <div className="text-center mb-12">
           <p className="text-sm font-semibold text-secondary uppercase tracking-wide mb-2">

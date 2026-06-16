@@ -21,7 +21,7 @@ const iconMap = {
 
 export function ServicesSection() {
   return (
-    <section className="section-padding bg-background">
+    <section id="services" className="section-padding bg-background scroll-mt-24">
       <div className="container-custom mx-auto">
         <div className="text-center mb-12">
           <p className="text-sm font-semibold text-secondary uppercase tracking-wide mb-2">
