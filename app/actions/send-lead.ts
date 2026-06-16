@@ -19,12 +19,37 @@ export type LeadPayload = {
   name: string;
   email: string;
   fields: LeadField[];
+  turnstileToken: string;
 };
 
 export type SendLeadResult = {
   success: boolean;
   error?: string;
 };
+
+async function verifyTurnstile(token: string): Promise<boolean> {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+
+  // If no secret is configured, skip verification rather than block all leads.
+  if (!secret) return true;
+
+  if (!token) return false;
+
+  try {
+    const res = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ secret, response: token }),
+      },
+    );
+    const data = (await res.json()) as { success: boolean };
+    return data.success === true;
+  } catch {
+    return false;
+  }
+}
 
 function escapeHtml(value: string): string {
   return value
@@ -53,10 +78,18 @@ function renderRows(fields: LeadField[]): string {
 }
 
 export async function sendLead(payload: LeadPayload): Promise<SendLeadResult> {
-  const { formName, name, email, fields } = payload;
+  const { formName, name, email, fields, turnstileToken } = payload;
 
   if (!process.env.RESEND_API_KEY) {
     return { success: false, error: "Email service is not configured." };
+  }
+
+  const human = await verifyTurnstile(turnstileToken);
+  if (!human) {
+    return {
+      success: false,
+      error: "CAPTCHA verification failed. Please try again.",
+    };
   }
 
   const rows = renderRows(fields);

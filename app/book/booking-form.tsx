@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Check, Loader2, ArrowRight } from "lucide-react";
 import { sendLead } from "@/app/actions/send-lead";
+import { TurnstileWidget } from "@/components/turnstile-widget";
 
 const SERVICE_OPTIONS = [
   "$85 VIP Intro IV (New Clients)",
@@ -37,9 +38,16 @@ export function BookingForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [captchaToken, setCaptchaToken] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!captchaToken) {
+      setErrorMessage("Please complete the CAPTCHA verification.");
+      return;
+    }
+
     setIsSubmitting(true);
     setErrorMessage("");
 
@@ -47,6 +55,7 @@ export function BookingForm() {
       formName: "Book an Appointment",
       name: formData.name,
       email: formData.email,
+      turnstileToken: captchaToken,
       fields: [
         { label: "Name", value: formData.name },
         { label: "Email", value: formData.email },
@@ -244,9 +253,15 @@ export function BookingForm() {
           />
         </div>
 
+        <TurnstileWidget
+          onVerify={setCaptchaToken}
+          onExpire={() => setCaptchaToken("")}
+          onError={() => setCaptchaToken("")}
+        />
+
         <button
           type="submit"
-          disabled={isSubmitting}
+          disabled={isSubmitting || !captchaToken}
           className="btn-primary w-full justify-center disabled:opacity-70"
         >
           {isSubmitting ? (

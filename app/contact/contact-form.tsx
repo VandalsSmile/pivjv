@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Check, Loader2, ArrowRight } from "lucide-react";
 import { sendLead } from "@/app/actions/send-lead";
+import { TurnstileWidget } from "@/components/turnstile-widget";
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -14,9 +15,16 @@ export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [captchaToken, setCaptchaToken] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!captchaToken) {
+      setErrorMessage("Please complete the CAPTCHA verification.");
+      return;
+    }
+
     setIsSubmitting(true);
     setErrorMessage("");
 
@@ -24,6 +32,7 @@ export function ContactForm() {
       formName: "Contact",
       name: formData.name,
       email: formData.email,
+      turnstileToken: captchaToken,
       fields: [
         { label: "Name", value: formData.name },
         { label: "Email", value: formData.email },
@@ -134,9 +143,15 @@ export function ContactForm() {
         />
       </div>
 
+      <TurnstileWidget
+        onVerify={setCaptchaToken}
+        onExpire={() => setCaptchaToken("")}
+        onError={() => setCaptchaToken("")}
+      />
+
       <button
         type="submit"
-        disabled={isSubmitting}
+        disabled={isSubmitting || !captchaToken}
         className="btn-secondary w-full justify-center disabled:opacity-70"
       >
         {isSubmitting ? (

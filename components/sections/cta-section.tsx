@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Phone, ArrowRight, Check, Loader2 } from "lucide-react";
 import { CONTACT, PRICING } from "@/lib/constants";
 import { sendLead } from "@/app/actions/send-lead";
+import { TurnstileWidget } from "@/components/turnstile-widget";
 
 export function CtaSection() {
   const [formData, setFormData] = useState({
@@ -16,9 +17,16 @@ export function CtaSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [captchaToken, setCaptchaToken] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!captchaToken) {
+      setErrorMessage("Please complete the CAPTCHA verification.");
+      return;
+    }
+
     setIsSubmitting(true);
     setErrorMessage("");
 
@@ -26,6 +34,7 @@ export function CtaSection() {
       formName: "Homepage Appointment Request",
       name: formData.name,
       email: formData.email,
+      turnstileToken: captchaToken,
       fields: [
         { label: "Name", value: formData.name },
         { label: "Email", value: formData.email },
@@ -198,9 +207,15 @@ export function CtaSection() {
                   />
                 </div>
 
+                <TurnstileWidget
+                  onVerify={setCaptchaToken}
+                  onExpire={() => setCaptchaToken("")}
+                  onError={() => setCaptchaToken("")}
+                />
+
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !captchaToken}
                   className="btn-secondary w-full justify-center disabled:opacity-70"
                 >
                   {isSubmitting ? (
