@@ -132,7 +132,8 @@ export const ARTICLES: Article[] = [
     category: "Compare",
     readTime: "6 min read",
     date: "December 21, 2025",
-    image: "/articles/oral-vs-iv.png",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Oral%20Supplements%20vs%20IV%20Infusions.png-QCaBFIi9ifgVh7EyZlywE004lDOEkP.jpeg",
   },
   {
     slug: "how-do-i-know-if-im-dehydrated",
@@ -142,7 +143,8 @@ export const ARTICLES: Article[] = [
     category: "Hydration",
     readTime: "5 min read",
     date: "December 16, 2025",
-    image: "/articles/dehydration.png",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/How%20Do%20I%20Know%20If%20I%E2%80%99m%20Dehydrated%20and%20How%20Will%20IV%20Therapy%20Help-8dLVymsMiStmxmnpHahRddEG4mavSa.png",
   },
   {
     slug: "chronic-stress-iv-therapy-recovery",
@@ -153,7 +155,8 @@ export const ARTICLES: Article[] = [
     category: "Wellness",
     readTime: "6 min read",
     date: "December 10, 2025",
-    image: "/articles/stress-burnout.png",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IV%20Therapy%20for%20Stress%2C%20Burnout%20%26%20Mental%20Fatigue-cOgeVF969O26LPYcf2GDsTWa266sQi.png",
   },
   {
     slug: "iv-therapy-safety-providers",
@@ -164,7 +167,8 @@ export const ARTICLES: Article[] = [
     category: "Safety",
     readTime: "7 min read",
     date: "December 7, 2025",
-    image: "/articles/iv-safety.png",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IV%20Therapy%20Safety%2C%20Providers%2C%20and%20What%20to%20Look%20for%20in%20an%20IV%20Studio-NSI71Hdc6W7Mc9dakGJlUMQMqRwk1n.png",
   },
   {
     slug: "iv-therapy-benefits-immunity-energy-recovery",
@@ -175,7 +179,8 @@ export const ARTICLES: Article[] = [
     category: "The Basics",
     readTime: "8 min read",
     date: "November 22, 2025",
-    image: "/articles/iv-benefits.png",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IV%20Therapy%20Benefits%20for%20Immunity%2C%20Energy%2C%20Recovery%20%26%20Wellness-JVYuCDUv5keAqrc9bNiefIST33pu6E.jpg",
   },
   {
     slug: "what-is-iv-therapy-complete-guide",
@@ -185,6 +190,7 @@ export const ARTICLES: Article[] = [
     category: "The Basics",
     readTime: "9 min read",
     date: "November 21, 2025",
-    image: "/articles/iv-guide.png",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/The%20Complete%20Consumer%20Guide%20to%20IV%20Therapy-yxYO3tyv4A89w83gPkqTt96XXpBybH.png",
   },
 ];
