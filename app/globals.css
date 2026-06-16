@@ -98,6 +98,34 @@
   .text-gradient {
     @apply bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent;
   }
+  
+  .prose-article h2 {
+    @apply text-2xl font-bold text-foreground mt-10 mb-4 text-balance;
+  }
+  
+  .prose-article h3 {
+    @apply text-xl font-bold text-foreground mt-8 mb-3;
+  }
+  
+  .prose-article p {
+    @apply text-foreground-muted leading-relaxed mb-5;
+  }
+  
+  .prose-article ul {
+    @apply space-y-2 mb-5 pl-5 list-disc text-foreground-muted marker:text-secondary;
+  }
+  
+  .prose-article li {
+    @apply leading-relaxed;
+  }
+  
+  .prose-article a {
+    @apply text-secondary font-semibold hover:text-secondary-dark underline;
+  }
+  
+  .prose-article blockquote {
+    @apply border-l-4 border-secondary bg-background-alt rounded-r-lg px-5 py-4 my-6 text-foreground font-medium;
+  }
 }
 
 @layer utilities {

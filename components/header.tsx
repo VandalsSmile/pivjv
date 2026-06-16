@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { NAV_LINKS, CONTACT, LOGO_URL, PRICING } from "@/lib/constants";
+import { NAV_LINKS, CONTACT, LOGO_URL } from "@/lib/constants";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -53,7 +53,7 @@ export function Header() {
             <nav className="hidden lg:flex items-center gap-1">
               <Link
                 href="/"
-                className="px-4 py-2 text-foreground hover:text-primary font-medium transition-colors"
+                className="px-4 py-2 text-sm text-primary/70 hover:text-primary font-medium transition-colors"
               >
                 Home
               </Link>
@@ -65,7 +65,7 @@ export function Header() {
                   onMouseEnter={() => setOpenDropdown(link.label)}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <button className="flex items-center gap-1 px-4 py-2 text-foreground hover:text-primary font-medium transition-colors">
+                  <button className="flex items-center gap-1 px-4 py-2 text-sm text-primary/70 hover:text-primary font-medium transition-colors">
                     {link.label}
                     <ChevronDown className="w-4 h-4" />
                   </button>
@@ -76,7 +76,7 @@ export function Header() {
                         <Link
                           key={child.label}
                           href={child.href}
-                          className="block px-4 py-2 text-foreground hover:bg-background-alt hover:text-primary transition-colors"
+                          className="block px-4 py-2 text-sm text-primary/70 hover:bg-background-alt hover:text-primary transition-colors"
                         >
                           {child.label}
                         </Link>
@@ -97,7 +97,7 @@ export function Header() {
                 {CONTACT.phone}
               </Link>
               <Link href="/specials" className="btn-primary text-sm">
-                Book ${PRICING.introOffer.price} VIP IV
+                Our Specials
               </Link>
             </div>
 
@@ -183,7 +183,7 @@ export function Header() {
                 className="btn-primary w-full justify-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Book ${PRICING.introOffer.price} VIP IV
+                Our Specials
               </Link>
             </div>
           </nav>

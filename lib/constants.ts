@@ -52,36 +52,52 @@ export const NAV_LINKS = [
     label: "What We Offer",
     href: "#",
     children: [
-      { label: "IV Therapies", href: "/iv-therapy" },
-      { label: "Specials", href: "/specials" },
+      { label: "$85 IV Intro Offer", href: "/intro-offer" },
+      { label: "NAD+ & Niagen 25% OFF", href: "/nad-niagen-special" },
+      { label: "Full Menu", href: "/menu" },
+      { label: "Medical Weight Loss", href: "/medical-weight-loss" },
+      { label: "America's Favorite IV", href: "/myers-iv-therapy" },
+      { label: "Specials & Promotions", href: "/specials" },
       { label: "Memberships", href: "/memberships" },
+      { label: "IV Matcher Quiz", href: "/iv-matcher" },
     ],
   },
   {
     label: "How We Help",
     href: "#",
     children: [
-      { label: "Energy & Performance", href: "/iv-therapy#energy" },
-      { label: "Recovery & Hydration", href: "/iv-therapy#recovery" },
-      { label: "Immunity & Wellness", href: "/iv-therapy#immunity" },
-      { label: "Beauty & Anti-Aging", href: "/iv-therapy#beauty" },
+      { label: "Why Prime IV", href: "/#why-primeiv" },
+      { label: "Testimonials", href: "/#testimonials" },
+      { label: "FAQ", href: "/faq" },
     ],
   },
   {
     label: "Who We Are",
     href: "#",
     children: [
-      { label: "About Us", href: "/about" },
-      { label: "Why Prime IV", href: "/about#why-prime-iv" },
-      { label: "Meet Our Team", href: "/about#team" },
+      { label: "About Prime IV Huntsville", href: "/about" },
+      { label: "Our Team", href: "/about#team" },
+      { label: "Gallery", href: "/gallery" },
+      { label: "Contact Us", href: "/contact" },
     ],
   },
   {
     label: "Learn More",
     href: "#",
     children: [
-      { label: "FAQ", href: "/faq" },
-      { label: "Contact", href: "/contact" },
+      { label: "Resource Center", href: "/learn-more" },
+      {
+        label: "What is IV Therapy?",
+        href: "/learn-more/what-is-iv-therapy-complete-guide",
+      },
+      {
+        label: "IV Therapy vs Supplements",
+        href: "/learn-more/iv-therapy-vs-oral-supplements",
+      },
+      {
+        label: "IV Therapy for Stress",
+        href: "/learn-more/chronic-stress-iv-therapy-recovery",
+      },
     ],
   },
 ];

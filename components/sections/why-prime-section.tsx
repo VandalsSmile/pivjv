@@ -4,7 +4,7 @@ import { WHY_PRIME_IV, CONTACT } from "@/lib/constants";
 
 export function WhyPrimeSection() {
   return (
-    <section className="section-padding bg-background">
+    <section id="why-primeiv" className="section-padding bg-background scroll-mt-24">
       <div className="container-custom mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-balance">
           Why Prime IV in {CONTACT.address.city}, AL?
