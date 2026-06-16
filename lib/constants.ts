@@ -66,6 +66,7 @@ export const NAV_LINKS = [
     label: "How We Help",
     href: "#",
     children: [
+      { label: "Book an Appointment", href: "/book" },
       { label: "Why Prime IV", href: "/#why-primeiv" },
       { label: "Testimonials", href: "/#testimonials" },
       { label: "FAQ", href: "/faq" },
