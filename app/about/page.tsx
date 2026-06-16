@@ -97,10 +97,10 @@ export default function AboutPage() {
       <section className="section-padding bg-background">
         <div className="container-custom mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative rounded-2xl overflow-hidden shadow-sm border border-border aspect-[4/5] order-last lg:order-first">
+            <div className="relative rounded-2xl overflow-hidden shadow-sm border border-border aspect-[4/3] order-last lg:order-first">
               <Image
-                src="/images/prime-iv-team.png"
-                alt="Ann Van Steenburgh and the Prime IV Hydration & Wellness team at the Jones Valley clinic in Huntsville, AL"
+                src="/images/prime-iv-team-entrance.png"
+                alt="The Prime IV Hydration & Wellness team outside the Jones Valley clinic in Huntsville, AL"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
