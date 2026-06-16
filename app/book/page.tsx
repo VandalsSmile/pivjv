@@ -143,8 +143,23 @@ export default function BookPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-primary text-white">
-        <div className="container-custom mx-auto py-16 lg:py-20">
+      <section className="relative bg-primary text-white overflow-hidden">
+        {/* Calendar background image */}
+        <Image
+          src="/images/book-calendar-bg.png"
+          alt=""
+          fill
+          priority
+          aria-hidden="true"
+          className="object-cover opacity-25"
+          sizes="100vw"
+        />
+        {/* Navy overlay for text contrast */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-primary/70"
+        />
+        <div className="relative container-custom mx-auto py-16 lg:py-20">
           <div className="max-w-3xl">
             <p className="text-secondary font-semibold tracking-wider text-sm mb-3">
               BOOK YOUR SESSION
@@ -257,10 +272,10 @@ export default function BookPage() {
 
           <div className="grid lg:grid-cols-2 gap-10 items-start">
             <div className="space-y-6">
-              <div className="relative rounded-2xl overflow-hidden shadow-sm border border-border aspect-[4/3]">
+              <div className="relative rounded-2xl overflow-hidden shadow-sm border border-border aspect-[4/5]">
                 <Image
-                  src="/images/vip-spa-lounge.jpg"
-                  alt="Prime IV Hydration & Wellness lounge in Huntsville, AL"
+                  src="/images/prime-iv-team.png"
+                  alt="The Prime IV Hydration & Wellness team in the Huntsville, AL clinic"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
