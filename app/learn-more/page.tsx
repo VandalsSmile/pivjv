@@ -60,7 +60,7 @@ export default function LearnMorePage() {
 
       <section className="section-padding bg-background">
         <div className="container-custom mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {ARTICLES.map((article) => (
               <Link
                 key={article.slug}

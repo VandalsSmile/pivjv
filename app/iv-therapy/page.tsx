@@ -263,7 +263,7 @@ export default function IVTherapyPage() {
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {drips.map((drip) => (
                   <div
                     key={drip.name}
@@ -297,7 +297,7 @@ export default function IVTherapyPage() {
       {/* Myers Cocktail Feature */}
       <section id="myers" className="section-padding bg-primary text-white">
         <div className="container-custom mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-secondary font-semibold uppercase tracking-wide mb-3">
                 The Gold Standard

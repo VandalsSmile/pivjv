@@ -6,7 +6,7 @@ export function AudienceSection() {
   return (
     <section className="section-padding bg-background-alt">
       <div className="container-custom mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <p className="text-sm font-semibold text-secondary uppercase tracking-wide mb-2">
               Who It&apos;s For

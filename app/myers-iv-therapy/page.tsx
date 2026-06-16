@@ -231,7 +231,7 @@ export default function MyersIVPage() {
             <h3 className="text-xl font-semibold text-foreground text-center mb-8">
               A Legacy of Healing
             </h3>
-            <div className="grid sm:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {[
                 { stat: "40+", label: "Years of Clinical Use" },
                 { stat: "15,000+", label: "Patients Treated by Dr. Gaby" },
@@ -354,7 +354,7 @@ export default function MyersIVPage() {
               address many of them.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {womensBenefits.map((item) => (
               <div key={item.title} className="card card-hover">
                 <h3 className="text-lg font-semibold text-foreground mb-2">
@@ -381,7 +381,7 @@ export default function MyersIVPage() {
               lifestyles, demanding careers, or age-related wellness goals.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {mensBenefits.map((item) => (
               <div key={item.title} className="card card-hover">
                 <h3 className="text-lg font-semibold text-foreground mb-2">
@@ -412,7 +412,7 @@ export default function MyersIVPage() {
               broader wellness plan.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {chronicConditions.map((item) => (
               <div key={item.title} className="card">
                 <h3 className="text-lg font-semibold text-foreground mb-2">
@@ -461,7 +461,7 @@ export default function MyersIVPage() {
               while layering in modern quality standards and personalization.
             </p>
           </div>
-          <div className="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
             {experienceFeatures.map((item) => {
               const Icon = item.icon;
               return (

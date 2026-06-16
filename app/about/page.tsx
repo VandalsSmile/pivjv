@@ -100,7 +100,7 @@ export default function AboutPage() {
       {/* Our Story */}
       <section className="section-padding bg-background">
         <div className="container-custom mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="order-last lg:order-first">
               <div className="relative rounded-2xl overflow-hidden shadow-sm border border-border aspect-[4/3]">
                 <Image
@@ -222,7 +222,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             {WHY_PRIME_IV.map((item, index) => (
               <div
                 key={index}
@@ -248,7 +248,7 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {TRUST_SIGNALS.map((signal, index) => (
                 <div
                   key={index}
@@ -284,7 +284,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {BOOKING_OPTIONS.map((option) => {
               const Icon = option.icon;
               return (

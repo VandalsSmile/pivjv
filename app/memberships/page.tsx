@@ -57,7 +57,7 @@ export default function MembershipsPage() {
       {/* Membership Tiers */}
       <section className="section-padding bg-background">
         <div className="container-custom mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {MEMBERSHIPS.map((membership) => (
               <div
                 key={membership.name}
@@ -141,7 +141,7 @@ export default function MembershipsPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 title: "Consistent Wellness",
