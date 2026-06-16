@@ -340,6 +340,23 @@ export default function BookPage() {
                   </div>
                 </dl>
               </div>
+
+              <div className="flex items-center gap-4 bg-white rounded-2xl p-5 border border-border">
+                <Image
+                  src="/images/hsa-fsa-eligible.png"
+                  alt="HSA and FSA eligible payment badge"
+                  width={72}
+                  height={72}
+                  className="w-16 h-16 flex-shrink-0"
+                />
+                <div className="min-w-0">
+                  <p className="font-bold text-foreground">HSA/FSA Eligible</p>
+                  <p className="text-sm text-foreground-muted">
+                    Use your pre-tax health dollars. We provide documentation
+                    for your records on request.
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div>
