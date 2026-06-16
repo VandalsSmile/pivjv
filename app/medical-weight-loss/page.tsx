@@ -225,9 +225,20 @@ const faqs = [
 export default function MedicalWeightLossPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="bg-primary text-white section-padding">
-        <div className="container-custom mx-auto">
+        {/* Hero */}
+        <section className="relative bg-primary text-white section-padding overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: "url('/images/medical-weight-loss-hero-bg.png')",
+            }}
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-0 bg-primary/85"
+            aria-hidden="true"
+          />
+          <div className="relative container-custom mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-secondary font-semibold uppercase tracking-wide mb-3">
