@@ -97,14 +97,52 @@ export default function AboutPage() {
       <section className="section-padding bg-background">
         <div className="container-custom mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative rounded-2xl overflow-hidden shadow-sm border border-border aspect-[4/3] order-last lg:order-first">
-              <Image
-                src="/images/ann-john-van-steenburgh.webp"
-                alt="Owners Ann and John Van Steenburgh outside the Prime IV Hydration & Wellness grand opening in Huntsville, AL"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+            <div className="order-last lg:order-first">
+              <div className="relative rounded-2xl overflow-hidden shadow-sm border border-border aspect-[4/3]">
+                <Image
+                  src="/images/ann-john-van-steenburgh.webp"
+                  alt="Owners Ann and John Van Steenburgh outside the Prime IV Hydration & Wellness grand opening in Huntsville, AL"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Users className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-foreground">Family-Owned</p>
+                    <p className="text-sm text-foreground-muted">
+                      Local business
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Heart className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-foreground">Community First</p>
+                    <p className="text-sm text-foreground-muted">
+                      Cared for like a neighbor
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Award className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-foreground">RN-Founded</p>
+                    <p className="text-sm text-foreground-muted">
+                      Led by a career nurse
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div>
@@ -147,42 +185,6 @@ export default function AboutPage() {
                   Jones Valley and help the people around them feel their best,
                   every day.
                 </p>
-              </div>
-
-              <div className="flex flex-wrap gap-8 mt-8">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <Users className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground">Family-Owned</p>
-                    <p className="text-sm text-foreground-muted">
-                      Local business
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <Heart className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground">Community First</p>
-                    <p className="text-sm text-foreground-muted">
-                      Cared for like a neighbor
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <Award className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground">RN-Founded</p>
-                    <p className="text-sm text-foreground-muted">
-                      Led by a career nurse
-                    </p>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
