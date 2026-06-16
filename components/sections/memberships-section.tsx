@@ -25,8 +25,10 @@ export function MembershipsSection() {
             <div
               key={membership.name}
               className={cn(
-                "bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl",
-                membership.highlight && "ring-2 ring-secondary scale-105"
+                "rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl",
+                membership.highlight
+                  ? "bg-primary text-white scale-105 shadow-2xl"
+                  : "bg-white"
               )}
             >
               {membership.badge && (
@@ -41,16 +43,41 @@ export function MembershipsSection() {
               )}
 
               <div className="p-6">
-                <h3 className="text-xl font-bold text-foreground mb-2">
+                <h3
+                  className={cn(
+                    "text-xl font-bold mb-2",
+                    membership.highlight ? "text-white" : "text-foreground"
+                  )}
+                >
                   {membership.name}
                 </h3>
                 <div className="flex items-baseline gap-1 mb-1">
-                  <span className="text-3xl font-bold text-primary">
+                  <span
+                    className={cn(
+                      "text-3xl font-bold",
+                      membership.highlight ? "text-white" : "text-primary"
+                    )}
+                  >
                     ${membership.price}
                   </span>
-                  <span className="text-foreground-muted">/mo</span>
+                  <span
+                    className={cn(
+                      membership.highlight
+                        ? "text-white/70"
+                        : "text-foreground-muted"
+                    )}
+                  >
+                    /mo
+                  </span>
                 </div>
-                <p className="text-sm text-foreground-muted mb-4">
+                <p
+                  className={cn(
+                    "text-sm mb-4",
+                    membership.highlight
+                      ? "text-white/70"
+                      : "text-foreground-muted"
+                  )}
+                >
                   {membership.value
                     ? `$${membership.value} value`
                     : membership.valueText}
@@ -60,9 +87,19 @@ export function MembershipsSection() {
                   {membership.features.map((feature, index) => (
                     <li
                       key={index}
-                      className="flex items-start gap-2 text-sm text-foreground"
+                      className={cn(
+                        "flex items-start gap-2 text-sm",
+                        membership.highlight ? "text-white/90" : "text-foreground"
+                      )}
                     >
-                      <Check className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
+                      <Check
+                        className={cn(
+                          "w-4 h-4 flex-shrink-0 mt-0.5",
+                          membership.highlight
+                            ? "text-secondary-light"
+                            : "text-secondary"
+                        )}
+                      />
                       {feature}
                     </li>
                   ))}
