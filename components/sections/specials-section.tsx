@@ -18,6 +18,27 @@ const SPECIALS = [
       "Energy, immunity & hydration support",
       "Best for travel, long flights & heat",
     ],
+    addOns: [
+      {
+        name: "Amino Acid Blend Injection",
+        detail: "Supports mental clarity and energy production.",
+        price: "$30",
+      },
+      {
+        name: "NAD+ 100mg",
+        detail:
+          "Supports energy production, cellular repair, metabolism, and overall wellness.",
+        price: "$75",
+      },
+      {
+        name: "The Liver Cleanse Amplifier IV Bag",
+        detail:
+          "Includes Glutathione and Acetylcysteine for extra daily detoxification support.",
+        price: "$40 non-members / $35 members",
+      },
+    ],
+    bestFor:
+      "Summer travel, busy schedules, long flights, heat, dehydration, disrupted sleep, and anyone wanting to stay ready for wherever summer takes them.",
     theme: {
       card: "bg-accent",
       badge: "bg-white text-accent",
@@ -39,6 +60,27 @@ const SPECIALS = [
       "Feel lighter, brighter & energized",
       "Best for vacations, pool days & events",
     ],
+    addOns: [
+      {
+        name: "Biotin",
+        detail:
+          "Supports energy metabolism, healthy hair, skin, nails, and overall cellular function.",
+        price: "$30",
+      },
+      {
+        name: "NAD+ 100mg",
+        detail:
+          "Supports energy production, cellular repair, metabolism, and overall wellness.",
+        price: "$75",
+      },
+      {
+        name: "The Alpha Amplifier IV Bag",
+        detail: "For clients wanting additional metabolic wellness support.",
+        price: "$40 non-members / $35 members",
+      },
+    ],
+    bestFor:
+      "Warmer weather, vacations, pool days, events, and anyone focused on feeling lighter, brighter, and more energized this June.",
     theme: {
       card: "bg-pink",
       badge: "bg-white text-pink",
@@ -107,6 +149,30 @@ export function SpecialsSection() {
                     </li>
                   ))}
                 </ul>
+
+                <div className="rounded-xl bg-white/15 p-5 mb-6">
+                  <h4 className="text-sm font-bold uppercase tracking-wide mb-3">
+                    Recommended Add-Ons
+                  </h4>
+                  <ul className="space-y-3">
+                    {special.addOns.map((addOn) => (
+                      <li key={addOn.name} className="text-sm">
+                        <div className="flex items-baseline justify-between gap-3">
+                          <span className="font-semibold">{addOn.name}</span>
+                          <span className="flex-shrink-0 font-semibold text-white/90">
+                            {addOn.price}
+                          </span>
+                        </div>
+                        <p className="text-white/80">{addOn.detail}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <p className="text-sm text-white/90 mb-6">
+                  <span className="font-bold">Best For: </span>
+                  {special.bestFor}
+                </p>
 
                 <Link
                   href={`tel:${CONTACT.phoneClean}`}
