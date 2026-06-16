@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/article-layout";
 import { ARTICLES } from "@/lib/articles";
-import { CONTACT } from "@/lib/constants";
+import { CONTACT, SITE_CONFIG } from "@/lib/constants";
 
 const slug = "what-is-iv-therapy-complete-guide";
 const article = ARTICLES.find((a) => a.slug === slug)!;
@@ -66,7 +66,7 @@ export default function Page() {
 
       <h2>What to Expect on Your First Visit</h2>
       <p>
-        At {CONTACT.businessName ?? "Prime IV"} in {CONTACT.address.city}, your
+        At {SITE_CONFIG.name} in {CONTACT.address.city}, your
         first visit includes a quick wellness consult and a one-time telehealth
         screening. Then you&apos;ll settle into a zero-gravity massage chair while
         your drip does the work. Most people are in and out within an hour.
