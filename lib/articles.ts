@@ -123,4 +123,68 @@ export const ARTICLES: Article[] = [
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/What%20Is%20NAD%2BUnderstanding%20the%20%E2%80%9CEnergy%20Molecule%E2%80%9D%20That%20Powers%20Every%20Cell-U4EbSMZdMFXbsIxlCteuwgR01bupWS.png",
   },
+  {
+    slug: "iv-therapy-vs-oral-supplements",
+    title:
+      "Oral Supplements vs. IV Infusions: Pros, Cons, and Which One Is Right for You?",
+    excerpt:
+      "From multivitamins to hydration drips, wellness options have never been broader. Compare how oral supplements and IV infusions work, where each shines, and how to choose.",
+    category: "Compare",
+    readTime: "6 min read",
+    date: "December 21, 2025",
+    image: "/articles/oral-vs-iv.png",
+  },
+  {
+    slug: "how-do-i-know-if-im-dehydrated",
+    title: "How Do I Know If I'm Dehydrated and How Will IV Therapy Help?",
+    excerpt:
+      "Many dehydration symptoms are easier to miss than you think. Learn the early signs to watch for and how IV hydration can help you feel better fast.",
+    category: "Hydration",
+    readTime: "5 min read",
+    date: "December 16, 2025",
+    image: "/articles/dehydration.png",
+  },
+  {
+    slug: "chronic-stress-iv-therapy-recovery",
+    title:
+      "IV Therapy for Stress, Burnout & Mental Fatigue: How Infusions Support Today's Overloaded Lifestyle",
+    excerpt:
+      "When stress leaves you depleted, foggy, and run down, IV therapy can help support hydration, energy, recovery, and resilience as part of a broader wellness routine.",
+    category: "Wellness",
+    readTime: "6 min read",
+    date: "December 10, 2025",
+    image: "/articles/stress-burnout.png",
+  },
+  {
+    slug: "iv-therapy-safety-providers",
+    title:
+      "IV Therapy Safety, Providers, and What to Look for in an IV Studio",
+    excerpt:
+      "IV therapy is generally safe when performed by trained medical professionals in a clean, well-managed environment. Learn what to look for before you book.",
+    category: "Safety",
+    readTime: "7 min read",
+    date: "December 7, 2025",
+    image: "/articles/iv-safety.png",
+  },
+  {
+    slug: "iv-therapy-benefits-immunity-energy-recovery",
+    title:
+      "IV Therapy Benefits for Immunity, Energy, Recovery & Wellness",
+    excerpt:
+      "From immune support and energy to beauty, performance, and recovery, this guide breaks down the most popular IV therapy benefits and which ingredients support each goal.",
+    category: "The Basics",
+    readTime: "8 min read",
+    date: "November 22, 2025",
+    image: "/articles/iv-benefits.png",
+  },
+  {
+    slug: "what-is-iv-therapy-complete-guide",
+    title: "The Complete Consumer Guide to IV Therapy",
+    excerpt:
+      "Curious about IV therapy, how it works, what it helps with, and what to expect at your first appointment? This beginner's guide breaks it all down in simple terms.",
+    category: "The Basics",
+    readTime: "9 min read",
+    date: "November 21, 2025",
+    image: "/articles/iv-guide.png",
+  },
 ];
