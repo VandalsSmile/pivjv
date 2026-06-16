@@ -129,7 +129,10 @@ export function Header() {
               : "opacity-0 invisible pointer-events-none"
           )}
           style={{
-            maxHeight: "calc(100dvh - 100%)",
+            // 100% = sticky header height; the extra 2.75rem accounts for the
+            // announcement banner above the header so the panel never extends
+            // past the bottom of the viewport (last CTA stays reachable).
+            maxHeight: "calc(100dvh - 100% - 2.75rem)",
             WebkitOverflowScrolling: "touch",
           }}
         >
