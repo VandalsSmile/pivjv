@@ -24,13 +24,12 @@ import { CONTACT, SITE_CONFIG } from "@/lib/constants";
 import { CtaSection } from "@/components/sections/cta-section";
 
 export const metadata: Metadata = {
-  title: "NAD+ & Niagen 25% OFF | Cellular Energy & Longevity Therapy",
+  title: "NAD+ & Niagen Therapy | Cellular Energy & Longevity",
   description:
-    "Save 25% on NAD+ and Niagen therapies at Prime IV Hydration & Wellness in Huntsville, AL. Restore cellular energy, sharpen mental clarity, and support healthy aging from the inside out.",
+    "Experience NAD+ and Niagen therapies at Prime IV Hydration & Wellness in Huntsville, AL. Restore cellular energy, sharpen mental clarity, and support healthy aging from the inside out.",
   keywords: [
     "NAD+ IV therapy",
-    "Niagen special",
-    "NAD+ discount",
+    "Niagen therapy",
     "cellular energy IV",
     "longevity therapy Huntsville",
     "Huntsville AL NAD+",
@@ -181,7 +180,7 @@ export default function NadNiagenPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-secondary font-semibold uppercase tracking-wide mb-3">
-                Limited-Time Special · 25% OFF
+                Cellular Energy &amp; Longevity Therapy
               </p>
               <h1 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
                 Recharge Your Cells. Reclaim Your Energy.
@@ -189,22 +188,22 @@ export default function NadNiagenPage() {
               <p className="text-white/80 text-lg mb-8 text-pretty">
                 NAD+ and Niagen® are the most advanced longevity therapies
                 available—designed to restore cellular energy, sharpen your
-                mind, and help you age on your terms. For a limited time, save
-                25% at {SITE_CONFIG.name} in {CONTACT.address.city}, AL.
+                mind, and help you age on your terms, right here at{" "}
+                {SITE_CONFIG.name} in {CONTACT.address.city}, AL.
               </p>
 
               <div className="flex items-center gap-4 mb-8">
-                <span className="text-5xl font-bold text-secondary-light">
-                  25% OFF
+                <span className="text-3xl font-bold text-secondary-light">
+                  Feel the Difference
                 </span>
                 <span className="bg-accent text-white text-sm font-bold px-3 py-1 rounded-full">
-                  All NAD+ &amp; Niagen® Therapies
+                  NAD+ &amp; Niagen® Therapies
                 </span>
               </div>
 
               <div className="flex flex-wrap gap-4 mb-6">
                 <Link href="/specials#claim-form" className="btn-primary">
-                  Claim 25% Off
+                  Book Your Session
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link href={`tel:${CONTACT.phoneClean}`} className="btn-outline">
@@ -240,8 +239,9 @@ export default function NadNiagenPage() {
                   <Dna className="w-7 h-7 text-secondary" />
                 </div>
                 <div className="flex items-baseline gap-3 mb-1">
-                  <span className="text-6xl font-bold text-secondary">25%</span>
-                  <span className="text-2xl text-foreground-muted">OFF</span>
+                  <span className="text-4xl font-bold text-secondary">
+                    Cellular Recharge
+                  </span>
                 </div>
                 <p className="text-foreground-muted mb-6">
                   Your NAD+ &amp; Niagen® longevity therapy
@@ -366,7 +366,7 @@ export default function NadNiagenPage() {
 
           <div className="text-center mt-10">
             <Link href="/specials#claim-form" className="btn-primary">
-              Claim 25% Off Today
+              Book Your Session Today
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -508,20 +508,20 @@ export default function NadNiagenPage() {
         <div className="container-custom mx-auto">
           <div className="bg-primary text-white rounded-2xl p-8 lg:p-12 text-center max-w-4xl mx-auto">
             <p className="text-secondary-light font-semibold uppercase tracking-wide mb-3">
-              25% off ends soon
+              Limited spots each week
             </p>
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
               Invest in Your Energy. Invest in Your Future.
             </h2>
             <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto text-pretty">
               There&apos;s never been a better time to experience the power of
-              NAD+ and Niagen®. Claim your 25% off today and discover why{" "}
+              NAD+ and Niagen®. Book your session today and discover why{" "}
               {CONTACT.address.city} trusts {SITE_CONFIG.name} for cellular
               wellness.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/specials#claim-form" className="btn-primary">
-                Claim 25% Off Now
+                Book Your Session
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link href={`tel:${CONTACT.phoneClean}`} className="btn-outline">
