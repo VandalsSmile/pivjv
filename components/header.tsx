@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, ChevronDown, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NAV_LINKS, CONTACT } from "@/lib/constants";
 
@@ -74,8 +74,14 @@ export function Header() {
                         <Link
                           key={child.label}
                           href={child.href}
-                          className="block px-4 py-2 text-sm text-primary/70 hover:bg-background-alt hover:text-primary transition-colors"
+                          className="flex items-center gap-2 px-4 py-2 text-sm text-primary/70 hover:bg-background-alt hover:text-primary transition-colors"
                         >
+                          {child.highlight && (
+                            <Star
+                              className="w-4 h-4 flex-shrink-0 fill-[#f59e0b] text-[#f59e0b]"
+                              aria-hidden="true"
+                            />
+                          )}
                           {child.label}
                         </Link>
                       ))}
@@ -157,9 +163,15 @@ export function Header() {
                       <Link
                         key={child.label}
                         href={child.href}
-                        className="block py-2 text-foreground-muted hover:text-primary"
+                        className="flex items-center gap-2 py-2 text-foreground-muted hover:text-primary"
                         onClick={() => setMobileMenuOpen(false)}
                       >
+                        {child.highlight && (
+                          <Star
+                            className="w-4 h-4 flex-shrink-0 fill-[#f59e0b] text-[#f59e0b]"
+                            aria-hidden="true"
+                          />
+                        )}
                         {child.label}
                       </Link>
                     ))}

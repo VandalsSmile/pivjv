@@ -4,6 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { Phone, ArrowRight, Check, Loader2 } from "lucide-react";
 import { CONTACT, PRICING } from "@/lib/constants";
+import { sendLead } from "@/app/actions/send-lead";
+import { TurnstileWidget } from "@/components/turnstile-widget";
 
 export function CtaSection() {
   const [formData, setFormData] = useState({
@@ -14,15 +16,42 @@ export function CtaSection() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [captchaToken, setCaptchaToken] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    if (!captchaToken) {
+      setErrorMessage("Please complete the CAPTCHA verification.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    const result = await sendLead({
+      formName: "Homepage Appointment Request",
+      name: formData.name,
+      email: formData.email,
+      turnstileToken: captchaToken,
+      fields: [
+        { label: "Name", value: formData.name },
+        { label: "Email", value: formData.email },
+        { label: "Phone", value: formData.phone },
+        { label: "Message", value: formData.message },
+      ],
+    });
 
     setIsSubmitting(false);
+
+    if (!result.success) {
+      setErrorMessage(
+        result.error || "Something went wrong. Please try again or call us.",
+      );
+      return;
+    }
+
     setIsSubmitted(true);
     setFormData({ name: "", email: "", phone: "", message: "" });
   };
@@ -178,9 +207,15 @@ export function CtaSection() {
                   />
                 </div>
 
+                <TurnstileWidget
+                  onVerify={setCaptchaToken}
+                  onExpire={() => setCaptchaToken("")}
+                  onError={() => setCaptchaToken("")}
+                />
+
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !captchaToken}
                   className="btn-secondary w-full justify-center disabled:opacity-70"
                 >
                   {isSubmitting ? (
@@ -195,6 +230,15 @@ export function CtaSection() {
                     </>
                   )}
                 </button>
+
+                {errorMessage && (
+                  <p
+                    className="text-sm text-red-600 text-center"
+                    role="alert"
+                  >
+                    {errorMessage}
+                  </p>
+                )}
 
                 <p className="text-xs text-foreground-muted text-center">
                   By submitting this form, you agree to be contacted about your
