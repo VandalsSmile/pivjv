@@ -92,7 +92,7 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Find Our Spa</h3>
             <Link
-              href={`https://maps.google.com/?q=${encodeURIComponent(CONTACT.address.full)}`}
+              href={CONTACT.address.mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-start gap-2 text-white/90 hover:text-secondary transition-colors"

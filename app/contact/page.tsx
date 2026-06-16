@@ -72,7 +72,7 @@ export default function ContactPage() {
                       Address
                     </h3>
                     <Link
-                      href={`https://maps.google.com/?q=${encodeURIComponent(CONTACT.address.full)}`}
+                      href={CONTACT.address.mapsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-foreground-muted hover:text-primary transition-colors"
@@ -180,7 +180,7 @@ export default function ContactPage() {
                   <MapPin className="w-12 h-12 text-primary/30 mx-auto mb-3" />
                   <p className="text-foreground-muted">
                     <Link
-                      href={`https://maps.google.com/?q=${encodeURIComponent(CONTACT.address.full)}`}
+                      href={CONTACT.address.mapsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-primary hover:underline"
