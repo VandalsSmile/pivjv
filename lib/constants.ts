@@ -67,10 +67,18 @@ export const NAV_LINKS = [
     href: "#",
     children: [
       { label: "$85 IV Intro Offer", href: "/intro-offer" },
-      { label: "NAD+ & Niagen", href: "/nad-niagen-special" },
+      { label: "NAD+ & Niagen", href: "/nad-niagen-special", highlight: true },
       { label: "Full Menu", href: "/menu" },
-      { label: "Medical Weight Loss", href: "/medical-weight-loss" },
-      { label: "America's Favorite IV", href: "/myers-iv-therapy" },
+      {
+        label: "Medical Weight Loss",
+        href: "/medical-weight-loss",
+        highlight: true,
+      },
+      {
+        label: "America's Favorite IV",
+        href: "/myers-iv-therapy",
+        highlight: true,
+      },
       { label: "Specials & Promotions", href: "/specials" },
       { label: "Memberships", href: "/memberships" },
       { label: "IV Matcher Quiz", href: "/iv-matcher" },
