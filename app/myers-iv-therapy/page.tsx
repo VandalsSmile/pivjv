@@ -19,28 +19,34 @@ export const metadata: Metadata = {
 
 const ingredients = [
   {
-    symbol: "C",
     name: "Vitamin C",
-    description:
-      "A potent antioxidant that fuels immune defense, supports collagen production, and helps shield your cells from everyday oxidative stress.",
+    amount: "2,000mg",
+    benefit: "Immune support & antioxidant",
   },
   {
-    symbol: "B",
-    name: "B-Complex Vitamins",
-    description:
-      "B1, B2, B3, B5, B6, and B12 work together to convert food into lasting energy and keep your nervous system running smoothly.",
+    name: "B-Complex",
+    amount: "100mg",
+    benefit: "Energy & metabolism",
   },
   {
-    symbol: "Mg",
+    name: "B12",
+    amount: "1,000mcg",
+    benefit: "Energy & nerve function",
+  },
+  {
     name: "Magnesium",
-    description:
-      "A workhorse mineral involved in hundreds of reactions — easing muscle tension, steadying nerves, and supporting healthy blood pressure.",
+    amount: "500mg",
+    benefit: "Muscle relaxation & recovery",
   },
   {
-    symbol: "Ca",
     name: "Calcium",
-    description:
-      "Essential for strong bones, smooth muscle contractions, nerve signaling, and a steady heartbeat.",
+    amount: "200mg",
+    benefit: "Bone & muscle health",
+  },
+  {
+    name: "Saline Solution",
+    amount: "1L",
+    benefit: "Hydration & nutrient delivery",
   },
 ];
 
@@ -248,31 +254,56 @@ export default function MyersIVPage() {
         <div className="container-custom mx-auto">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4 text-balance">
-              What&apos;s Actually in the Myers&apos; Cocktail?
+              What&apos;s Inside
             </h2>
             <p className="text-foreground-muted leading-relaxed">
-              The classic recipe brings together a thoughtfully balanced mix of
-              vitamins and minerals that work in concert to support cellular
-              function, energy, and immune health. While exact formulas vary by
-              provider, the core ingredients are consistent:
+              Premium, medical-grade ingredients for maximum effectiveness.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {ingredients.map((item) => (
-              <div key={item.name} className="card card-hover flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-secondary text-white flex items-center justify-center font-bold text-lg">
-                  {item.symbol}
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-1">
-                    {item.name}
-                  </h3>
-                  <p className="text-foreground-muted text-sm leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            ))}
+          <div className="max-w-3xl mx-auto">
+            <div className="card overflow-hidden p-0">
+              <table className="w-full text-left border-collapse">
+                <caption className="sr-only">
+                  Myers&apos; Cocktail ingredients, amounts, and benefits
+                </caption>
+                <thead>
+                  <tr className="bg-primary text-white">
+                    <th scope="col" className="px-4 py-4 font-semibold">
+                      Ingredient
+                    </th>
+                    <th scope="col" className="px-4 py-4 font-semibold">
+                      Amount
+                    </th>
+                    <th scope="col" className="px-4 py-4 font-semibold">
+                      Benefit
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {ingredients.map((item, index) => (
+                    <tr
+                      key={item.name}
+                      className={
+                        index % 2 === 1 ? "bg-background-alt" : "bg-background"
+                      }
+                    >
+                      <th
+                        scope="row"
+                        className="px-4 py-4 font-semibold text-foreground"
+                      >
+                        {item.name}
+                      </th>
+                      <td className="px-4 py-4 text-secondary font-semibold whitespace-nowrap">
+                        {item.amount}
+                      </td>
+                      <td className="px-4 py-4 text-foreground-muted">
+                        {item.benefit}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>
