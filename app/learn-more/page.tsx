@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BookOpen } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { ARTICLES } from "@/lib/articles";
 import { CONTACT } from "@/lib/constants";
 
@@ -43,27 +43,31 @@ export default function LearnMorePage() {
               <Link
                 key={article.slug}
                 href={`/learn-more/${article.slug}`}
-                className="group bg-white rounded-2xl shadow-sm border border-border p-6 flex flex-col hover:shadow-lg transition-shadow"
+                className="group bg-white rounded-2xl shadow-sm border border-border overflow-hidden flex flex-col hover:shadow-lg transition-shadow"
               >
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
-                  <BookOpen className="w-6 h-6 text-primary" />
+                <img
+                  src={article.image || "/placeholder.svg"}
+                  alt={article.title}
+                  className="w-full aspect-[16/9] object-cover"
+                />
+                <div className="p-6 flex flex-col flex-1">
+                  <span className="text-xs font-semibold text-secondary uppercase tracking-wide mb-2">
+                    {article.category} &middot; {article.readTime}
+                  </span>
+                  <h2 className="text-xl font-bold text-foreground mb-2 text-balance">
+                    {article.title}
+                  </h2>
+                  <p className="text-foreground-muted text-sm mb-4 flex-1">
+                    {article.excerpt}
+                  </p>
+                  <span className="text-xs text-foreground-muted mb-3">
+                    {article.date}
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-secondary font-semibold text-sm group-hover:gap-2 transition-all">
+                    Read article
+                    <ArrowRight className="w-4 h-4" />
+                  </span>
                 </div>
-                <span className="text-xs font-semibold text-secondary uppercase tracking-wide mb-2">
-                  {article.category} &middot; {article.readTime}
-                </span>
-                <h2 className="text-xl font-bold text-foreground mb-2 text-balance">
-                  {article.title}
-                </h2>
-                <p className="text-foreground-muted text-sm mb-4 flex-1">
-                  {article.excerpt}
-                </p>
-                <span className="text-xs text-foreground-muted mb-3">
-                  {article.date}
-                </span>
-                <span className="inline-flex items-center gap-1 text-secondary font-semibold text-sm group-hover:gap-2 transition-all">
-                  Read article
-                  <ArrowRight className="w-4 h-4" />
-                </span>
               </Link>
             ))}
           </div>

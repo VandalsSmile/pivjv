@@ -35,6 +35,18 @@ export function ArticleLayout({
         </div>
       </section>
 
+      <div className="bg-primary">
+        <div className="container-custom mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <img
+              src={article.image || "/placeholder.svg"}
+              alt={article.title}
+              className="w-full aspect-[16/9] object-cover rounded-2xl -mb-16 shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+
       <article className="section-padding bg-background">
         <div className="container-custom mx-auto">
           <div className="max-w-3xl mx-auto prose-article">{children}</div>
@@ -51,18 +63,25 @@ export function ArticleLayout({
               <Link
                 key={a.slug}
                 href={`/learn-more/${a.slug}`}
-                className="group bg-white rounded-2xl shadow-sm border border-border p-6 hover:shadow-lg transition-shadow"
+                className="group bg-white rounded-2xl shadow-sm border border-border overflow-hidden hover:shadow-lg transition-shadow"
               >
-                <span className="text-xs font-semibold text-secondary uppercase tracking-wide">
-                  {a.category}
-                </span>
-                <h3 className="text-lg font-bold text-foreground mt-2 mb-2 text-balance">
-                  {a.title}
-                </h3>
-                <span className="inline-flex items-center gap-1 text-secondary font-semibold text-sm group-hover:gap-2 transition-all">
-                  Read article
-                  <ArrowRight className="w-4 h-4" />
-                </span>
+                <img
+                  src={a.image || "/placeholder.svg"}
+                  alt={a.title}
+                  className="w-full aspect-[16/9] object-cover"
+                />
+                <div className="p-6">
+                  <span className="text-xs font-semibold text-secondary uppercase tracking-wide">
+                    {a.category}
+                  </span>
+                  <h3 className="text-lg font-bold text-foreground mt-2 mb-2 text-balance">
+                    {a.title}
+                  </h3>
+                  <span className="inline-flex items-center gap-1 text-secondary font-semibold text-sm group-hover:gap-2 transition-all">
+                    Read article
+                    <ArrowRight className="w-4 h-4" />
+                  </span>
+                </div>
               </Link>
             ))}
           </div>

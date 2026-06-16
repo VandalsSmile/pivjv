@@ -5,6 +5,7 @@ export type Article = {
   category: string;
   readTime: string;
   date: string;
+  image: string;
 };
 
 export const ARTICLES: Article[] = [
@@ -16,6 +17,8 @@ export const ARTICLES: Article[] = [
     category: "Immunity",
     readTime: "5 min read",
     date: "May 21, 2026",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/How%20to%20Support%20Your%20Immune%20System%20Before%20Summer%20Travel.png-Mlq0q2xYirSiN0LV8vxOnCTPTxivmw.jpeg",
   },
   {
     slug: "myers-cocktail-iv-therapy-huntsville",
@@ -25,6 +28,8 @@ export const ARTICLES: Article[] = [
     category: "IV Drips",
     readTime: "5 min read",
     date: "May 6, 2026",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Myers%E2%80%99%20Cocktail%20IV%20Therapy%20in%20Huntsville%2C%20AL%20%7C%20Prime%20IV%20Hydration-vjDzxQkeGcvoGlftjxNh4WggAYBPy5.png",
   },
   {
     slug: "nad-vs-niagen-oral-supplements-vs-iv",
@@ -35,6 +40,8 @@ export const ARTICLES: Article[] = [
     category: "Compare",
     readTime: "6 min read",
     date: "April 25, 2026",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/NAD%2B%20vs%20Niagen%20Are%20Oral%20Supplements%20Less%20Effective%20Than%20IV%20Infusions-aY6uhZojYtEF0N8pUXxNGlz7NzTg8R.png",
   },
   {
     slug: "how-to-build-your-healthspan",
@@ -44,6 +51,8 @@ export const ARTICLES: Article[] = [
     category: "Longevity",
     readTime: "6 min read",
     date: "April 21, 2026",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Living%20Longer%20Isn%E2%80%99t%20the%20Goal-gxHrK7NgdsdN2zIebcuEAMII9wpnyC.png",
   },
   {
     slug: "iv-therapy-chronic-illness-symptoms",
@@ -53,6 +62,8 @@ export const ARTICLES: Article[] = [
     category: "Wellness",
     readTime: "5 min read",
     date: "February 26, 2026",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Can%20Regular%20IV%20Therapy%20Help%20Manage%20Chronic%20Illness%20Symptoms_-ZpDMbX586ib8xqx0DPJ2pShl8mltEF.png",
   },
   {
     slug: "iv-therapy-vs-oral-supplements-cost",
@@ -62,6 +73,8 @@ export const ARTICLES: Article[] = [
     category: "Compare",
     readTime: "6 min read",
     date: "February 17, 2026",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IV%20Therapy%20More%20Cost-Effective%20than%20Oral%20Supplements_-FDUtFqkKWKQKdsLH6glYNamC2GruMD.png",
   },
   {
     slug: "collagen-supplements-explained",
@@ -72,6 +85,8 @@ export const ARTICLES: Article[] = [
     category: "Beauty",
     readTime: "6 min read",
     date: "February 11, 2026",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Collagen%20Supplements%20Explained-MVAL1cPTnCUqa2LV8KbP3X2CnKVWw4.png",
   },
   {
     slug: "healthy-hair-skin-scalp-start-within",
@@ -82,6 +97,8 @@ export const ARTICLES: Article[] = [
     category: "Beauty",
     readTime: "5 min read",
     date: "January 13, 2026",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Why%20Healthy%20Hair%2C%20Skin%2C%20and%20Scalp%20Start%20Within%20%E2%80%94%20and%20How%20IV%20Therapy%20Supports%20Real%20Beauty-dxwF6uEFWfS7zDoaXdfR8G47H508FI.png",
   },
   {
     slug: "iv-therapy-cold-and-flu-season",
@@ -92,6 +109,8 @@ export const ARTICLES: Article[] = [
     category: "Immunity",
     readTime: "5 min read",
     date: "January 8, 2026",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Does%20IV%20Therapy%20Help%20Prepare%20Your%20Immune%20System%20for%20Cold%20and%20Flu%20Season_-PR3F8CCldDJpQRCfkiTrE1hd6ibfkC.png",
   },
   {
     slug: "what-is-nad-energy-molecule",
@@ -101,5 +120,7 @@ export const ARTICLES: Article[] = [
     category: "The Basics",
     readTime: "6 min read",
     date: "January 2, 2026",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/What%20Is%20NAD%2BUnderstanding%20the%20%E2%80%9CEnergy%20Molecule%E2%80%9D%20That%20Powers%20Every%20Cell-U4EbSMZdMFXbsIxlCteuwgR01bupWS.png",
   },
 ];
