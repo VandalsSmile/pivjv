@@ -79,38 +79,43 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Content - Intro Offer Card */}
+          {/* Right Content - Owner photo with floating offer card */}
           <div className="lg:pl-8">
-            <div className="bg-white rounded-2xl shadow-2xl p-8 text-foreground max-w-md mx-auto lg:ml-auto">
-              <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-4xl font-bold text-primary">
-                  ${PRICING.introOffer.price}
-                </span>
-                <span className="text-lg text-foreground-muted line-through">
-                  ${PRICING.introOffer.regularPrice}
-                </span>
+            <div className="max-w-md mx-auto lg:ml-auto">
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                <img
+                  src="/images/owner-ann-rn.png"
+                  alt="Ann, RN, owner of Prime IV Hydration & Wellness, standing at the front desk beneath the Prime IV logo"
+                  className="w-full h-auto object-cover"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-4 pt-10">
+                  <p className="text-center text-sm font-medium text-white">
+                    Meet Ann, RN — owner of {SITE_CONFIG.name}
+                  </p>
+                </div>
               </div>
 
-              <h3 className="text-xl font-bold mb-3">
-                {PRICING.introOffer.description}
-              </h3>
+              <div className="bg-white rounded-2xl shadow-2xl p-6 text-foreground mt-6">
+                <div className="flex items-baseline gap-2 mb-1">
+                  <span className="text-3xl font-bold text-primary">
+                    ${PRICING.introOffer.price}
+                  </span>
+                  <span className="text-base text-foreground-muted line-through">
+                    ${PRICING.introOffer.regularPrice}
+                  </span>
+                </div>
 
-              <p className="text-foreground-muted mb-6">
-                Includes a primary IV drip, use the zero-gravity massage chair,
-                and get a free vitamin consult.
-              </p>
+                <h3 className="text-lg font-bold mb-3">
+                  {PRICING.introOffer.description}
+                </h3>
 
-              <Link
-                href="/specials"
-                className="btn-secondary w-full justify-center mb-4"
-              >
-                Claim Your First IV
-              </Link>
-
-              <p className="text-xs text-foreground-muted text-center">
-                *One-time state-mandated ${PRICING.medicalClearance} telehealth
-                screening required at first visit.
-              </p>
+                <Link
+                  href="/specials"
+                  className="btn-secondary w-full justify-center"
+                >
+                  Claim Your First IV
+                </Link>
+              </div>
             </div>
           </div>
         </div>
