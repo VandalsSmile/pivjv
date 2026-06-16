@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/article-layout";
 import { ARTICLES } from "@/lib/articles";
-import { CONTACT } from "@/lib/constants";
+import { CONTACT, SITE_CONFIG } from "@/lib/constants";
 
 const slug = "what-is-iv-therapy-complete-guide";
 const article = ARTICLES.find((a) => a.slug === slug)!;
