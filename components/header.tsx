@@ -37,16 +37,14 @@ export function Header() {
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
             <Link href="/" className="flex-shrink-0">
-              <div className="bg-primary p-2 rounded">
-                <Image
-                  src="/images/prime-iv-logo-color.webp"
-                  alt="Prime IV Hydration & Wellness - Huntsville"
-                  width={140}
-                  height={50}
-                  className="h-8 lg:h-10 w-auto"
-                  priority
-                />
-              </div>
+              <Image
+                src="/images/prime-iv-logo-color.webp"
+                alt="Prime IV Hydration & Wellness - Huntsville"
+                width={140}
+                height={50}
+                className="h-8 lg:h-10 w-auto"
+                priority
+              />
             </Link>
 
             {/* Desktop Navigation */}
