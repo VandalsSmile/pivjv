@@ -167,7 +167,7 @@ export default function IntroOfferPage() {
       {/* Hero */}
       <section className="bg-primary text-white section-padding">
         <div className="container-custom mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-secondary font-semibold uppercase tracking-wide mb-3">
                 First-Time Client Exclusive
@@ -275,7 +275,7 @@ export default function IntroOfferPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {benefits.map((benefit) => (
               <div
                 key={benefit.title}
@@ -305,7 +305,7 @@ export default function IntroOfferPage() {
       <section className="section-padding bg-background-alt">
         <div className="container-custom mx-auto">
           <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl border border-border overflow-hidden">
-            <div className="p-8 lg:p-12 grid lg:grid-cols-2 gap-10 items-center">
+            <div className="p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div>
                 <p className="text-secondary font-semibold uppercase tracking-wide mb-2">
                   What You Get for ${PRICING.introOffer.price}
@@ -370,7 +370,7 @@ export default function IntroOfferPage() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {steps.map((step, index) => (
               <div key={step.title} className="text-center">
                 <div className="relative inline-flex mb-5">
@@ -412,7 +412,7 @@ export default function IntroOfferPage() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {reviews.map((review) => (
               <div
                 key={review.name}
@@ -446,7 +446,7 @@ export default function IntroOfferPage() {
       {/* Trust signals */}
       <section className="bg-primary text-white py-10">
         <div className="container-custom mx-auto px-4">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {trustSignals.map((signal) => (
               <div
                 key={signal.label}
@@ -472,7 +472,7 @@ export default function IntroOfferPage() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {goodToKnow.map((item) => (
               <div
                 key={item.title}

@@ -12,7 +12,7 @@ export function HeroSection() {
       </div>
 
       <div className="container-custom mx-auto px-4 py-16 lg:py-24 relative">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-6">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance">

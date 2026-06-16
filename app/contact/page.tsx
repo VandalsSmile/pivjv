@@ -58,7 +58,7 @@ export default function ContactPage() {
       {/* Contact Info & Form */}
       <section className="section-padding bg-background">
         <div className="container-custom mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Information */}
             <div>
               <h2 className="text-2xl font-bold text-foreground mb-6">
@@ -112,11 +112,11 @@ export default function ContactPage() {
                   <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <h3 className="font-semibold text-foreground mb-1">Email</h3>
                     <Link
                       href={`mailto:${CONTACT.email}`}
-                      className="text-foreground-muted hover:text-primary transition-colors"
+                      className="text-foreground-muted hover:text-primary transition-colors break-words"
                     >
                       {CONTACT.email}
                     </Link>
@@ -225,7 +225,7 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
             <Link
               href="/specials"
               className="bg-white/10 hover:bg-white/20 rounded-xl p-6 text-center transition-colors"

@@ -181,7 +181,7 @@ export default function NadNiagenPage() {
       {/* Hero */}
       <section className="bg-primary text-white section-padding">
         <div className="container-custom mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-secondary font-semibold uppercase tracking-wide mb-3">
                 Cellular Energy &amp; Longevity Therapy
@@ -279,7 +279,7 @@ export default function NadNiagenPage() {
       {/* What is NAD+ */}
       <section className="section-padding bg-background">
         <div className="container-custom mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
                 <Microscope className="w-7 h-7 text-primary" />
@@ -309,7 +309,7 @@ export default function NadNiagenPage() {
               </Link>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {compare.map((option) => (
                 <div
                   key={option.label}
@@ -351,7 +351,7 @@ export default function NadNiagenPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {whatItHelps.map((benefit) => (
               <div
                 key={benefit.title}
@@ -389,7 +389,7 @@ export default function NadNiagenPage() {
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {whoItHelps.map((item) => (
               <div
                 key={item.title}
@@ -429,7 +429,7 @@ export default function NadNiagenPage() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {reviews.map((review) => (
               <div
                 key={review.name}
@@ -463,7 +463,7 @@ export default function NadNiagenPage() {
       {/* Trust signals */}
       <section className="bg-primary text-white py-10">
         <div className="container-custom mx-auto px-4">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {trustSignals.map((signal) => (
               <div
                 key={signal.label}

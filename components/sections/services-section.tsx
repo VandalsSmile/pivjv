@@ -37,7 +37,7 @@ export function ServicesSection() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {SERVICES.map((service) => {
             const Icon = iconMap[service.icon as keyof typeof iconMap];
             return (

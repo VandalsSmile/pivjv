@@ -80,11 +80,17 @@ export function Footer() {
             <Link href="/specials" className="btn-primary">
               Book Now
             </Link>
-            <div className="mt-4 flex items-center gap-2 text-sm">
-              <div className="bg-white/20 rounded px-2 py-1">
-                <span className="font-semibold">HSA/FSA</span>
-              </div>
-              <span className="text-white/70">Eligible</span>
+            <div className="mt-4 flex items-center gap-3">
+              <Image
+                src="/images/hsa-fsa-eligible.png"
+                alt="HSA and FSA eligible payment badge"
+                width={56}
+                height={56}
+                className="w-14 h-14 flex-shrink-0"
+              />
+              <span className="text-sm text-white/70">
+                HSA/FSA Eligible
+              </span>
             </div>
           </div>
 

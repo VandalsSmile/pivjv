@@ -147,7 +147,7 @@ export default function SpecialsPage() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {MONTHLY_SPECIALS.map((special) => (
               <div
                 key={special.name}
@@ -240,7 +240,7 @@ export default function SpecialsPage() {
       {/* Claim Form */}
       <section id="claim-form" className="section-padding bg-primary text-white">
         <div className="container-custom mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance">
                 Claim Your Special
@@ -278,7 +278,7 @@ export default function SpecialsPage() {
                 </span>
               </div>
               <div className="p-8 lg:p-12">
-                <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                   <div>
                     <h2 className="text-3xl font-bold text-foreground mb-4">
                       Claim Your{" "}

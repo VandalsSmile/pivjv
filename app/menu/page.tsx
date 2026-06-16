@@ -132,7 +132,7 @@ export default function MenuPage() {
               wellness needs.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {PRIMARY_TREATMENTS.map((treatment) => {
               const Icon = iconMap[treatment.icon as keyof typeof iconMap];
               return (
@@ -185,7 +185,7 @@ export default function MenuPage() {
                     Prime Select member {tier.memberPrice}
                   </span>
                 </div>
-                <div className="grid md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {tier.drips.map((drip) => (
                     <div
                       key={drip.name}
@@ -291,7 +291,7 @@ export default function MenuPage() {
               for optimal wellness.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {PREMIUM_INFUSIONS.map((infusion) => (
               <div
                 key={infusion.name}
@@ -379,7 +379,7 @@ export default function MenuPage() {
             <p className="text-foreground-muted mb-6">
               Stock up and save. Excludes NAD+ and Niagen® injections.
             </p>
-            <div className="grid sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {INJECTION_PACKAGES.map((pkg) => (
                 <div
                   key={pkg.count}
@@ -395,7 +395,7 @@ export default function MenuPage() {
           </div>
 
           {/* NAD+ & Niagen Injections */}
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div>
               <h3 className="text-2xl font-bold text-foreground mb-2">
                 NAD+ Injections
@@ -434,7 +434,7 @@ export default function MenuPage() {
               best.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {INJECTION_GUIDE.map((guide) => (
               <div
                 key={guide.goal}

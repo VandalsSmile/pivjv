@@ -264,7 +264,7 @@ export default function MedicalWeightLossPage() {
             aria-hidden="true"
           />
           <div className="relative container-custom mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-secondary font-semibold uppercase tracking-wide mb-3">
                 Metabolic Support
@@ -375,7 +375,7 @@ export default function MedicalWeightLossPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {options.map((option) => (
               <div
                 key={option.title}
@@ -419,7 +419,7 @@ export default function MedicalWeightLossPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {howItWorks.map((item) => (
               <div
                 key={item.step}
@@ -455,7 +455,7 @@ export default function MedicalWeightLossPage() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             <div className="bg-white rounded-xl shadow-lg p-8 border border-border">
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
@@ -513,7 +513,7 @@ export default function MedicalWeightLossPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {timeline.map((item) => (
               <div
                 key={item.phase}
@@ -545,7 +545,7 @@ export default function MedicalWeightLossPage() {
       {/* IV + Weight Management Bundle */}
       <section className="section-padding bg-background">
         <div className="container-custom mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="inline-block bg-secondary/10 text-secondary text-xs font-bold px-3 py-1 rounded-full mb-4">
                 Best Value
@@ -599,7 +599,7 @@ export default function MedicalWeightLossPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             <div className="bg-white rounded-xl shadow-lg p-8 border border-border">
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
@@ -670,7 +670,7 @@ export default function MedicalWeightLossPage() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {reviews.map((review) => (
               <div
                 key={review.name}
@@ -704,7 +704,7 @@ export default function MedicalWeightLossPage() {
       {/* Trust signals */}
       <section className="bg-primary text-white py-10">
         <div className="container-custom mx-auto px-4">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {trustSignals.map((signal) => (
               <div
                 key={signal.label}

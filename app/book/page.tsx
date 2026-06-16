@@ -218,7 +218,7 @@ export default function BookPage() {
                   </h3>
                   <p className="text-foreground-muted text-sm">{group.blurb}</p>
                 </div>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {group.services.map((service) => (
                     <ServiceCard key={service.name} service={service} />
                   ))}
@@ -274,7 +274,7 @@ export default function BookPage() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-10 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
             <div className="space-y-6">
               <div className="relative rounded-2xl overflow-hidden shadow-sm border border-border aspect-[4/5]">
                 <Image
@@ -286,28 +286,28 @@ export default function BookPage() {
                 />
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Link
                   href={`tel:${CONTACT.phoneClean}`}
                   className="flex items-start gap-3 bg-white rounded-xl p-4 border border-border"
                 >
                   <Phone className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span>
+                  <span className="min-w-0">
                     <span className="block text-xs text-foreground-muted">
                       Call us
                     </span>
-                    <span className="font-semibold text-foreground">
+                    <span className="font-semibold text-foreground break-words">
                       {CONTACT.phone}
                     </span>
                   </span>
                 </Link>
                 <div className="flex items-start gap-3 bg-white rounded-xl p-4 border border-border">
                   <Clock className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span>
+                  <span className="min-w-0">
                     <span className="block text-xs text-foreground-muted">
                       Visit us
                     </span>
-                    <span className="font-semibold text-foreground text-sm">
+                    <span className="font-semibold text-foreground text-sm break-words">
                       {CONTACT.address.full}
                     </span>
                   </span>
@@ -339,6 +339,23 @@ export default function BookPage() {
                     </dd>
                   </div>
                 </dl>
+              </div>
+
+              <div className="flex items-center gap-4 bg-white rounded-2xl p-5 border border-border">
+                <Image
+                  src="/images/hsa-fsa-eligible.png"
+                  alt="HSA and FSA eligible payment badge"
+                  width={72}
+                  height={72}
+                  className="w-16 h-16 flex-shrink-0"
+                />
+                <div className="min-w-0">
+                  <p className="font-bold text-foreground">HSA/FSA Eligible</p>
+                  <p className="text-sm text-foreground-muted">
+                    Use your pre-tax health dollars. We provide documentation
+                    for your records on request.
+                  </p>
+                </div>
               </div>
             </div>
 
