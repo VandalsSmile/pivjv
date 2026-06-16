@@ -145,8 +145,16 @@ export default function MyersIVPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-primary text-white py-16 lg:py-24">
-        <div className="container-custom mx-auto px-4">
+      <section className="relative bg-primary text-white py-16 lg:py-24 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/images/dr-john-myers-hero.png')",
+          }}
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-primary/85" aria-hidden="true" />
+        <div className="relative container-custom mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-secondary font-semibold uppercase tracking-wide mb-3">
               America&apos;s Favorite IV
