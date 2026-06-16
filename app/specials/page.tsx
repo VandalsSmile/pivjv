@@ -233,6 +233,33 @@ export default function SpecialsPage() {
         </div>
       </section>
 
+      {/* Claim Form */}
+      <section id="claim-form" className="section-padding bg-primary text-white">
+        <div className="container-custom mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance">
+                Claim Your Special
+              </h2>
+              <p className="text-white/80 text-lg mb-8">
+                Fill out the form below and our team will contact you to
+                schedule your appointment and apply your special offer.
+              </p>
+              <p className="text-white/60">
+                Or call us directly at{" "}
+                <Link
+                  href={`tel:${CONTACT.phoneClean}`}
+                  className="text-secondary hover:text-secondary-light font-semibold"
+                >
+                  {CONTACT.phone}
+                </Link>
+              </p>
+            </div>
+            <SpecialsForm />
+          </div>
+        </div>
+      </section>
+
       {/* New Client Offer */}
       <section className="section-padding bg-background-alt">
         <div className="container-custom mx-auto">
@@ -307,33 +334,6 @@ export default function SpecialsPage() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Claim Form */}
-      <section id="claim-form" className="section-padding bg-primary text-white">
-        <div className="container-custom mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance">
-                Claim Your Special
-              </h2>
-              <p className="text-white/80 text-lg mb-8">
-                Fill out the form below and our team will contact you to
-                schedule your appointment and apply your special offer.
-              </p>
-              <p className="text-white/60">
-                Or call us directly at{" "}
-                <Link
-                  href={`tel:${CONTACT.phoneClean}`}
-                  className="text-secondary hover:text-secondary-light font-semibold"
-                >
-                  {CONTACT.phone}
-                </Link>
-              </p>
-            </div>
-            <SpecialsForm />
           </div>
         </div>
       </section>
