@@ -19,13 +19,9 @@ const SPECIALS = [
       "Best for travel, long flights & heat",
     ],
     theme: {
-      header: "bg-accent",
+      card: "bg-accent",
       badge: "bg-white text-accent",
-      savings: "text-accent-light",
-      check: "text-accent",
-      button:
-        "bg-accent text-white hover:bg-accent-dark inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-lg transition-colors duration-200",
-      border: "border border-border",
+      button: "text-accent",
     },
   },
   {
@@ -44,13 +40,9 @@ const SPECIALS = [
       "Best for vacations, pool days & events",
     ],
     theme: {
-      header: "bg-pink",
+      card: "bg-pink",
       badge: "bg-white text-pink",
-      savings: "text-pink-light",
-      check: "text-pink",
-      button:
-        "bg-pink text-white hover:bg-pink-dark inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-lg transition-colors duration-200",
-      border: "border border-border",
+      button: "text-pink",
     },
   },
 ];
@@ -72,55 +64,58 @@ export function SpecialsSection() {
           {SPECIALS.map((special) => (
             <div
               key={special.name}
-              className={`bg-white rounded-2xl shadow-lg overflow-hidden ${special.theme.border}`}
+              className={`relative overflow-hidden rounded-2xl shadow-lg text-white ${special.theme.card}`}
             >
-              <div className={`${special.theme.header} p-6 text-white`}>
+              {/* Decorative bubbles */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0"
+              >
+                <span className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/10" />
+                <span className="absolute top-24 -left-12 w-32 h-32 rounded-full bg-white/10" />
+                <span className="absolute bottom-8 right-10 w-20 h-20 rounded-full bg-white/10" />
+                <span className="absolute -bottom-12 left-16 w-36 h-36 rounded-full bg-white/5" />
+                <span className="absolute top-1/2 right-1/3 w-12 h-12 rounded-full bg-white/10" />
+              </div>
+
+              <div className="relative p-8">
                 <span
                   className={`inline-block ${special.theme.badge} text-xs font-bold px-3 py-1 rounded-full mb-3`}
                 >
                   {special.discount} · {special.category}
                 </span>
                 <h3 className="text-2xl font-bold mb-2">{special.name}</h3>
-                <div className="flex items-baseline gap-2">
+                <div className="flex items-baseline gap-2 mb-6">
                   <span className="text-3xl font-bold">${special.price}</span>
                   <span className="text-white/60 line-through">
                     ${special.regularPrice}
                   </span>
-                  <span className={`${special.theme.savings} font-semibold`}>
+                  <span className="font-semibold text-white/90">
                     {special.savingsLabel}
                   </span>
                 </div>
-              </div>
-              <div className="p-6">
-                <p className="text-foreground-muted mb-4">
-                  {special.description}
-                </p>
+
+                <p className="text-white/90 mb-4">{special.description}</p>
                 <ul className="space-y-2 mb-6">
                   {special.features.map((item) => (
                     <li
                       key={item}
-                      className="flex items-center gap-2 text-sm text-foreground"
+                      className="flex items-center gap-2 text-sm text-white/90"
                     >
-                      <Check
-                        className={`w-4 h-4 flex-shrink-0 ${special.theme.check}`}
-                      />
+                      <Check className="w-4 h-4 flex-shrink-0 text-white" />
                       {item}
                     </li>
                   ))}
                 </ul>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Link href="/specials" className={`flex-1 ${special.theme.button}`}>
-                    Claim Promo
-                  </Link>
-                  <Link
-                    href={`tel:${CONTACT.phoneClean}`}
-                    className="btn-secondary flex-1 justify-center"
-                  >
-                    <Phone className="w-4 h-4" />
-                    Call to Book
-                  </Link>
-                </div>
-                <p className="text-xs text-foreground-muted text-center mt-3">
+
+                <Link
+                  href={`tel:${CONTACT.phoneClean}`}
+                  className={`inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold transition-colors duration-200 hover:bg-white/90 ${special.theme.button}`}
+                >
+                  <Phone className="w-4 h-4" />
+                  Call to Book
+                </Link>
+                <p className="text-xs text-white/70 text-center mt-3">
                   Telehealth medical clearance may be required and is not
                   included in this special.
                 </p>
