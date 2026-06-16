@@ -243,8 +243,7 @@ export default function MedicalWeightLossPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-secondary font-semibold uppercase tracking-wide mb-3">
-                Medical Weight Management Injections, Peptides &amp; Metabolic
-                Support
+                Metabolic Support
               </p>
               <h1 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
                 Medical Weight Loss, Guided Every Step of the Way
