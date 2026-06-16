@@ -35,6 +35,18 @@ export const PRICING = {
   medicalClearance: 25,
 };
 
+// Online booking (Booker) deep links — Prime IV Huntsville (Jones Valley)
+export const BOOKING_LINKS = {
+  introOffer:
+    "https://go.booker.com/location/PrimeIVHuntsvilleJonesValleyAL/detail-summary/4748907",
+  nonMember:
+    "https://go.booker.com/location/PrimeIVHuntsvilleJonesValleyAL/detail-summary/4757545",
+  member:
+    "https://go.booker.com/location/PrimeIVHuntsvilleJonesValleyAL/detail-summary/4748948",
+  injection:
+    "https://go.booker.com/location/PrimeIVHuntsvilleJonesValleyAL/detail-summary/4748886",
+};
+
 export const HOURS = {
   weekdays: "9:00 AM - 6:00 PM",
   saturday: "10:00 AM - 4:00 PM",
