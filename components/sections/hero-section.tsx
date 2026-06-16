@@ -82,17 +82,18 @@ export function HeroSection() {
           {/* Right Content - Owner photo with floating offer card */}
           <div className="lg:pl-8">
             <div className="max-w-md mx-auto lg:ml-auto">
-              <div className="overflow-hidden rounded-2xl shadow-2xl">
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <img
                   src="/images/owner-ann-rn.png"
                   alt="Ann, RN, owner of Prime IV Hydration & Wellness, standing at the front desk beneath the Prime IV logo"
                   className="w-full h-auto object-cover"
                 />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-4 pt-10">
+                  <p className="text-center text-sm font-medium text-white">
+                    Meet Ann, RN — owner of {SITE_CONFIG.name}
+                  </p>
+                </div>
               </div>
-
-              <p className="text-center text-sm text-white/80 mt-4">
-                Meet Ann, RN — owner of {SITE_CONFIG.name}
-              </p>
 
               <div className="bg-white rounded-2xl shadow-2xl p-6 text-foreground mt-6">
                 <div className="flex items-baseline gap-2 mb-1">
