@@ -21,7 +21,7 @@ import {
   Zap,
 } from "lucide-react";
 import { CONTACT, SITE_CONFIG } from "@/lib/constants";
-import { CtaSection } from "@/components/sections/cta-section";
+
 
 export const metadata: Metadata = {
   title: "NAD+ & Niagen Therapy | Cellular Energy & Longevity",
@@ -532,8 +532,6 @@ export default function NadNiagenPage() {
           </div>
         </div>
       </section>
-
-      <CtaSection />
     </>
   );
 }

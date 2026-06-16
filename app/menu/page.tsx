@@ -22,7 +22,7 @@ import {
   INJECTION_GUIDE,
   PREMIUM_INFUSIONS,
 } from "@/lib/menu-data";
-import { CtaSection } from "@/components/sections/cta-section";
+
 
 export const metadata: Metadata = {
   title: "Full Menu | IV Therapy, Injections & Premium Infusions",
@@ -476,8 +476,6 @@ export default function MenuPage() {
           </div>
         </div>
       </section>
-
-      <CtaSection />
     </>
   );
 }

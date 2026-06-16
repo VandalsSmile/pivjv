@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Check, Phone, ArrowRight, Users, Heart, Award } from "lucide-react";
 import { CONTACT, WHY_PRIME_IV, TRUST_SIGNALS } from "@/lib/constants";
-import { CtaSection } from "@/components/sections/cta-section";
+
 import { ReviewsSection } from "@/components/sections/reviews-section";
 
 export const metadata: Metadata = {
@@ -282,9 +282,6 @@ export default function AboutPage() {
 
       {/* Reviews */}
       <ReviewsSection />
-
-      {/* CTA Section */}
-      <CtaSection />
     </>
   );
 }

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, BookOpen } from "lucide-react";
 import { ARTICLES } from "@/lib/articles";
 import { CONTACT } from "@/lib/constants";
-import { CtaSection } from "@/components/sections/cta-section";
+
 
 export const metadata: Metadata = {
   title: "Resource Center | IV Therapy Guides & Education",
@@ -66,8 +66,6 @@ export default function LearnMorePage() {
           </div>
         </div>
       </section>
-
-      <CtaSection />
     </>
   );
 }

@@ -8,7 +8,7 @@ import { TrustSection } from "@/components/sections/trust-section";
 import { MembershipsSection } from "@/components/sections/memberships-section";
 import { ReviewsSection } from "@/components/sections/reviews-section";
 import { FaqSection } from "@/components/sections/faq-section";
-import { CtaSection } from "@/components/sections/cta-section";
+
 
 export default function HomePage() {
   return (
@@ -23,7 +23,6 @@ export default function HomePage() {
       <MembershipsSection />
       <ReviewsSection />
       <FaqSection />
-      <CtaSection />
     </>
   );
 }
