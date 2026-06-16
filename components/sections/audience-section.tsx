@@ -49,23 +49,13 @@ export function AudienceSection() {
               <p className="text-white/80 text-sm mb-2">
                 Relax & Rejuvenate at our {CONTACT.address.city} location
               </p>
-              <div className="aspect-video bg-primary-light rounded-xl flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg
-                      className="w-8 h-8 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                      />
-                    </svg>
-                  </div>
+              <div className="relative aspect-video rounded-xl overflow-hidden">
+                <img
+                  src="/images/vip-spa-lounge.jpg"
+                  alt="Two clients relaxing in zero-gravity massage chairs under cozy blankets while receiving IV therapy in the dimly lit, ambient-lit VIP lounge"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 pt-10">
                   <p className="text-white font-medium">
                     Premium Spa Environment
                   </p>
