@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { NAV_LINKS, CONTACT, LOGO_URL } from "@/lib/constants";
+import { NAV_LINKS, CONTACT } from "@/lib/constants";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -39,7 +39,7 @@ export function Header() {
             <Link href="/" className="flex-shrink-0">
               <div className="bg-primary p-2 rounded">
                 <Image
-                  src={LOGO_URL}
+                  src="/images/prime-iv-logo-color.webp"
                   alt="Prime IV Hydration & Wellness - Huntsville"
                   width={140}
                   height={50}
