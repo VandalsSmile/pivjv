@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Check, Loader2, ArrowRight } from "lucide-react";
+import { sendLead } from "@/app/actions/send-lead";
 
 const SERVICE_OPTIONS = [
   "$85 VIP Intro IV (New Clients)",
@@ -35,15 +36,37 @@ export function BookingForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage("");
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const result = await sendLead({
+      formName: "Book an Appointment",
+      name: formData.name,
+      email: formData.email,
+      fields: [
+        { label: "Name", value: formData.name },
+        { label: "Email", value: formData.email },
+        { label: "Phone", value: formData.phone },
+        { label: "Service of Interest", value: formData.service },
+        { label: "Preferred Date", value: formData.date },
+        { label: "Preferred Time", value: formData.time },
+        { label: "Message", value: formData.message },
+      ],
+    });
 
     setIsSubmitting(false);
+
+    if (!result.success) {
+      setErrorMessage(
+        result.error || "Something went wrong. Please try again or call us.",
+      );
+      return;
+    }
+
     setIsSubmitted(true);
     setFormData({
       name: "",
@@ -238,6 +261,12 @@ export function BookingForm() {
             </>
           )}
         </button>
+
+        {errorMessage && (
+          <p className="text-sm text-red-600 text-center" role="alert">
+            {errorMessage}
+          </p>
+        )}
 
         <p className="text-xs text-foreground-muted text-center">
           A one-time state-mandated $25 telehealth screening is required at your

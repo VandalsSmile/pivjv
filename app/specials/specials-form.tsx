@@ -3,6 +3,13 @@
 import { useState } from "react";
 import { Check, Loader2, ArrowRight } from "lucide-react";
 import { PRICING } from "@/lib/constants";
+import { sendLead } from "@/app/actions/send-lead";
+
+const SPECIAL_LABELS: Record<string, string> = {
+  intro: `$${PRICING.introOffer.price} VIP Intro Offer (New Clients)`,
+  "summer-slim": "The Summer Slim - $105 (Beauty & Aging)",
+  "travel-defense": "The Travel Defense - $200 (Health & Wellness)",
+};
 
 export function SpecialsForm() {
   const [formData, setFormData] = useState({
@@ -14,15 +21,38 @@ export function SpecialsForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage("");
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const result = await sendLead({
+      formName: "Specials",
+      name: formData.name,
+      email: formData.email,
+      fields: [
+        { label: "Name", value: formData.name },
+        { label: "Email", value: formData.email },
+        { label: "Phone", value: formData.phone },
+        {
+          label: "Special",
+          value: SPECIAL_LABELS[formData.special] || formData.special,
+        },
+        { label: "Message", value: formData.message },
+      ],
+    });
 
     setIsSubmitting(false);
+
+    if (!result.success) {
+      setErrorMessage(
+        result.error || "Something went wrong. Please try again or call us.",
+      );
+      return;
+    }
+
     setIsSubmitted(true);
     setFormData({ name: "", email: "", phone: "", special: "", message: "" });
   };
@@ -167,6 +197,12 @@ export function SpecialsForm() {
             </>
           )}
         </button>
+
+        {errorMessage && (
+          <p className="text-sm text-red-600 text-center" role="alert">
+            {errorMessage}
+          </p>
+        )}
       </form>
     </div>
   );
