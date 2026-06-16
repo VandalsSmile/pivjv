@@ -123,13 +123,17 @@ export function Header() {
         {/* Mobile Menu */}
         <div
           className={cn(
-            "lg:hidden absolute top-full left-0 right-0 bg-white border-t border-border shadow-lg transition-all duration-300",
+            "lg:hidden absolute top-full left-0 right-0 bg-white border-t border-border shadow-lg transition-all duration-300 overflow-y-auto overscroll-contain",
             mobileMenuOpen
               ? "opacity-100 visible"
               : "opacity-0 invisible pointer-events-none"
           )}
+          style={{
+            maxHeight: "calc(100dvh - 100%)",
+            WebkitOverflowScrolling: "touch",
+          }}
         >
-          <nav className="container-custom mx-auto px-4 py-4">
+          <nav className="container-custom mx-auto px-4 py-4 pb-8">
             <Link
               href="/"
               className="block py-3 text-foreground font-medium border-b border-border"
