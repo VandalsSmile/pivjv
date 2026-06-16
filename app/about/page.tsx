@@ -99,8 +99,8 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative rounded-2xl overflow-hidden shadow-sm border border-border aspect-[4/3] order-last lg:order-first">
               <Image
-                src="/images/prime-iv-team-entrance.png"
-                alt="The Prime IV Hydration & Wellness team outside the Jones Valley clinic in Huntsville, AL"
+                src="/images/ann-john-van-steenburgh.webp"
+                alt="Owners Ann and John Van Steenburgh outside the Prime IV Hydration & Wellness grand opening in Huntsville, AL"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
