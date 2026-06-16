@@ -25,6 +25,12 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { CONTACT, SITE_CONFIG } from "@/lib/constants";
+import { JsonLd } from "@/components/json-ld";
+import {
+  serviceSchema,
+  faqSchema,
+  breadcrumbSchema,
+} from "@/lib/structured-data";
 
 
 export const metadata: Metadata = {
@@ -38,6 +44,9 @@ export const metadata: Metadata = {
     "semaglutide Huntsville",
     "weight management clinic Huntsville",
   ],
+  alternates: {
+    canonical: "/medical-weight-loss",
+  },
 };
 
 const heroHighlights = [
@@ -225,6 +234,22 @@ const faqs = [
 export default function MedicalWeightLossPage() {
   return (
     <>
+        <JsonLd
+          data={[
+            serviceSchema({
+              name: "Medical Weight Management",
+              description:
+                "Provider-guided medical weight management with injections and personalized plans paired with IV hydration support in Huntsville, AL.",
+              path: "/medical-weight-loss",
+              serviceType: "Medical Weight Management",
+            }),
+            faqSchema(faqs),
+            breadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "Medical Weight Loss", path: "/medical-weight-loss" },
+            ]),
+          ]}
+        />
         {/* Hero */}
         <section className="relative bg-primary text-white section-padding overflow-hidden">
           <div

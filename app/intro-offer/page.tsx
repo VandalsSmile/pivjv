@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbSchema, serviceSchema } from "@/lib/structured-data";
 import Link from "next/link";
 import {
   Phone,
@@ -37,6 +39,7 @@ export const metadata: Metadata = {
     "first IV therapy discount",
     "Huntsville AL IV deal",
   ],
+  alternates: { canonical: "/intro-offer" },
 };
 
 const benefits = [
@@ -160,6 +163,7 @@ const reviews = [
 export default function IntroOfferPage() {
   return (
     <>
+      <JsonLd data={[serviceSchema({ name: "$85 First-Time IV Therapy Offer", description: "New client special: first VIP IV therapy for $85 including a wellness consultation and full-size primary drip in Huntsville, AL.", path: "/intro-offer", serviceType: "IV Therapy" }), breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Intro Offer", path: "/intro-offer" }])]} />
       {/* Hero */}
       <section className="bg-primary text-white section-padding">
         <div className="container-custom mx-auto">

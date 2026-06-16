@@ -10,6 +10,7 @@ const article = ARTICLES.find((a) => a.slug === slug)!;
 export const metadata: Metadata = {
   title: `${article.title} | Resource Center`,
   description: article.excerpt,
+  alternates: { canonical: `/learn-more/${slug}` },
   keywords: [
     "is IV therapy safe",
     "IV therapy providers",

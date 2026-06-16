@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ARTICLES } from "@/lib/articles";
 import { CONTACT } from "@/lib/constants";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbSchema, absoluteUrl } from "@/lib/structured-data";
 
 
 export const metadata: Metadata = {
@@ -14,11 +16,31 @@ export const metadata: Metadata = {
     "IV therapy resource center",
     "Huntsville AL IV therapy",
   ],
+  alternates: { canonical: "/learn-more" },
 };
 
 export default function LearnMorePage() {
   return (
     <>
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Resource Center", path: "/learn-more" },
+          ]),
+          {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "IV Therapy Guides & Articles",
+            itemListElement: ARTICLES.map((article, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              url: absoluteUrl(`/learn-more/${article.slug}`),
+              name: article.title,
+            })),
+          },
+        ]}
+      />
       <section className="bg-primary text-white py-16 lg:py-24">
         <div className="container-custom mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">

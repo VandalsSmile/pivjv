@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
 import { IvMatcherQuiz } from "./iv-matcher-quiz";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Which IV Drip Is Right for Me? | IV Therapy Matcher | Prime IV Huntsville",
@@ -14,6 +16,7 @@ export const metadata: Metadata = {
     "IV therapy recommendation",
     "Huntsville AL IV quiz",
   ],
+  alternates: { canonical: "/iv-matcher" },
 };
 
 export default function IvMatcherPage() {
