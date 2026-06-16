@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
+import { upload } from "@vercel/blob/client";
 import {
   Upload,
   Loader2,
@@ -25,6 +26,10 @@ export function UploadManager() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [deletingUrl, setDeletingUrl] = useState("");
+  const [progress, setProgress] = useState<{ done: number; total: number }>({
+    done: 0,
+    total: 0,
+  });
   const inputRef = useRef<HTMLInputElement>(null);
 
   const loadImages = useCallback(async () => {
@@ -49,8 +54,8 @@ export function UploadManager() {
 
   const uploadFiles = useCallback(
     async (files: FileList | File[]) => {
-      const fileArray = Array.from(files).filter((f) =>
-        f.type.startsWith("image/"),
+      const fileArray = Array.from(files).filter(
+        (f) => f.type.startsWith("image/") || /\.hei[cf]$/i.test(f.name),
       );
       if (fileArray.length === 0) {
         setError("Please choose image files only.");
@@ -60,19 +65,18 @@ export function UploadManager() {
       setIsUploading(true);
       setError("");
       setSuccess("");
+      setProgress({ done: 0, total: fileArray.length });
 
       try {
         for (const file of fileArray) {
-          const formData = new FormData();
-          formData.append("file", file);
-          const res = await fetch("/api/upload", {
-            method: "POST",
-            body: formData,
+          // Upload directly from the browser to Vercel Blob. This bypasses the
+          // ~4.5MB serverless body limit, so full-resolution phone photos work.
+          await upload(`gallery/${file.name}`, file, {
+            access: "public",
+            handleUploadUrl: "/api/upload",
+            contentType: file.type || undefined,
           });
-          if (!res.ok) {
-            const data = await res.json().catch(() => ({}));
-            throw new Error(data.error || "Upload failed.");
-          }
+          setProgress((p) => ({ ...p, done: p.done + 1 }));
         }
         setSuccess(
           `${fileArray.length} image${fileArray.length > 1 ? "s" : ""} uploaded successfully.`,
@@ -82,6 +86,7 @@ export function UploadManager() {
         setError(err instanceof Error ? err.message : "Upload failed.");
       } finally {
         setIsUploading(false);
+        setProgress({ done: 0, total: 0 });
       }
     },
     [loadImages],
@@ -151,15 +156,20 @@ export function UploadManager() {
           )}
         </div>
         <p className="font-semibold text-foreground">
-          {isUploading ? "Uploading…" : "Drag & drop images here"}
+          {isUploading
+            ? progress.total > 1
+              ? `Uploading ${progress.done + 1} of ${progress.total}…`
+              : "Uploading…"
+            : "Drag & drop images here"}
         </p>
         <p className="text-sm text-foreground-muted">
-          or click to browse. JPG, PNG, WebP supported.
+          or click to browse. JPG, PNG, WebP, HEIC supported. Large phone photos
+          welcome (up to 50MB each).
         </p>
         <input
           ref={inputRef}
           type="file"
-          accept="image/*"
+          accept="image/*,.heic,.heif"
           multiple
           className="hidden"
           onChange={(e) => {
