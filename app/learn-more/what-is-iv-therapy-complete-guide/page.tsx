@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   keywords: [
     "what is IV therapy",
     "IV therapy guide",
-    "IV drip explained",
+    "IV drip beginners",
     "Huntsville AL IV therapy",
   ],
 };
@@ -22,60 +22,91 @@ export default function Page() {
   return (
     <ArticleLayout slug={slug}>
       <p>
-        IV (intravenous) therapy delivers fluids, vitamins, minerals, and
-        antioxidants directly into your bloodstream through a small catheter.
-        Because it skips the digestive system, your body can use those nutrients
-        almost immediately — which is why so many people leave a session feeling
-        refreshed and re-energized.
+        IV therapy has become one of the most talked-about wellness services in
+        the country, and more people in {CONTACT.address.city} are exploring it
+        for hydration, energy, recovery, immune support, beauty, and proactive
+        wellness. If you have ever wondered what it actually is, whether it is
+        safe, or what happens during a visit, this guide makes it simple.
       </p>
 
-      <h2>How Does IV Therapy Work?</h2>
+      <h2>What IV Therapy Actually Is</h2>
       <p>
-        When you swallow a vitamin, your stomach and intestines only absorb a
-        fraction of it. IV therapy bypasses that process entirely, placing
-        nutrients straight into circulation for close to 100% bioavailability.
-        A licensed nurse inserts a thin catheter, usually in your arm, and a
-        custom blend drips in over 30 to 60 minutes while you relax.
+        IV therapy delivers fluids, vitamins, minerals, amino acids, and
+        antioxidants directly into your bloodstream instead of sending them
+        through the digestive system first. Because digestion is bypassed,
+        nutrients are available to the body right away — one reason people often
+        choose IV therapy when they want faster hydration and more direct
+        support.
       </p>
 
-      <h2>What&apos;s Actually in an IV Drip?</h2>
-      <p>
-        Every drip starts with a sterile hydration base, then adds a tailored
-        mix of ingredients based on your goals:
-      </p>
+      <h2>What IV Therapy Helps With</h2>
       <ul>
-        <li>B vitamins for energy and metabolism</li>
-        <li>Vitamin C and zinc for immune support</li>
-        <li>Magnesium and calcium for muscle and nerve function</li>
-        <li>Amino acids and antioxidants like glutathione</li>
-        <li>Advanced add-ons such as NAD+ for cellular energy</li>
+        <li>Hydration and fatigue support</li>
+        <li>Immune support</li>
+        <li>Energy and metabolism support</li>
+        <li>Beauty and anti-aging support</li>
+        <li>Athletic recovery and performance</li>
+        <li>Travel, jet lag, and hangover recovery</li>
+        <li>Stress support and overall wellness</li>
       </ul>
 
-      <h2>Who Is IV Therapy For?</h2>
+      <h2>What to Expect at Your First Appointment</h2>
       <p>
-        IV therapy is popular with busy professionals, athletes, frequent
-        travelers, and anyone looking to support their immune system, energy, or
-        recovery. It is not a replacement for medical care, but it&apos;s a
-        convenient way to stay hydrated and topped up on key nutrients.
+        Your visit starts with a warm check-in and a short wellness consultation
+        where you share your goals. You then choose a drip — on your own or with
+        guidance from the team. A licensed professional starts your IV, usually
+        with only a quick pinch, and you relax in a comfortable chair to scroll,
+        work, read, or simply unwind. Many guests report noticing hydration or
+        energy support before they leave.
       </p>
+
+      <h2>Safety Standards</h2>
+      <p>
+        IV therapy is performed by licensed nurses and trained medical
+        professionals, with medical oversight and an initial evaluation to help
+        ensure the service is appropriate for each guest. That includes
+        medical-grade sanitation, new sterile materials for every guest, and a
+        clean, comfortable setting.
+      </p>
+
+      <h2>Common Ingredients You May See on a Menu</h2>
+      <ul>
+        <li>Vitamin B12 and B-complex — energy and metabolism support</li>
+        <li>Vitamin C — antioxidant support for immunity and skin</li>
+        <li>Magnesium — relaxation and muscle comfort</li>
+        <li>Zinc — immune support</li>
+        <li>Amino acids and taurine — recovery, focus, and stamina</li>
+        <li>Glutathione — antioxidant and radiance support</li>
+        <li>Biotin — hair, skin, and nail support</li>
+        <li>Lipolean — metabolism and energy support</li>
+      </ul>
 
       <blockquote>
-        New to IV therapy? Our team will walk you through every option and help
-        you pick the right drip during a free consultation.
+        Many guests feel hydration or energy support within 15 to 30 minutes,
+        while recovery and immune support may be noticed over the next 24 hours.
+        Benefits may last several days to a week or longer depending on the drip.
       </blockquote>
 
-      <h2>What to Expect on Your First Visit</h2>
+      <h2>IV Therapy vs. Oral Supplements</h2>
       <p>
-        At {SITE_CONFIG.name} in {CONTACT.address.city}, your
-        first visit includes a quick wellness consult and a one-time telehealth
-        screening. Then you&apos;ll settle into a zero-gravity massage chair while
-        your drip does the work. Most people are in and out within an hour.
+        Choose IV therapy when you want fast results, higher absorption,
+        immediate hydration, or support before and after an event. Choose oral
+        supplements when you want daily maintenance and long-term consistency.
+        Many people use a mix of both depending on their goals.
       </p>
+
+      <h2>Why {SITE_CONFIG.name}</h2>
       <p>
-        Ready to feel the difference?{" "}
-        <Link href="/specials">Check out our new client intro offer</Link> or{" "}
-        <Link href="/iv-matcher">take our IV Matcher quiz</Link> to find your
-        perfect drip.
+        A spa-like atmosphere, heated zero-gravity massage chairs, premium
+        ingredients, experienced nurses, and personalized recommendations make
+        the experience different. Single drips, add-on injections, and monthly
+        memberships are available, and many services are HSA and FSA eligible.
+      </p>
+
+      <p>
+        Ready to feel your best?{" "}
+        <Link href="/iv-matcher">Take our IV Matcher quiz</Link> or{" "}
+        <Link href="/book">book your visit</Link> at {SITE_CONFIG.name} today.
       </p>
     </ArticleLayout>
   );
