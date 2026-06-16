@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Phone, ArrowRight } from "lucide-react";
 import { CONTACT, FAQS } from "@/lib/constants";
 import { FaqAccordion } from "./faq-accordion";
+import { JsonLd } from "@/components/json-ld";
+import { faqSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions | IV Therapy FAQ",
@@ -15,11 +17,51 @@ export const metadata: Metadata = {
     "IV therapy benefits",
     "Huntsville AL",
   ],
+  alternates: {
+    canonical: "/faq",
+  },
 };
+
+// Additional FAQs rendered statically below the accordion — included in
+// structured data so all answers are eligible for FAQ rich results & AEO.
+const ADDITIONAL_FAQS = [
+  {
+    question: "What should I expect during my first visit?",
+    answer:
+      "During your first visit, you'll complete a brief health questionnaire and have a consultation with our wellness team. We'll discuss your goals, recommend the best treatment for you, and answer any questions. The IV infusion typically takes 30-60 minutes, during which you can relax in our comfortable zero-gravity massage chairs.",
+  },
+  {
+    question: "Is IV therapy safe?",
+    answer: `Yes, IV therapy is very safe when administered by licensed healthcare professionals. At Prime IV ${CONTACT.address.city}, all treatments are performed by trained medical staff using medical-grade ingredients and sterile equipment. We conduct a health screening before your first treatment to ensure IV therapy is appropriate for you.`,
+  },
+  {
+    question: "What are the benefits of IV therapy over oral supplements?",
+    answer:
+      "IV therapy delivers nutrients directly into your bloodstream, bypassing the digestive system. This means your body can absorb up to 100% of the vitamins and minerals, compared to just 20-50% with oral supplements. You'll also feel the effects faster, often during or immediately after treatment.",
+  },
+  {
+    question: "Can I use my HSA/FSA for IV therapy?",
+    answer:
+      "Yes! IV therapy treatments at Prime IV are typically eligible for HSA (Health Savings Account) and FSA (Flexible Spending Account) payment. We accept these payment methods and can provide any necessary documentation for your records.",
+  },
+  {
+    question: "Do you offer same-day appointments?",
+    answer: `Yes, we offer same-day appointments based on availability. Call us at ${CONTACT.phone} to check current availability, or book online. We recommend booking in advance for the best selection of times, especially for weekends.`,
+  },
+];
 
 export default function FaqPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          faqSchema([...FAQS, ...ADDITIONAL_FAQS]),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "FAQ", path: "/faq" },
+          ]),
+        ]}
+      />
       {/* Hero Section */}
       <section className="bg-primary text-white py-16 lg:py-24">
         <div className="container-custom mx-auto px-4">

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbSchema, serviceSchema } from "@/lib/structured-data";
 import Link from "next/link";
 import {
   Phone,
@@ -34,6 +36,7 @@ export const metadata: Metadata = {
     "longevity therapy Huntsville",
     "Huntsville AL NAD+",
   ],
+  alternates: { canonical: "/nad-niagen-special" },
 };
 
 const whatItHelps = [
@@ -174,6 +177,7 @@ const faqs = [
 export default function NadNiagenPage() {
   return (
     <>
+      <JsonLd data={[serviceSchema({ name: "NAD+ & Niagen Therapy", description: "NAD+ and Niagen therapies to restore cellular energy, mental clarity, and support healthy aging in Huntsville, AL.", path: "/nad-niagen-special", serviceType: "NAD+ Therapy" }), breadcrumbSchema([{ name: "Home", path: "/" }, { name: "NAD+ & Niagen", path: "/nad-niagen-special" }])]} />
       {/* Hero */}
       <section className="bg-primary text-white section-padding">
         <div className="container-custom mx-auto">

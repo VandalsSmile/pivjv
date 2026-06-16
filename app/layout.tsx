@@ -4,6 +4,12 @@ import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { JsonLd } from "@/components/json-ld";
+import {
+  localBusinessSchema,
+  websiteSchema,
+  organizationSchema,
+} from "@/lib/structured-data";
 import { SITE_CONFIG, CONTACT } from "@/lib/constants";
 
 const inter = Inter({
@@ -12,6 +18,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_CONFIG.url),
   title: {
     default: `IV Therapy near ${CONTACT.address.city} AL | Hydration & Vitamin Drips | ${SITE_CONFIG.name}`,
     template: `%s | ${SITE_CONFIG.name} ${CONTACT.address.city}`,
@@ -41,18 +48,34 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
     title: `${SITE_CONFIG.name} ${CONTACT.address.city} | IV Therapy Near Me`,
     description: SITE_CONFIG.description,
+    images: [
+      {
+        url: "/images/vip-spa-lounge.jpg",
+        width: 1200,
+        height: 630,
+        alt: `${SITE_CONFIG.name} VIP IV therapy lounge in ${CONTACT.address.city}, AL`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_CONFIG.name} ${CONTACT.address.city}`,
     description: SITE_CONFIG.description,
+    images: ["/images/vip-spa-lounge.jpg"],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
   alternates: {
-    canonical: SITE_CONFIG.url,
+    canonical: "/",
   },
 };
 
@@ -70,6 +93,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} bg-background`}>
       <body className="font-sans antialiased">
+        <JsonLd
+          data={[
+            localBusinessSchema(),
+            websiteSchema(),
+            organizationSchema(),
+          ]}
+        />
         <Header />
         <main>{children}</main>
         <Footer />

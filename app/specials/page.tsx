@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbSchema } from "@/lib/structured-data";
 import Link from "next/link";
 import { Phone, Check, ArrowRight, Loader2 } from "lucide-react";
 import { CONTACT, PRICING } from "@/lib/constants";
@@ -16,6 +18,7 @@ export const metadata: Metadata = {
     "Huntsville AL",
     "discount IV therapy",
   ],
+  alternates: { canonical: "/specials" },
 };
 
 const MONTHLY_SPECIALS = [
@@ -108,6 +111,7 @@ const MONTHLY_SPECIALS = [
 export default function SpecialsPage() {
   return (
     <>
+      <JsonLd data={[breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Specials", path: "/specials" }])]} />
       {/* Hero Section */}
       <section className="bg-primary text-white py-16 lg:py-24">
         <div className="container-custom mx-auto px-4">

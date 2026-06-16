@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { ARTICLES, type Article } from "@/lib/articles";
+import { JsonLd } from "@/components/json-ld";
+import { articleSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 
 export function ArticleLayout({
@@ -12,9 +14,26 @@ export function ArticleLayout({
 }) {
   const article = ARTICLES.find((a) => a.slug === slug) as Article;
   const related = ARTICLES.filter((a) => a.slug !== slug).slice(0, 4);
+  const path = `/learn-more/${slug}`;
 
   return (
     <>
+      <JsonLd
+        data={[
+          articleSchema({
+            headline: article.title,
+            description: article.excerpt,
+            path,
+            image: article.image,
+            datePublished: new Date(article.date).toISOString(),
+          }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Resource Center", path: "/learn-more" },
+            { name: article.title, path },
+          ]),
+        ]}
+      />
       <section className="bg-primary text-white py-16 lg:py-20">
         <div className="container-custom mx-auto px-4">
           <div className="max-w-3xl mx-auto">

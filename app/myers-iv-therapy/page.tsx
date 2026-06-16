@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbSchema, serviceSchema } from "@/lib/structured-data";
 import Link from "next/link";
 import { Phone, Check, Clock, UserCheck, Award } from "lucide-react";
 import { CONTACT, SITE_CONFIG } from "@/lib/constants";
@@ -15,6 +17,7 @@ export const metadata: Metadata = {
     "vitamin drip Huntsville",
     "Huntsville AL Myers Cocktail",
   ],
+  alternates: { canonical: "/myers-iv-therapy" },
 };
 
 const ingredients = [
@@ -150,6 +153,7 @@ const experienceFeatures = [
 export default function MyersIVPage() {
   return (
     <>
+      <JsonLd data={[serviceSchema({ name: "Myers Cocktail IV Therapy", description: "The original, time-tested Myers Cocktail vitamin drip at Prime IV Hydration & Wellness in Huntsville, AL.", path: "/myers-iv-therapy", serviceType: "IV Therapy" }), breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Myers Cocktail", path: "/myers-iv-therapy" }])]} />
       {/* Hero */}
       <section className="relative bg-primary text-white py-16 lg:py-24 overflow-hidden">
         <div

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbSchema } from "@/lib/structured-data";
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, Clock, ArrowRight, Star } from "lucide-react";
@@ -16,6 +18,7 @@ export const metadata: Metadata = {
     "Prime IV Huntsville booking",
     "$85 intro offer IV",
   ],
+  alternates: { canonical: "/book" },
 };
 
 type Service = {
@@ -142,6 +145,7 @@ function ServiceCard({ service }: { service: Service }) {
 export default function BookPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Book", path: "/book" }])} />
       {/* Hero */}
       <section className="relative bg-primary text-white overflow-hidden">
         {/* Calendar background image */}

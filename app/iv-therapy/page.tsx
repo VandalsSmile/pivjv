@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbSchema, serviceSchema } from "@/lib/structured-data";
 import Link from "next/link";
 import {
   Zap,
@@ -29,6 +31,7 @@ export const metadata: Metadata = {
     "beauty IV",
     "Huntsville AL",
   ],
+  alternates: { canonical: "/iv-therapy" },
 };
 
 const iconMap = {
@@ -202,6 +205,7 @@ const dripsDetail = {
 export default function IVTherapyPage() {
   return (
     <>
+      <JsonLd data={[serviceSchema({ name: "IV Therapy Services", description: "Energy, recovery, immunity, beauty, and advanced NAD+ IV therapy treatments in Huntsville, AL.", path: "/iv-therapy", serviceType: "IV Therapy" }), breadcrumbSchema([{ name: "Home", path: "/" }, { name: "IV Therapy", path: "/iv-therapy" }])]} />
       {/* Hero Section */}
       <section className="bg-primary text-white py-16 lg:py-24">
         <div className="container-custom mx-auto px-4">

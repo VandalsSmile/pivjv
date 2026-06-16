@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbSchema } from "@/lib/structured-data";
 import Link from "next/link";
 import {
   Zap,
@@ -36,6 +38,7 @@ export const metadata: Metadata = {
     "Niagen IV",
     "Huntsville AL IV menu",
   ],
+  alternates: { canonical: "/menu" },
 };
 
 const iconMap = { Zap, Dumbbell, HeartPulse, Flame };
@@ -73,6 +76,7 @@ function DoseTable({
 export default function MenuPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Full Menu", path: "/menu" }])} />
       {/* Hero */}
       <section className="relative bg-primary text-white py-16 lg:py-24 overflow-hidden">
         <div

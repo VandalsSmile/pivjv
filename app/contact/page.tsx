@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbSchema } from "@/lib/structured-data";
 import Image from "next/image";
 import Link from "next/link";
 import { Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
@@ -16,11 +18,13 @@ export const metadata: Metadata = {
     "Prime IV phone",
     "Prime IV location",
   ],
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {
   return (
     <>
+      <JsonLd data={[breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }])]} />
       {/* Hero Section */}
       <section className="relative bg-primary text-white py-16 lg:py-24 overflow-hidden">
         {/* Background image */}

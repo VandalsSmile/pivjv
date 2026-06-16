@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbSchema } from "@/lib/structured-data";
 import Link from "next/link";
 import { Check, Phone, ArrowRight } from "lucide-react";
 import { MEMBERSHIPS, CONTACT } from "@/lib/constants";
@@ -17,11 +19,13 @@ export const metadata: Metadata = {
     "Huntsville AL",
     "Prime IV membership",
   ],
+  alternates: { canonical: "/memberships" },
 };
 
 export default function MembershipsPage() {
   return (
     <>
+      <JsonLd data={[breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Memberships", path: "/memberships" }])]} />
       {/* Hero Section */}
       <section className="bg-primary text-white py-16 lg:py-24">
         <div className="container-custom mx-auto px-4">
