@@ -1,24 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-  /* Bluebell IV Color Scheme */
-  --color-primary: #0d4a4a;
-  --color-primary-dark: #093939;
-  --color-primary-light: #0f5c5c;
+  /* Bluebell IV Color Scheme (matched to bluebelliv.com) */
+  --color-primary: #1e3a5f;
+  --color-primary-dark: #16294a;
+  --color-primary-light: #2a4d7a;
   
-  --color-secondary: #f97316;
+  --color-secondary: #f59e0b;
   --color-secondary-dark: #ea580c;
-  --color-secondary-light: #fb923c;
+  --color-secondary-light: #fbbf24;
   
-  --color-accent: #14b8a6;
-  --color-accent-dark: #0d9488;
-  --color-accent-light: #2dd4bf;
+  --color-accent: #0891b2;
+  --color-accent-dark: #0e7490;
+  --color-accent-light: #22d3ee;
   
   --color-background: #ffffff;
-  --color-background-alt: #f8fafc;
-  --color-background-dark: #0d4a4a;
+  --color-background-alt: #f1f5f9;
+  --color-background-dark: #1e3a5f;
+  --color-background-cyan: #e0f7fa;
   
-  --color-foreground: #1e293b;
+  --color-foreground: #1e3a5f;
   --color-foreground-muted: #64748b;
   --color-foreground-light: #ffffff;
   
@@ -60,15 +61,19 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-secondary text-white font-semibold rounded-lg hover:bg-secondary-dark transition-colors duration-200;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent text-white font-semibold rounded-full hover:bg-accent-dark transition-colors duration-200;
   }
   
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-colors duration-200;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary-dark transition-colors duration-200;
+  }
+  
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-secondary text-white font-semibold rounded-full hover:bg-secondary-dark transition-colors duration-200;
   }
   
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary transition-colors duration-200;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-primary transition-colors duration-200;
   }
   
   .section-padding {
@@ -92,7 +97,7 @@
   }
   
   .text-gradient {
-    @apply bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-accent to-accent-light bg-clip-text text-transparent;
   }
 }
 
