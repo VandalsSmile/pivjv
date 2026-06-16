@@ -81,7 +81,7 @@ export function HeroSection() {
 
           {/* Right Content - Owner photo with floating offer card */}
           <div className="lg:pl-8">
-            <div className="relative max-w-md mx-auto lg:ml-auto">
+            <div className="max-w-md mx-auto lg:ml-auto">
               <div className="overflow-hidden rounded-2xl shadow-2xl">
                 <img
                   src="/images/owner-ann-rn.png"
@@ -90,7 +90,11 @@ export function HeroSection() {
                 />
               </div>
 
-              <div className="absolute -bottom-6 left-4 right-4 sm:left-6 sm:right-auto sm:max-w-xs bg-white rounded-2xl shadow-2xl p-6 text-foreground">
+              <p className="text-center text-sm text-white/80 mt-4">
+                Meet Ann, RN — owner of {SITE_CONFIG.name}
+              </p>
+
+              <div className="bg-white rounded-2xl shadow-2xl p-6 text-foreground mt-6">
                 <div className="flex items-baseline gap-2 mb-1">
                   <span className="text-3xl font-bold text-primary">
                     ${PRICING.introOffer.price}
@@ -112,10 +116,6 @@ export function HeroSection() {
                 </Link>
               </div>
             </div>
-
-            <p className="text-center text-sm text-white/80 mt-12 lg:mt-16">
-              Meet Ann, RN — owner of {SITE_CONFIG.name}
-            </p>
           </div>
         </div>
       </div>
