@@ -191,7 +191,7 @@ const CATEGORY_GROUPS: {
       { label: "PMS / Monthly Wellness Support", key: "hydration" },
       { label: "Weight Loss / Metabolism Support", key: "metabolism" },
       { label: "Bloating / Sluggish Metabolism", key: "metabolism" },
-      { label: "GLP-1 / Weight Loss Program Support", key: "metabolism" },
+      { label: "Medical Weight Management Injections / Weight Loss Program Support", key: "metabolism" },
     ],
   },
   {
@@ -223,7 +223,7 @@ const KEYWORD_MAP: { terms: string[]; key: string }[] = [
   { terms: ["immune", "sick", "cold", "flu", "run down", "allergy", "sinus", "seasonal"], key: "immune" },
   { terms: ["hangover", "nausea", "queasy", "party", "drinking", "stomach"], key: "hangover" },
   { terms: ["skin", "hair", "glow", "beauty", "radian", "biotin", "aging skin"], key: "beauty" },
-  { terms: ["weight", "metabolism", "slim", "bloat", "glp", "fat"], key: "metabolism" },
+  { terms: ["weight", "metabolism", "slim", "bloat", "injection", "fat"], key: "metabolism" },
   { terms: ["focus", "longevity", "nad", "brain fog", "concentrat", "memory", "aging"], key: "longevity" },
 ];
 
