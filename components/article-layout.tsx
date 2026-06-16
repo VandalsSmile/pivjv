@@ -11,7 +11,7 @@ export function ArticleLayout({
   children: React.ReactNode;
 }) {
   const article = ARTICLES.find((a) => a.slug === slug) as Article;
-  const related = ARTICLES.filter((a) => a.slug !== slug);
+  const related = ARTICLES.filter((a) => a.slug !== slug).slice(0, 4);
 
   return (
     <>
@@ -26,7 +26,7 @@ export function ArticleLayout({
               Back to Resource Center
             </Link>
             <p className="text-secondary font-semibold uppercase tracking-wide mb-3">
-              {article.category} &middot; {article.readTime}
+              {article.category} &middot; {article.readTime} &middot; {article.date}
             </p>
             <h1 className="text-3xl md:text-4xl font-bold text-balance">
               {article.title}

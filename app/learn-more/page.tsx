@@ -38,7 +38,7 @@ export default function LearnMorePage() {
 
       <section className="section-padding bg-background">
         <div className="container-custom mx-auto">
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {ARTICLES.map((article) => (
               <Link
                 key={article.slug}
@@ -57,6 +57,9 @@ export default function LearnMorePage() {
                 <p className="text-foreground-muted text-sm mb-4 flex-1">
                   {article.excerpt}
                 </p>
+                <span className="text-xs text-foreground-muted mb-3">
+                  {article.date}
+                </span>
                 <span className="inline-flex items-center gap-1 text-secondary font-semibold text-sm group-hover:gap-2 transition-all">
                   Read article
                   <ArrowRight className="w-4 h-4" />
