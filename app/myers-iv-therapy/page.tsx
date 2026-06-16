@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Phone, Check, Clock, UserCheck, Award } from "lucide-react";
 import { CONTACT, SITE_CONFIG } from "@/lib/constants";
-import { CtaSection } from "@/components/sections/cta-section";
+
 
 export const metadata: Metadata = {
   title: "America's Favorite IV | The Myers' Cocktail",
@@ -477,8 +477,6 @@ export default function MyersIVPage() {
           </div>
         </div>
       </section>
-
-      <CtaSection />
     </>
   );
 }

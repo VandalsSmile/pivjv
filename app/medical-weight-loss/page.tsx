@@ -25,7 +25,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { CONTACT, SITE_CONFIG } from "@/lib/constants";
-import { CtaSection } from "@/components/sections/cta-section";
+
 
 export const metadata: Metadata = {
   title: "GLP-1 & Medical Weight Loss in Huntsville, AL | Prime IV",
@@ -261,13 +261,13 @@ export default function MedicalWeightLossPage() {
               </p>
 
               <div className="flex flex-wrap gap-4 mb-6">
-                <Link href="#consultation" className="btn-primary">
-                  Book a Consultation
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link href={`tel:${CONTACT.phoneClean}`} className="btn-outline">
+                <Link href={`tel:${CONTACT.phoneClean}`} className="btn-primary">
                   <Phone className="w-4 h-4" />
-                  {CONTACT.phone}
+                  Call to Book a Consultation
+                </Link>
+                <Link href="/specials" className="btn-outline">
+                  View Specials
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
 
@@ -318,11 +318,11 @@ export default function MedicalWeightLossPage() {
                   ))}
                 </ul>
                 <Link
-                  href="#consultation"
+                  href={`tel:${CONTACT.phoneClean}`}
                   className="btn-secondary w-full justify-center"
                 >
-                  Start With a Consultation
-                  <ArrowRight className="w-4 h-4" />
+                  <Phone className="w-4 h-4" />
+                  Call to Get Started
                 </Link>
               </div>
             </div>
@@ -367,9 +367,9 @@ export default function MedicalWeightLossPage() {
           </div>
 
           <div className="text-center mt-10">
-            <Link href="#consultation" className="btn-primary">
-              Book a Consultation
-              <ArrowRight className="w-4 h-4" />
+            <Link href={`tel:${CONTACT.phoneClean}`} className="btn-primary">
+              <Phone className="w-4 h-4" />
+              Call to Book a Consultation
             </Link>
           </div>
         </div>
@@ -531,9 +531,9 @@ export default function MedicalWeightLossPage() {
                 added hydration and support—so you feel your best while you make
                 progress.
               </p>
-              <Link href="#consultation" className="btn-primary">
+              <Link href={`tel:${CONTACT.phoneClean}`} className="btn-primary">
+                <Phone className="w-4 h-4" />
                 Ask About the Bundle
-                <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
 
@@ -751,7 +751,7 @@ export default function MedicalWeightLossPage() {
               <p>
                 Plans may include lifestyle guidance, nutrition support,
                 hydration strategies, provider follow-up, and—when clinically
-                appropriate—GLP-1 therapy, peptides, or other prescription
+                appropriate��GLP-1 therapy, peptides, or other prescription
                 medications. Medication is not appropriate for every patient and
                 is not the only component of a comprehensive plan.
               </p>
@@ -789,22 +789,18 @@ export default function MedicalWeightLossPage() {
               pressure—just clear, honest guidance built around your goals.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="#consultation" className="btn-primary">
-                Book a Consultation
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link href={`tel:${CONTACT.phoneClean}`} className="btn-outline">
+              <Link href={`tel:${CONTACT.phoneClean}`} className="btn-primary">
                 <Phone className="w-4 h-4" />
                 Call {CONTACT.phone}
+              </Link>
+              <Link href="/specials" className="btn-outline">
+                View Specials
+                <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
         </div>
       </section>
-
-      <div id="consultation">
-        <CtaSection />
-      </div>
     </>
   );
 }

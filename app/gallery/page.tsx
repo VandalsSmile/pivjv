@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { CONTACT, SITE_CONFIG } from "@/lib/constants";
-import { CtaSection } from "@/components/sections/cta-section";
+
 
 export const metadata: Metadata = {
   title: "Gallery | Inside Our IV Therapy Lounge",
@@ -91,8 +91,6 @@ export default function GalleryPage() {
           </div>
         </div>
       </section>
-
-      <CtaSection />
     </>
   );
 }

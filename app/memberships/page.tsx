@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Check, Phone, ArrowRight } from "lucide-react";
 import { MEMBERSHIPS, CONTACT } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import { CtaSection } from "@/components/sections/cta-section";
+
 
 export const metadata: Metadata = {
   title: "IV Therapy Memberships | Monthly Wellness Plans",
@@ -264,9 +264,6 @@ export default function MembershipsPage() {
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <CtaSection />
     </>
   );
 }

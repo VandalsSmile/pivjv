@@ -12,7 +12,7 @@ import {
   Check,
 } from "lucide-react";
 import { SERVICES, CONTACT, PRICING, SITE_CONFIG } from "@/lib/constants";
-import { CtaSection } from "@/components/sections/cta-section";
+
 
 export const metadata: Metadata = {
   title: "IV Therapy Services | Vitamin Drips & Hydration Treatments",
@@ -341,9 +341,6 @@ export default function IVTherapyPage() {
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <CtaSection />
     </>
   );
 }

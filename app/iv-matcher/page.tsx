@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { CONTACT } from "@/lib/constants";
-import { CtaSection } from "@/components/sections/cta-section";
+
 import { IvMatcherQuiz } from "./iv-matcher-quiz";
 
 export const metadata: Metadata = {
@@ -42,8 +42,6 @@ export default function IvMatcherPage() {
           </div>
         </div>
       </section>
-
-      <CtaSection />
     </>
   );
 }

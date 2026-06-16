@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { ARTICLES, type Article } from "@/lib/articles";
-import { CtaSection } from "@/components/sections/cta-section";
+
 
 export function ArticleLayout({
   slug,
@@ -68,8 +68,6 @@ export function ArticleLayout({
           </div>
         </div>
       </section>
-
-      <CtaSection />
     </>
   );
 }

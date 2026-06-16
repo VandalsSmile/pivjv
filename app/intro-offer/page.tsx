@@ -20,7 +20,7 @@ import {
   BadgeCheck,
 } from "lucide-react";
 import { CONTACT, PRICING, SITE_CONFIG } from "@/lib/constants";
-import { CtaSection } from "@/components/sections/cta-section";
+
 
 const savings = Math.round(
   ((PRICING.introOffer.regularPrice - PRICING.introOffer.price) /
@@ -522,8 +522,6 @@ export default function IntroOfferPage() {
           </div>
         </div>
       </section>
-
-      <CtaSection />
     </>
   );
 }
