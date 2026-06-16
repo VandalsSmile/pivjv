@@ -28,21 +28,21 @@ import { CONTACT, SITE_CONFIG } from "@/lib/constants";
 
 
 export const metadata: Metadata = {
-  title: "GLP-1 & Medical Weight Loss in Huntsville, AL | Prime IV",
+  title:
+    "Medical Weight Management Injections & Weight Loss in Huntsville, AL | Prime IV",
   description:
-    "Provider-guided medical weight management in Huntsville, AL. GLP-1 therapy, peptides, and personalized plans paired with IV hydration support at Prime IV Hydration & Wellness. Consultation required.",
+    "Provider-guided medical weight management in Huntsville, AL. Medical weight management injections and personalized plans paired with IV hydration support at Prime IV Hydration & Wellness. Consultation required.",
   keywords: [
-    "GLP-1 Huntsville",
+    "medical weight management injections Huntsville",
     "medical weight loss Huntsville AL",
     "semaglutide Huntsville",
-    "peptide therapy Huntsville",
     "weight management clinic Huntsville",
   ],
 };
 
 const heroHighlights = [
-  "GLP-1 therapy when clinically appropriate",
-  "Peptides & metabolic support options",
+  "Medical weight management injections when clinically appropriate",
+  "Metabolic support options",
   "Hydration & wellness add-ons",
   "Ongoing provider follow-up",
 ];
@@ -53,7 +53,7 @@ const howItWorks = [
     icon: Soup,
     title: "Mimics a Natural Hormone",
     description:
-      "GLP-1 therapy is designed to act like a hormone your gut naturally releases after you eat, helping kick off your body's normal fullness signals.",
+      "Medical weight management injections are designed to act like a hormone your gut naturally releases after you eat, helping kick off your body's normal fullness signals.",
   },
   {
     step: "02",
@@ -125,15 +125,15 @@ const timeline = [
 const options = [
   {
     icon: Microscope,
-    title: "GLP-1 Therapy",
+    title: "Medical Weight Management Injections",
     description:
-      "Provider-prescribed GLP-1 medication to help support appetite management and steady, sustainable progress.",
+      "Provider-prescribed medical weight management injections to help support appetite management and steady, sustainable progress.",
   },
   {
     icon: Sparkles,
-    title: "Peptides",
+    title: "Metabolic Support",
     description:
-      "Targeted peptide support that may complement your plan for recovery, metabolism, and overall wellness.",
+      "Targeted support that may complement your plan for recovery, metabolism, and overall wellness.",
   },
   {
     icon: Stethoscope,
@@ -242,15 +242,15 @@ export default function MedicalWeightLossPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-secondary font-semibold uppercase tracking-wide mb-3">
-                GLP-1, Peptides &amp; Metabolic Support
+                Metabolic Support
               </p>
               <h1 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
                 Medical Weight Loss, Guided Every Step of the Way
               </h1>
               <p className="text-white/80 text-lg mb-6 text-pretty">
                 Medical weight management is about more than the number on the
-                scale. Our provider-guided plans may include GLP-1 therapy and
-                peptides to help support appetite management, steady energy, and
+                scale. Our provider-guided plans may include medical weight
+                management injections to help support appetite management, steady energy, and
                 metabolic wellness—personalized to your body at{" "}
                 {SITE_CONFIG.name} in {CONTACT.address.city}, AL.
               </p>
@@ -338,12 +338,13 @@ export default function MedicalWeightLossPage() {
               What It Is
             </p>
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
-              GLP-1 &amp; Weight Management Options
+              Medical Weight Management Injections &amp; Options
             </h2>
             <p className="text-foreground-muted text-lg text-pretty">
               Every plan starts with a conversation. Our providers tailor support
-              to your goals and health history, which may include GLP-1 therapy
-              and peptides when clinically appropriate—going beyond a
+              to your goals and health history, which may include medical weight
+              management injections
+              when clinically appropriate—going beyond a
               one-size-fits-all approach with hydration, added wellness support,
               and ongoing guidance.
             </p>
@@ -375,7 +376,7 @@ export default function MedicalWeightLossPage() {
         </div>
       </section>
 
-      {/* How GLP-1s work */}
+      {/* How injections work */}
       <section className="section-padding bg-background-alt">
         <div className="container-custom mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-12">
@@ -383,10 +384,11 @@ export default function MedicalWeightLossPage() {
               How It Helps
             </p>
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
-              How GLP-1s Work in the Body
+              How Medical Weight Management Injections Work in the Body
             </h2>
             <p className="text-foreground-muted text-lg text-pretty">
-              A clear, provider-informed look at GLP-1 therapy so you can decide
+              A clear, provider-informed look at medical weight management
+              injections so you can decide
               whether it fits your goals. Individual results vary and a
               consultation is required before treatment.
             </p>
@@ -507,7 +509,8 @@ export default function MedicalWeightLossPage() {
           </div>
 
           <p className="text-foreground-muted text-sm max-w-3xl mx-auto text-center mt-8 text-pretty">
-            GLP-1 therapy is not appropriate for every patient. A licensed
+            Medical weight management injections are not appropriate for every
+            patient. A licensed
             provider will review your eligibility, dosing, and possible side
             effects during your consultation.
           </p>
@@ -751,7 +754,7 @@ export default function MedicalWeightLossPage() {
               <p>
                 Plans may include lifestyle guidance, nutrition support,
                 hydration strategies, provider follow-up, and—when clinically
-                appropriate��GLP-1 therapy, peptides, or other prescription
+                appropriate—medical weight management injections or other prescription
                 medications. Medication is not appropriate for every patient and
                 is not the only component of a comprehensive plan.
               </p>
