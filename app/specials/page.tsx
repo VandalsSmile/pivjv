@@ -127,86 +127,8 @@ export default function SpecialsPage() {
         </div>
       </section>
 
-      {/* New Client Offer */}
-      <section className="section-padding bg-background">
-        <div className="container-custom mx-auto">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-secondary">
-              <div className="bg-secondary p-6 text-white text-center">
-                <span className="inline-block bg-white text-secondary text-xs font-bold px-3 py-1 rounded-full mb-3">
-                  New Client Introductory Offer
-                </span>
-                <span className="block text-sm text-white/80 mb-2">
-                  Limited Availability
-                </span>
-              </div>
-              <div className="p-8 lg:p-12">
-                <div className="grid lg:grid-cols-2 gap-8 items-center">
-                  <div>
-                    <h2 className="text-3xl font-bold text-foreground mb-4">
-                      Claim Your{" "}
-                      <span className="text-secondary">
-                        ${PRICING.introOffer.price}
-                      </span>
-                      <span className="text-foreground-muted line-through text-xl ml-2">
-                        ${PRICING.introOffer.regularPrice + 56}
-                      </span>{" "}
-                      Offer!
-                    </h2>
-                    <p className="text-foreground-muted mb-6">
-                      Experience the Prime IV difference with our exclusive
-                      first-time client offer. Everything you need for your
-                      wellness journey at an unbeatable price.
-                    </p>
-                    <ul className="space-y-3 mb-6">
-                      {[
-                        "Choice of 1 of 4 primary IV infusions",
-                        "FREE wellness consultation",
-                        "State-of-the-art massage chair",
-                      ].map((item) => (
-                        <li key={item} className="flex items-center gap-3">
-                          <Check className="w-5 h-5 text-secondary flex-shrink-0" />
-                          <span className="text-foreground">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="flex flex-wrap gap-4">
-                      <Link href="#claim-form" className="btn-primary">
-                        Book Online Now
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
-                      <Link
-                        href={`tel:${CONTACT.phoneClean}`}
-                        className="btn-secondary"
-                      >
-                        <Phone className="w-4 h-4" />
-                        {CONTACT.phone}
-                      </Link>
-                    </div>
-                    <p className="text-xs text-foreground-muted mt-4">
-                      *One-time state-mandated ${PRICING.medicalClearance}{" "}
-                      telehealth screening required at first visit.
-                    </p>
-                  </div>
-                  <div className="text-center">
-                    <div className="inline-block bg-secondary/10 rounded-2xl p-8">
-                      <span className="text-6xl font-bold text-secondary">
-                        ${PRICING.introOffer.price}
-                      </span>
-                      <p className="text-foreground-muted mt-2">
-                        First visit special
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Monthly Specials */}
-      <section className="section-padding bg-background-alt">
+      <section className="section-padding bg-background">
         <div className="container-custom mx-auto">
           <div className="text-center mb-12">
             <p className="text-sm font-semibold text-secondary uppercase tracking-wide mb-2">
@@ -307,6 +229,84 @@ export default function SpecialsPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* New Client Offer */}
+      <section className="section-padding bg-background-alt">
+        <div className="container-custom mx-auto">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-secondary">
+              <div className="bg-secondary p-6 text-white text-center">
+                <span className="inline-block bg-white text-secondary text-xs font-bold px-3 py-1 rounded-full mb-3">
+                  New Client Introductory Offer
+                </span>
+                <span className="block text-sm text-white/80 mb-2">
+                  Limited Availability
+                </span>
+              </div>
+              <div className="p-8 lg:p-12">
+                <div className="grid lg:grid-cols-2 gap-8 items-center">
+                  <div>
+                    <h2 className="text-3xl font-bold text-foreground mb-4">
+                      Claim Your{" "}
+                      <span className="text-secondary">
+                        ${PRICING.introOffer.price}
+                      </span>
+                      <span className="text-foreground-muted line-through text-xl ml-2">
+                        ${PRICING.introOffer.regularPrice + 56}
+                      </span>{" "}
+                      Offer!
+                    </h2>
+                    <p className="text-foreground-muted mb-6">
+                      Experience the Prime IV difference with our exclusive
+                      first-time client offer. Everything you need for your
+                      wellness journey at an unbeatable price.
+                    </p>
+                    <ul className="space-y-3 mb-6">
+                      {[
+                        "Choice of 1 of 4 primary IV infusions",
+                        "FREE wellness consultation",
+                        "State-of-the-art massage chair",
+                      ].map((item) => (
+                        <li key={item} className="flex items-center gap-3">
+                          <Check className="w-5 h-5 text-secondary flex-shrink-0" />
+                          <span className="text-foreground">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="flex flex-wrap gap-4">
+                      <Link href="#claim-form" className="btn-primary">
+                        Book Online Now
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                      <Link
+                        href={`tel:${CONTACT.phoneClean}`}
+                        className="btn-secondary"
+                      >
+                        <Phone className="w-4 h-4" />
+                        {CONTACT.phone}
+                      </Link>
+                    </div>
+                    <p className="text-xs text-foreground-muted mt-4">
+                      *One-time state-mandated ${PRICING.medicalClearance}{" "}
+                      telehealth screening required at first visit.
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <div className="inline-block bg-secondary/10 rounded-2xl p-8">
+                      <span className="text-6xl font-bold text-secondary">
+                        ${PRICING.introOffer.price}
+                      </span>
+                      <p className="text-foreground-muted mt-2">
+                        First visit special
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
