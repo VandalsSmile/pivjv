@@ -257,10 +257,10 @@ export default function BookPage() {
 
           <div className="grid lg:grid-cols-2 gap-10 items-start">
             <div className="space-y-6">
-              <div className="relative rounded-2xl overflow-hidden shadow-sm border border-border aspect-[4/3]">
+              <div className="relative rounded-2xl overflow-hidden shadow-sm border border-border aspect-[4/5]">
                 <Image
-                  src="/images/vip-spa-lounge.jpg"
-                  alt="Prime IV Hydration & Wellness lounge in Huntsville, AL"
+                  src="/images/prime-iv-team.png"
+                  alt="The Prime IV Hydration & Wellness team in the Huntsville, AL clinic"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
