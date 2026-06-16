@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { list } from "@vercel/blob";
 import { CONTACT, SITE_CONFIG } from "@/lib/constants";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Gallery | Inside Our IV Therapy Lounge",
@@ -12,6 +14,9 @@ export const metadata: Metadata = {
     "wellness lounge Huntsville",
     "IV bar interior",
   ],
+  alternates: {
+    canonical: "/gallery",
+  },
 };
 
 // Revalidate so newly uploaded images appear without a redeploy.
@@ -83,6 +88,12 @@ export default async function GalleryPage() {
   const images: GalleryItem[] = [...uploaded, ...STATIC_IMAGES];
   return (
     <>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Gallery", path: "/gallery" },
+        ])}
+      />
       <section className="bg-primary text-white py-16 lg:py-24">
         <div className="container-custom mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">

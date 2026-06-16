@@ -22,6 +22,12 @@ export const metadata: Metadata = {
 export default function IvMatcherPage() {
   return (
     <section className="section-padding bg-background">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "IV Matcher", path: "/iv-matcher" },
+        ])}
+      />
       <div className="container-custom mx-auto">
         <div className="max-w-4xl mx-auto">
           <IvMatcherQuiz />
