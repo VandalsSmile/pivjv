@@ -31,19 +31,18 @@ export const metadata: Metadata = {
   title:
     "Medical Weight Management Injections & Weight Loss in Huntsville, AL | Prime IV",
   description:
-    "Provider-guided medical weight management in Huntsville, AL. Medical weight management injections, peptides, and personalized plans paired with IV hydration support at Prime IV Hydration & Wellness. Consultation required.",
+    "Provider-guided medical weight management in Huntsville, AL. Medical weight management injections and personalized plans paired with IV hydration support at Prime IV Hydration & Wellness. Consultation required.",
   keywords: [
     "medical weight management injections Huntsville",
     "medical weight loss Huntsville AL",
     "semaglutide Huntsville",
-    "peptide therapy Huntsville",
     "weight management clinic Huntsville",
   ],
 };
 
 const heroHighlights = [
   "Medical weight management injections when clinically appropriate",
-  "Peptides & metabolic support options",
+  "Metabolic support options",
   "Hydration & wellness add-ons",
   "Ongoing provider follow-up",
 ];
@@ -132,9 +131,9 @@ const options = [
   },
   {
     icon: Sparkles,
-    title: "Peptides",
+    title: "Metabolic Support",
     description:
-      "Targeted peptide support that may complement your plan for recovery, metabolism, and overall wellness.",
+      "Targeted support that may complement your plan for recovery, metabolism, and overall wellness.",
   },
   {
     icon: Stethoscope,
@@ -251,8 +250,7 @@ export default function MedicalWeightLossPage() {
               <p className="text-white/80 text-lg mb-6 text-pretty">
                 Medical weight management is about more than the number on the
                 scale. Our provider-guided plans may include medical weight
-                management injections and
-                peptides to help support appetite management, steady energy, and
+                management injections to help support appetite management, steady energy, and
                 metabolic wellness—personalized to your body at{" "}
                 {SITE_CONFIG.name} in {CONTACT.address.city}, AL.
               </p>
@@ -346,7 +344,7 @@ export default function MedicalWeightLossPage() {
               Every plan starts with a conversation. Our providers tailor support
               to your goals and health history, which may include medical weight
               management injections
-              and peptides when clinically appropriate—going beyond a
+              when clinically appropriate—going beyond a
               one-size-fits-all approach with hydration, added wellness support,
               and ongoing guidance.
             </p>
@@ -756,7 +754,7 @@ export default function MedicalWeightLossPage() {
               <p>
                 Plans may include lifestyle guidance, nutrition support,
                 hydration strategies, provider follow-up, and—when clinically
-                appropriate—medical weight management injections, peptides, or other prescription
+                appropriate—medical weight management injections or other prescription
                 medications. Medication is not appropriate for every patient and
                 is not the only component of a comprehensive plan.
               </p>
