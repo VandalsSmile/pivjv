@@ -1,23 +1,71 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Check, Phone, ArrowRight, Users, Heart, Award } from "lucide-react";
-import { CONTACT, WHY_PRIME_IV, TRUST_SIGNALS } from "@/lib/constants";
+import Image from "next/image";
+import {
+  Check,
+  ArrowRight,
+  Users,
+  Heart,
+  Award,
+  Sparkles,
+  Syringe,
+  CalendarCheck,
+  UserCheck,
+} from "lucide-react";
+import {
+  CONTACT,
+  WHY_PRIME_IV,
+  TRUST_SIGNALS,
+  BOOKING_LINKS,
+} from "@/lib/constants";
 
 import { ReviewsSection } from "@/components/sections/reviews-section";
 
 export const metadata: Metadata = {
-  title: "About Us | Why Choose Prime IV Hydration & Wellness",
+  title: "About Us | Prime IV Hydration & Wellness Huntsville, AL",
   description:
-    "Learn about Prime IV Hydration & Wellness in Huntsville, AL. Discover our mission, meet our team, and find out why we are the trusted choice for IV therapy.",
+    "Meet Ann & John Van Steenburgh, the family behind Prime IV Jones Valley in Huntsville, AL. A locally owned wellness space built on care, connection, and preventive wellness.",
   keywords: [
     "about Prime IV",
     "IV therapy Huntsville",
-    "wellness spa",
-    "medical-grade IV",
+    "Ann Van Steenburgh",
+    "Jones Valley wellness",
+    "family-owned IV therapy",
     "Prime IV team",
     "Huntsville Alabama",
   ],
 };
+
+const BOOKING_OPTIONS = [
+  {
+    title: "First Visit Offer",
+    description: "Special pricing for new clients",
+    href: BOOKING_LINKS.introOffer,
+    icon: Sparkles,
+    featured: true,
+  },
+  {
+    title: "Non-Member Booking",
+    description: "Book a one-time IV therapy session",
+    href: BOOKING_LINKS.nonMember,
+    icon: CalendarCheck,
+    featured: false,
+  },
+  {
+    title: "Member Booking",
+    description: "For active Prime IV members",
+    href: BOOKING_LINKS.member,
+    icon: UserCheck,
+    featured: false,
+  },
+  {
+    title: "Injection Appointment",
+    description: "Quick vitamin & wellness shots",
+    href: BOOKING_LINKS.injection,
+    icon: Syringe,
+    featured: false,
+  },
+];
 
 export default function AboutPage() {
   return (
@@ -29,14 +77,18 @@ export default function AboutPage() {
             <p className="text-secondary font-semibold uppercase tracking-wide mb-3">
               About Us
             </p>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-              Your Neighbors in Wellness
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-balance">
+              Care You Can Trust. Wellness You Can Feel.
             </h1>
-            <p className="text-white/80 text-lg mb-8">
-              Prime IV Hydration & Wellness {CONTACT.address.city} is dedicated
-              to providing medical-grade IV therapy in a comfortable, spa-like
-              environment. We&apos;re here to help you feel your best.
+            <p className="text-white/80 text-lg mb-8 text-pretty">
+              From energy and hydration to recovery, immunity, and beauty—choose
+              from our full range of IV drips and injections designed to help
+              you feel better, faster.
             </p>
+            <Link href="/book" className="btn-primary">
+              Book Now
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
@@ -45,39 +97,20 @@ export default function AboutPage() {
       <section className="section-padding bg-background">
         <div className="container-custom mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-sm font-semibold text-secondary uppercase tracking-wide mb-2">
-                Family-Owned & Local
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance">
-                Our Story
-              </h2>
-              <div className="space-y-4 text-foreground-muted">
-                <p>
-                  Prime IV Hydration & Wellness {CONTACT.address.city} was
-                  founded with a simple mission: to give local residents better
-                  access to medical-grade wellness therapies and more choices in
-                  taking control of their health and quality of life.
-                </p>
-                <p>
-                  We believe everyone deserves to feel their best. Whether
-                  you&apos;re seeking relief from fatigue, recovering from a
-                  tough week, preparing for an important event, or simply
-                  investing in preventative wellness, we&apos;re here to help
-                  you achieve your goals.
-                </p>
-                <p>
-                  Our team of licensed healthcare professionals is dedicated to
-                  providing safe, effective IV therapy treatments in a clean,
-                  comfortable environment. We take the time to understand your
-                  unique needs and create personalized treatment plans that work
-                  for you.
-                </p>
+            <div className="order-last lg:order-first">
+              <div className="relative rounded-2xl overflow-hidden shadow-sm border border-border aspect-[4/3]">
+                <Image
+                  src="/images/ann-john-van-steenburgh.webp"
+                  alt="Owners Ann and John Van Steenburgh outside the Prime IV Hydration & Wellness grand opening in Huntsville, AL"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
               </div>
 
-              <div className="flex flex-wrap gap-8 mt-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                     <Users className="w-6 h-6 text-primary" />
                   </div>
                   <div>
@@ -88,51 +121,83 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                     <Heart className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <p className="font-bold text-foreground">Locally Rooted</p>
+                    <p className="font-bold text-foreground">Community First</p>
                     <p className="text-sm text-foreground-muted">
-                      Community first
+                      Cared for like a neighbor
                     </p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                     <Award className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <p className="font-bold text-foreground">Excellence</p>
+                    <p className="font-bold text-foreground">RN-Founded</p>
                     <p className="text-sm text-foreground-muted">
-                      Premium care
+                      Led by a career nurse
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-primary rounded-2xl p-8 text-white">
-              <div className="text-center">
-                <div className="w-32 h-32 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Users className="w-16 h-16 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4">
-                  Meet Our {CONTACT.address.city} Team
-                </h3>
-                <p className="text-white/80 mb-6">
-                  Our dedicated team of wellness professionals is here to guide
-                  you on your health journey. From your first consultation to
-                  your ongoing treatments, we&apos;re committed to your
-                  well-being.
+            <div>
+              <p className="text-sm font-semibold text-secondary uppercase tracking-wide mb-2">
+                Family-Owned & Local
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance">
+                Care Rooted in Experience, Community, and Preventive Wellness
+              </h2>
+              <div className="space-y-4 text-foreground-muted">
+                <p>
+                  Ann Van Steenburgh, RN, and her husband John are the heart
+                  behind Prime IV Jones Valley—a locally owned wellness space
+                  built on care, connection, and a genuine desire to help their
+                  community feel better.
                 </p>
-                <Link href="/contact" className="btn-primary">
-                  Schedule a Visit
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+                <p>
+                  After years as a career nurse, Ann saw firsthand how often
+                  people were treated only after they were already run down,
+                  depleted, or unwell. She recognized an opportunity to do
+                  something more proactive—something that could truly make a
+                  difference in people&apos;s everyday lives. That vision led her
+                  to transition from traditional bedside care into the world of
+                  wellness, where she could help people stay energized, recover
+                  faster, and take control of their health before issues arise.
+                </p>
+                <p>
+                  John, a dedicated fitness enthusiast, experienced the benefits
+                  of IV therapy firsthand through his own training and recovery.
+                  Seeing how impactful it could be—not just for athletes, but for
+                  everyday wellness—he knew this was something their community
+                  needed more access to.
+                </p>
+                <p>
+                  Together, Ann and John have created more than just a place for
+                  IV therapy—they&apos;ve built a welcoming, community-focused
+                  space where relationships matter, conversations are real, and
+                  every guest is cared for like a neighbor. Their mission is
+                  simple: bring meaningful, results-driven wellness services to
+                  Jones Valley and help the people around them feel their best,
+                  every day.
+                </p>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Mission Statement Banner */}
+      <section className="bg-secondary text-white py-14 lg:py-16">
+        <div className="container-custom mx-auto px-4">
+          <p className="max-w-4xl mx-auto text-center text-2xl md:text-3xl font-bold leading-relaxed text-balance">
+            Wellness shouldn&apos;t start when something goes wrong—it should be
+            part of how you take care of yourself every day.
+          </p>
         </div>
       </section>
 
@@ -199,83 +264,67 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* What is IV Therapy */}
+      {/* Book Your Visit */}
       <section className="section-padding bg-background">
         <div className="container-custom mx-auto">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
-                What is IV Therapy?
-              </h2>
-            </div>
+          <div className="text-center mb-12">
+            <p className="text-sm font-semibold text-secondary uppercase tracking-wide mb-2">
+              Get Started
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
+              Book Your Visit
+            </h2>
+            <p className="text-foreground-muted max-w-2xl mx-auto">
+              Ready to feel your best? Choose the option that fits you and
+              schedule your appointment online.
+            </p>
+          </div>
 
-            <div className="prose prose-lg max-w-none text-foreground-muted">
-              <p>
-                IV (intravenous) therapy delivers vitamins, minerals, and
-                hydration directly into your bloodstream, bypassing the
-                digestive system for faster, more efficient absorption. This
-                means your body can utilize up to 100% of the nutrients,
-                compared to just 20-50% through oral supplements.
-              </p>
-
-              <div className="grid md:grid-cols-2 gap-8 my-8 not-prose">
-                <div className="bg-background-alt rounded-xl p-6">
-                  <h3 className="text-lg font-bold text-foreground mb-4">
-                    Benefits of IV Therapy
-                  </h3>
-                  <ul className="space-y-2">
-                    {[
-                      "Rapid hydration and nutrient delivery",
-                      "100% bioavailability",
-                      "Immediate effects felt during treatment",
-                      "Customized formulas for your needs",
-                      "Supports energy, immunity, and recovery",
-                      "Safe and administered by professionals",
-                    ].map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-sm">
-                        <Check className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
-                        <span className="text-foreground-muted">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="bg-background-alt rounded-xl p-6">
-                  <h3 className="text-lg font-bold text-foreground mb-4">
-                    Who Can Benefit?
-                  </h3>
-                  <ul className="space-y-2">
-                    {[
-                      "Busy professionals needing energy boosts",
-                      "Athletes seeking faster recovery",
-                      "Travelers combating jet lag",
-                      "Anyone fighting cold or flu symptoms",
-                      "Those seeking beauty and anti-aging support",
-                      "People with chronic fatigue or dehydration",
-                    ].map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-sm">
-                        <Check className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
-                        <span className="text-foreground-muted">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              <p>
-                At Prime IV {CONTACT.address.city}, we use only medical-grade
-                ingredients administered by licensed healthcare professionals.
-                Each treatment is customized to your specific needs, and our
-                comfortable spa-like environment ensures a relaxing experience.
-              </p>
-            </div>
-
-            <div className="text-center mt-8">
-              <Link href="/iv-therapy" className="btn-secondary">
-                Explore Our Treatments
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {BOOKING_OPTIONS.map((option) => {
+              const Icon = option.icon;
+              return (
+                <a
+                  key={option.title}
+                  href={option.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`group flex flex-col rounded-2xl p-6 border transition-shadow hover:shadow-lg ${
+                    option.featured
+                      ? "bg-primary text-white border-primary"
+                      : "bg-white text-foreground border-border"
+                  }`}
+                >
+                  <div
+                    className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 ${
+                      option.featured ? "bg-white/20" : "bg-primary/10"
+                    }`}
+                  >
+                    <Icon
+                      className={`w-6 h-6 ${
+                        option.featured ? "text-white" : "text-primary"
+                      }`}
+                    />
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">{option.title}</h3>
+                  <p
+                    className={`text-sm mb-6 ${
+                      option.featured ? "text-white/80" : "text-foreground-muted"
+                    }`}
+                  >
+                    {option.description}
+                  </p>
+                  <span
+                    className={`mt-auto inline-flex items-center gap-2 font-semibold ${
+                      option.featured ? "text-white" : "text-secondary"
+                    }`}
+                  >
+                    Book Now
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>

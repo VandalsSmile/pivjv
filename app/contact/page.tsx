@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
 import { CONTACT, HOURS, SOCIAL_LINKS } from "@/lib/constants";
@@ -21,8 +22,20 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-primary text-white py-16 lg:py-24">
-        <div className="container-custom mx-auto px-4">
+      <section className="relative bg-primary text-white py-16 lg:py-24 overflow-hidden">
+        {/* Background image */}
+        <Image
+          src="/images/contact-waiting-area.jpg"
+          alt=""
+          fill
+          priority
+          aria-hidden="true"
+          className="object-cover"
+          sizes="100vw"
+        />
+        {/* Navy overlay for text contrast */}
+        <div aria-hidden="true" className="absolute inset-0 bg-primary/80" />
+        <div className="relative container-custom mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-secondary font-semibold uppercase tracking-wide mb-3">
               Contact Us
