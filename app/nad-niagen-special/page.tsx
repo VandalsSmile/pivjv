@@ -215,7 +215,7 @@ export default function NadNiagenPage() {
               </div>
 
               <div className="flex flex-wrap gap-4 mb-6">
-                <Link href="/specials#claim-form" className="btn-primary">
+                <Link href="tel:2566926347" className="btn-primary">
                   Book Your Session
                   <ArrowRight className="w-4 h-4" />
                 </Link>
