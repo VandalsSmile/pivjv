@@ -25,7 +25,7 @@ import {
   Percent,
   CalendarClock,
 } from "lucide-react";
-import { CONTACT, SITE_CONFIG, BOOKING_LINKS } from "@/lib/constants";
+import { CONTACT, SITE_CONFIG } from "@/lib/constants";
 
 
 export const metadata: Metadata = {
@@ -318,13 +318,11 @@ export default function NadNiagenPage() {
                   <span className="font-bold">July 31st</span>.
                 </p>
                 <Link
-                  href={BOOKING_LINKS.nonMember}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={`tel:${CONTACT.phoneClean}`}
                   className="inline-flex items-center gap-2 bg-white text-accent font-bold px-8 py-4 rounded-full shadow-lg hover:bg-white/90 transition-colors text-lg"
                 >
+                  <Phone className="w-5 h-5" />
                   Schedule &amp; Claim 50% Off
-                  <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>
             </div>
