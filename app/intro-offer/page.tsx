@@ -21,7 +21,7 @@ import {
   CreditCard,
   BadgeCheck,
 } from "lucide-react";
-import { CONTACT, PRICING, SITE_CONFIG } from "@/lib/constants";
+import { CONTACT, PRICING, SITE_CONFIG, BOOKING_LINKS } from "@/lib/constants";
 
 
 const savings = Math.round(
@@ -202,7 +202,12 @@ export default function IntroOfferPage() {
               </div>
 
               <div className="flex flex-wrap gap-4 mb-6">
-                <Link href="/specials#claim-form" className="btn-primary">
+                <Link
+                  href={BOOKING_LINKS.introOffer}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary"
+                >
                   Book Your Intro Session
                   <ArrowRight className="w-4 h-4" />
                 </Link>
