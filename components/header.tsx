@@ -17,7 +17,7 @@ export function Header() {
       <div className="bg-primary text-white">
         <div className="container-custom mx-auto px-4">
           <Link
-            href="/iv-therapy#myers"
+            href="/myers-iv-therapy"
             className="flex items-center justify-center gap-2 py-2 text-sm hover:text-secondary transition-colors"
           >
             <span className="hidden sm:inline">
