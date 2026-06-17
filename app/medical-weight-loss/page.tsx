@@ -290,10 +290,6 @@ export default function MedicalWeightLossPage() {
                   <Phone className="w-4 h-4" />
                   Call to Book a Consultation
                 </Link>
-                <Link href="/specials" className="btn-outline">
-                  View Specials
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
               </div>
 
               <div className="flex items-center gap-2">
