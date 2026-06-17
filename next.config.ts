@@ -25,6 +25,11 @@ const nextConfig: NextConfig = {
         destination: "https://www.huntsvilleiv.com/myers-iv-therapy",
         permanent: true,
       },
+      {
+        source: "/weight-loss",
+        destination: "/medical-weight-loss",
+        permanent: true,
+      },
     ];
   },
 };
