@@ -21,8 +21,8 @@ export function HeroSection() {
             </h1>
 
             <div className="flex flex-wrap gap-3">
-              <Link href="/specials" className="btn-primary">
-                Book ${PRICING.introOffer.price} VIP IV
+              <Link href="/intro-offer" className="btn-primary">
+                Claim ${PRICING.introOffer.price} VIP IV
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link href="/specials" className="btn-outline">
