@@ -1,6 +1,6 @@
 import { Star } from "lucide-react";
 import Link from "next/link";
-import { REVIEWS } from "@/lib/constants";
+import { REVIEWS, CONTACT } from "@/lib/constants";
 
 export function ReviewsSection() {
   return (
@@ -62,7 +62,7 @@ export function ReviewsSection() {
             Had a great experience? We&apos;d love to hear from you!
           </p>
           <Link
-            href="https://g.page/review"
+            href={CONTACT.reviewUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-outline border-primary text-primary hover:bg-primary hover:text-white"
