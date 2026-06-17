@@ -74,7 +74,7 @@ export function SpecialsForm() {
         </div>
         <h3 className="text-xl font-bold mb-2">Thank You!</h3>
         <p className="text-foreground-muted">
-          {"We'll be in touch within 24 hours to confirm your appointment and apply your special offer."}
+          {"We'll be in touch to confirm your appointment and apply your special offer."}
         </p>
       </div>
     );

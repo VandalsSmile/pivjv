@@ -249,14 +249,14 @@ export default function MenuPage() {
                   <h4 className="font-bold text-foreground">
                     {additive.name}
                   </h4>
-                  <div className="flex gap-6 flex-shrink-0">
-                    <span className="text-right w-20 font-semibold text-secondary">
+                  <div className="flex gap-3 sm:gap-6 flex-shrink-0">
+                    <span className="text-right w-16 sm:w-20 font-semibold text-secondary">
                       {additive.member}
                       <span className="md:hidden block text-[10px] font-normal text-foreground-muted">
                         member
                       </span>
                     </span>
-                    <span className="text-right w-28 font-semibold text-foreground">
+                    <span className="text-right w-20 sm:w-28 font-semibold text-foreground">
                       {additive.nonMember}
                       <span className="md:hidden block text-[10px] font-normal text-foreground-muted">
                         non-member
