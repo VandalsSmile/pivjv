@@ -13,6 +13,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/nad--and-niagen",
+        destination: "https://www.huntsvilleiv.com/nad-niagen-special",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
