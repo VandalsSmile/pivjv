@@ -272,13 +272,6 @@ export default function NadNiagenPage() {
                     </li>
                   ))}
                 </ul>
-                <Link
-                  href="/specials#claim-form"
-                  className="btn-secondary w-full justify-center"
-                >
-                  Book Your Session
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
               </div>
             </div>
           </div>
