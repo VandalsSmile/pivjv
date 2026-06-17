@@ -179,8 +179,16 @@ export default function NadNiagenPage() {
     <>
       <JsonLd data={[serviceSchema({ name: "NAD+ & Niagen Therapy", description: "NAD+ and Niagen therapies to restore cellular energy, mental clarity, and support healthy aging in Huntsville, AL.", path: "/nad-niagen-special", serviceType: "NAD+ Therapy" }), breadcrumbSchema([{ name: "Home", path: "/" }, { name: "NAD+ & Niagen", path: "/nad-niagen-special" }])]} />
       {/* Hero */}
-      <section className="bg-primary text-white section-padding">
-        <div className="container-custom mx-auto">
+      <section className="relative text-white section-padding overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover"
+          style={{
+            backgroundImage: "url('/images/niagen-background.png')",
+            backgroundPosition: "center 30%",
+          }}
+        />
+        <div className="absolute inset-0 bg-primary/85" />
+        <div className="container-custom mx-auto relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-secondary font-semibold uppercase tracking-wide mb-3">
