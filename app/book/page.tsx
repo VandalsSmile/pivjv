@@ -148,14 +148,14 @@ export default function BookPage() {
       <JsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Book", path: "/book" }])} />
       {/* Hero */}
       <section className="relative bg-primary text-white overflow-hidden">
-        {/* Calendar background image */}
+        {/* Hero background image */}
         <Image
-          src="/images/book-calendar-bg.png"
+          src="/images/book-background.png"
           alt=""
           fill
           priority
           aria-hidden="true"
-          className="object-cover opacity-25"
+          className="object-cover opacity-40"
           sizes="100vw"
         />
         {/* Navy overlay for text contrast */}
