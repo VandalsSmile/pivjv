@@ -30,7 +30,7 @@ export function BenefitsSection() {
 
         <div className="text-center mt-12">
           <Link
-            href="/iv-therapy"
+            href="/book"
             className="inline-flex items-center gap-2 text-secondary hover:text-secondary-light transition-colors font-semibold"
           >
             Schedule your IV therapy
