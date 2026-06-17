@@ -20,6 +20,11 @@ const nextConfig: NextConfig = {
         destination: "https://www.huntsvilleiv.com/nad-niagen-special",
         permanent: true,
       },
+      {
+        source: "/myers-cocktail-iv-therapy",
+        destination: "https://www.huntsvilleiv.com/myers-iv-therapy",
+        permanent: true,
+      },
     ];
   },
 };
