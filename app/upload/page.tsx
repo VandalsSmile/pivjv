@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import { UploadManager } from "./upload-manager";
+import { LoginForm } from "./login-form";
+import { UPLOAD_AUTH_COOKIE, UPLOAD_AUTH_TOKEN } from "@/lib/upload-auth";
 
 export const metadata: Metadata = {
   title: "Gallery Image Uploader",
   robots: { index: false, follow: false },
 };
 
-export default function UploadPage() {
+export default async function UploadPage() {
+  const cookieStore = await cookies();
+  const isAuthed =
+    cookieStore.get(UPLOAD_AUTH_COOKIE)?.value === UPLOAD_AUTH_TOKEN;
+
   return (
     <section className="section-padding bg-background min-h-screen">
       <div className="max-w-4xl mx-auto">
@@ -26,7 +33,7 @@ export default function UploadPage() {
             . You can also remove existing images below.
           </p>
         </div>
-        <UploadManager />
+        {isAuthed ? <UploadManager /> : <LoginForm />}
       </div>
     </section>
   );
