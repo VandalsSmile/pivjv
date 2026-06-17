@@ -23,6 +23,8 @@ export const CONTACT = {
     mapsUrl:
       "https://www.google.com/maps/place/Prime+IV+Hydration+%26+Wellness+-+Huntsville-Jones+Valley/@34.6775269,-86.5522675,882m/data=!3m2!1e3!4b1!4m6!3m5!1s0x88621363143910ed:0xc72bf3e141cf1e70!8m2!3d34.6775225!4d-86.5496926!16s%2Fg%2F11mdztgr4n",
   },
+  reviewUrl:
+    "https://www.google.com/search?q=prime+iv+huntsville+al&rlz=1C5CHFA_enUS837US837&oq=prime+iv+hunt&gs_lcrp=EgZjaHJvbWUqCggAEAAY4wIYgAQyCggAEAAY4wIYgAQyDQgBEC4YrwEYxwEYgAQyBggCEEUYOTINCAMQLhivARjHARiABDIHCAQQABiABDIGCAUQRRg8MgYIBhBFGDwyBggHEEUYPNIBCDI0NThqMGo5qAIGsAIB8QXBbRzILmvtGA&sourceid=chrome&ie=UTF-8#lrd=0x88621363143910ed:0xc72bf3e141cf1e70,3,,,,",
 };
 
 export const LOGO_URL =

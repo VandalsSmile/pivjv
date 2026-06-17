@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/json-ld";
 import { breadcrumbSchema, serviceSchema } from "@/lib/structured-data";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Phone,
   Check,
@@ -179,8 +180,16 @@ export default function NadNiagenPage() {
     <>
       <JsonLd data={[serviceSchema({ name: "NAD+ & Niagen Therapy", description: "NAD+ and Niagen therapies to restore cellular energy, mental clarity, and support healthy aging in Huntsville, AL.", path: "/nad-niagen-special", serviceType: "NAD+ Therapy" }), breadcrumbSchema([{ name: "Home", path: "/" }, { name: "NAD+ & Niagen", path: "/nad-niagen-special" }])]} />
       {/* Hero */}
-      <section className="bg-primary text-white section-padding">
-        <div className="container-custom mx-auto">
+      <section className="relative text-white section-padding overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover"
+          style={{
+            backgroundImage: "url('/images/niagen-background.png')",
+            backgroundPosition: "center 30%",
+          }}
+        />
+        <div className="absolute inset-0 bg-primary/85" />
+        <div className="container-custom mx-auto relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-secondary font-semibold uppercase tracking-wide mb-3">
@@ -303,6 +312,15 @@ export default function NadNiagenPage() {
                 deliver a powerful one-two punch for energy, clarity, and
                 healthy aging—straight to the cellular level.
               </p>
+              <div className="relative rounded-2xl overflow-hidden shadow-lg mb-6 aspect-[4/3]">
+                <Image
+                  src="/images/nad-intake-room.png"
+                  alt="Two clients reviewing their treatment plans on tablets in a Prime IV therapy room beneath NAD+ Anti-Aging and Brain Regeneration posters"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
               <Link href="/specials#claim-form" className="btn-primary">
                 Start Feeling the Difference
                 <ArrowRight className="w-4 h-4" />
