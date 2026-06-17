@@ -326,6 +326,15 @@ export default function MenuPage() {
               </div>
             ))}
           </div>
+          <div className="mt-10 flex justify-center">
+            <Link
+              href={`tel:${CONTACT.phoneClean}`}
+              className="btn-primary"
+            >
+              <Phone className="w-4 h-4" />
+              Call to Book
+            </Link>
+          </div>
         </div>
       </section>
 
