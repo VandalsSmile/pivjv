@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/json-ld";
 import { breadcrumbSchema, serviceSchema } from "@/lib/structured-data";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Phone,
   Check,
@@ -311,6 +312,15 @@ export default function NadNiagenPage() {
                 deliver a powerful one-two punch for energy, clarity, and
                 healthy aging—straight to the cellular level.
               </p>
+              <div className="relative rounded-2xl overflow-hidden shadow-lg mb-6 aspect-[4/3]">
+                <Image
+                  src="/images/nad-intake-room.png"
+                  alt="Two clients reviewing their treatment plans on tablets in a Prime IV therapy room beneath NAD+ Anti-Aging and Brain Regeneration posters"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
               <Link href="/specials#claim-form" className="btn-primary">
                 Start Feeling the Difference
                 <ArrowRight className="w-4 h-4" />
