@@ -27,8 +27,16 @@ export default function MembershipsPage() {
     <>
       <JsonLd data={[breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Memberships", path: "/memberships" }])]} />
       {/* Hero Section */}
-      <section className="bg-primary text-white py-16 lg:py-24">
-        <div className="container-custom mx-auto px-4">
+      <section className="relative text-white py-16 lg:py-24 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover"
+          style={{
+            backgroundImage: "url('/images/membership-background.png')",
+            backgroundPosition: "center 40%",
+          }}
+        />
+        <div className="absolute inset-0 bg-primary/85" />
+        <div className="container-custom mx-auto px-4 relative">
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-secondary font-semibold uppercase tracking-wide mb-3">
               Memberships
