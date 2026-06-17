@@ -81,13 +81,15 @@ export function Footer() {
               Book Now
             </Link>
             <div className="mt-4 flex items-center gap-3">
-              <Image
-                src="/images/hsa-fsa-eligible.png"
-                alt="HSA and FSA eligible payment badge"
-                width={56}
-                height={56}
-                className="w-14 h-14 flex-shrink-0"
-              />
+              <div className="rounded-full bg-white p-1.5 flex-shrink-0 shadow-sm">
+                <Image
+                  src="/images/hsa-fsa-eligible.png"
+                  alt="HSA and FSA eligible payment badge"
+                  width={56}
+                  height={56}
+                  className="w-14 h-14"
+                />
+              </div>
               <span className="text-sm text-white/70">
                 HSA/FSA Eligible
               </span>
