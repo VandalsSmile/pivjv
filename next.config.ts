@@ -13,6 +13,25 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/nad--and-niagen",
+        destination: "https://www.huntsvilleiv.com/nad-niagen-special",
+        permanent: true,
+      },
+      {
+        source: "/myers-cocktail-iv-therapy",
+        destination: "https://www.huntsvilleiv.com/myers-iv-therapy",
+        permanent: true,
+      },
+      {
+        source: "/weight-loss",
+        destination: "/medical-weight-loss",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
