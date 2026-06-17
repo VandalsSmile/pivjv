@@ -5,7 +5,6 @@ import Link from "next/link";
 import {
   Phone,
   Check,
-  ArrowRight,
   Clock,
   UserCheck,
   Award,
@@ -19,7 +18,7 @@ import {
   Heart,
   Droplets,
 } from "lucide-react";
-import { CONTACT, SITE_CONFIG, BOOKING_LINKS } from "@/lib/constants";
+import { CONTACT, SITE_CONFIG } from "@/lib/constants";
 
 
 export const metadata: Metadata = {
@@ -280,13 +279,11 @@ export default function MyersIVPage() {
 
               <div className="flex flex-wrap gap-4 mb-6">
                 <Link
-                  href={BOOKING_LINKS.nonMember}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={`tel:${CONTACT.phoneClean}`}
                   className="btn-primary"
                 >
+                  <Phone className="w-4 h-4" />
                   Book Your Myers&apos; Cocktail
-                  <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link href={`tel:${CONTACT.phoneClean}`} className="btn-outline">
                   <Phone className="w-4 h-4" />
@@ -325,7 +322,7 @@ export default function MyersIVPage() {
                 <p className="text-foreground-muted mb-6">
                   Energy, immunity, recovery &amp; clarity — in one session.
                 </p>
-                <ul className="space-y-3 mb-6">
+                <ul className="space-y-3">
                   {heroBenefits.map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
@@ -333,15 +330,6 @@ export default function MyersIVPage() {
                     </li>
                   ))}
                 </ul>
-                <Link
-                  href={BOOKING_LINKS.nonMember}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary w-full justify-center"
-                >
-                  Reserve Your Session
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
               </div>
             </div>
           </div>
@@ -402,13 +390,11 @@ export default function MyersIVPage() {
 
           <div className="text-center mt-10">
             <Link
-              href={BOOKING_LINKS.nonMember}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`tel:${CONTACT.phoneClean}`}
               className="btn-primary"
             >
+              <Phone className="w-4 h-4" />
               Book Your Myers&apos; Cocktail Today
-              <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
@@ -532,13 +518,11 @@ export default function MyersIVPage() {
             </div>
             <div className="text-center mt-8">
               <Link
-                href={BOOKING_LINKS.nonMember}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`tel:${CONTACT.phoneClean}`}
                 className="btn-primary"
               >
+                <Phone className="w-4 h-4" />
                 Get This Blend Today
-                <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
@@ -820,15 +804,6 @@ export default function MyersIVPage() {
               {CONTACT.address.city}, AL.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                href={BOOKING_LINKS.nonMember}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary"
-              >
-                Book Your Myers&apos; Cocktail
-                <ArrowRight className="w-4 h-4" />
-              </Link>
               <Link href={`tel:${CONTACT.phoneClean}`} className="btn-outline">
                 <Phone className="w-4 h-4" />
                 Call {CONTACT.phone}
