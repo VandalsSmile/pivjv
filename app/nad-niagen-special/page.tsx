@@ -215,7 +215,7 @@ export default function NadNiagenPage() {
               </div>
 
               <div className="flex flex-wrap gap-4 mb-6">
-                <Link href="/specials#claim-form" className="btn-primary">
+                <Link href="tel:2566926347" className="btn-primary">
                   Book Your Session
                   <ArrowRight className="w-4 h-4" />
                 </Link>
@@ -272,13 +272,6 @@ export default function NadNiagenPage() {
                     </li>
                   ))}
                 </ul>
-                <Link
-                  href="/specials#claim-form"
-                  className="btn-secondary w-full justify-center"
-                >
-                  Book Your Session
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
               </div>
             </div>
           </div>
@@ -321,7 +314,7 @@ export default function NadNiagenPage() {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
-              <Link href="/specials#claim-form" className="btn-primary">
+              <Link href="tel:2566926347" className="btn-primary">
                 Start Feeling the Difference
                 <ArrowRight className="w-4 h-4" />
               </Link>
@@ -387,7 +380,7 @@ export default function NadNiagenPage() {
           </div>
 
           <div className="text-center mt-10">
-            <Link href="/specials#claim-form" className="btn-primary">
+            <Link href="tel:2566926347" className="btn-primary">
               Book Your Session Today
               <ArrowRight className="w-4 h-4" />
             </Link>
@@ -542,10 +535,10 @@ export default function NadNiagenPage() {
               wellness.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/specials#claim-form" className="btn-primary">
-                Book Your Session
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+            <Link href="tel:2566926347" className="btn-primary">
+              Book Your Session
+              <ArrowRight className="w-4 h-4" />
+            </Link>
               <Link href={`tel:${CONTACT.phoneClean}`} className="btn-outline">
                 <Phone className="w-4 h-4" />
                 Call {CONTACT.phone}

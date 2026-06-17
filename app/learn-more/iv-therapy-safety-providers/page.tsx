@@ -51,7 +51,6 @@ export default function Page() {
       <ul>
         <li>Registered Nurses (RNs)</li>
         <li>Licensed Practical Nurses (LPNs)</li>
-        <li>Paramedics (EMT-P)</li>
         <li>Nurse Practitioners</li>
         <li>Other medically trained staff with IV expertise</li>
       </ul>

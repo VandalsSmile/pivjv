@@ -21,7 +21,7 @@ import {
   CreditCard,
   BadgeCheck,
 } from "lucide-react";
-import { CONTACT, PRICING, SITE_CONFIG } from "@/lib/constants";
+import { CONTACT, PRICING, SITE_CONFIG, BOOKING_LINKS } from "@/lib/constants";
 
 
 const savings = Math.round(
@@ -110,7 +110,7 @@ const steps = [
 ];
 
 const trustSignals = [
-  { icon: BadgeCheck, label: "Licensed Medical Staff (RN/Paramedic on site)" },
+  { icon: BadgeCheck, label: "Licensed Medical Staff (RN on site)" },
   { icon: CreditCard, label: "HSA / FSA Accepted" },
   { icon: Users, label: "Couples & Group Bookings Welcome" },
   { icon: Sparkles, label: "Premium, Spa-Like Experience" },
@@ -202,7 +202,12 @@ export default function IntroOfferPage() {
               </div>
 
               <div className="flex flex-wrap gap-4 mb-6">
-                <Link href="/specials#claim-form" className="btn-primary">
+                <Link
+                  href={BOOKING_LINKS.introOffer}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary"
+                >
                   Book Your Intro Session
                   <ArrowRight className="w-4 h-4" />
                 </Link>
@@ -299,13 +304,6 @@ export default function IntroOfferPage() {
               </div>
             ))}
           </div>
-
-          <div className="text-center mt-10">
-            <Link href="/specials#claim-form" className="btn-primary">
-              Book Your ${PRICING.introOffer.price} Intro Session
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
         </div>
       </section>
 
@@ -336,7 +334,12 @@ export default function IntroOfferPage() {
                   recharge.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Link href="/specials#claim-form" className="btn-primary">
+                  <Link
+                    href={BOOKING_LINKS.introOffer}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary"
+                  >
                     Book Online Now
                     <ArrowRight className="w-4 h-4" />
                   </Link>
@@ -517,7 +520,12 @@ export default function IntroOfferPage() {
               {SITE_CONFIG.name}.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/specials#claim-form" className="btn-primary">
+              <Link
+                href={BOOKING_LINKS.introOffer}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+              >
                 Book Your ${PRICING.introOffer.price} Intro Offer
                 <ArrowRight className="w-4 h-4" />
               </Link>

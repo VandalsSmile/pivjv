@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Phone, ArrowRight, Check, Loader2 } from "lucide-react";
-import { CONTACT, PRICING } from "@/lib/constants";
+import { CONTACT, PRICING, BOOKING_LINKS } from "@/lib/constants";
 import { sendLead } from "@/app/actions/send-lead";
 import { TurnstileWidget } from "@/components/turnstile-widget";
 
@@ -75,7 +75,12 @@ export function CtaSection() {
             </p>
 
             <div className="flex flex-wrap gap-4 mb-8">
-              <Link href="/specials" className="btn-primary">
+              <Link
+                href={BOOKING_LINKS.introOffer}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+              >
                 Book ${PRICING.introOffer.price} Intro IV
                 <ArrowRight className="w-4 h-4" />
               </Link>
