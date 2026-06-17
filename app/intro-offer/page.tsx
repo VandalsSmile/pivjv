@@ -334,7 +334,12 @@ export default function IntroOfferPage() {
                   recharge.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Link href="/specials#claim-form" className="btn-primary">
+                  <Link
+                    href={BOOKING_LINKS.introOffer}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary"
+                  >
                     Book Online Now
                     <ArrowRight className="w-4 h-4" />
                   </Link>
@@ -515,7 +520,12 @@ export default function IntroOfferPage() {
               {SITE_CONFIG.name}.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/specials#claim-form" className="btn-primary">
+              <Link
+                href={BOOKING_LINKS.introOffer}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+              >
                 Book Your ${PRICING.introOffer.price} Intro Offer
                 <ArrowRight className="w-4 h-4" />
               </Link>

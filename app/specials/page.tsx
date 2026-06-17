@@ -3,7 +3,7 @@ import { JsonLd } from "@/components/json-ld";
 import { breadcrumbSchema } from "@/lib/structured-data";
 import Link from "next/link";
 import { Phone, Check, ArrowRight, Loader2 } from "lucide-react";
-import { CONTACT, PRICING } from "@/lib/constants";
+import { CONTACT, PRICING, BOOKING_LINKS } from "@/lib/constants";
 import { SpecialsForm } from "./specials-form";
 
 export const metadata: Metadata = {
@@ -308,7 +308,12 @@ export default function SpecialsPage() {
                       ))}
                     </ul>
                     <div className="flex flex-wrap gap-4">
-                      <Link href="#claim-form" className="btn-primary">
+                      <Link
+                        href={BOOKING_LINKS.introOffer}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-primary"
+                      >
                         Book Online Now
                         <ArrowRight className="w-4 h-4" />
                       </Link>

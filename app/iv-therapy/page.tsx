@@ -13,7 +13,7 @@ import {
   Phone,
   Check,
 } from "lucide-react";
-import { SERVICES, CONTACT, PRICING, SITE_CONFIG } from "@/lib/constants";
+import { SERVICES, CONTACT, PRICING, SITE_CONFIG, BOOKING_LINKS } from "@/lib/constants";
 
 
 export const metadata: Metadata = {
@@ -222,7 +222,12 @@ export default function IVTherapyPage() {
               advanced cellular therapies.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/specials" className="btn-primary">
+              <Link
+                href={BOOKING_LINKS.introOffer}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+              >
                 Book ${PRICING.introOffer.price} VIP IV
                 <ArrowRight className="w-4 h-4" />
               </Link>
