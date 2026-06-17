@@ -75,8 +75,17 @@ export default function AboutPage() {
     <>
       <JsonLd data={[breadcrumbSchema([{ name: "Home", path: "/" }, { name: "About", path: "/about" }])]} />
       {/* Hero Section */}
-      <section className="bg-primary text-white py-16 lg:py-24">
-        <div className="container-custom mx-auto px-4">
+      <section className="relative text-white py-20 lg:py-40 overflow-hidden">
+        <Image
+          src="/images/team-getprimed.png"
+          alt="The Prime IV Hydration & Wellness team outside their Jones Valley location in Huntsville, AL"
+          fill
+          priority
+          className="object-cover object-top"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-primary/80" aria-hidden="true" />
+        <div className="container-custom mx-auto px-4 relative">
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-secondary font-semibold uppercase tracking-wide mb-3">
               About Us

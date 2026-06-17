@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { ARTICLES } from "@/lib/articles";
 import { CONTACT } from "@/lib/constants";
@@ -41,8 +42,17 @@ export default function LearnMorePage() {
           },
         ]}
       />
-      <section className="bg-primary text-white py-16 lg:py-24">
-        <div className="container-custom mx-auto px-4">
+      <section className="relative text-white py-16 lg:py-24 overflow-hidden">
+        <Image
+          src="/images/lobby-waiting-area.jpg"
+          alt="The bright, welcoming lobby and waiting area at Prime IV Hydration & Wellness"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-primary/85" aria-hidden="true" />
+        <div className="container-custom mx-auto px-4 relative">
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-secondary font-semibold uppercase tracking-wide mb-3">
               Resource Center
