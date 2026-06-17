@@ -1,6 +1,6 @@
 import { Check } from "lucide-react";
 import Link from "next/link";
-import { TARGET_AUDIENCE, CONTACT } from "@/lib/constants";
+import { TARGET_AUDIENCE, CONTACT, BOOKING_LINKS } from "@/lib/constants";
 
 export function AudienceSection() {
   return (
@@ -32,9 +32,14 @@ export function AudienceSection() {
             </ul>
 
             <div className="flex flex-wrap gap-4">
-              <Link href="/contact" className="btn-secondary">
-                Book Your First Visit
-              </Link>
+            <Link
+              href={BOOKING_LINKS.introOffer}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary"
+            >
+              Book Your First Visit
+            </Link>
               <Link
                 href={`tel:${CONTACT.phoneClean}`}
                 className="btn-outline border-primary text-primary hover:bg-primary hover:text-white"
