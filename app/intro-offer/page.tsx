@@ -165,8 +165,16 @@ export default function IntroOfferPage() {
     <>
       <JsonLd data={[serviceSchema({ name: "$85 First-Time IV Therapy Offer", description: "New client special: first VIP IV therapy for $85 including a wellness consultation and full-size primary drip in Huntsville, AL.", path: "/intro-offer", serviceType: "IV Therapy" }), breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Intro Offer", path: "/intro-offer" }])]} />
       {/* Hero */}
-      <section className="bg-primary text-white section-padding">
-        <div className="container-custom mx-auto">
+      <section className="relative text-white section-padding overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover"
+          style={{
+            backgroundImage: "url('/images/intro-offer-background.png')",
+            backgroundPosition: "center 30%",
+          }}
+        />
+        <div className="absolute inset-0 bg-primary/85" />
+        <div className="container-custom mx-auto relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-secondary font-semibold uppercase tracking-wide mb-3">
