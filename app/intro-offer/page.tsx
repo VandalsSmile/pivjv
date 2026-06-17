@@ -110,7 +110,7 @@ const steps = [
 ];
 
 const trustSignals = [
-  { icon: BadgeCheck, label: "Licensed Medical Staff (RN/Paramedic on site)" },
+  { icon: BadgeCheck, label: "Licensed Medical Staff (RN on site)" },
   { icon: CreditCard, label: "HSA / FSA Accepted" },
   { icon: Users, label: "Couples & Group Bookings Welcome" },
   { icon: Sparkles, label: "Premium, Spa-Like Experience" },
