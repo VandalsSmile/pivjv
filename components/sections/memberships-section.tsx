@@ -104,25 +104,15 @@ export function MembershipsSection() {
                     </li>
                   ))}
                 </ul>
-
-                <Link
-                  href={
-                    membership.name === "Enlightenment"
-                      ? `tel:${CONTACT.phoneClean}`
-                      : "/memberships"
-                  }
-                  className={cn(
-                    "w-full justify-center",
-                    membership.highlight ? "btn-primary" : "btn-secondary"
-                  )}
-                >
-                  {membership.name === "Enlightenment"
-                    ? "Call to Join"
-                    : "Become A Member"}
-                </Link>
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-10 flex justify-center">
+          <Link href="/memberships" className="btn-primary">
+            Become A Member
+          </Link>
         </div>
 
         <p className="text-center text-sm text-foreground-muted mt-8">
