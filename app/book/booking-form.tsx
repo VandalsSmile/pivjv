@@ -97,7 +97,7 @@ export function BookingForm() {
         <h3 className="text-xl font-bold mb-2">Request Received!</h3>
         <p className="text-foreground-muted">
           {
-            "Thanks for booking with Prime IV Huntsville. Our team will reach out within 24 hours to confirm your appointment time."
+            "Thanks for booking with Prime IV Huntsville. Our team will reach out to confirm your appointment time."
           }
         </p>
       </div>
