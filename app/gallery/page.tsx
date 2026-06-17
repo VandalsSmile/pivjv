@@ -87,18 +87,19 @@ export default async function GalleryPage() {
               New photos of our lounge are coming soon. Check back shortly!
             </p>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-[220px] gap-4">
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
               {images.map((img, index) => (
                 <figure
                   key={`${img.src}-${index}`}
-                  className={`group relative overflow-hidden rounded-2xl shadow-sm ${img.span}`}
+                  className="group relative mb-4 break-inside-avoid overflow-hidden rounded-2xl shadow-sm"
                 >
                   <Image
                     src={img.src || "/placeholder.svg"}
                     alt={img.alt}
-                    fill
+                    width={0}
+                    height={0}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover object-bottom transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
                   />
                   {img.caption && (
                     <>
