@@ -103,7 +103,7 @@ export const NAV_LINKS = [
       { label: "About Prime IV Huntsville", href: "/about" },
       { label: "Our Team", href: "/about#team" },
       { label: "Gallery", href: "/gallery" },
-      { label: "Contact Us", href: "/contact" },
+      { label: "Contact Us", href: "/book#contact" },
     ],
   },
   {
