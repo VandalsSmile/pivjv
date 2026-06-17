@@ -1,31 +1,24 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { UPLOAD_AUTH_COOKIE, UPLOAD_AUTH_TOKEN } from "@/lib/upload-auth";
 
-// Basic auth password. Override via env var in production if desired.
-const AUTH_PASSWORD = process.env.BASIC_AUTH_PASSWORD || "2566926347";
-
+// Protects the gallery write API routes. Auth uses a password-only login form
+// (see /upload and /api/upload-login) backed by an httpOnly session cookie —
+// there is no username field.
 export function middleware(request: NextRequest) {
-  const authHeader = request.headers.get("authorization");
+  const token = request.cookies.get(UPLOAD_AUTH_COOKIE)?.value;
 
-  if (authHeader) {
-    const encoded = authHeader.split(" ")[1] || "";
-    const decoded = atob(encoded);
-    const idx = decoded.indexOf(":");
-    const password = decoded.slice(idx + 1);
-
-    if (password === AUTH_PASSWORD) {
-      return NextResponse.next();
-    }
+  if (token === UPLOAD_AUTH_TOKEN) {
+    return NextResponse.next();
   }
 
-  return new NextResponse("Authentication required.", {
-    status: 401,
-    headers: {
-      "WWW-Authenticate": 'Basic realm="Secure Area", charset="UTF-8"',
-    },
-  });
+  return NextResponse.json(
+    { error: "Authentication required." },
+    { status: 401 },
+  );
 }
 
 export const config = {
-  // Protect the admin uploader page and its write API routes.
-  matcher: ["/upload", "/api/upload", "/api/delete"],
+  // Protect the gallery write API routes. The /upload page renders its own
+  // password gate, and /api/upload-login must stay public to authenticate.
+  matcher: ["/api/upload", "/api/delete"],
 };
