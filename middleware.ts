@@ -1,7 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
 
-// Basic auth credentials. Override via env vars in production if desired.
-const AUTH_USER = process.env.BASIC_AUTH_USER || "admin";
+// Basic auth password. Override via env var in production if desired.
 const AUTH_PASSWORD = process.env.BASIC_AUTH_PASSWORD || "2566926347";
 
 export function middleware(request: NextRequest) {
@@ -11,10 +10,9 @@ export function middleware(request: NextRequest) {
     const encoded = authHeader.split(" ")[1] || "";
     const decoded = atob(encoded);
     const idx = decoded.indexOf(":");
-    const user = decoded.slice(0, idx);
     const password = decoded.slice(idx + 1);
 
-    if (user === AUTH_USER && password === AUTH_PASSWORD) {
+    if (password === AUTH_PASSWORD) {
       return NextResponse.next();
     }
   }
