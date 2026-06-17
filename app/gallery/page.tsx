@@ -29,38 +29,7 @@ type GalleryItem = {
   span: string;
 };
 
-const STATIC_IMAGES: GalleryItem[] = [
-  {
-    src: "/images/vip-spa-lounge.jpg",
-    alt: "The VIP IV therapy lounge with zero-gravity massage chairs",
-    caption: "Our VIP Lounge",
-    span: "lg:col-span-2 lg:row-span-2",
-  },
-  {
-    src: "/images/gallery-reception.png",
-    alt: "Bright, modern reception and waiting area",
-    caption: "Welcoming Reception",
-    span: "",
-  },
-  {
-    src: "/images/gallery-treatment.png",
-    alt: "Treatment lounge with reclining massage chairs and IV stands",
-    caption: "Relaxing Treatment Chairs",
-    span: "",
-  },
-  {
-    src: "/images/owner-ann-rn.png",
-    alt: "Ann, registered nurse and owner of Prime IV Huntsville",
-    caption: "Cared For by Licensed Pros",
-    span: "",
-  },
-  {
-    src: "/images/gallery-iv-detail.png",
-    alt: "Close-up of a professional IV drip on a chrome stand",
-    caption: "Premium IV Therapies",
-    span: "",
-  },
-];
+const STATIC_IMAGES: GalleryItem[] = [];
 
 async function getUploadedImages(): Promise<GalleryItem[]> {
   if (!process.env.BLOB_READ_WRITE_TOKEN) return [];
@@ -113,30 +82,36 @@ export default async function GalleryPage() {
 
       <section className="section-padding bg-background">
         <div className="container-custom mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-[220px] gap-4">
-            {images.map((img, index) => (
-              <figure
-                key={`${img.src}-${index}`}
-                className={`group relative overflow-hidden rounded-2xl shadow-sm ${img.span}`}
-              >
-                <Image
-                  src={img.src || "/placeholder.svg"}
-                  alt={img.alt}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                {img.caption && (
-                  <>
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent" />
-                    <figcaption className="absolute bottom-4 left-4 right-4 text-white font-semibold text-lg drop-shadow">
-                      {img.caption}
-                    </figcaption>
-                  </>
-                )}
-              </figure>
-            ))}
-          </div>
+          {images.length === 0 ? (
+            <p className="text-center text-foreground/70 text-lg py-12">
+              New photos of our lounge are coming soon. Check back shortly!
+            </p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-[220px] gap-4">
+              {images.map((img, index) => (
+                <figure
+                  key={`${img.src}-${index}`}
+                  className={`group relative overflow-hidden rounded-2xl shadow-sm ${img.span}`}
+                >
+                  <Image
+                    src={img.src || "/placeholder.svg"}
+                    alt={img.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  {img.caption && (
+                    <>
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent" />
+                      <figcaption className="absolute bottom-4 left-4 right-4 text-white font-semibold text-lg drop-shadow">
+                        {img.caption}
+                      </figcaption>
+                    </>
+                  )}
+                </figure>
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </>
