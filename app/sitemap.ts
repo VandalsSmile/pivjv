@@ -26,6 +26,12 @@ const STATIC_ROUTES: {
   { path: "/faq", priority: 0.7, changeFrequency: "monthly" },
   { path: "/gallery", priority: 0.6, changeFrequency: "monthly" },
   { path: "/learn-more", priority: 0.7, changeFrequency: "weekly" },
+  {
+    path: "/bridal-glow-starts-with-hydration",
+    priority: 0.7,
+    changeFrequency: "monthly",
+  },
+  { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
