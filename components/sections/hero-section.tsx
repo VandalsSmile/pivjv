@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Phone, Check } from "lucide-react";
-import { SITE_CONFIG, CONTACT, PRICING } from "@/lib/constants";
+import { SITE_CONFIG, CONTACT, PRICING, BOOKING_LINKS } from "@/lib/constants";
 
 export function HeroSection() {
   return (
@@ -21,8 +21,8 @@ export function HeroSection() {
             </h1>
 
             <div className="flex flex-wrap gap-3">
-              <Link href="/specials" className="btn-primary">
-                Book ${PRICING.introOffer.price} VIP IV
+              <Link href="/intro-offer" className="btn-primary">
+                Claim ${PRICING.introOffer.price} VIP IV
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link href="/specials" className="btn-outline">
@@ -55,11 +55,13 @@ export function HeroSection() {
             </div>
 
             <div className="flex flex-wrap gap-4 pt-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 text-white hover:text-secondary transition-colors font-medium"
-              >
-                Book Your First Session
+            <Link
+              href={BOOKING_LINKS.introOffer}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-white hover:text-secondary transition-colors font-medium"
+            >
+              Book Your First Session
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
@@ -109,12 +111,12 @@ export function HeroSection() {
                   {PRICING.introOffer.description}
                 </h3>
 
-                <Link
-                  href="/specials"
-                  className="btn-secondary w-full justify-center"
-                >
-                  Claim Your First IV
-                </Link>
+              <Link
+                href="/intro-offer"
+                className="btn-secondary w-full justify-center"
+              >
+                Claim Your First IV
+              </Link>
               </div>
             </div>
           </div>

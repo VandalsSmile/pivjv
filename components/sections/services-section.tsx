@@ -83,7 +83,7 @@ export function ServicesSection() {
           <p className="text-foreground-muted mb-4">
             Not sure what you need? We&apos;ll guide you.
           </p>
-          <Link href="/iv-therapy" className="btn-primary">
+          <Link href="/iv-matcher" className="btn-primary">
             Find Your Perfect IV
             <ArrowRight className="w-4 h-4" />
           </Link>
