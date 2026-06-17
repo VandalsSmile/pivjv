@@ -304,13 +304,6 @@ export default function IntroOfferPage() {
               </div>
             ))}
           </div>
-
-          <div className="text-center mt-10">
-            <Link href="/specials#claim-form" className="btn-primary">
-              Book Your ${PRICING.introOffer.price} Intro Session
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
         </div>
       </section>
 
