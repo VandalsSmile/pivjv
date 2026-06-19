@@ -267,23 +267,23 @@ export default function Page() {
           className="w-full rounded-2xl border border-border shadow-sm"
           loading="lazy"
         />
-        <figcaption className="mt-3 text-center text-sm text-muted-foreground">
+        <figcaption className="mt-3 text-center text-sm text-foreground-muted">
           The {SITE_CONFIG.name} NAD+ Amplifier — given before your infusion to
           prepare, amplify, and absorb.
         </figcaption>
       </figure>
 
-      <div className="not-prose my-10 flex flex-col items-center gap-4 rounded-2xl bg-primary px-6 py-10 text-center text-primary-foreground">
-        <h2 className="text-2xl font-bold text-balance text-primary-foreground sm:text-3xl">
+      <div className="my-10 flex flex-col items-center gap-4 rounded-2xl bg-primary px-6 py-10 text-center">
+        <div className="text-2xl font-bold text-balance text-foreground-light sm:text-3xl">
           Ready to amplify your NAD+ results?
-        </h2>
-        <p className="max-w-xl text-pretty text-primary-foreground/90">
+        </div>
+        <div className="max-w-xl text-pretty text-foreground-light/90">
           Book your NAD+ session with the Amplifier at {SITE_CONFIG.name} in{" "}
           {CONTACT.address.city} and feel the difference better prep makes.
-        </p>
+        </div>
         <Link
           href="/book"
-          className="mt-2 inline-flex items-center justify-center rounded-full bg-background px-8 py-3 text-base font-semibold text-foreground transition-colors hover:bg-background/90"
+          className="mt-2 inline-flex items-center justify-center rounded-full bg-secondary px-8 py-3 text-base font-semibold text-foreground-light no-underline transition-colors hover:bg-secondary-dark"
         >
           Book Now
         </Link>
