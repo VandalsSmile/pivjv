@@ -10,6 +10,17 @@ export type Article = {
 
 export const ARTICLES: Article[] = [
   {
+    slug: "how-to-get-more-out-of-your-nad-therapy",
+    title: "How to Get More Out of Your NAD+ Therapy",
+    excerpt:
+      "Prep your body before your NAD+ infusion. Learn how the NAD+ Amplifier — glutathione, B-12, alpha lipoic acid, and magnesium — helps you absorb more, feel fewer side effects, and get the most from every NAD+ session.",
+    category: "NAD+ Therapy",
+    readTime: "6 min read",
+    date: "June 19, 2026",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PIV%20NAD%20NIAGEN%20PRETREAT%20GEN-vorGaNVVYOfbfevfoxLXIHJDDwN5r7.png",
+  },
+  {
     slug: "support-immune-system-before-summer-travel",
     title: "How to Support Your Immune System Before Summer Travel",
     excerpt:
