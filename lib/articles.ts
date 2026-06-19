@@ -18,7 +18,7 @@ export const ARTICLES: Article[] = [
     readTime: "6 min read",
     date: "June 19, 2026",
     image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PIV%20NAD%20NIAGEN%20PRETREAT%20GEN-vorGaNVVYOfbfevfoxLXIHJDDwN5r7.png",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PIV%20mid%20aged%20very%20active-SWVR9oqcJNOoqxBomhyf3ovoPHYosV.jpg",
   },
   {
     slug: "support-immune-system-before-summer-travel",
