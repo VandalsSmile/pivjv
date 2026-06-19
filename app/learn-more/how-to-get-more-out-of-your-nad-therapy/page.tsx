@@ -93,6 +93,52 @@ export default function Page() {
         infusion comfortable from start to finish.
       </p>
 
+      <h2>The Science: Why Pre-Treatment Helps NAD+ Work Better</h2>
+      <p>
+        NAD+ (nicotinamide adenine dinucleotide) is a coenzyme that sits at the
+        center of cellular energy metabolism. It shuttles electrons inside your
+        mitochondria to produce ATP, and it&apos;s the required fuel for two
+        families of repair enzymes — <strong>sirtuins</strong>, which regulate
+        DNA stability and healthy aging, and <strong>PARPs</strong>, which patch
+        damaged DNA. The catch is that all of this activity burns through
+        antioxidants and generates metabolic byproducts. Flooding depleted cells
+        with NAD+ without support is like revving an engine that&apos;s low on
+        oil.
+      </p>
+      <p>
+        Pre-treatment addresses that gap on three fronts, and each ingredient
+        targets a specific bottleneck in the pathway:
+      </p>
+      <ul>
+        <li>
+          <strong>Redox balance.</strong> Faster electron transport increases
+          reactive oxygen species (free radicals). Glutathione and alpha lipoic
+          acid raise your antioxidant capacity <em>before</em> the surge, so
+          oxidative stress doesn&apos;t throttle the very mitochondria NAD+ is
+          trying to energize. ALA also regenerates spent glutathione, extending
+          that protection through the whole session.
+        </li>
+        <li>
+          <strong>Methylation support.</strong> Your body clears excess NAD+
+          metabolites by methylating them, a process that consumes methyl donors
+          and B vitamins. Topping up B-12 keeps that clearance pathway running so
+          you tolerate higher, more effective doses without depleting reserves.
+        </li>
+        <li>
+          <strong>Vascular &amp; smooth-muscle calm.</strong> The classic NAD+
+          push sensations — chest tightness, cramping, nausea — are largely a
+          vascular and smooth-muscle response. Magnesium acts as a natural
+          calcium antagonist, relaxing those tissues so the infusion can be
+          delivered at an effective rate instead of being slowed to a crawl.
+        </li>
+      </ul>
+      <p>
+        The practical payoff: because the side effects that normally force a
+        slower drip are blunted, more NAD+ can actually reach your cells in a
+        usable window — and the cells are primed to put it to work rather than
+        spend it on cleanup.
+      </p>
+
       <h2>Why It Matters for You</h2>
       <ul>
         <li>Prepares your body to better absorb and utilize NAD+</li>
@@ -126,13 +172,77 @@ export default function Page() {
         </li>
       </ul>
 
-      <h2>Getting the Most Out of Every Session</h2>
+      <h2>When to Schedule for Maximum Results</h2>
       <p>
-        Beyond the Amplifier, a few simple habits help you make the most of your
-        NAD+ therapy: arrive well-hydrated, eat something light beforehand, plan
-        for the infusion to run at a comfortable pace, and stay consistent with a
-        schedule that matches your goals. Our team will tailor the right cadence
-        for you.
+        Timing matters more than most people expect. NAD+ ramps up energy
+        production, so the body responds best when it&apos;s rested and ready to
+        absorb — not when it&apos;s running on empty. A few timing principles
+        that help you get the most from each session:
+      </p>
+      <ul>
+        <li>
+          <strong>Go in the morning or early day.</strong> Because NAD+ is
+          energizing, many people find an afternoon or evening session can
+          interfere with sleep. A morning slot lets the boost work with your
+          natural circadian rhythm.
+        </li>
+        <li>
+          <strong>Take the Amplifier immediately before NAD+.</strong> The
+          pre-treatment is designed to be given right before your infusion so
+          your antioxidant and cofactor levels peak exactly when the NAD+ surge
+          hits — not hours earlier when the benefit has tapered off.
+        </li>
+        <li>
+          <strong>Front-load, then maintain.</strong> If you&apos;re starting
+          out or recovering from high stress, illness, or intense training, a
+          tighter cadence of sessions over the first few weeks builds your levels
+          up, followed by regular maintenance visits to hold them there.
+        </li>
+        <li>
+          <strong>Pair it with recovery, not depletion.</strong> Schedule around
+          rest days or lighter days rather than stacking it on top of an
+          exhausting, under-slept, under-hydrated day so your cells can actually
+          use what they receive.
+        </li>
+      </ul>
+      <p>
+        Arrive well-hydrated, eat something light beforehand, and let the
+        infusion run at a comfortable pace. Our team will tailor the right
+        cadence and time of day to your goals.
+      </p>
+
+      <h2>Getting NAD+ Injections Instead of an IV? Add These First</h2>
+      <p>
+        NAD+ is also available as a quick intramuscular or subcutaneous{" "}
+        <strong>injection</strong> — a faster, lower-dose option than a full IV
+        drip. The same prep philosophy applies, but a couple of the Amplifier
+        ingredients are especially well suited to the injection route because
+        they&apos;re routinely and comfortably given as shots:
+      </p>
+      <ul>
+        <li>
+          <strong>Vitamin B-12.</strong> B-12 is one of the most common and
+          well-tolerated injectables there is. Pairing a B-12 shot with your NAD+
+          injection delivers the same methylation and energy-metabolism support
+          that makes the IV Amplifier effective — a natural fit for an
+          injection-based visit.
+        </li>
+        <li>
+          <strong>Glutathione.</strong> Glutathione is frequently administered as
+          an injection as well, making it easy to layer in alongside NAD+ shots
+          to keep your antioxidant defenses high and protect your mitochondria
+          during the boost.
+        </li>
+      </ul>
+      <p>
+        The other two Amplifier ingredients are better matched to the IV setting:{" "}
+        <strong>magnesium sulfate</strong> primarily smooths out the side effects
+        of a fast IV <em>push</em>, which are far less of a factor with a small
+        injection, and <strong>alpha lipoic acid</strong> is generally delivered
+        by IV rather than as a routine shot. If you&apos;re doing injections, our
+        team can recommend the best B-12 and glutathione pairing for your goals;
+        if you want the full antioxidant-and-cofactor stack, the IV Amplifier is
+        the more complete option.
       </p>
 
       <p>
