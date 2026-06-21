@@ -31,8 +31,8 @@ const savings = Math.round(
 );
 
 export const metadata: Metadata = {
-  title: `$${PRICING.introOffer.price} First-Time IV Therapy Offer | New Client Special`,
-  description: `New to Prime IV? Claim your first VIP IV therapy for just $${PRICING.introOffer.price} (reg. $${PRICING.introOffer.regularPrice}) in ${CONTACT.address.city}, AL. Includes a wellness consultation, a full-size primary drip, and VIP massage-chair relaxation.`,
+  title: `$${PRICING.introOffer.price} Intro IV Therapy Offer | Prime IV Hydration Huntsville AL`,
+  description: `First-time clients get a full IV therapy session for just $${PRICING.introOffer.price} in Huntsville, AL. Includes wellness consult, premium drip, and VIP massage chair. Same-day available.`,
   keywords: [
     "IV therapy intro offer",
     "new client IV special",
@@ -181,7 +181,8 @@ export default function IntroOfferPage() {
                 First-Time Client Exclusive
               </p>
               <h1 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-                Feel Your Best for Just ${PRICING.introOffer.price}
+                Feel Your Best for Just ${PRICING.introOffer.price} —
+                Huntsville&apos;s Premier IV Therapy Intro Offer
               </h1>
               <p className="text-white/80 text-lg mb-8 text-pretty">
                 A full IV therapy experience—wellness consultation, premium
@@ -333,6 +334,11 @@ export default function IntroOfferPage() {
                   one-hour vacation amenities designed to help you unwind and
                   recharge.
                 </p>
+                <p className="text-foreground-muted leading-relaxed mb-6">
+                  Choose from our full menu of IV drips — Myers Cocktail,
+                  Vitamin C, Glutathione, NAD+, hangover recovery, and more —
+                  all customized to your goals at our Huntsville IV bar.
+                </p>
                 <div className="flex flex-wrap gap-4">
                   <Link
                     href={BOOKING_LINKS.introOffer}
@@ -351,6 +357,10 @@ export default function IntroOfferPage() {
                     {CONTACT.phone}
                   </Link>
                 </div>
+                <p className="text-sm text-foreground-muted mt-4">
+                  Prime IV Hydration &amp; Wellness — Jones Valley, Huntsville,
+                  AL 35802
+                </p>
               </div>
 
               <div className="bg-background-alt rounded-xl p-6">
