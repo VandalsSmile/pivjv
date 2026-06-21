@@ -29,9 +29,9 @@ import { CONTACT, SITE_CONFIG } from "@/lib/constants";
 
 
 export const metadata: Metadata = {
-  title: "NAD+ & Niagen Therapy | Cellular Energy & Longevity",
+  title: "NAD+ IV Therapy Huntsville AL | Niagen® Cellular Energy | Prime IV",
   description:
-    "Experience NAD+ and Niagen therapies at Prime IV Hydration & Wellness in Huntsville, AL. Restore cellular energy, sharpen mental clarity, and support healthy aging from the inside out.",
+    "NAD+ IV infusions and Niagen® therapy in Huntsville, AL. Restore cellular energy, sharpen focus, and slow aging at Prime IV Hydration & Wellness. 50% off through July 31.",
   keywords: [
     "NAD+ IV therapy",
     "Niagen therapy",
@@ -175,6 +175,11 @@ const faqs = [
     answer:
       "Yes. Every treatment is administered by licensed medical professionals using pharmaceutical-grade ingredients in a clean, comfortable, spa-like setting. We review your health and goals before every session.",
   },
+  {
+    question: "Where is Prime IV Huntsville located?",
+    answer:
+      "We're located in Jones Valley, Huntsville, AL 35802 — easy access from I-565 with same-day and weekend appointments available.",
+  },
 ];
 
 export default function NadNiagenPage() {
@@ -198,13 +203,16 @@ export default function NadNiagenPage() {
                 Cellular Energy &amp; Longevity Therapy
               </p>
               <h1 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-                Recharge Your Cells. Reclaim Your Energy.
+                NAD+ IV Therapy in Huntsville — Recharge Your Cells. Reclaim
+                Your Energy.
               </h1>
               <p className="text-white/80 text-lg mb-8 text-pretty">
                 NAD+ and Niagen® are the most advanced longevity therapies
                 available—designed to restore cellular energy, sharpen your
                 mind, and help you age on your terms, right here at{" "}
-                {SITE_CONFIG.name} in {CONTACT.address.city}, AL.
+                {SITE_CONFIG.name} in {CONTACT.address.city}, AL. Looking for
+                NAD+ therapy near Huntsville? Our Jones Valley clinic offers
+                same-week appointments with licensed medical staff.
               </p>
 
               <div className="flex items-center gap-4 mb-8">
@@ -411,6 +419,8 @@ export default function NadNiagenPage() {
             <p className="text-foreground-muted text-lg text-pretty">
               When you replenish NAD+, you&apos;re not masking symptoms—
               you&apos;re fueling the very source of your energy and recovery.
+              Our NAD+ anti-aging IV protocol is one of the most advanced
+              cellular wellness treatments available without a hospital setting.
             </p>
           </div>
 
