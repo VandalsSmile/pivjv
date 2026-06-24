@@ -131,6 +131,89 @@ export default function SpecialsPage() {
         </div>
       </section>
 
+      {/* July 4th Specials */}
+      <section className="section-padding bg-background-alt">
+        <div className="container-custom mx-auto">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-10">
+              <p className="text-sm font-semibold text-secondary uppercase tracking-wide mb-2">
+                Available to Book 6/27 – 7/5
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-balance">
+                Book Now Before (or After) Your 4th Fun!
+              </h2>
+              <p className="text-foreground-muted mt-4 max-w-3xl mx-auto">
+                Our special 4th of July offers are available to book now for
+                6/27&ndash;7/5. Get a B12 injection for just $17.76 (reg. $30) or
+                choose our Freedom Fuel Drip for $76 (reg. $99) to help support
+                your body before the holiday activities begin. Availability fills
+                quickly, so now is the best time to plan ahead.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {[
+                {
+                  name: "B12 Injection",
+                  price: "17.76",
+                  regularPrice: "30",
+                  description:
+                    "A quick energy and metabolism boost to keep you going through all your holiday celebrations.",
+                },
+                {
+                  name: "Freedom Fuel Drip",
+                  price: "76",
+                  regularPrice: "99",
+                  description:
+                    "A festive IV drip designed to hydrate, energize, and support your body before the holiday activities begin.",
+                },
+              ].map((offer) => (
+                <div
+                  key={offer.name}
+                  className="relative overflow-hidden rounded-2xl shadow-lg bg-primary text-white"
+                >
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0"
+                  >
+                    <span className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/10" />
+                    <span className="absolute bottom-8 right-10 w-20 h-20 rounded-full bg-white/10" />
+                    <span className="absolute -bottom-12 left-16 w-36 h-36 rounded-full bg-white/5" />
+                  </div>
+                  <div className="relative p-8 flex flex-col h-full">
+                    <span className="inline-block self-start bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full mb-3">
+                      4th of July Special
+                    </span>
+                    <h3 className="text-2xl font-bold mb-2">{offer.name}</h3>
+                    <div className="flex items-baseline gap-2 mb-4">
+                      <span className="text-3xl font-bold">${offer.price}</span>
+                      <span className="text-white/60 line-through">
+                        reg. ${offer.regularPrice}
+                      </span>
+                    </div>
+                    <p className="text-white/90 mb-6 flex-grow">
+                      {offer.description}
+                    </p>
+                    <Link
+                      href={`tel:${CONTACT.phoneClean}`}
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold text-primary transition-colors duration-200 hover:bg-white/90"
+                    >
+                      <Phone className="w-4 h-4" />
+                      Call to Book
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-sm text-foreground-muted text-center mt-6">
+              One-time required telehealth fee of ${PRICING.medicalClearance} for
+              first-timers.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Monthly Specials */}
       <section className="section-padding bg-background">
         <div className="container-custom mx-auto">
