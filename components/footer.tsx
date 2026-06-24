@@ -166,7 +166,7 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="container-custom mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-white/60 text-sm">
+            <p className="text-center text-white/60 text-sm">
               &copy; {currentYear} Prime IV {CONTACT.address.city}. All rights
               reserved.
             </p>
@@ -177,7 +177,7 @@ export function Footer() {
               Privacy Policy
             </Link>
           </div>
-          <p className="mt-4 text-center md:text-left text-white/60 text-sm">
+          <p className="mt-4 text-center text-white/60 text-sm">
             Digital Marketing by https://www.govsmarketing.com
           </p>
           <p className="mt-4 text-white/40 text-xs leading-relaxed">
