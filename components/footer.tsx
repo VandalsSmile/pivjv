@@ -177,6 +177,9 @@ export function Footer() {
               Privacy Policy
             </Link>
           </div>
+          <p className="mt-4 text-center md:text-left text-white/60 text-sm">
+            Digital Marketing by https://www.govsmarketing.com
+          </p>
           <p className="mt-4 text-white/40 text-xs leading-relaxed">
             The therapies provided have not been evaluated by the Food and Drug
             Administration. These compounded products are custom formulations
