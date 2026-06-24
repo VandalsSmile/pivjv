@@ -2,6 +2,11 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    // Next.js defaults the optimized image response to
+    // `Content-Disposition: attachment`, which makes "Open image in new tab"
+    // download the file instead of displaying it. Serve inline so gallery
+    // images open in the browser.
+    contentDispositionType: "inline",
     remotePatterns: [
       {
         protocol: "https",
