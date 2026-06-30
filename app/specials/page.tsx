@@ -53,7 +53,7 @@ const MONTHLY_SPECIALS = [
         name: "The Liver Cleanse Amplifier IV Bag",
         detail:
           "Includes Glutathione and Acetylcysteine for extra daily detoxification support.",
-        price: "$40 non-members / $35 members",
+        price: "$40",
       },
     ],
     bestFor:
@@ -95,7 +95,7 @@ const MONTHLY_SPECIALS = [
       {
         name: "The Alpha Amplifier IV Bag",
         detail: "For clients wanting additional metabolic wellness support.",
-        price: "$40 non-members / $35 members",
+        price: "$40",
       },
     ],
     bestFor:
