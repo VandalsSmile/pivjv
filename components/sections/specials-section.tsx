@@ -4,19 +4,19 @@ import { CONTACT } from "@/lib/constants";
 
 const SPECIALS = [
   {
-    name: "The Travel Defense",
+    name: "The Revitalizer",
     category: "Health & Wellness Special",
-    discount: "$50 OFF",
-    price: 160,
-    regularPrice: 210,
-    savingsLabel: "Save $50",
+    discount: "$30 OFF",
+    price: 150,
+    regularPrice: 180,
+    savingsLabel: "Save $30",
     description:
-      "Stay ready for wherever summer takes you. Built for travel, busy schedules, hydration support, immune wellness, energy, and recovery.",
+      "July is when people start feeling the effects of longer days, packed schedules, kids being out of school, outdoor activities, and mild dehydration. Many people blame stress or aging when they're actually running on empty. The Revitalizer is designed for busy professionals, parents, and active adults who feel tired, mentally drained, and unable to keep up with everything summer throws at them.",
     features: [
-      "Immunity Armor IV — reg. $180",
-      "Taurine IV Additive — reg. $30",
-      "Energy, immunity & hydration support",
-      "Best for travel, long flights & heat",
+      "The Revitalizer IV — reg. $180",
+      "Hydration, energy & mental clarity support",
+      "Replenishes essential vitamins & minerals",
+      "Best for busy summer schedules",
     ],
     addOns: [
       {
@@ -38,7 +38,7 @@ const SPECIALS = [
       },
     ],
     bestFor:
-      "Summer travel, busy schedules, long flights, heat, dehydration, disrupted sleep, and anyone wanting to stay ready for wherever summer takes them.",
+      "Busy professionals, parents, and active adults who feel tired, mentally drained, and unable to keep up with everything summer throws at them.",
     theme: {
       card: "bg-accent",
       badge: "bg-white text-accent",
@@ -46,19 +46,19 @@ const SPECIALS = [
     },
   },
   {
-    name: "The Summer Slim",
+    name: "The Glow Drip Bundle",
     category: "Beauty & Aging Special",
-    discount: "20% OFF",
-    price: 120,
-    regularPrice: 150,
-    savingsLabel: "Save 20%",
+    discount: "$60 OFF",
+    price: 170,
+    regularPrice: 230,
+    savingsLabel: "Save $60",
     description:
-      "Save 20% on The Skinny Drip IV this summer. Designed for energy, confidence, metabolism support, and overall wellness.",
+      "July brings more sunshine, outdoor events, pool days, and vacations—but increased UV exposure and heat can leave skin looking dry, dull, and tired. Sun exposure also contributes to oxidative stress, which can accelerate visible signs of aging and affect overall skin appearance. This bundle pairs The Glow Drip with The Restoration Amplifier to keep your skin hydrated and radiant all summer.",
     features: [
-      "The Skinny Drip IV — reg. $150",
-      "Metabolism & energy support",
-      "Feel lighter, brighter & energized",
-      "Best for vacations, pool days & events",
+      "The Glow Drip — reg. $180",
+      "The Restoration Amplifier — reg. $50",
+      "Skin hydration & antioxidant support",
+      "Combats summer sun & oxidative stress",
     ],
     addOns: [
       {
@@ -80,7 +80,7 @@ const SPECIALS = [
       },
     ],
     bestFor:
-      "Warmer weather, vacations, pool days, events, and anyone focused on feeling lighter, brighter, and more energized this June.",
+      "Anyone facing more sun exposure, outdoor events, pool days, and vacations who wants to combat dry, dull, tired-looking skin and support a healthy summer glow.",
     theme: {
       card: "bg-pink",
       badge: "bg-white text-pink",
@@ -98,7 +98,7 @@ export function SpecialsSection() {
             Limited Time Offers
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-balance">
-            Current Specials
+            July Specials
           </h2>
         </div>
 
