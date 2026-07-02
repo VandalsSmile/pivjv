@@ -19,6 +19,7 @@ const STATIC_ROUTES: {
   { path: "/myers-iv-therapy", priority: 0.8, changeFrequency: "weekly" },
   { path: "/memberships", priority: 0.8, changeFrequency: "weekly" },
   { path: "/specials", priority: 0.8, changeFrequency: "weekly" },
+  { path: "/gift-cards", priority: 0.8, changeFrequency: "monthly" },
   { path: "/book", priority: 0.8, changeFrequency: "monthly" },
   { path: "/iv-matcher", priority: 0.7, changeFrequency: "monthly" },
   { path: "/about", priority: 0.7, changeFrequency: "monthly" },
