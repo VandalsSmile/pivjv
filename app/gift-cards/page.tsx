@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/json-ld";
 import {
+  absoluteUrl,
   breadcrumbSchema,
-  serviceSchema,
   faqSchema,
 } from "@/lib/structured-data";
 import Link from "next/link";
@@ -32,10 +32,13 @@ import {
 import { CONTACT, SITE_CONFIG, PRICING } from "@/lib/constants";
 import { GiftCardForm } from "./gift-card-form";
 
+const PAGE_TITLE = "IV Therapy Gift Cards | Give the Gift of Wellness";
+const PAGE_DESCRIPTION =
+  "Give someone the same great feeling you get from IV therapy at Prime IV in Jones Valley, Huntsville, AL. Gift cards in any amount for drips & injections.";
+
 export const metadata: Metadata = {
-  title: "IV Therapy Gift Cards | Give the Gift of Wellness in Huntsville, AL",
-  description:
-    "Give someone close to you the same great feeling you get from IV therapy at Prime IV Hydration & Wellness in Jones Valley, Huntsville, AL. Gift cards available in any amount for IV drips, injections, and wellness experiences.",
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
   keywords: [
     "IV therapy gift card Huntsville",
     "wellness gift card Huntsville AL",
@@ -44,6 +47,28 @@ export const metadata: Metadata = {
     "hydration therapy gift",
   ],
   alternates: { canonical: "/gift-cards" },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "/gift-cards",
+    siteName: SITE_CONFIG.name,
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    images: [
+      {
+        url: "/images/vip-spa-lounge.jpg",
+        width: 1200,
+        height: 630,
+        alt: `Gift cards for IV therapy at ${SITE_CONFIG.name} in Jones Valley, Huntsville, AL`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    images: ["/images/vip-spa-lounge.jpg"],
+  },
 };
 
 const giftFeelings = [
@@ -180,13 +205,27 @@ export default function GiftCardsPage() {
     <>
       <JsonLd
         data={[
-          serviceSchema({
-            name: "IV Therapy Gift Cards",
+          {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: `${SITE_CONFIG.name} Gift Card`,
             description:
               "Gift cards for IV hydration therapy, vitamin injections, and wellness experiences at Prime IV Hydration & Wellness in Jones Valley, Huntsville, AL. Available in any amount.",
-            path: "/gift-cards",
-            serviceType: "Wellness Gift Card",
-          }),
+            url: absoluteUrl("/gift-cards"),
+            image: absoluteUrl("/images/vip-spa-lounge.jpg"),
+            brand: { "@type": "Brand", name: SITE_CONFIG.name },
+            category: "Gift Cards",
+            offers: {
+              "@type": "AggregateOffer",
+              priceCurrency: "USD",
+              lowPrice: String(PRICING.introOffer.price),
+              highPrice: "180",
+              offerCount: 3,
+              availability: "https://schema.org/InStock",
+              url: absoluteUrl("/gift-cards"),
+              seller: { "@id": `${SITE_CONFIG.url}/#business` },
+            },
+          },
           breadcrumbSchema([
             { name: "Home", path: "/" },
             { name: "Gift Cards", path: "/gift-cards" },
