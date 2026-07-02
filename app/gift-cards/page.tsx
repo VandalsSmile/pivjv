@@ -6,6 +6,7 @@ import {
   faqSchema,
 } from "@/lib/structured-data";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Phone,
   Check,
@@ -547,6 +548,21 @@ export default function GiftCardsPage() {
                 <span className="text-sm text-white/90">{signal.label}</span>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured image */}
+      <section className="section-padding bg-background pb-0">
+        <div className="container-custom mx-auto">
+          <div className="relative max-w-4xl mx-auto aspect-[4/3] sm:aspect-video rounded-2xl overflow-hidden shadow-xl">
+            <Image
+              src="/images/gift-card-relaxing.webp"
+              alt="Guest smiling and relaxing under a cozy blanket in a massage chair during an IV therapy session at Prime IV Hydration & Wellness in Jones Valley, Huntsville, AL"
+              fill
+              className="object-cover object-[center_22%]"
+              sizes="(max-width: 1024px) 100vw, 896px"
+            />
           </div>
         </div>
       </section>
