@@ -291,9 +291,9 @@ export default function GiftCardsPage() {
 
             {/* Gift Card Offer Card */}
             <div className="bg-white text-foreground rounded-2xl shadow-xl overflow-hidden">
-              <div className="bg-secondary p-4 text-center text-white">
-                <span className="inline-block bg-white text-secondary text-xs font-bold px-3 py-1 rounded-full">
-                  Available in Any Amount
+              <div className="bg-accent p-4 text-center text-white">
+                <span className="inline-block bg-white text-accent text-xs font-bold px-3 py-1 rounded-full">
+                  Special! Buy $100, Get $125 to Spend
                 </span>
               </div>
               <div className="p-8">
@@ -309,6 +309,19 @@ export default function GiftCardsPage() {
                 </p>
 
                 <div className="space-y-3 mb-6">
+                  <div className="rounded-lg border-2 border-accent bg-accent/10 px-4 py-3">
+                    <div className="flex items-center justify-between">
+                      <span className="font-semibold text-foreground">
+                        Buy $100
+                        <span className="block text-xs font-normal text-foreground-muted">
+                          Limited time only
+                        </span>
+                      </span>
+                      <span className="text-2xl font-bold text-accent">
+                        Get $125
+                      </span>
+                    </div>
+                  </div>
                   <div className="flex items-center justify-between rounded-lg bg-background-alt px-4 py-3">
                     <span className="font-semibold text-foreground">
                       First-Timer
@@ -595,6 +608,7 @@ export default function GiftCardsPage() {
               </p>
               <ul className="space-y-3 mb-8">
                 {[
+                  "Limited time special: buy a $100 gift card, get $125 to spend!",
                   "Available in any amount — popular picks are $85, $150, and $180.",
                   "Redeemable for every IV drip, injection, and add-on on the menu.",
                   "Ready fast — perfect for last-minute birthdays and thank-yous.",

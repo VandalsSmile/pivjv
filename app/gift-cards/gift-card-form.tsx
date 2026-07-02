@@ -6,6 +6,7 @@ import { sendLead } from "@/app/actions/send-lead";
 import { TurnstileWidget } from "@/components/turnstile-widget";
 
 const AMOUNT_LABELS: Record<string, string> = {
+  "100-special": "SPECIAL: Buy $100, Get $125 to Spend (Limited Time)",
   "85": "$85 — Covers the VIP Intro Offer IV",
   "150": "$150 — Covers any Primary IV Drip",
   "180": "$180 — Covers any Specialty IV Drip",
@@ -185,6 +186,9 @@ export function GiftCardForm() {
             className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all bg-white"
           >
             <option value="">Select an amount...</option>
+            <option value="100-special">
+              SPECIAL: Buy $100, Get $125 to Spend (Limited Time)
+            </option>
             <option value="85">$85 — Covers the VIP Intro Offer IV</option>
             <option value="150">$150 — Covers any Primary IV Drip</option>
             <option value="180">$180 — Covers any Specialty IV Drip</option>
