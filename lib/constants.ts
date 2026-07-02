@@ -82,6 +82,7 @@ export const NAV_LINKS = [
         highlight: true,
       },
       { label: "Specials & Promotions", href: "/specials" },
+      { label: "Gift Cards", href: "/gift-cards" },
       { label: "Memberships", href: "/memberships" },
       { label: "IV Matcher Quiz", href: "/iv-matcher" },
     ],
