@@ -10,6 +10,17 @@ export type Article = {
 
 export const ARTICLES: Article[] = [
   {
+    slug: "why-summer-is-hard-on-skin-hair-body",
+    title:
+      "Why Is Summer So Hard on Your Skin, Hair & Body? A Layman's Guide (And How IV Therapy Helps)",
+    excerpt:
+      "Heat, sun, travel, late nights, and packed weekends quietly drain your skin, hair, and energy all summer long. Learn why it happens and how IV therapy helps you look and feel better fast.",
+    category: "Wellness",
+    readTime: "8 min read",
+    date: "July 6, 2026",
+    image: "/images/vip-spa-lounge.jpg",
+  },
+  {
     slug: "how-to-get-more-out-of-your-nad-therapy",
     title: "How to Get More Out of Your NAD+ Therapy",
     excerpt:
