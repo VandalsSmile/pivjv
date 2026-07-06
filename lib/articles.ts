@@ -18,7 +18,7 @@ export const ARTICLES: Article[] = [
     category: "Wellness",
     readTime: "8 min read",
     date: "July 6, 2026",
-    image: "/images/vip-spa-lounge.jpg",
+    image: "/images/summer-hair-skin-poolside.jpg",
   },
   {
     slug: "how-to-get-more-out-of-your-nad-therapy",
