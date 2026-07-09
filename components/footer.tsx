@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { CONTACT, LOGO_URL, SITE_CONFIG, SOCIAL_LINKS } from "@/lib/constants";
+import { TextToBookLink } from "@/components/text-to-book-link";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -29,6 +30,13 @@ export function Footer() {
               >
                 {CONTACT.phone}
               </Link>
+              <p className="text-white/70 text-sm mt-4">Text to book</p>
+              <TextToBookLink
+                showIcon={false}
+                className="block text-white hover:text-secondary transition-colors font-medium"
+              >
+                {CONTACT.textToBook}
+              </TextToBookLink>
             </div>
 
             <div className="mt-6">

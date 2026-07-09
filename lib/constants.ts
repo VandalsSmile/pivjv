@@ -12,6 +12,8 @@ export const SITE_CONFIG = {
 export const CONTACT = {
   phone: "(256) 692-6347",
   phoneClean: "2566926347",
+  textToBook: "(256) 993-3095",
+  textToBookClean: "2569933095",
   email: "jonesvalley@primeivhydration.com",
   address: {
     street: "2626 Carl T. Jones Drive",

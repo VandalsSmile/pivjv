@@ -6,6 +6,7 @@ import { Phone, ArrowRight, Check, Loader2 } from "lucide-react";
 import { CONTACT, PRICING, BOOKING_LINKS } from "@/lib/constants";
 import { sendLead } from "@/app/actions/send-lead";
 import { TurnstileWidget } from "@/components/turnstile-widget";
+import { TextToBookLink } from "@/components/text-to-book-link";
 
 export function CtaSection() {
   const [formData, setFormData] = useState({
@@ -91,6 +92,7 @@ export function CtaSection() {
                 <Phone className="w-4 h-4" />
                 Call {CONTACT.phone}
               </Link>
+              <TextToBookLink showNumber className="btn-outline" />
             </div>
 
             <p className="text-white/60 text-sm mb-6">

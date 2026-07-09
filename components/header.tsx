@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Menu, X, Phone, ChevronDown, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NAV_LINKS, CONTACT } from "@/lib/constants";
+import { TextToBookLink } from "@/components/text-to-book-link";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -100,6 +101,7 @@ export function Header() {
                 <Phone className="w-4 h-4" />
                 {CONTACT.phone}
               </Link>
+              <TextToBookLink className="text-foreground hover:text-primary font-medium" />
               <Link href="/specials" className="btn-primary text-sm">
                 Our Specials
               </Link>
@@ -195,6 +197,11 @@ export function Header() {
                 <Phone className="w-5 h-5" />
                 Call {CONTACT.phone}
               </Link>
+              <TextToBookLink
+                showNumber
+                iconClassName="w-5 h-5"
+                className="flex items-center justify-center gap-2 py-3 text-primary font-semibold"
+              />
               <Link
                 href="/specials"
                 className="btn-primary w-full justify-center"

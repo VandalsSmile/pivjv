@@ -3,7 +3,7 @@ import { JsonLd } from "@/components/json-ld";
 import { breadcrumbSchema } from "@/lib/structured-data";
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin, Clock, ArrowRight, Star } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, ArrowRight, Star, MessageCircle } from "lucide-react";
 import {
   CONTACT,
   HOURS,
@@ -12,6 +12,7 @@ import {
   SOCIAL_LINKS,
 } from "@/lib/constants";
 import { BookingForm } from "./booking-form";
+import { TextToBookLink } from "@/components/text-to-book-link";
 
 export const metadata: Metadata = {
   title: "Book IV Therapy Huntsville AL | Schedule Your Hydration Drip",
@@ -179,13 +180,20 @@ export default function BookPage() {
             </h1>
             <p className="text-lg text-white/80 text-pretty">
               Upgrade your wellness with world-class IV and injection therapy
-              right here in Huntsville. Book online below or call our team at{" "}
+              right here in Huntsville. Book online below, call our team at{" "}
               <Link
                 href={`tel:${CONTACT.phoneClean}`}
                 className="text-secondary hover:text-secondary-light font-semibold"
               >
                 {CONTACT.phone}
               </Link>
+              , or{" "}
+              <TextToBookLink
+                showIcon={false}
+                className="text-secondary hover:text-secondary-light font-semibold"
+              >
+                text to book at {CONTACT.textToBook}
+              </TextToBookLink>
               . Walk-ins and same-day appointments are always welcome.
             </p>
           </div>
@@ -210,7 +218,14 @@ export default function BookPage() {
                 className="text-primary hover:text-primary-dark font-semibold"
               >
                 {CONTACT.phone}
-              </Link>
+              </Link>{" "}
+              or{" "}
+              <TextToBookLink
+                showIcon={false}
+                className="text-primary hover:text-primary-dark font-semibold"
+              >
+                text to book at {CONTACT.textToBook}
+              </TextToBookLink>
               .
             </p>
           </div>
@@ -256,6 +271,7 @@ export default function BookPage() {
                 <Phone className="w-4 h-4" />
                 Call {CONTACT.phone}
               </Link>
+              <TextToBookLink showNumber className="btn-secondary" />
             </div>
           </div>
         </div>
@@ -307,7 +323,21 @@ export default function BookPage() {
                     </span>
                   </span>
                 </Link>
-                <div className="flex items-start gap-3 bg-white rounded-xl p-4 border border-border">
+                <TextToBookLink
+                  showNumber
+                  iconClassName="w-5 h-5 text-primary flex-shrink-0 mt-0.5"
+                  className="flex items-start gap-3 bg-white rounded-xl p-4 border border-border hover:border-primary/30 transition-colors"
+                >
+                  <span className="min-w-0">
+                    <span className="block text-xs text-foreground-muted">
+                      Text to book
+                    </span>
+                    <span className="font-semibold text-foreground break-words">
+                      {CONTACT.textToBook}
+                    </span>
+                  </span>
+                </TextToBookLink>
+                <div className="flex items-start gap-3 bg-white rounded-xl p-4 border border-border sm:col-span-2">
                   <Clock className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                   <span className="min-w-0">
                     <span className="block text-xs text-foreground-muted">
@@ -445,6 +475,24 @@ export default function BookPage() {
                     >
                       {CONTACT.phone}
                     </Link>
+                  </div>
+                </div>
+
+                {/* Text to book */}
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <MessageCircle className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-1">
+                      Text to book
+                    </h4>
+                    <TextToBookLink
+                      showIcon={false}
+                      className="text-foreground-muted hover:text-primary transition-colors"
+                    >
+                      {CONTACT.textToBook}
+                    </TextToBookLink>
                   </div>
                 </div>
 

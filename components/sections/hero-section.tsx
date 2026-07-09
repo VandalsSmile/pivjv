@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Phone, Check } from "lucide-react";
 import { SITE_CONFIG, CONTACT, PRICING, BOOKING_LINKS } from "@/lib/constants";
+import { TextToBookLink } from "@/components/text-to-book-link";
 
 export function HeroSection() {
   return (
@@ -71,6 +72,10 @@ export function HeroSection() {
                 <Phone className="w-4 h-4" />
                 Call {CONTACT.phone}
               </Link>
+              <TextToBookLink
+                showNumber
+                className="inline-flex items-center gap-2 text-white hover:text-secondary transition-colors font-medium"
+              />
             </div>
 
             <div className="inline-flex items-center gap-2 bg-white/10 rounded-lg px-4 py-2 mt-4">
