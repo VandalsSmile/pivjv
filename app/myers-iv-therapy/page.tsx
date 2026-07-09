@@ -71,36 +71,12 @@ const quickBenefits = [
 ];
 
 const ingredients = [
-  {
-    name: "Vitamin C",
-    amount: "2,000mg",
-    benefit: "Immune support & antioxidant",
-  },
-  {
-    name: "B-Complex",
-    amount: "100mg",
-    benefit: "Energy & metabolism",
-  },
-  {
-    name: "B12",
-    amount: "1,000mcg",
-    benefit: "Energy & nerve function",
-  },
-  {
-    name: "Magnesium",
-    amount: "500mg",
-    benefit: "Muscle relaxation & recovery",
-  },
-  {
-    name: "Calcium",
-    amount: "200mg",
-    benefit: "Bone & muscle health",
-  },
-  {
-    name: "Saline Solution",
-    amount: "1L",
-    benefit: "Hydration & nutrient delivery",
-  },
+  { name: "Vitamin C", benefit: "Immune support & antioxidant" },
+  { name: "B-Complex", benefit: "Energy & metabolism" },
+  { name: "B12", benefit: "Energy & nerve function" },
+  { name: "Magnesium", benefit: "Muscle relaxation & recovery" },
+  { name: "Calcium", benefit: "Bone & muscle health" },
+  { name: "Saline Solution", benefit: "Hydration & nutrient delivery" },
 ];
 
 const womensBenefits = [
@@ -476,15 +452,12 @@ export default function MyersIVPage() {
             <div className="card overflow-hidden p-0">
               <table className="w-full text-left border-collapse">
                 <caption className="sr-only">
-                  Myers&apos; Cocktail ingredients, amounts, and benefits
+                  Myers&apos; Cocktail ingredients and benefits
                 </caption>
                 <thead>
                   <tr className="bg-primary text-white">
                     <th scope="col" className="px-4 py-4 font-semibold">
                       Ingredient
-                    </th>
-                    <th scope="col" className="px-4 py-4 font-semibold">
-                      Amount
                     </th>
                     <th scope="col" className="px-4 py-4 font-semibold">
                       Benefit
@@ -505,9 +478,6 @@ export default function MyersIVPage() {
                       >
                         {item.name}
                       </th>
-                      <td className="px-4 py-4 text-secondary font-semibold whitespace-nowrap">
-                        {item.amount}
-                      </td>
                       <td className="px-4 py-4 text-foreground-muted">
                         {item.benefit}
                       </td>

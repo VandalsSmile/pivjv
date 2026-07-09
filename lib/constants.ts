@@ -33,7 +33,7 @@ export const LOGO_URL =
 export const PRICING = {
   introOffer: {
     price: 85,
-    regularPrice: 164,
+    regularPrice: 144,
     description: "Your First VIP IV Therapy",
   },
   medicalClearance: 25,
