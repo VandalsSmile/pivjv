@@ -261,7 +261,7 @@ export default function IntroOfferPage() {
                 </Link>
                 <Link href={`tel:${CONTACT.phoneClean}`} className="btn-outline">
                   <Phone className="w-4 h-4" />
-                  Call Now
+                  Call Now to Book &amp; Claim
                 </Link>
               </div>
 
@@ -287,42 +287,8 @@ export default function IntroOfferPage() {
               </p>
             </div>
 
-            {/* Price Card */}
-            <div className="bg-white text-foreground rounded-2xl shadow-xl overflow-hidden">
-              <div className="bg-secondary p-4 text-center text-white">
-                <span className="inline-block bg-white text-secondary text-xs font-bold px-3 py-1 rounded-full">
-                  Code required · {PRICING.introOffer.promoCode}
-                </span>
-              </div>
-              <div className="p-8">
-                <div className="flex items-baseline justify-center gap-3 mb-1">
-                  <span className="text-6xl font-bold text-secondary">
-                    ${PRICING.introOffer.price}
-                  </span>
-                  <span className="text-2xl text-foreground-muted line-through">
-                    ${PRICING.introOffer.regularPrice}
-                  </span>
-                </div>
-                <p className="text-center text-foreground-muted mb-6">
-                  Your complete first-visit experience · ~1 hour
-                </p>
-                <ul className="space-y-3 mb-6">
-                  {included.map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="#claim-offer"
-                  className="btn-secondary w-full justify-center"
-                >
-                  Claim Offer With Code
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
+            {/* Hero claim form */}
+            <IntroOfferForm variant="hero" />
           </div>
         </div>
       </section>
@@ -506,81 +472,53 @@ export default function IntroOfferPage() {
         </div>
       </section>
 
-      {/* Claim offer — form + call */}
-      <section
-        id="claim-offer"
-        className="section-padding bg-background scroll-mt-24"
-      >
+      {/* Prefer to call */}
+      <section className="section-padding bg-background">
         <div className="container-custom mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-12">
+          <div className="max-w-3xl mx-auto bg-primary text-white rounded-2xl p-8 md:p-10 shadow-lg text-center">
             <p className="text-secondary font-semibold uppercase tracking-wide mb-2">
-              Required to get ${PRICING.introOffer.price}
+              Prefer to call?
             </p>
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
-              Claim Your Intro Offer Pricing
+              Call Now to Book &amp; Claim
             </h2>
-            <p className="text-foreground-muted text-lg text-pretty">
-              The ${PRICING.introOffer.price} first-time rate is only available
-              when you claim it with promo code{" "}
-              <span className="font-mono font-semibold text-foreground">
+            <p className="text-white/80 text-lg mb-6 text-pretty">
+              Mention promo code{" "}
+              <span className="font-mono font-bold text-secondary-light">
                 {PRICING.introOffer.promoCode}
-              </span>
-              . Choose one of the two options below.
+              </span>{" "}
+              to lock in your ${PRICING.introOffer.price} intro offer — or use
+              the claim form at the top of this page.
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto items-start">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-8 rounded-full bg-secondary text-white text-sm font-bold flex items-center justify-center">
-                  1
-                </span>
-                <h3 className="text-xl font-bold">Submit the form with the code</h3>
-              </div>
-              <IntroOfferForm />
+            <div className="bg-white/10 rounded-xl p-4 mb-6 inline-block min-w-[min(100%,20rem)]">
+              <p className="text-xs uppercase tracking-wide text-white/70 mb-1">
+                Mention this code
+              </p>
+              <p className="text-2xl font-mono font-bold text-secondary-light tracking-wide">
+                {PRICING.introOffer.promoCode}
+              </p>
             </div>
-
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-8 rounded-full bg-secondary text-white text-sm font-bold flex items-center justify-center">
-                  2
-                </span>
-                <h3 className="text-xl font-bold">Call and mention the code</h3>
-              </div>
-              <div className="bg-primary text-white rounded-2xl p-8 shadow-lg">
-                <p className="text-white/80 mb-6 leading-relaxed">
-                  Prefer to book by phone? Call our Huntsville team and mention
-                  promo code{" "}
-                  <span className="font-mono font-bold text-secondary-light">
-                    {PRICING.introOffer.promoCode}
-                  </span>{" "}
-                  to lock in your ${PRICING.introOffer.price} intro offer.
-                </p>
-                <div className="bg-white/10 rounded-xl p-4 mb-6 text-center">
-                  <p className="text-xs uppercase tracking-wide text-white/70 mb-1">
-                    Mention this code
-                  </p>
-                  <p className="text-2xl font-mono font-bold text-secondary-light tracking-wide">
-                    {PRICING.introOffer.promoCode}
-                  </p>
-                </div>
-                <Link
-                  href={`tel:${CONTACT.phoneClean}`}
-                  className="btn-primary w-full justify-center"
-                >
-                  <Phone className="w-4 h-4" />
-                  Call Now — {CONTACT.phone}
-                </Link>
-                <p className="text-white/60 text-xs mt-4 text-center">
-                  Same-day appointments often available.
-                </p>
-                <div className="mt-6 pt-6 border-t border-white/10">
-                  <TextToBookLink
-                    showNumber
-                    className="w-full justify-center text-white hover:text-secondary transition-colors font-medium"
-                  />
-                </div>
-              </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href={`tel:${CONTACT.phoneClean}`}
+                className="btn-primary justify-center"
+              >
+                <Phone className="w-4 h-4" />
+                Call Now — {CONTACT.phone}
+              </Link>
+              <Link href="#claim-offer" className="btn-outline justify-center">
+                Use Claim Form
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+            <p className="text-white/60 text-xs mt-4">
+              Same-day appointments often available.
+            </p>
+            <div className="mt-6 pt-6 border-t border-white/10 flex justify-center">
+              <TextToBookLink
+                showNumber
+                className="justify-center text-white hover:text-secondary transition-colors font-medium"
+              />
             </div>
           </div>
         </div>

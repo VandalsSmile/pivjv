@@ -20,6 +20,8 @@ export type LeadPayload = {
   email: string;
   fields: LeadField[];
   turnstileToken: string;
+  /** Optional override for the internal notification email subject. */
+  notifySubject?: string;
 };
 
 export type SendLeadResult = {
@@ -78,7 +80,8 @@ function renderRows(fields: LeadField[]): string {
 }
 
 export async function sendLead(payload: LeadPayload): Promise<SendLeadResult> {
-  const { formName, name, email, fields, turnstileToken } = payload;
+  const { formName, name, email, fields, turnstileToken, notifySubject } =
+    payload;
 
   if (!process.env.RESEND_API_KEY) {
     return { success: false, error: "Email service is not configured." };
@@ -93,10 +96,11 @@ export async function sendLead(payload: LeadPayload): Promise<SendLeadResult> {
   }
 
   const rows = renderRows(fields);
+  const subject = notifySubject?.trim() || NOTIFY_SUBJECT;
 
   const notifyHtml = `
     <div style="font-family:Arial,Helvetica,sans-serif;max-width:600px;margin:0 auto;">
-      <h2 style="color:#0a4d68;margin-bottom:4px;">New Lead from your Website</h2>
+      <h2 style="color:#0a4d68;margin-bottom:4px;">${escapeHtml(subject)}</h2>
       <p style="color:#6b7280;margin-top:0;">Submitted via the <strong>${escapeHtml(
         formName,
       )}</strong> form.</p>
@@ -118,7 +122,7 @@ export async function sendLead(payload: LeadPayload): Promise<SendLeadResult> {
       from: FROM,
       to: NOTIFY_TO,
       replyTo: email || undefined,
-      subject: NOTIFY_SUBJECT,
+      subject,
       html: notifyHtml,
     });
 
