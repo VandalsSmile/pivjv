@@ -327,8 +327,6 @@ export default function IntroOfferPage() {
         </div>
       </section>
 
-      </section>
-
       {/* Top 5 reasons + VIP lounge image */}
       <section className="section-padding bg-background-alt">
         <div className="container-custom mx-auto">
