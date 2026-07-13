@@ -37,6 +37,7 @@ export const PRICING = {
     price: 85,
     regularPrice: 144,
     description: "Your First VIP IV Therapy",
+    promoCode: "VIPIVHUNTSVILLEAL",
   },
   medicalClearance: 25,
 };
