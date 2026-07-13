@@ -6,7 +6,7 @@ export const SITE_CONFIG = {
   tagline: "Feel Better, Faster — Premium IV Therapy in Huntsville, AL",
   description:
     "Boost your energy, recover faster, support longevity, and optimize your health with doctor-supervised IV hydration therapy—conveniently located in Huntsville, AL.",
-  url: "https://huntsvilleiv.com",
+  url: "https://www.huntsvilleiv.com",
 };
 
 export const CONTACT = {

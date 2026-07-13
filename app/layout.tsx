@@ -44,7 +44,6 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: SITE_CONFIG.url,
     siteName: SITE_CONFIG.name,
     title: `${SITE_CONFIG.name} ${CONTACT.address.city} | IV Therapy Near Me`,
     description: SITE_CONFIG.description,
@@ -73,9 +72,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
       "max-video-preview": -1,
     },
-  },
-  alternates: {
-    canonical: "/",
   },
 };
 

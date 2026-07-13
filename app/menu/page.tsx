@@ -39,6 +39,7 @@ export const metadata: Metadata = {
     "Huntsville AL IV menu",
   ],
   alternates: { canonical: "/menu" },
+  openGraph: { url: "/menu" },
 };
 
 const iconMap = { Zap, Dumbbell, HeartPulse, Flame };

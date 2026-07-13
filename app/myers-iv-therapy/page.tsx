@@ -34,6 +34,7 @@ export const metadata: Metadata = {
     "book Myers Cocktail Huntsville",
   ],
   alternates: { canonical: "/myers-iv-therapy" },
+  openGraph: { url: "/myers-iv-therapy" },
 };
 
 const heroBenefits = [

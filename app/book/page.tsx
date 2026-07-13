@@ -26,6 +26,7 @@ export const metadata: Metadata = {
     "$85 intro offer IV",
   ],
   alternates: { canonical: "/book" },
+  openGraph: { url: "/book" },
 };
 
 type Service = {
@@ -50,7 +51,7 @@ const SERVICE_GROUPS: {
       {
         name: "First-Time Client Intro Offer",
         price: `$${PRICING.introOffer.price}`,
-        regularPrice: "regularly $120",
+        regularPrice: `regularly $${PRICING.introOffer.regularPrice}`,
         duration: "60–90 min",
         description:
           "Is this your first time? Take advantage now and save. Choose from over a dozen Tier 1 IVs and enjoy the full VIP experience — including our zero-gravity massage chair. Same-day treatment available after your consult.",

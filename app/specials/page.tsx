@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     "discount IV therapy",
   ],
   alternates: { canonical: "/specials" },
+  openGraph: { url: "/specials" },
 };
 
 const MONTHLY_SPECIALS = [

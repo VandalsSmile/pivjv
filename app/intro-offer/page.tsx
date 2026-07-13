@@ -40,6 +40,7 @@ export const metadata: Metadata = {
     "Huntsville AL IV deal",
   ],
   alternates: { canonical: "/intro-offer" },
+  openGraph: { url: "/intro-offer" },
 };
 
 const benefits = [
