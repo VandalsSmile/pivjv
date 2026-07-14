@@ -88,6 +88,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} bg-background`}>
+      <head>
+        {/* Google Ads (gtag.js) */}
+        <Script
+          id="gtag-js"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-855692798"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-config" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-855692798');
+          `}
+        </Script>
+      </head>
       <body className="font-sans antialiased">
         <JsonLd
           data={[
