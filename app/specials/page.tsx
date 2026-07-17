@@ -2,7 +2,14 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/json-ld";
 import { breadcrumbSchema } from "@/lib/structured-data";
 import Link from "next/link";
-import { Phone, Check, ArrowRight, Loader2 } from "lucide-react";
+import {
+  Phone,
+  Check,
+  ArrowRight,
+  Loader2,
+  AlertTriangle,
+  ShieldPlus,
+} from "lucide-react";
 import { CONTACT, PRICING, BOOKING_LINKS } from "@/lib/constants";
 import { SpecialsForm } from "./specials-form";
 
@@ -128,6 +135,129 @@ export default function SpecialsPage() {
               therapy at special rates. New client specials and monthly
               promotions available now.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Gut Guardian — Cyclospora Outbreak Special */}
+      <section className="section-padding bg-background">
+        <div className="container-custom mx-auto">
+          <div className="max-w-5xl mx-auto">
+            <div className="relative overflow-hidden rounded-3xl shadow-2xl bg-primary text-white ring-4 ring-secondary/60">
+              {/* Decorative bubbles */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0"
+              >
+                <span className="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-white/10" />
+                <span className="absolute top-24 -left-16 w-40 h-40 rounded-full bg-white/10" />
+                <span className="absolute -bottom-16 right-24 w-44 h-44 rounded-full bg-white/5" />
+              </div>
+
+              <div className="relative p-8 lg:p-12">
+                <div className="flex flex-wrap items-center gap-3 mb-5">
+                  <span className="inline-flex items-center gap-2 bg-red-600 text-white text-xs font-bold uppercase tracking-wide px-3 py-1.5 rounded-full">
+                    <AlertTriangle className="w-4 h-4" />
+                    Cyclospora Outbreak Alert
+                  </span>
+                  <span className="inline-flex items-center gap-2 bg-secondary text-white text-xs font-bold uppercase tracking-wide px-3 py-1.5 rounded-full">
+                    <ShieldPlus className="w-4 h-4" />
+                    On Special Now
+                  </span>
+                </div>
+
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
+                  The Gut Guardian IV Drip
+                </h2>
+
+                <p className="text-white/90 text-lg mb-6 text-pretty">
+                  The <span className="font-semibold">cyclospora outbreak</span>{" "}
+                  spreading across the U.S. has now reached North Alabama. This
+                  intestinal parasite can trigger days&mdash;or even
+                  weeks&mdash;of watery diarrhea, stomach cramps, nausea,
+                  fatigue, loss of appetite, and dehydration. When your gut is
+                  under attack, staying hydrated and replenishing lost nutrients
+                  is critical to feeling like yourself again.
+                </p>
+
+                <div className="rounded-2xl bg-white/10 p-6 mb-6">
+                  <p className="text-white/90 mb-4">
+                    The <span className="font-semibold">Gut Guardian</span> is
+                    specially formulated to help relieve outbreak symptoms by
+                    rapidly rehydrating your body and delivering gut-supporting
+                    nutrients directly into your bloodstream&mdash;bypassing an
+                    already irritated digestive system for faster relief.
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+                    {[
+                      {
+                        name: "Glutamine",
+                        detail:
+                          "Fuels and helps repair the intestinal lining stressed by infection.",
+                      },
+                      {
+                        name: "B-Complex",
+                        detail:
+                          "Restores energy and combats fatigue from illness.",
+                      },
+                      {
+                        name: "Vitamin C",
+                        detail:
+                          "Antioxidant support for a stressed immune system.",
+                      },
+                      {
+                        name: "Magnesium Chloride",
+                        detail:
+                          "Replenishes a key electrolyte lost to diarrhea and dehydration.",
+                      },
+                      {
+                        name: "Amino Acid Blend",
+                        detail:
+                          "Supports recovery, tissue repair, and overall resilience.",
+                      },
+                      {
+                        name: "Vitamin B5",
+                        detail:
+                          "Aids energy metabolism and helps the body cope with stress.",
+                      },
+                    ].map((ingredient) => (
+                      <div key={ingredient.name} className="flex gap-3">
+                        <Check className="w-5 h-5 flex-shrink-0 text-secondary-light mt-0.5" />
+                        <div>
+                          <span className="font-semibold">
+                            {ingredient.name}
+                          </span>
+                          <p className="text-sm text-white/80">
+                            {ingredient.detail}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <p className="text-white/90 mb-6">
+                  <span className="font-bold">Feeling the symptoms?</span> Don&apos;t
+                  wait for dehydration to set in. Call now to book your Gut
+                  Guardian drip and start feeling better fast.
+                </p>
+
+                <Link
+                  href={`tel:${CONTACT.phoneClean}`}
+                  className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-primary transition-colors duration-200 hover:bg-white/90"
+                >
+                  <Phone className="w-5 h-5" />
+                  Call to Book the Gut Guardian &mdash; {CONTACT.phone}
+                </Link>
+
+                <p className="text-xs text-white/70 mt-4">
+                  IV therapy supports hydration and symptom relief and is not a
+                  cure for cyclospora infection. Telehealth medical clearance
+                  may be required for first-time clients and is not included in
+                  this special.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
