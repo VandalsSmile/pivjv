@@ -180,6 +180,18 @@ export default function SpecialsPage() {
                   is critical to feeling like yourself again.
                 </p>
 
+                <p className="mb-6">
+                  <a
+                    href="https://www.fda.gov/food/outbreaks-foodborne-illness/investigation-5-state-outbreak-cyclospora-illnesses-iceberg-lettuce-july-2026"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-secondary-light font-semibold underline underline-offset-4 hover:text-white transition-colors"
+                  >
+                    Read more about the outbreak on the FDA site
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </p>
+
                 <div className="rounded-2xl bg-white/10 p-6 mb-6">
                   <p className="text-white/90 mb-4">
                     The <span className="font-semibold">Gut Guardian</span> is
