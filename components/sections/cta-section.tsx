@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Phone, ArrowRight, Check, Loader2 } from "lucide-react";
 import { CONTACT, PRICING, BOOKING_LINKS } from "@/lib/constants";
 import { sendLead } from "@/app/actions/send-lead";
@@ -9,6 +10,7 @@ import { TurnstileWidget } from "@/components/turnstile-widget";
 import { TextToBookLink } from "@/components/text-to-book-link";
 
 export function CtaSection() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,7 +18,6 @@ export function CtaSection() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [captchaToken, setCaptchaToken] = useState("");
 
@@ -44,17 +45,15 @@ export function CtaSection() {
       ],
     });
 
-    setIsSubmitting(false);
-
     if (!result.success) {
+      setIsSubmitting(false);
       setErrorMessage(
         result.error || "Something went wrong. Please try again or call us.",
       );
       return;
     }
 
-    setIsSubmitted(true);
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    router.push("/thank-you");
   };
 
   return (
@@ -120,21 +119,7 @@ export function CtaSection() {
               hours.
             </p>
 
-            {isSubmitted ? (
-              <div className="text-center py-8">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Check className="w-8 h-8 text-green-600" />
-                </div>
-                <h4 className="text-xl font-bold text-foreground mb-2">
-                  Thank You!
-                </h4>
-                <p className="text-foreground-muted">
-                  We&apos;ll be in touch within 24 hours to confirm your
-                  appointment.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label
                     htmlFor="name"
@@ -252,7 +237,6 @@ export function CtaSection() {
                   appointment request.
                 </p>
               </form>
-            )}
           </div>
         </div>
       </div>

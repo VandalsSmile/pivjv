@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Loader2, ArrowRight } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Loader2, ArrowRight } from "lucide-react";
 import { sendLead } from "@/app/actions/send-lead";
 import { TurnstileWidget } from "@/components/turnstile-widget";
 
@@ -12,6 +13,7 @@ const ROLE_LABELS: Record<string, string> = {
 };
 
 export function BridalForm() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -21,7 +23,6 @@ export function BridalForm() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [captchaToken, setCaptchaToken] = useState("");
 
@@ -51,39 +52,16 @@ export function BridalForm() {
       ],
     });
 
-    setIsSubmitting(false);
-
     if (!result.success) {
+      setIsSubmitting(false);
       setErrorMessage(
         result.error || "Something went wrong. Please try again or call us.",
       );
       return;
     }
 
-    setIsSubmitted(true);
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      role: "",
-      weddingDate: "",
-      message: "",
-    });
+    router.push("/thank-you");
   };
-
-  if (isSubmitted) {
-    return (
-      <div className="bg-white rounded-2xl p-8 text-foreground text-center">
-        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <Check className="w-8 h-8 text-green-600" />
-        </div>
-        <h3 className="text-xl font-bold mb-2">Thank You!</h3>
-        <p className="text-foreground-muted">
-          {"We'll be in touch within 24 hours to help you plan your bridal glow and lock in your special rate."}
-        </p>
-      </div>
-    );
-  }
 
   return (
     <div className="bg-white rounded-2xl p-8 text-foreground">
