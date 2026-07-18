@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Check, Loader2, ArrowRight, Phone } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Loader2, ArrowRight, Phone } from "lucide-react";
 import { sendLead } from "@/app/actions/send-lead";
 import { TurnstileWidget } from "@/components/turnstile-widget";
 import { CONTACT, PRICING } from "@/lib/constants";
@@ -17,6 +18,7 @@ type IntroOfferFormProps = {
 
 export function IntroOfferForm({ variant = "default" }: IntroOfferFormProps) {
   const isHero = variant === "hero";
+  const router = useRouter();
   const [formData, setFormData] = useState({
     promoCode: EXPECTED_CODE,
     name: "",
@@ -26,7 +28,6 @@ export function IntroOfferForm({ variant = "default" }: IntroOfferFormProps) {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [captchaToken, setCaptchaToken] = useState("");
 
@@ -69,53 +70,16 @@ export function IntroOfferForm({ variant = "default" }: IntroOfferFormProps) {
       ],
     });
 
-    setIsSubmitting(false);
-
     if (!result.success) {
+      setIsSubmitting(false);
       setErrorMessage(
         result.error || "Something went wrong. Please try again or call us.",
       );
       return;
     }
 
-    setIsSubmitted(true);
-    setFormData({
-      promoCode: EXPECTED_CODE,
-      name: "",
-      email: "",
-      phone: "",
-      preferredTime: "",
-      message: "",
-    });
+    router.push("/thank-you");
   };
-
-  if (isSubmitted) {
-    return (
-      <div
-        className={`bg-white rounded-2xl text-foreground text-center shadow-xl border border-border ${
-          isHero ? "p-6 sm:p-8" : "p-8"
-        }`}
-      >
-        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <Check className="w-8 h-8 text-green-600" />
-        </div>
-        <h3 className="text-xl font-bold mb-2">Offer Claimed!</h3>
-        <p className="text-foreground-muted mb-6">
-          Thanks — we received your request with code{" "}
-          <span className="font-semibold text-foreground">{EXPECTED_CODE}</span>.
-          Our team will reach out shortly to book your $
-          {PRICING.introOffer.price} intro session.
-        </p>
-        <Link
-          href={`tel:${CONTACT.phoneClean}`}
-          className="btn-secondary w-full justify-center"
-        >
-          <Phone className="w-4 h-4" />
-          Call Now to Book — {CONTACT.phone}
-        </Link>
-      </div>
-    );
-  }
 
   return (
     <div

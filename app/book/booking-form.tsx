@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Loader2, ArrowRight } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Loader2, ArrowRight } from "lucide-react";
 import { sendLead } from "@/app/actions/send-lead";
 import { TurnstileWidget } from "@/components/turnstile-widget";
 
@@ -26,6 +27,7 @@ const TIME_OPTIONS = [
 ];
 
 export function BookingForm() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -36,7 +38,6 @@ export function BookingForm() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [captchaToken, setCaptchaToken] = useState("");
 
@@ -67,42 +68,16 @@ export function BookingForm() {
       ],
     });
 
-    setIsSubmitting(false);
-
     if (!result.success) {
+      setIsSubmitting(false);
       setErrorMessage(
         result.error || "Something went wrong. Please try again or call us.",
       );
       return;
     }
 
-    setIsSubmitted(true);
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      service: "",
-      date: "",
-      time: "",
-      message: "",
-    });
+    router.push("/thank-you");
   };
-
-  if (isSubmitted) {
-    return (
-      <div className="bg-white rounded-2xl p-8 text-foreground text-center shadow-lg">
-        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <Check className="w-8 h-8 text-green-600" />
-        </div>
-        <h3 className="text-xl font-bold mb-2">Request Received!</h3>
-        <p className="text-foreground-muted">
-          {
-            "Thanks for booking with Prime IV Huntsville. Our team will reach out to confirm your appointment time."
-          }
-        </p>
-      </div>
-    );
-  }
 
   return (
     <div className="bg-white rounded-2xl p-8 text-foreground shadow-lg">
