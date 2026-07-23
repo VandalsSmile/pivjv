@@ -188,14 +188,20 @@ export function Footer() {
           <p className="mt-4 text-center text-white/60 text-sm">
             Digital Marketing by https://www.govsmarketing.com
           </p>
-          <p className="mt-4 text-white/40 text-xs leading-relaxed">
+          <p className="mt-4 text-center text-white/40 text-xs leading-relaxed">
             The therapies provided have not been evaluated by the Food and Drug
             Administration. These compounded products are custom formulations
             prepared by Prime IV Hydration & Wellness and are not intended to
             diagnose, treat, cure, or prevent any disease. The content on this
             website is for informational purposes only and should not be
-            considered medical advice. Always consult a licensed healthcare
-            provider before starting any therapy program.
+            considered medical advice. It is not a substitute for professional
+            medical diagnosis, treatment, or care. Any designations or
+            references to therapies are for marketing purposes only and do not
+            imply FDA approval or clinical efficacy. Always consult a licensed
+            healthcare provider before starting any therapy program to ensure it
+            is appropriate for your individual health needs. If you have any
+            medical concerns or conditions, seek the advice of your physician or
+            other qualified healthcare professional. Individual results may vary.
           </p>
         </div>
       </div>
