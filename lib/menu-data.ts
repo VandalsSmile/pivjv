@@ -76,7 +76,7 @@ export const SPECIALTY_TIERS: SpecialtyTier[] = [
         price: "$150",
         memberPrice: "$40",
         description:
-          "Enhances your diet and fitness goals by speeding up your metabolism, increasing your energy, and decreasing your appetite.",
+          "A nutrient-focused IV designed to complement healthy nutrition, activity and individualized wellness goals - with vitamin B12, amino acids, and our Lipolean injection.",
       },
       {
         name: "The Weekend Warrior",
@@ -379,7 +379,7 @@ export const INJECTIONS: Injection[] = [
     name: "Lipolean",
     price: "$35",
     description:
-      "These fat-burning injections feature a potent mix of vitamins, minerals, and amino acids that aid the body in weight loss efforts, enhanced energy levels and accelerated metabolism.",
+      "A provider-guided injection option that may be included as part of an individualized wellness or weight-management plan.",
   },
   {
     name: "Magnesium Sulfate",
