@@ -4,7 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2, ArrowRight } from "lucide-react";
 import { sendLead } from "@/app/actions/send-lead";
-import { TurnstileWidget } from "@/components/turnstile-widget";
+import { HoneypotField } from "@/components/honeypot-field";
+import { OptInCheckboxes } from "@/components/opt-in-checkboxes";
 
 const AMOUNT_LABELS: Record<string, string> = {
   "100-special": "SPECIAL: Buy $100, Get $125 to Spend (Limited Time)",
@@ -34,18 +35,15 @@ export function GiftCardForm() {
     occasion: "",
     recipientName: "",
     message: "",
+    company: "",
+    textOptIn: true,
+    emailOptIn: true,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [captchaToken, setCaptchaToken] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!captchaToken) {
-      setErrorMessage("Please complete the CAPTCHA verification.");
-      return;
-    }
 
     setIsSubmitting(true);
     setErrorMessage("");
@@ -54,7 +52,7 @@ export function GiftCardForm() {
       formName: "Gift Card Inquiry",
       name: formData.name,
       email: formData.email,
-      turnstileToken: captchaToken,
+      honeypot: formData.company,
       fields: [
         { label: "Name", value: formData.name },
         { label: "Email", value: formData.email },
@@ -69,6 +67,8 @@ export function GiftCardForm() {
         },
         { label: "Recipient Name", value: formData.recipientName },
         { label: "Message", value: formData.message },
+        { label: "Text Opt-In", value: formData.textOptIn ? "Yes" : "No" },
+        { label: "Email Opt-In", value: formData.emailOptIn ? "Yes" : "No" },
       ],
     });
 
@@ -235,15 +235,27 @@ export function GiftCardForm() {
           />
         </div>
 
-        <TurnstileWidget
-          onVerify={setCaptchaToken}
-          onExpire={() => setCaptchaToken("")}
-          onError={() => setCaptchaToken("")}
+        <OptInCheckboxes
+          idPrefix="giftcard"
+          textOptIn={formData.textOptIn}
+          emailOptIn={formData.emailOptIn}
+          onTextChange={(checked) =>
+            setFormData({ ...formData, textOptIn: checked })
+          }
+          onEmailChange={(checked) =>
+            setFormData({ ...formData, emailOptIn: checked })
+          }
+        />
+
+        <HoneypotField
+          id="giftcard-company"
+          value={formData.company}
+          onChange={(value) => setFormData({ ...formData, company: value })}
         />
 
         <button
           type="submit"
-          disabled={isSubmitting || !captchaToken}
+          disabled={isSubmitting}
           className="btn-secondary w-full justify-center disabled:opacity-70"
         >
           {isSubmitting ? (

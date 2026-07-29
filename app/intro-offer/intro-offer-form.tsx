@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Loader2, ArrowRight, Phone } from "lucide-react";
 import { sendLead } from "@/app/actions/send-lead";
-import { TurnstileWidget } from "@/components/turnstile-widget";
+import { HoneypotField } from "@/components/honeypot-field";
+import { OptInCheckboxes } from "@/components/opt-in-checkboxes";
 import { CONTACT, PRICING } from "@/lib/constants";
 
 const EXPECTED_CODE = PRICING.introOffer.promoCode;
@@ -26,10 +27,12 @@ export function IntroOfferForm({ variant = "default" }: IntroOfferFormProps) {
     phone: "",
     preferredTime: "",
     message: "",
+    company: "",
+    textOptIn: true,
+    emailOptIn: true,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [captchaToken, setCaptchaToken] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,11 +45,6 @@ export function IntroOfferForm({ variant = "default" }: IntroOfferFormProps) {
       return;
     }
 
-    if (!captchaToken) {
-      setErrorMessage("Please complete the CAPTCHA verification.");
-      return;
-    }
-
     setIsSubmitting(true);
     setErrorMessage("");
 
@@ -54,7 +52,7 @@ export function IntroOfferForm({ variant = "default" }: IntroOfferFormProps) {
       formName: "Intro Offer Claim",
       name: formData.name,
       email: formData.email,
-      turnstileToken: captchaToken,
+      honeypot: formData.company,
       notifySubject: NOTIFY_SUBJECT,
       fields: [
         { label: "Name", value: formData.name },
@@ -67,6 +65,8 @@ export function IntroOfferForm({ variant = "default" }: IntroOfferFormProps) {
         },
         { label: "Preferred Time", value: formData.preferredTime },
         { label: "Message", value: formData.message },
+        { label: "Text Opt-In", value: formData.textOptIn ? "Yes" : "No" },
+        { label: "Email Opt-In", value: formData.emailOptIn ? "Yes" : "No" },
       ],
     });
 
@@ -253,15 +253,27 @@ export function IntroOfferForm({ variant = "default" }: IntroOfferFormProps) {
             </>
           )}
 
-          <TurnstileWidget
-            onVerify={setCaptchaToken}
-            onExpire={() => setCaptchaToken("")}
-            onError={() => setCaptchaToken("")}
+          <OptInCheckboxes
+            idPrefix={isHero ? "intro-hero" : "intro"}
+            textOptIn={formData.textOptIn}
+            emailOptIn={formData.emailOptIn}
+            onTextChange={(checked) =>
+              setFormData({ ...formData, textOptIn: checked })
+            }
+            onEmailChange={(checked) =>
+              setFormData({ ...formData, emailOptIn: checked })
+            }
+          />
+
+          <HoneypotField
+            id={isHero ? "intro-hero-company" : "intro-company"}
+            value={formData.company}
+            onChange={(value) => setFormData({ ...formData, company: value })}
           />
 
           <button
             type="submit"
-            disabled={isSubmitting || !captchaToken}
+            disabled={isSubmitting}
             className="btn-secondary w-full justify-center disabled:opacity-70"
           >
             {isSubmitting ? (
