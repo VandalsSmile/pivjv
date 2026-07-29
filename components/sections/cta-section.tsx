@@ -6,7 +6,8 @@ import { useRouter } from "next/navigation";
 import { Phone, ArrowRight, Check, Loader2 } from "lucide-react";
 import { CONTACT, PRICING, BOOKING_LINKS } from "@/lib/constants";
 import { sendLead } from "@/app/actions/send-lead";
-import { TurnstileWidget } from "@/components/turnstile-widget";
+import { HoneypotField } from "@/components/honeypot-field";
+import { OptInCheckboxes } from "@/components/opt-in-checkboxes";
 import { TextToBookLink } from "@/components/text-to-book-link";
 
 export function CtaSection() {
@@ -16,18 +17,15 @@ export function CtaSection() {
     email: "",
     phone: "",
     message: "",
+    company: "",
+    textOptIn: true,
+    emailOptIn: true,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [captchaToken, setCaptchaToken] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!captchaToken) {
-      setErrorMessage("Please complete the CAPTCHA verification.");
-      return;
-    }
 
     setIsSubmitting(true);
     setErrorMessage("");
@@ -36,12 +34,14 @@ export function CtaSection() {
       formName: "Homepage Appointment Request",
       name: formData.name,
       email: formData.email,
-      turnstileToken: captchaToken,
+      honeypot: formData.company,
       fields: [
         { label: "Name", value: formData.name },
         { label: "Email", value: formData.email },
         { label: "Phone", value: formData.phone },
         { label: "Message", value: formData.message },
+        { label: "Text Opt-In", value: formData.textOptIn ? "Yes" : "No" },
+        { label: "Email Opt-In", value: formData.emailOptIn ? "Yes" : "No" },
       ],
     });
 
@@ -199,15 +199,29 @@ export function CtaSection() {
                   />
                 </div>
 
-                <TurnstileWidget
-                  onVerify={setCaptchaToken}
-                  onExpire={() => setCaptchaToken("")}
-                  onError={() => setCaptchaToken("")}
+                <OptInCheckboxes
+                  idPrefix="cta"
+                  textOptIn={formData.textOptIn}
+                  emailOptIn={formData.emailOptIn}
+                  onTextChange={(checked) =>
+                    setFormData({ ...formData, textOptIn: checked })
+                  }
+                  onEmailChange={(checked) =>
+                    setFormData({ ...formData, emailOptIn: checked })
+                  }
+                />
+
+                <HoneypotField
+                  id="cta-company"
+                  value={formData.company}
+                  onChange={(value) =>
+                    setFormData({ ...formData, company: value })
+                  }
                 />
 
                 <button
                   type="submit"
-                  disabled={isSubmitting || !captchaToken}
+                  disabled={isSubmitting}
                   className="btn-secondary w-full justify-center disabled:opacity-70"
                 >
                   {isSubmitting ? (
