@@ -336,6 +336,11 @@ export const FAQS = [
     answer:
       "Yes! We're conveniently located on Carl T. Jones Drive, easily accessible from Jones Valley, Hampton Cove, Madison, and surrounding Huntsville areas.",
   },
+  {
+    question: "Can I use my HSA or FSA card to pay for services?",
+    answer:
+      "HSA and FSA cards may be accepted for eligible services. Coverage and reimbursement requirements vary by plan and individual circumstances. We recommend confirming eligibility with your HSA or FSA plan administrator before receiving treatment.",
+  },
 ];
 
 export const REVIEWS = [
