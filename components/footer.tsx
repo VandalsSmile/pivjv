@@ -189,6 +189,14 @@ export function Footer() {
             Digital Marketing by https://www.govsmarketing.com
           </p>
           <p className="mt-4 text-center text-white/40 text-xs leading-relaxed">
+            <span className="font-semibold text-white/60">SMS Disclosure:</span> By
+            submitting any form on this website or by checking a text-message
+            consent box, I agree to receive transactional texts from Prime IV
+            Hydration & Wellness &ndash; Huntsville (e.g. appointments, orders,
+            account updates). Message frequency may vary. Msg &amp; data rates may
+            apply. Reply HELP for help or STOP to opt out.
+          </p>
+          <p className="mt-4 text-center text-white/40 text-xs leading-relaxed">
             The therapies provided have not been evaluated by the Food and Drug
             Administration. These compounded products are custom formulations
             prepared by Prime IV Hydration & Wellness and are not intended to
