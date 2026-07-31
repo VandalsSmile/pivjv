@@ -4,19 +4,19 @@ import { CONTACT } from "@/lib/constants";
 
 const SPECIALS = [
   {
-    name: "The Revitalizer",
+    name: "The Back-to-You Reset",
     category: "Health & Wellness Special",
-    discount: "$30 OFF",
-    price: 150,
-    regularPrice: 180,
-    savingsLabel: "Save $30",
+    discount: "30% OFF",
+    price: 161,
+    regularPrice: 230,
+    savingsLabel: "Save $69",
     description:
-      "July is when people start feeling the effects of longer days, packed schedules, kids being out of school, outdoor activities, and mild dehydration. Many people blame stress or aging when they're actually running on empty. The Revitalizer is designed for busy professionals, parents, and active adults who feel tired, mentally drained, and unable to keep up with everything summer throws at them.",
+      "Summer heat, vacations, and busy schedules can leave you feeling tired, dehydrated, mentally foggy, and out of routine. As August brings back-to-school schedules and a return to everyday life, it's the perfect time to recharge and feel like yourself again. This bundle pairs a Myers' Cocktail with The Restoration Amplifier to help you reset.",
     features: [
-      "The Revitalizer IV — reg. $180",
+      "Myers' Cocktail IV — reg. $180",
+      "The Restoration Amplifier — reg. $50",
       "Hydration, energy & mental clarity support",
-      "Replenishes essential vitamins & minerals",
-      "Best for busy summer schedules",
+      "Stress recovery, relaxation & muscle function",
     ],
     addOns: [
       {
@@ -31,14 +31,13 @@ const SPECIALS = [
         price: "$75",
       },
       {
-        name: "The Liver Cleanse Amplifier IV Bag",
-        detail:
-          "Includes Glutathione and Acetylcysteine for extra daily detoxification support.",
-        price: "$40",
+        name: "B-12 Injection",
+        detail: "Boosts energy metabolism and helps combat fatigue.",
+        price: "$30",
       },
     ],
     bestFor:
-      "Busy professionals, parents, and active adults who feel tired, mentally drained, and unable to keep up with everything summer throws at them.",
+      "Busy professionals, parents, and active adults getting back into routine who feel tired, dehydrated, and mentally foggy and want to feel like themselves again.",
     theme: {
       card: "bg-accent",
       badge: "bg-white text-accent",
@@ -46,41 +45,42 @@ const SPECIALS = [
     },
   },
   {
-    name: "The Glow Drip Bundle",
+    name: "Radiance & Renewal",
     category: "Beauty & Aging Special",
-    discount: "$60 OFF",
-    price: 170,
-    regularPrice: 230,
-    savingsLabel: "Save $60",
+    discount: "$50 OFF",
+    price: 130,
+    regularPrice: 180,
+    savingsLabel: "Save $50",
     description:
-      "July brings more sunshine, outdoor events, pool days, and vacations—but increased UV exposure and heat can leave skin looking dry, dull, and tired. Sun exposure also contributes to oxidative stress, which can accelerate visible signs of aging and affect overall skin appearance. This bundle pairs The Glow Drip with The Restoration Amplifier to keep your skin hydrated and radiant all summer.",
+      "After months of sun exposure, heat, and travel, your skin can begin to look dull and dehydrated while fatigue starts to show. August is the perfect time to restore your glow and invest in healthy aging before the busy fall season begins. The Glow Drip pairs beautifully with Glutathione or a beauty-focused amplifier to brighten and rejuvenate.",
     features: [
       "The Glow Drip — reg. $180",
-      "The Restoration Amplifier — reg. $50",
+      "Pairs with Glutathione or a beauty amplifier",
       "Skin hydration & antioxidant support",
-      "Combats summer sun & oxidative stress",
+      "Restores your glow after summer sun",
     ],
     addOns: [
       {
-        name: "Biotin",
+        name: "Glutathione",
         detail:
-          "Supports energy metabolism, healthy hair, skin, nails, and overall cellular function.",
-        price: "$30",
+          "Master antioxidant that brightens skin and supports detoxification.",
+        price: "$40",
       },
       {
-        name: "NAD+ 100mg",
+        name: "NAD+ or Niagen® Upgrade",
         detail:
-          "Supports energy production, cellular repair, metabolism, and overall wellness.",
+          "Premium upgrade to support cellular energy, recovery, mental focus, and healthy aging from the inside out.",
         price: "$75",
       },
       {
-        name: "The Alpha Amplifier IV Bag",
-        detail: "For clients wanting additional metabolic wellness support.",
-        price: "$40",
+        name: "Biotin",
+        detail:
+          "Supports energy metabolism and healthy hair, skin, and nails.",
+        price: "$30",
       },
     ],
     bestFor:
-      "Anyone facing more sun exposure, outdoor events, pool days, and vacations who wants to combat dry, dull, tired-looking skin and support a healthy summer glow.",
+      "Anyone whose skin looks dull or dehydrated after a summer of sun, heat, and travel who wants to restore their glow and invest in healthy aging before fall.",
     theme: {
       card: "bg-pink",
       badge: "bg-white text-pink",
@@ -98,7 +98,7 @@ export function SpecialsSection() {
             Limited Time Offers
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-balance">
-            July Specials
+            August Specials
           </h2>
         </div>
 
