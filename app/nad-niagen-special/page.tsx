@@ -22,8 +22,6 @@ import {
   Star,
   BadgeCheck,
   Zap,
-  Percent,
-  CalendarClock,
 } from "lucide-react";
 import { CONTACT, SITE_CONFIG } from "@/lib/constants";
 
@@ -31,7 +29,7 @@ import { CONTACT, SITE_CONFIG } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "NAD+ IV Therapy Huntsville AL | Niagen® Cellular Energy | Prime IV",
   description:
-    "NAD+ IV infusions and Niagen® therapy in Huntsville, AL. Restore cellular energy, sharpen focus, and slow aging at Prime IV Hydration & Wellness. 50% off through July 31.",
+    "NAD+ IV infusions and Niagen® therapy in Huntsville, AL. Restore cellular energy, sharpen focus, and slow aging at Prime IV Hydration & Wellness.",
   keywords: [
     "NAD+ IV therapy",
     "Niagen therapy",
@@ -282,56 +280,6 @@ export default function NadNiagenPage() {
                     </li>
                   ))}
                 </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 50% Off Promo Banner */}
-      <section className="bg-background py-12 lg:py-16">
-        <div className="container-custom mx-auto">
-          <div className="relative overflow-hidden rounded-3xl bg-accent text-white shadow-xl">
-            <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-white/10" />
-            <div className="absolute -bottom-20 -left-12 w-72 h-72 rounded-full bg-white/5" />
-            <div className="relative p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-              <div className="flex-shrink-0 text-center">
-                <div className="inline-flex items-center gap-2 bg-white/15 rounded-full px-4 py-1.5 mb-4">
-                  <CalendarClock className="w-4 h-4" />
-                  <span className="text-sm font-semibold uppercase tracking-wide">
-                    Through July 31st
-                  </span>
-                </div>
-                <div className="flex items-center justify-center gap-2">
-                  <span className="text-6xl lg:text-7xl font-extrabold leading-none">
-                    50%
-                  </span>
-                  <div className="flex flex-col items-start leading-tight">
-                    <Percent className="w-7 h-7 mb-1" />
-                    <span className="text-2xl lg:text-3xl font-bold">OFF</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex-1 text-center lg:text-left">
-                <h2 className="text-3xl md:text-4xl font-bold mb-3 text-balance">
-                  Limited-Time NAD+ &amp; Niagen® Sale
-                </h2>
-                <p className="text-white/90 text-lg mb-6 text-pretty max-w-2xl">
-                  For a limited time, claim{" "}
-                  <span className="font-bold">50% off</span> your NAD+ &amp;
-                  Niagen® cellular recharge therapy. Recharge your energy,
-                  sharpen your mind, and invest in healthy aging—now at half the
-                  price. Offer ends{" "}
-                  <span className="font-bold">July 31st</span>.
-                </p>
-                <Link
-                  href={`tel:${CONTACT.phoneClean}`}
-                  className="inline-flex items-center gap-2 bg-white text-accent font-bold px-8 py-4 rounded-full shadow-lg hover:bg-white/90 transition-colors text-lg"
-                >
-                  <Phone className="w-5 h-5" />
-                  Schedule &amp; Claim 50% Off
-                </Link>
               </div>
             </div>
           </div>
