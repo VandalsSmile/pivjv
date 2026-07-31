@@ -7,8 +7,6 @@ import {
   Check,
   ArrowRight,
   Loader2,
-  AlertTriangle,
-  ShieldPlus,
 } from "lucide-react";
 import { CONTACT, PRICING, BOOKING_LINKS } from "@/lib/constants";
 import { SpecialsForm } from "./specials-form";
@@ -31,19 +29,19 @@ export const metadata: Metadata = {
 
 const MONTHLY_SPECIALS = [
   {
-    name: "The Revitalizer",
+    name: "The Back-to-You Reset",
     category: "Health & Wellness Special",
-    discount: "$30 OFF",
-    price: 150,
-    regularPrice: 180,
-    savingsLabel: "Save $30",
+    discount: "30% OFF",
+    price: 161,
+    regularPrice: 230,
+    savingsLabel: "Save $69",
     description:
-      "July is when people start feeling the effects of longer days, packed schedules, kids being out of school, outdoor activities, and mild dehydration. Many people blame stress or aging when they're actually running on empty. The Revitalizer is designed for busy professionals, parents, and active adults who feel tired, mentally drained, and unable to keep up with everything summer throws at them.",
+      "Summer heat, vacations, and busy schedules can leave you feeling tired, dehydrated, mentally foggy, and out of routine. As August brings back-to-school schedules and a return to everyday life, it's the perfect time to recharge and feel like yourself again. This bundle pairs a Myers' Cocktail with The Restoration Amplifier to help you reset.",
     features: [
-      "The Revitalizer IV — reg. $180",
+      "Myers' Cocktail IV — reg. $180",
+      "The Restoration Amplifier — reg. $50",
       "Hydration, energy & mental clarity support",
-      "Replenishes essential vitamins & minerals",
-      "Best for busy summer schedules",
+      "Stress recovery, relaxation & muscle function",
     ],
     addOns: [
       {
@@ -58,14 +56,13 @@ const MONTHLY_SPECIALS = [
         price: "$75",
       },
       {
-        name: "The Liver Cleanse Amplifier IV Bag",
-        detail:
-          "Includes Glutathione and Acetylcysteine for extra daily detoxification support.",
-        price: "$40",
+        name: "B-12 Injection",
+        detail: "Boosts energy metabolism and helps combat fatigue.",
+        price: "$30",
       },
     ],
     bestFor:
-      "Busy professionals, parents, and active adults who feel tired, mentally drained, and unable to keep up with everything summer throws at them.",
+      "Busy professionals, parents, and active adults getting back into routine who feel tired, dehydrated, and mentally foggy and want to feel like themselves again.",
     theme: {
       card: "bg-accent",
       badge: "bg-white text-accent",
@@ -73,41 +70,42 @@ const MONTHLY_SPECIALS = [
     },
   },
   {
-    name: "The Glow Drip Bundle",
+    name: "Radiance & Renewal",
     category: "Beauty & Aging Special",
-    discount: "$60 OFF",
-    price: 170,
-    regularPrice: 230,
-    savingsLabel: "Save $60",
+    discount: "$50 OFF",
+    price: 130,
+    regularPrice: 180,
+    savingsLabel: "Save $50",
     description:
-      "July brings more sunshine, outdoor events, pool days, and vacations—but increased UV exposure and heat can leave skin looking dry, dull, and tired. Sun exposure also contributes to oxidative stress, which can accelerate visible signs of aging and affect overall skin appearance. This bundle pairs The Glow Drip with The Restoration Amplifier to keep your skin hydrated and radiant all summer.",
+      "After months of sun exposure, heat, and travel, your skin can begin to look dull and dehydrated while fatigue starts to show. August is the perfect time to restore your glow and invest in healthy aging before the busy fall season begins. The Glow Drip pairs beautifully with Glutathione or a beauty-focused amplifier to brighten and rejuvenate.",
     features: [
       "The Glow Drip — reg. $180",
-      "The Restoration Amplifier — reg. $50",
+      "Pairs with Glutathione or a beauty amplifier",
       "Skin hydration & antioxidant support",
-      "Combats summer sun & oxidative stress",
+      "Restores your glow after summer sun",
     ],
     addOns: [
       {
-        name: "Biotin",
+        name: "Glutathione",
         detail:
-          "Supports energy metabolism, healthy hair, skin, nails, and overall cellular function.",
-        price: "$30",
+          "Master antioxidant that brightens skin and supports detoxification.",
+        price: "$40",
       },
       {
-        name: "NAD+ 100mg",
+        name: "NAD+ or Niagen® Upgrade",
         detail:
-          "Supports energy production, cellular repair, metabolism, and overall wellness.",
+          "Premium upgrade to support cellular energy, recovery, mental focus, and healthy aging from the inside out.",
         price: "$75",
       },
       {
-        name: "The Alpha Amplifier IV Bag",
-        detail: "For clients wanting additional metabolic wellness support.",
-        price: "$40",
+        name: "Biotin",
+        detail:
+          "Supports energy metabolism and healthy hair, skin, and nails.",
+        price: "$30",
       },
     ],
     bestFor:
-      "Anyone facing more sun exposure, outdoor events, pool days, and vacations who wants to combat dry, dull, tired-looking skin and support a healthy summer glow.",
+      "Anyone whose skin looks dull or dehydrated after a summer of sun, heat, and travel who wants to restore their glow and invest in healthy aging before fall.",
     theme: {
       card: "bg-pink",
       badge: "bg-white text-pink",
@@ -139,150 +137,15 @@ export default function SpecialsPage() {
         </div>
       </section>
 
-      {/* Gut Guardian — Cyclospora Outbreak Special */}
-      <section className="section-padding bg-background">
-        <div className="container-custom mx-auto">
-          <div className="max-w-5xl mx-auto">
-            <div className="relative overflow-hidden rounded-3xl shadow-2xl bg-primary text-white ring-4 ring-secondary/60">
-              {/* Decorative bubbles */}
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0"
-              >
-                <span className="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-white/10" />
-                <span className="absolute top-24 -left-16 w-40 h-40 rounded-full bg-white/10" />
-                <span className="absolute -bottom-16 right-24 w-44 h-44 rounded-full bg-white/5" />
-              </div>
-
-              <div className="relative p-8 lg:p-12">
-                <div className="flex flex-wrap items-center gap-3 mb-5">
-                  <span className="inline-flex items-center gap-2 bg-red-600 text-white text-xs font-bold uppercase tracking-wide px-3 py-1.5 rounded-full">
-                    <AlertTriangle className="w-4 h-4" />
-                    Cyclospora Outbreak Alert
-                  </span>
-                  <span className="inline-flex items-center gap-2 bg-secondary text-white text-xs font-bold uppercase tracking-wide px-3 py-1.5 rounded-full">
-                    <ShieldPlus className="w-4 h-4" />
-                    On Special Now
-                  </span>
-                </div>
-
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
-                  The Gut Guardian IV Drip
-                </h2>
-
-                <p className="text-white/90 text-lg mb-6 text-pretty">
-                  The <span className="font-semibold">cyclospora outbreak</span>{" "}
-                  spreading across the U.S. has now reached North Alabama. This
-                  intestinal parasite can trigger days&mdash;or even
-                  weeks&mdash;of watery diarrhea, stomach cramps, nausea,
-                  fatigue, loss of appetite, and dehydration. When your gut is
-                  under attack, staying hydrated and replenishing lost nutrients
-                  is critical to feeling like yourself again.
-                </p>
-
-                <p className="mb-6">
-                  <a
-                    href="https://www.fda.gov/food/outbreaks-foodborne-illness/investigation-5-state-outbreak-cyclospora-illnesses-iceberg-lettuce-july-2026"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-secondary-light font-semibold underline underline-offset-4 hover:text-white transition-colors"
-                  >
-                    Read more about the outbreak on the FDA site
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
-                </p>
-
-                <div className="rounded-2xl bg-white/10 p-6 mb-6">
-                  <p className="text-white/90 mb-4">
-                    The <span className="font-semibold">Gut Guardian</span> is
-                    specially formulated to help relieve outbreak symptoms by
-                    rapidly rehydrating your body and delivering gut-supporting
-                    nutrients directly into your bloodstream&mdash;bypassing an
-                    already irritated digestive system for faster relief.
-                  </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
-                    {[
-                      {
-                        name: "Glutamine",
-                        detail:
-                          "Fuels and helps repair the intestinal lining stressed by infection.",
-                      },
-                      {
-                        name: "B-Complex",
-                        detail:
-                          "Restores energy and combats fatigue from illness.",
-                      },
-                      {
-                        name: "Vitamin C",
-                        detail:
-                          "Antioxidant support for a stressed immune system.",
-                      },
-                      {
-                        name: "Magnesium Chloride",
-                        detail:
-                          "Replenishes a key electrolyte lost to diarrhea and dehydration.",
-                      },
-                      {
-                        name: "Amino Acid Blend",
-                        detail:
-                          "Supports recovery, tissue repair, and overall resilience.",
-                      },
-                      {
-                        name: "Vitamin B5",
-                        detail:
-                          "Aids energy metabolism and helps the body cope with stress.",
-                      },
-                    ].map((ingredient) => (
-                      <div key={ingredient.name} className="flex gap-3">
-                        <Check className="w-5 h-5 flex-shrink-0 text-secondary-light mt-0.5" />
-                        <div>
-                          <span className="font-semibold">
-                            {ingredient.name}
-                          </span>
-                          <p className="text-sm text-white/80">
-                            {ingredient.detail}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <p className="text-white/90 mb-6">
-                  <span className="font-bold">Feeling the symptoms?</span> Don&apos;t
-                  wait for dehydration to set in. Call now to book your Gut
-                  Guardian drip and start feeling better fast.
-                </p>
-
-                <Link
-                  href={`tel:${CONTACT.phoneClean}`}
-                  className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-primary transition-colors duration-200 hover:bg-white/90"
-                >
-                  <Phone className="w-5 h-5" />
-                  Call to Book the Gut Guardian &mdash; {CONTACT.phone}
-                </Link>
-
-                <p className="text-xs text-white/70 mt-4">
-                  IV therapy supports hydration and symptom relief and is not a
-                  cure for cyclospora infection. Telehealth medical clearance
-                  may be required for first-time clients and is not included in
-                  this special.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Monthly Specials */}
       <section className="section-padding bg-background">
         <div className="container-custom mx-auto">
           <div className="text-center mb-12">
             <p className="text-sm font-semibold text-secondary uppercase tracking-wide mb-2">
-              July 2026
+              August 2026
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-balance">
-              July Specials
+              August Specials
             </h2>
             <p className="text-foreground-muted mt-4">
               Exclusive limited-time offers designed to support your specific
