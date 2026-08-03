@@ -5,6 +5,7 @@ import { AudienceSection } from "@/components/sections/audience-section";
 import { BenefitsSection } from "@/components/sections/benefits-section";
 import { ServicesSection } from "@/components/sections/services-section";
 import { SpecialsSection } from "@/components/sections/specials-section";
+import { WeddingSeasonSection } from "@/components/sections/wedding-season-section";
 import { TrustSection } from "@/components/sections/trust-section";
 import { MembershipsSection } from "@/components/sections/memberships-section";
 import { ReviewsSection } from "@/components/sections/reviews-section";
@@ -32,6 +33,7 @@ export default function HomePage() {
       <BenefitsSection />
       <ServicesSection />
       <SpecialsSection />
+      <WeddingSeasonSection />
       <TrustSection />
       <MembershipsSection />
       <ReviewsSection />
