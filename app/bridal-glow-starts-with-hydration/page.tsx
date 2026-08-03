@@ -333,10 +333,24 @@ export default function BridalGlowPage() {
               </Link>
             </div>
 
-            <div className="bg-background-alt rounded-2xl p-8 border border-border">
-              <h3 className="text-lg font-bold text-foreground mb-4">
-                Why brides across North Alabama choose IV hydration
-              </h3>
+            <div className="space-y-6">
+              <div className="relative overflow-hidden rounded-2xl shadow-xl">
+                <img
+                  src="/images/bridal-party-group.jpg"
+                  alt="A joyful bride and groom sharing a kiss surrounded by their smiling bridal party tossing flower petals"
+                  className="w-full h-64 md:h-80 object-cover object-[center_30%]"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 to-transparent h-20" />
+                <span className="absolute top-4 left-4 inline-flex items-center gap-1 bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                  <Sparkles className="w-3 h-3" />
+                  Glow Together
+                </span>
+              </div>
+
+              <div className="bg-background-alt rounded-2xl p-8 border border-border">
+                <h3 className="text-lg font-bold text-foreground mb-4">
+                  Why brides across North Alabama choose IV hydration
+                </h3>
               <ul className="space-y-3">
                 {[
                   "Supports glowing, healthy-looking skin",
@@ -353,6 +367,7 @@ export default function BridalGlowPage() {
                   </li>
                 ))}
               </ul>
+              </div>
             </div>
           </div>
         </div>
