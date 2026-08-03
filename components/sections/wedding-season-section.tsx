@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Sparkles, Heart, Check } from "lucide-react";
+import { ArrowRight, Sparkles, Check } from "lucide-react";
 
 const highlights = [
   "Support glowing, healthy-looking skin",
@@ -57,18 +57,19 @@ export function WeddingSeasonSection() {
               </Link>
             </div>
 
-            <div className="hidden lg:flex justify-center">
-              <div className="relative">
-                <div className="w-56 h-56 rounded-full bg-white/10 flex items-center justify-center">
-                  <div className="w-40 h-40 rounded-full bg-white/15 flex items-center justify-center">
-                    <Heart className="w-20 h-20 text-white" />
-                  </div>
-                </div>
-                <span className="absolute top-2 right-4 inline-flex items-center gap-1 bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full">
-                  <Sparkles className="w-3 h-3" />
-                  The Glow IV
-                </span>
+            <div className="relative">
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                <img
+                  src="/images/bridal-party.jpg"
+                  alt="A smiling bride and groom holding hands outdoors on their wedding day"
+                  className="w-full h-72 md:h-96 object-cover object-[center_65%]"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent h-24" />
               </div>
+              <span className="absolute top-4 right-4 inline-flex items-center gap-1 bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                <Sparkles className="w-3 h-3" />
+                The Glow IV
+              </span>
             </div>
           </div>
         </div>
