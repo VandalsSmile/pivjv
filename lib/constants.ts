@@ -71,8 +71,8 @@ export const HOURS = {
 };
 
 export const SOCIAL_LINKS = {
-  facebook: "https://facebook.com/primeivhuntsville",
-  instagram: "https://instagram.com/primeivhuntsville",
+  facebook: "https://facebook.com/huntsvillejonesvalley",
+  instagram: "https://instagram.com/primeivjonesvalley",
 };
 
 export const NAV_LINKS = [
