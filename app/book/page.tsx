@@ -357,24 +357,12 @@ export default function BookPage() {
                   Location Hours
                 </h3>
                 <dl className="divide-y divide-border text-sm">
-                  <div className="flex justify-between py-2">
-                    <dt className="text-foreground-muted">Monday – Friday</dt>
-                    <dd className="font-medium text-foreground">
-                      {HOURS.weekdays}
-                    </dd>
-                  </div>
-                  <div className="flex justify-between py-2">
-                    <dt className="text-foreground-muted">Saturday</dt>
-                    <dd className="font-medium text-foreground">
-                      {HOURS.saturday}
-                    </dd>
-                  </div>
-                  <div className="flex justify-between py-2">
-                    <dt className="text-foreground-muted">Sunday</dt>
-                    <dd className="font-medium text-foreground">
-                      {HOURS.sunday}
-                    </dd>
-                  </div>
+                  {HOURS.days.map(({ day, hours }) => (
+                    <div key={day} className="flex justify-between gap-4 py-2">
+                      <dt className="text-foreground-muted">{day}</dt>
+                      <dd className="font-medium text-foreground">{hours}</dd>
+                    </div>
+                  ))}
                 </dl>
               </div>
 
@@ -520,11 +508,19 @@ export default function BookPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-foreground mb-1">Hours</h4>
-                    <div className="text-foreground-muted text-sm space-y-1">
-                      <p>Monday - Friday: {HOURS.weekdays}</p>
-                      <p>Saturday: {HOURS.saturday}</p>
-                      <p>Sunday: {HOURS.sunday}</p>
-                    </div>
+                    <dl className="text-foreground-muted text-sm max-w-xs divide-y divide-border">
+                      {HOURS.days.map(({ day, hours }) => (
+                        <div
+                          key={day}
+                          className="flex justify-between gap-6 py-1.5"
+                        >
+                          <dt>{day}</dt>
+                          <dd className="font-medium text-foreground">
+                            {hours}
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
                   </div>
                 </div>
               </div>
@@ -568,20 +564,26 @@ export default function BookPage() {
             </div>
 
             {/* Map */}
-            <div className="bg-white rounded-xl p-4 border border-border flex items-center justify-center min-h-64">
-              <div className="text-center">
-                <MapPin className="w-12 h-12 text-primary/30 mx-auto mb-3" />
-                <p className="text-foreground-muted">
-                  <Link
-                    href={CONTACT.address.mapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:underline"
-                  >
-                    View on Google Maps
-                  </Link>
-                </p>
+            <div className="flex flex-col gap-3">
+              <div className="relative w-full overflow-hidden rounded-xl border border-border bg-white h-80 lg:h-full lg:min-h-[26rem]">
+                <iframe
+                  title={`Google Map showing Prime IV Hydration & Wellness at ${CONTACT.address.full}`}
+                  src={CONTACT.address.mapsEmbedUrl}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                  className="absolute inset-0 h-full w-full border-0"
+                />
               </div>
+              <Link
+                href={CONTACT.address.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-primary hover:text-primary-dark font-semibold text-sm self-start"
+              >
+                <MapPin className="w-4 h-4" />
+                Get directions on Google Maps
+              </Link>
             </div>
           </div>
         </div>
