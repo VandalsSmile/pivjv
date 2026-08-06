@@ -1,7 +1,6 @@
 import {
   SITE_CONFIG,
   CONTACT,
-  HOURS,
   LOGO_URL,
   SOCIAL_LINKS,
 } from "@/lib/constants";
@@ -61,15 +60,33 @@ export function localBusinessSchema() {
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        dayOfWeek: ["Tuesday", "Thursday"],
+        opens: "10:00",
+        closes: "19:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Wednesday", "Friday"],
         opens: "09:00",
         closes: "18:00",
       },
       {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: "Saturday",
+        opens: "09:00",
+        closes: "17:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "Sunday",
         opens: "10:00",
-        closes: "16:00",
+        closes: "17:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "Monday",
+        opens: "00:00",
+        closes: "00:00",
       },
     ],
     sameAs: [SOCIAL_LINKS.facebook, SOCIAL_LINKS.instagram],

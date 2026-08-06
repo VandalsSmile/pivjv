@@ -24,6 +24,9 @@ export const CONTACT = {
     full: "2626 Carl T. Jones Drive Suite B, Huntsville, AL 35802",
     mapsUrl:
       "https://www.google.com/maps/place/Prime+IV+Hydration+%26+Wellness+-+Huntsville-Jones+Valley/@34.6775269,-86.5522675,882m/data=!3m2!1e3!4b1!4m6!3m5!1s0x88621363143910ed:0xc72bf3e141cf1e70!8m2!3d34.6775225!4d-86.5496926!16s%2Fg%2F11mdztgr4n",
+    // Keyless Google Maps embed (no API key / referrer restrictions required)
+    mapsEmbedUrl:
+      "https://maps.google.com/maps?q=Prime%20IV%20Hydration%20%26%20Wellness%202626%20Carl%20T.%20Jones%20Drive%20Suite%20B%20Huntsville%20AL%2035802&z=15&output=embed",
   },
   reviewUrl:
     "https://www.google.com/search?q=prime+iv+huntsville+al&rlz=1C5CHFA_enUS837US837&oq=prime+iv+hunt&gs_lcrp=EgZjaHJvbWUqCggAEAAY4wIYgAQyCggAEAAY4wIYgAQyDQgBEC4YrwEYxwEYgAQyBggCEEUYOTINCAMQLhivARjHARiABDIHCAQQABiABDIGCAUQRRg8MgYIBhBFGDwyBggHEEUYPNIBCDI0NThqMGo5qAIGsAIB8QXBbRzILmvtGA&sourceid=chrome&ie=UTF-8#lrd=0x88621363143910ed:0xc72bf3e141cf1e70,3,,,,",
@@ -54,15 +57,22 @@ export const BOOKING_LINKS = {
     "https://go.booker.com/location/PrimeIVHuntsvilleJonesValleyAL/detail-summary/4748886",
 };
 
+// Day-by-day location hours (display order matches Google Business Profile)
 export const HOURS = {
-  weekdays: "9:00 AM - 6:00 PM",
-  saturday: "10:00 AM - 4:00 PM",
-  sunday: "Closed",
+  days: [
+    { day: "Sunday", hours: "10 AM – 5 PM" },
+    { day: "Monday", hours: "Closed" },
+    { day: "Tuesday", hours: "10 AM – 7 PM" },
+    { day: "Wednesday", hours: "9 AM – 6 PM" },
+    { day: "Thursday", hours: "10 AM – 7 PM" },
+    { day: "Friday", hours: "9 AM – 6 PM" },
+    { day: "Saturday", hours: "9 AM – 5 PM" },
+  ],
 };
 
 export const SOCIAL_LINKS = {
-  facebook: "https://facebook.com/primeivhuntsville",
-  instagram: "https://instagram.com/primeivhuntsville",
+  facebook: "https://facebook.com/huntsvillejonesvalley",
+  instagram: "https://instagram.com/primeivjonesvalley",
 };
 
 export const NAV_LINKS = [
