@@ -351,21 +351,6 @@ export default function BookPage() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-2xl p-6 border border-border">
-                <h3 className="font-bold text-foreground mb-4 flex items-center gap-2">
-                  <Clock className="w-5 h-5 text-primary" />
-                  Location Hours
-                </h3>
-                <dl className="divide-y divide-border text-sm">
-                  {HOURS.days.map(({ day, hours }) => (
-                    <div key={day} className="flex justify-between gap-4 py-2">
-                      <dt className="text-foreground-muted">{day}</dt>
-                      <dd className="font-medium text-foreground">{hours}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-
               <div className="flex items-center gap-4 bg-white rounded-2xl p-5 border border-border">
                 <Image
                   src="/images/hsa-fsa-eligible.png"
