@@ -127,7 +127,7 @@ export function ExitIntentOffer() {
           </p>
 
           <div className="mt-5 flex items-center justify-center gap-2">
-            <span className="text-5xl font-bold">$99</span>
+            <span className="text-5xl font-bold">$85</span>
             <span className="text-left text-xs font-medium leading-tight text-white/70">
               Intro
               <br />
