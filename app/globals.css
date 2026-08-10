@@ -137,3 +137,31 @@
     text-wrap: pretty;
   }
 }
+
+@keyframes offer-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes offer-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-offer-fade-in {
+  animation: offer-fade-in 0.2s ease-out;
+}
+
+.animate-offer-pop-in {
+  animation: offer-pop-in 0.3s ease-out;
+}

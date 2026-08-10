@@ -5,6 +5,7 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { JsonLd } from "@/components/json-ld";
+import { ExitIntentOffer } from "@/components/exit-intent-offer";
 import {
   localBusinessSchema,
   websiteSchema,
@@ -139,6 +140,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <ExitIntentOffer />
 
         {/* Statcounter */}
         <Script id="statcounter-config" strategy="afterInteractive">
