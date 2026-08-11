@@ -44,7 +44,7 @@ export const PRICING = {
   },
   medicalClearance: 25,
   /** Standard non-member rate for a primary drip — the baseline pack savings are measured against. */
-  nonMemberDrip: 175,
+  nonMemberDrip: 180,
 };
 
 /**

@@ -96,8 +96,8 @@ export function IvPacksForm({ variant = "default" }: IvPacksFormProps) {
     >
       <div className="bg-accent p-4 text-center text-white">
         <span className="inline-block bg-white text-accent-dark text-xs font-bold px-3 py-1 rounded-full">
-          Pre-purchase &amp; save up to ${getPackMath(IV_PACKS[1]).savings} — no
-          membership
+          Pre-purchase &amp; save up to ${getPackMath(IV_PACKS[1]).savings} (
+          {getPackMath(IV_PACKS[1]).percentOff}%) — no membership
         </span>
       </div>
 
@@ -151,6 +151,9 @@ export function IvPacksForm({ variant = "default" }: IvPacksFormProps) {
                     <span className="text-xs text-accent-dark font-semibold">
                       ${packMath.perIv} per IV
                     </span>
+                    <span className="text-xs text-foreground-muted">
+                      {packMath.percentOff}% off
+                    </span>
                   </label>
                 );
               })}
@@ -162,13 +165,18 @@ export function IvPacksForm({ variant = "default" }: IvPacksFormProps) {
               <span className="text-sm text-foreground-muted">
                 You&apos;re saving
               </span>
-              <span className="text-xl font-bold text-accent-dark">
-                ${math.savings.toLocaleString()}
+              <span className="flex items-baseline gap-2">
+                <span className="text-xl font-bold text-accent-dark tabular-nums">
+                  ${math.savings.toLocaleString()}
+                </span>
+                <span className="text-xs font-bold text-accent-dark bg-accent/10 rounded-full px-2 py-0.5">
+                  {math.percentOff}% OFF
+                </span>
               </span>
             </div>
             <p className="text-xs text-foreground-muted mt-1">
-              vs. ${PRICING.nonMemberDrip} per drip paid one at a time ($
-              {math.value.toLocaleString()} total).
+              ${math.perIv}/IV vs. ${PRICING.nonMemberDrip} per drip paid one at
+              a time (${math.value.toLocaleString()} total).
             </p>
           </div>
 

@@ -108,6 +108,12 @@ const comparison = [
     membership: "From $110/mo",
   },
   {
+    feature: "Savings vs. paying per visit",
+    payGo: null,
+    pack: `$${sixMath.savings} – $${twelveMath.savings} (${sixMath.percentOff}–${twelveMath.percentOff}% off)`,
+    membership: "Varies by tier",
+  },
+  {
     feature: "Monthly commitment",
     payGo: false,
     pack: false,
@@ -193,7 +199,7 @@ const reviews = [
 const faqs = [
   {
     question: "How much do the IV packs cost?",
-    answer: `Our 6-IV pack is $${sixPack.price}, which works out to $${sixMath.perIv} per IV and saves you $${sixMath.savings} compared to the standard $${PRICING.nonMemberDrip} non-member rate. Our 12-IV pack is $${twelvePack.price.toLocaleString()}, which works out to $${twelveMath.perIv} per IV and saves you $${twelveMath.savings} — our best price per IV without a membership.`,
+    answer: `Our 6-IV pack is $${sixPack.price}, which works out to $${sixMath.perIv} per IV and saves you $${sixMath.savings} — about ${sixMath.percentOff}% off the standard $${PRICING.nonMemberDrip} non-member rate. Our 12-IV pack is $${twelvePack.price.toLocaleString()}, which works out to $${twelveMath.perIv} per IV and saves you $${twelveMath.savings}, roughly ${twelveMath.percentOff}% off — our best price per IV without a membership.`,
   },
   {
     question: "Do the pre-purchased IVs expire?",
@@ -344,7 +350,8 @@ export default function IvPacksPage() {
                         ${math.perIv} per IV
                       </p>
                       <p className="text-xs text-white/70 mt-1">
-                        Save ${math.savings.toLocaleString()}
+                        Save ${math.savings.toLocaleString()} ·{" "}
+                        {math.percentOff}% off
                       </p>
                     </div>
                   );
