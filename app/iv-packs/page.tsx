@@ -223,7 +223,7 @@ const faqs = [
   },
   {
     question: "How do I use my pack once I have purchased it?",
-    answer: `Just book like normal — call ${CONTACT.phone}, text us, or book online — and mention your pack when you arrive. We track your remaining visits in your client profile, so you can always ask how many you have left.`,
+    answer: `Just book like normal ��� call ${CONTACT.phone}, text us, or book online — and mention your pack when you arrive. We track your remaining visits in your client profile, so you can always ask how many you have left.`,
   },
   {
     question: "Can I use my HSA or FSA card to buy a pack?",
@@ -663,8 +663,76 @@ export default function IvPacksPage() {
         </div>
       </section>
 
-      {/* Prefer to call */}
+      {/* The savings moment at the front desk */}
       <section className="section-padding bg-background-alt">
+        <div className="container-custom mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <div>
+              <p className="text-accent-dark font-semibold uppercase tracking-wide mb-2">
+                Pay Once, Then Relax
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-3 text-balance">
+                One Stop at the Front Desk. Savings Every Visit After.
+              </h2>
+              <p className="text-foreground-muted text-lg mb-8 text-pretty">
+                Pre-purchase your pack once and you are done paying. Every visit
+                after that you check in, get your drip, and walk out — no card,
+                no monthly bill, and no expiration date hanging over you.
+              </p>
+
+              <div className="grid grid-cols-3 gap-3 sm:gap-4">
+                <div className="bg-background rounded-xl border border-border p-4">
+                  <p className="text-2xl font-bold text-accent-dark tabular-nums">
+                    ${twelveMath.savings}
+                  </p>
+                  <p className="text-xs text-foreground-muted mt-1">
+                    Saved on the 12-pack
+                  </p>
+                </div>
+                <div className="bg-background rounded-xl border border-border p-4">
+                  <p className="text-2xl font-bold text-accent-dark tabular-nums">
+                    {twelveMath.percentOff}%
+                  </p>
+                  <p className="text-xs text-foreground-muted mt-1">
+                    Off the regular rate
+                  </p>
+                </div>
+                <div className="bg-background rounded-xl border border-border p-4">
+                  <p className="text-2xl font-bold text-accent-dark">$0</p>
+                  <p className="text-xs text-foreground-muted mt-1">
+                    Monthly commitment
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-8">
+                <Link href="#reserve-pack-full" className="btn-accent">
+                  Pre-Purchase My IVs
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
+                <Image
+                  src="/images/iv-packs-checkout-savings.png"
+                  alt="A smiling client paying at the front desk while a Prime IV Hydration & Wellness team member in blue scrubs helps her check out in Huntsville, AL"
+                  fill
+                  className="object-cover object-[center_38%]"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+              <p className="mt-3 text-sm text-foreground-muted text-center lg:text-left">
+                One payment at the front desk covers every visit in your pack.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Prefer to call */}
+      <section className="section-padding bg-background">
         <div className="container-custom mx-auto">
           <div className="max-w-3xl mx-auto bg-primary text-white rounded-2xl p-8 md:p-10 shadow-lg text-center">
             <p className="text-accent-light font-semibold uppercase tracking-wide mb-2">
@@ -702,7 +770,7 @@ export default function IvPacksPage() {
       </section>
 
       {/* Reviews */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-background-alt">
         <div className="container-custom mx-auto">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-sm border border-border mb-4">
