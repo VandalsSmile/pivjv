@@ -43,7 +43,44 @@ export const PRICING = {
     promoCode: "VIPIVHUNTSVILLEAL",
   },
   medicalClearance: 25,
+  /** Standard non-member rate for a primary drip — the baseline pack savings are measured against. */
+  nonMemberDrip: 180,
 };
+
+/**
+ * Pre-purchase IV packs — built for loyal non-members who want membership-level
+ * savings without a monthly commitment. Value/savings/per-IV are derived from
+ * PRICING.nonMemberDrip so there is one source of truth for the math.
+ */
+export const IV_PACKS = [
+  {
+    id: "6-pack",
+    name: "6-IV Pack",
+    quantity: 6,
+    price: 900,
+    tagline: "Roughly one IV a month for half a year.",
+    badge: null as string | null,
+    highlight: false,
+  },
+  {
+    id: "12-pack",
+    name: "12-IV Pack",
+    quantity: 12,
+    price: 1700,
+    tagline: "Our lowest possible price per IV — no membership required.",
+    badge: "BEST VALUE",
+    highlight: true,
+  },
+];
+
+/** Derived pack economics: value, total savings, and effective per-IV price. */
+export function getPackMath(pack: { quantity: number; price: number }) {
+  const value = pack.quantity * PRICING.nonMemberDrip;
+  const savings = value - pack.price;
+  const perIv = Math.round(pack.price / pack.quantity);
+  const percentOff = Math.round((savings / value) * 100);
+  return { value, savings, perIv, percentOff };
+}
 
 // Online booking (Booker) deep links — Prime IV Huntsville (Jones Valley)
 export const BOOKING_LINKS = {
@@ -82,6 +119,7 @@ export const NAV_LINKS = [
     href: "#",
     children: [
       { label: "$85 IV Intro Offer", href: "/intro-offer" },
+      { label: "IV Packs — Save a Bundle", href: "/iv-packs", highlight: true },
       { label: "NAD+ & Niagen", href: "/nad-niagen-special", highlight: true },
       { label: "Full Menu", href: "/menu" },
       {
