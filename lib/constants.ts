@@ -119,7 +119,6 @@ export const NAV_LINKS = [
     href: "#",
     children: [
       { label: "$85 IV Intro Offer", href: "/intro-offer" },
-      { label: "IV Packs — Save a Bundle", href: "/iv-packs", highlight: true },
       { label: "NAD+ & Niagen", href: "/nad-niagen-special", highlight: true },
       { label: "Full Menu", href: "/menu" },
       {
@@ -135,6 +134,7 @@ export const NAV_LINKS = [
       { label: "Specials & Promotions", href: "/specials" },
       { label: "Gift Cards", href: "/gift-cards" },
       { label: "Memberships", href: "/memberships" },
+      { label: "Multi IV Pack Deals", href: "/iv-packs", highlight: true },
       { label: "IV Matcher Quiz", href: "/iv-matcher" },
     ],
   },
