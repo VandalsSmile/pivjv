@@ -148,6 +148,12 @@ export function Footer() {
                 Memberships
               </Link>
               <Link
+                href="/iv-packs"
+                className="block text-white/90 hover:text-secondary transition-colors"
+              >
+                Multi IV Pack Deals
+              </Link>
+              <Link
                 href="/about"
                 className="block text-white/90 hover:text-secondary transition-colors"
               >
