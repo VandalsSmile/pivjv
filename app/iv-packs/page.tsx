@@ -223,7 +223,7 @@ const faqs = [
   },
   {
     question: "How do I use my pack once I have purchased it?",
-    answer: `Just book like normal ��� call ${CONTACT.phone}, text us, or book online — and mention your pack when you arrive. We track your remaining visits in your client profile, so you can always ask how many you have left.`,
+    answer: `Just book like normal ����� call ${CONTACT.phone}, text us, or book online — and mention your pack when you arrive. We track your remaining visits in your client profile, so you can always ask how many you have left.`,
   },
   {
     question: "Can I use my HSA or FSA card to buy a pack?",
@@ -306,8 +306,8 @@ export default function IvPacksPage() {
         <div
           className="absolute inset-0 bg-cover"
           style={{
-            backgroundImage: "url('/images/iv-packs-background.png')",
-            backgroundPosition: "center 35%",
+            backgroundImage: "url('/images/iv-packs-exterior.webp')",
+            backgroundPosition: "center 22%",
           }}
         />
         <div className="absolute inset-0 bg-primary/90" />
@@ -672,7 +672,7 @@ export default function IvPacksPage() {
                 Pay Once, Then Relax
               </p>
               <h2 className="text-3xl md:text-4xl font-bold mb-3 text-balance">
-                One Stop at the Front Desk. Savings Every Visit After.
+                Pay Once. Then Just Check In and Relax.
               </h2>
               <p className="text-foreground-muted text-lg mb-8 text-pretty">
                 Pre-purchase your pack once and you are done paying. Every visit
@@ -716,15 +716,16 @@ export default function IvPacksPage() {
             <div className="relative">
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
                 <Image
-                  src="/images/iv-packs-checkout-savings.png"
-                  alt="A smiling client paying at the front desk while a Prime IV Hydration & Wellness team member in blue scrubs helps her check out in Huntsville, AL"
+                  src="/images/iv-packs-intake.webp"
+                  alt="Two clients seated in the intake room at Prime IV Hydration &amp; Wellness in Huntsville, AL, completing their check-in forms on tablets"
                   fill
-                  className="object-cover object-[center_38%]"
+                  className="object-cover object-center"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
               <p className="mt-3 text-sm text-foreground-muted text-center lg:text-left">
-                One payment at the front desk covers every visit in your pack.
+                Quick check-in, then straight to your drip — your pack is
+                already paid for.
               </p>
             </div>
           </div>
