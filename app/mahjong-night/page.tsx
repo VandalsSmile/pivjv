@@ -41,7 +41,7 @@ const HERO_IMAGE = "/images/mahjong-night-hero.png";
 
 export const metadata: Metadata = {
   title: `Mahjong Night + IV Drip — $${MAHJONG_EVENT.ticketPrice}, Only ${MAHJONG_EVENT.seats} Seats | Prime IV Jones Valley`,
-  description: `Mahjong Night at Prime IV Jones Valley in Huntsville, AL. ${MAHJONG_EVENT.timeLabel}. $${MAHJONG_EVENT.ticketPrice} includes an ${MAHJONG_EVENT.drip.name} therapy drip, charcuterie, drinks, and a raffle entry to win a brand-new Mahjong set. Only ${MAHJONG_EVENT.seats} seats — RSVP required.`,
+  description: `Mahjong Night at Prime IV Jones Valley in Huntsville, AL. ${HAS_EVENT_DATE ? `${EVENT_DATE_LABEL}, ` : ""}${MAHJONG_EVENT.timeLabel}. $${MAHJONG_EVENT.ticketPrice} includes an ${MAHJONG_EVENT.drip.name} therapy drip, charcuterie, drinks, and a raffle entry to win a brand-new Mahjong set. Only ${MAHJONG_EVENT.seats} seats — RSVP required.`,
   keywords: [
     "Mahjong night Huntsville",
     "IV therapy event Huntsville",
@@ -143,7 +143,7 @@ export default function MahjongNightPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-accent-light font-semibold uppercase tracking-wide mb-3">
-                One Night · {MAHJONG_EVENT.seats} Seats · RSVP Required
+                {EVENT_DATE_LABEL} · {MAHJONG_EVENT.seats} Seats · RSVP Required
               </p>
               <h1 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
                 Mahjong Night at Prime IV — Play a Hand While Your IV Drips.
@@ -179,10 +179,10 @@ export default function MahjongNightPage() {
                     {MAHJONG_EVENT.seats}
                   </p>
                   <p className="text-sm text-accent-light font-semibold mt-2">
-                    {MAHJONG_EVENT.timeLabel}
+                    {EVENT_DATE_LABEL}
                   </p>
                   <p className="text-xs text-white/70 mt-1">
-                    First to RSVP, first served
+                    {MAHJONG_EVENT.timeLabel} · First to RSVP, first served
                   </p>
                 </div>
               </div>

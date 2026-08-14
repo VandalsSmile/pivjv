@@ -8,13 +8,14 @@ export const MAHJONG_EVENT = {
   name: "Mahjong Night at Prime IV Jones Valley",
 
   /**
-   * Calendar date. Set BOTH when the date is locked in:
-   *   isoDate:   "2026-09-17"        (used for Event structured data)
-   *   dateLabel: "Thursday, Sept 17" (used everywhere on the page)
-   * Leave them null and the page automatically reads "Date announced soon".
+   * Calendar date. Both must be set for the page to show a real date and for
+   * the Event structured data to render. Set them to null to fall back to
+   * "Date announced soon".
+   *   isoDate:   used for Event structured data
+   *   dateLabel: used everywhere on the page
    */
-  isoDate: null as string | null,
-  dateLabel: null as string | null,
+  isoDate: "2026-08-31" as string | null,
+  dateLabel: "Monday, August 31" as string | null,
 
   /** Display + machine-readable times. */
   startTime: "5:30 PM",
