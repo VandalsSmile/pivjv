@@ -180,6 +180,55 @@ export function serviceSchema(opts: {
   };
 }
 
+/** Event schema for in-store events — enables event rich results in search. */
+export function eventSchema(opts: {
+  name: string;
+  description: string;
+  path: string;
+  /** ISO date, e.g. "2026-09-17". */
+  isoDate: string;
+  /** 24-hour local times, e.g. "17:30" / "19:30". */
+  startTime: string;
+  endTime: string;
+  price: number;
+  image?: string;
+  maximumAttendeeCapacity?: number;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: opts.name,
+    description: opts.description,
+    url: absoluteUrl(opts.path),
+    image: opts.image ? absoluteUrl(opts.image) : LOGO_URL,
+    startDate: `${opts.isoDate}T${opts.startTime}:00-05:00`,
+    endDate: `${opts.isoDate}T${opts.endTime}:00-05:00`,
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    maximumAttendeeCapacity: opts.maximumAttendeeCapacity,
+    location: {
+      "@type": "Place",
+      name: SITE_CONFIG.name,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: `${CONTACT.address.street} ${CONTACT.address.suite}`,
+        addressLocality: CONTACT.address.city,
+        addressRegion: CONTACT.address.state,
+        postalCode: CONTACT.address.zip,
+        addressCountry: "US",
+      },
+    },
+    organizer: { "@id": BUSINESS_ID },
+    offers: {
+      "@type": "Offer",
+      price: opts.price,
+      priceCurrency: "USD",
+      availability: "https://schema.org/LimitedAvailability",
+      url: absoluteUrl(opts.path),
+    },
+  };
+}
+
 /** Article schema for Resource Center posts — improves article rich results. */
 export function articleSchema(opts: {
   headline: string;

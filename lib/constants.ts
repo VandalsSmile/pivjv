@@ -135,6 +135,7 @@ export const NAV_LINKS = [
       { label: "Gift Cards", href: "/gift-cards" },
       { label: "Memberships", href: "/memberships" },
       { label: "Multi IV Pack Deals", href: "/iv-packs", highlight: true },
+      { label: "Mahjong Night Event", href: "/mahjong-night", highlight: true },
       { label: "IV Matcher Quiz", href: "/iv-matcher" },
     ],
   },
