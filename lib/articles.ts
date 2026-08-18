@@ -18,7 +18,7 @@ export const ARTICLES: Article[] = [
     category: "NAD+ Therapy",
     readTime: "14 min read",
     date: "August 18, 2026",
-    image: "/images/nad-evidence-research.png",
+    image: "/images/nad-evidence-banner.png",
   },
   {
     slug: "why-summer-is-hard-on-skin-hair-body",
