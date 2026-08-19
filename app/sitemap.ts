@@ -14,6 +14,11 @@ const STATIC_ROUTES: {
   { path: "/intro-offer", priority: 0.9, changeFrequency: "weekly" },
   { path: "/iv-packs", priority: 0.9, changeFrequency: "weekly" },
   { path: "/mahjong-night", priority: 0.9, changeFrequency: "weekly" },
+  {
+    path: "/corporate-team-wellness",
+    priority: 0.8,
+    changeFrequency: "monthly",
+  },
   { path: "/menu", priority: 0.9, changeFrequency: "weekly" },
   { path: "/iv-therapy", priority: 0.9, changeFrequency: "weekly" },
   { path: "/medical-weight-loss", priority: 0.9, changeFrequency: "weekly" },
