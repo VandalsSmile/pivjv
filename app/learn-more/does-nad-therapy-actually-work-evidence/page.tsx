@@ -519,16 +519,16 @@ export default function Page() {
         <div className="max-w-xl text-pretty text-foreground-light/90">
           Our medical team at {SITE_CONFIG.name} in {CONTACT.address.city} will
           give you a straight answer — including when the answer is
-          &ldquo;start somewhere else.&rdquo; New to IV therapy? Your first VIP
-          IV experience is ${PRICING.introOffer.price} (regularly $
-          {PRICING.introOffer.regularPrice}).
+          &ldquo;start somewhere else.&rdquo; We offer both NAD+ IV infusions
+          and NAD+ injections, so you can match the delivery method to your
+          goals, your schedule, and your budget.
         </div>
         <div className="mt-2 flex flex-col gap-3 sm:flex-row">
           <Link
             href="/nad-niagen-special"
             className="inline-flex items-center justify-center rounded-full bg-secondary px-8 py-3 text-base font-semibold text-foreground-light no-underline transition-colors hover:bg-secondary-dark"
           >
-            See NAD+ &amp; Niagen Options
+            Explore NAD+ Infusions &amp; Injections
           </Link>
           <a
             href={`tel:${CONTACT.phoneClean}`}
