@@ -468,8 +468,8 @@ export default function CorporateTeamWellnessPage() {
 
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/intro-offer-vip-chairs.jpg"
-                alt="Zero-gravity VIP massage chairs in the treatment lounge at Prime IV Hydration & Wellness Huntsville"
+                src="/images/small-business-team-meeting.jpg"
+                alt="A small business team meeting around a conference table, the kind of team that books a wellness morning at Prime IV Hydration & Wellness in Huntsville"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
