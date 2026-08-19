@@ -10,6 +10,17 @@ export type Article = {
 
 export const ARTICLES: Article[] = [
   {
+    slug: "does-nad-therapy-actually-work-evidence",
+    title:
+      "Does NAD+ Actually Work? A Straight Look at the Real Research",
+    excerpt:
+      "We read the human trials — 740 participants across 15 randomized studies, the Parkinson's and heart-failure trials, and the only published IV NAD+ infusion study — and separated what's proven, what's promising, and what's pure hype.",
+    category: "NAD+ Therapy",
+    readTime: "14 min read",
+    date: "August 18, 2026",
+    image: "/images/nad-evidence-banner.png",
+  },
+  {
     slug: "why-summer-is-hard-on-skin-hair-body",
     title:
       "Why Is Summer So Hard on Your Skin, Hair & Body? A Layman's Guide (And How IV Therapy Helps)",
