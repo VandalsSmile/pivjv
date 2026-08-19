@@ -37,7 +37,7 @@ import {
 } from "@/lib/mahjong-event";
 import { MahjongRsvpForm } from "./mahjong-rsvp-form";
 
-const HERO_IMAGE = "/images/mahjong-night-hero.png";
+const HERO_IMAGE = "/images/mahjong-night-hero.jpg";
 
 export const metadata: Metadata = {
   title: `Mahjong Night + IV Drip — $${MAHJONG_EVENT.ticketPrice}, Only ${MAHJONG_EVENT.seats} Seats | Prime IV Jones Valley`,
@@ -299,8 +299,8 @@ export default function MahjongNightPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/mahjong-set-raffle.png"
-                alt="A brand-new American mahjong set with engraved tiles, racks, and chips laid out in its case — the raffle prize for Mahjong Night"
+                src="/images/mahjong-set-raffle.jpg"
+                alt="The Luck & Laughter mahjong set — a pink and white 'MAHJONG' zip case in a Prime IV gift box — the raffle prize for Mahjong Night"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -526,7 +526,7 @@ export default function MahjongNightPage() {
                 </li>
               </ul>
 
-              <div className="rounded-xl bg-background-alt border border-border p-5">
+              <div className="rounded-xl bg-background-alt border border-border p-5 mb-8">
                 <p className="text-sm text-foreground-muted leading-relaxed text-pretty">
                   <strong className="text-foreground">
                     Never had an IV with us?
@@ -536,6 +536,16 @@ export default function MahjongNightPage() {
                   {MAHJONG_EVENT.screeningFee} telehealth screening ahead of
                   time so the night itself is nothing but mahjong.
                 </p>
+              </div>
+
+              <div className="relative aspect-3/4 max-w-sm rounded-2xl overflow-hidden border border-border shadow-lg">
+                <Image
+                  src="/images/mahjong-night-flyer.jpg"
+                  alt="Mahjong Night at Prime IV Huntsville event flyer — Bam, Bird, B-12 & Biotin, $75, August 31st at 5:30 PM"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 384px"
+                />
               </div>
             </div>
 
