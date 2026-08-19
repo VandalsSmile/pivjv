@@ -266,7 +266,7 @@ export default function CorporateTeamWellnessPage() {
       <section className="section-padding bg-background-alt">
         <div className="container-custom mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="flex justify-center lg:justify-start">
+            <div className="flex justify-center">
               <div className="w-full max-w-xs rounded-2xl overflow-hidden shadow-xl bg-primary">
                 <video
                   className="w-full h-auto block"
