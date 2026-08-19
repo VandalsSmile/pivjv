@@ -22,6 +22,7 @@ import {
   Star,
   BadgeCheck,
   Zap,
+  BookOpen,
 } from "lucide-react";
 import { CONTACT, SITE_CONFIG } from "@/lib/constants";
 
@@ -524,6 +525,63 @@ export default function NadNiagenPage() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Research highlight */}
+      <section className="section-padding bg-background-alt">
+        <div className="container-custom mx-auto">
+          <div className="bg-white rounded-2xl shadow-lg border border-border overflow-hidden max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-5">
+              <div className="relative aspect-[16/10] lg:aspect-auto lg:col-span-2 min-h-[220px]">
+                <Image
+                  src="/images/nad-evidence-banner.png"
+                  alt="A glass NAD+ vial and IV bag illustrating the research behind NAD+ therapy"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                />
+              </div>
+
+              <div className="p-8 lg:p-10 lg:col-span-3 flex flex-col items-start gap-4">
+                <div className="flex items-center gap-2">
+                  <BookOpen
+                    className="w-5 h-5 text-secondary"
+                    aria-hidden="true"
+                  />
+                  <p className="text-secondary font-semibold uppercase tracking-wide text-sm">
+                    From Our Research Desk
+                  </p>
+                </div>
+
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance">
+                  Learn the Truth About NAD+
+                </h2>
+
+                <p className="text-foreground-muted leading-relaxed text-pretty">
+                  NAD+ is surrounded by big promises and bigger marketing. So we
+                  read the actual human research — 740 participants across 15
+                  randomized trials, the Parkinson&apos;s and heart-failure
+                  studies, and the only published IV NAD+ infusion study — and
+                  separated what&apos;s proven from what&apos;s still just hype.
+                  No overselling, just the evidence.
+                </p>
+
+                <Link
+                  href="/learn-more/does-nad-therapy-actually-work-evidence"
+                  className="btn-primary"
+                >
+                  Learn the Truth About NAD+
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+
+                <p className="text-sm text-foreground-muted">
+                  14 min read &middot; Honest, source-backed, and written for
+                  real people
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

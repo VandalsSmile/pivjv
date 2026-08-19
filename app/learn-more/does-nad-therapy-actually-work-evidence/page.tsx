@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import { Star } from "lucide-react";
 import { ArticleLayout } from "@/components/article-layout";
 import { ARTICLES } from "@/lib/articles";
 import { CONTACT, SITE_CONFIG, PRICING } from "@/lib/constants";
@@ -519,16 +521,16 @@ export default function Page() {
         <div className="max-w-xl text-pretty text-foreground-light/90">
           Our medical team at {SITE_CONFIG.name} in {CONTACT.address.city} will
           give you a straight answer — including when the answer is
-          &ldquo;start somewhere else.&rdquo; New to IV therapy? Your first VIP
-          IV experience is ${PRICING.introOffer.price} (regularly $
-          {PRICING.introOffer.regularPrice}).
+          &ldquo;start somewhere else.&rdquo; We offer both NAD+ IV infusions
+          and NAD+ injections, so you can match the delivery method to your
+          goals, your schedule, and your budget.
         </div>
         <div className="mt-2 flex flex-col gap-3 sm:flex-row">
           <Link
             href="/nad-niagen-special"
             className="inline-flex items-center justify-center rounded-full bg-secondary px-8 py-3 text-base font-semibold text-foreground-light no-underline transition-colors hover:bg-secondary-dark"
           >
-            See NAD+ &amp; Niagen Options
+            Explore NAD+ Infusions &amp; Injections
           </Link>
           <a
             href={`tel:${CONTACT.phoneClean}`}
@@ -538,6 +540,47 @@ export default function Page() {
           </a>
         </div>
       </div>
+
+      <figure className="my-10 flex flex-col gap-6 rounded-2xl border border-border bg-background-alt p-6 sm:p-8">
+        <div className="flex items-center gap-2">
+          <div className="flex gap-0.5">
+            {[...Array(5)].map((_, i) => (
+              <Star
+                key={i}
+                className="h-4 w-4 fill-yellow-400 text-yellow-400"
+                aria-hidden="true"
+              />
+            ))}
+          </div>
+          <span className="text-sm font-semibold text-foreground-muted">
+            A real client, in his own words
+          </span>
+        </div>
+
+        <blockquote className="border-l-2 border-primary pl-5 text-lg leading-relaxed text-pretty text-foreground italic sm:text-xl">
+          &ldquo;I&apos;m 57 and I started using NAD+ at Prime IV in Jones Valley
+          about 9 months ago now. It truly makes a noticeable difference in my
+          energy levels and especially with my mental clarity. I stopped doing
+          the shots for a month and noticed a real drop-off back to pre-NAD+
+          therapy levels. I can definitely recommend it for aging.&rdquo;
+        </blockquote>
+
+        <figcaption className="flex items-center gap-4">
+          <Image
+            src="/images/testimonial-jason-p.jpeg"
+            alt="Jason P., a NAD+ therapy client from Owens Cross Roads, AL"
+            width={56}
+            height={56}
+            className="h-14 w-14 rounded-full object-cover"
+          />
+          <div className="flex flex-col">
+            <span className="font-semibold text-foreground">Jason P.</span>
+            <span className="text-sm text-foreground-muted">
+              Owens Cross Roads, AL
+            </span>
+          </div>
+        </figcaption>
+      </figure>
     </ArticleLayout>
   );
 }
