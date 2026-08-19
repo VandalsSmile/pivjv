@@ -34,8 +34,8 @@ export function MahjongEventSection() {
             {/* Image side */}
             <div className="relative min-h-72 lg:min-h-full">
               <img
-                src="/images/mahjong-night-hero.png"
-                alt="Guests playing mahjong together in the Prime IV lounge while receiving IV therapy"
+                src="/images/mahjong-night-hero.jpg"
+                alt="A pink mahjong tile set and the Mahjong Night event flyer on display at Prime IV Jones Valley"
                 className="absolute inset-0 h-full w-full object-cover"
               />
               <div
