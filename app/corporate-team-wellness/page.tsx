@@ -266,14 +266,21 @@ export default function CorporateTeamWellnessPage() {
       <section className="section-padding bg-background-alt">
         <div className="container-custom mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-              <Image
-                src="/images/vip-spa-lounge.jpg"
-                alt="The VIP lounge and massage chairs at Prime IV Hydration & Wellness in Huntsville, where team wellness mornings are hosted"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+            <div className="flex justify-center lg:justify-start">
+              <div className="w-full max-w-xs rounded-2xl overflow-hidden shadow-xl bg-primary">
+                <video
+                  className="w-full h-auto block"
+                  src="/videos/team-wellness-morning.mp4"
+                  poster="/images/vip-spa-lounge.jpg"
+                  controls
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label="Video of the AE Wealth Management team's wellness morning at Prime IV Hydration & Wellness in Huntsville"
+                />
+              </div>
             </div>
 
             <div>
@@ -302,7 +309,7 @@ export default function CorporateTeamWellnessPage() {
                   rel="noopener noreferrer"
                   className="btn-primary"
                 >
-                  See Their Morning On Facebook
+                  Watch The Full Reel On Facebook
                   <ExternalLink className="w-4 h-4" />
                 </Link>
                 <Link href="#team-inquiry" className="btn-secondary">
