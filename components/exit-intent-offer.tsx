@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { X, Sparkles, Clock, ChevronRight } from "lucide-react";
 import { PRICING } from "@/lib/constants";
@@ -132,26 +132,26 @@ export function ExitIntentOffer() {
           </p>
 
           {/* Mini 3-step ladder */}
-          <ol className="mt-5 flex items-stretch justify-center gap-1.5">
+          <div className="mt-5 grid grid-cols-[1fr_auto_1fr_auto_1fr] items-stretch gap-1">
             {MOMENTUM_PROGRAM.steps.map((step, index) => (
-              <li key={step.number} className="flex flex-1 items-center gap-1.5">
-                <div className="flex-1 rounded-lg bg-white/10 px-2 py-3">
+              <Fragment key={step.number}>
+                <div className="flex flex-col justify-center rounded-lg bg-white/10 px-1.5 py-3">
                   <p className="text-[0.65rem] font-semibold uppercase tracking-wide text-white/60">
                     Visit {step.number}
                   </p>
-                  <p className="mt-1 text-lg font-bold leading-none text-accent-light">
+                  <p className="mt-1 whitespace-nowrap text-base font-bold leading-none text-accent-light">
                     {step.value}
                   </p>
                 </div>
                 {index < MOMENTUM_PROGRAM.steps.length - 1 && (
                   <ChevronRight
                     aria-hidden="true"
-                    className="h-4 w-4 flex-shrink-0 text-white/40"
+                    className="h-4 w-4 self-center text-white/40"
                   />
                 )}
-              </li>
+              </Fragment>
             ))}
-          </ol>
+          </div>
 
           <Link
             href="/intro-offer"

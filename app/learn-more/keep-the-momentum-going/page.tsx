@@ -23,7 +23,25 @@ export const metadata: Metadata = {
     "new guest IV offer",
     "Huntsville AL IV therapy",
   ],
-  openGraph: { url: `/learn-more/${slug}` },
+  openGraph: {
+    url: `/learn-more/${slug}`,
+    title: article.title,
+    description: article.excerpt,
+    images: [
+      {
+        url: "/images/momentum-card.png",
+        width: 1536,
+        height: 1024,
+        alt: "Prime IV Jones Valley Keep the Momentum Going card: $85 first visit, 20% off the second, 10% off the third.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: article.title,
+    description: article.excerpt,
+    images: ["/images/momentum-card.png"],
+  },
 };
 
 export default function Page() {
