@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/json-ld";
-import { breadcrumbSchema } from "@/lib/structured-data";
+import { breadcrumbSchema, faqSchema } from "@/lib/structured-data";
 import Link from "next/link";
 import {
   Phone,
@@ -10,6 +10,8 @@ import {
 } from "lucide-react";
 import { CONTACT, PRICING, BOOKING_LINKS } from "@/lib/constants";
 import { SpecialsForm } from "./specials-form";
+import { MomentumProgramSection } from "@/components/momentum-program-section";
+import { MOMENTUM_FAQS } from "@/lib/momentum-program";
 
 export const metadata: Metadata = {
   title: "IV Therapy Specials & Promotions | Monthly Deals",
@@ -117,7 +119,15 @@ const MONTHLY_SPECIALS = [
 export default function SpecialsPage() {
   return (
     <>
-      <JsonLd data={[breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Specials", path: "/specials" }])]} />
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Specials", path: "/specials" },
+          ]),
+          faqSchema(MOMENTUM_FAQS),
+        ]}
+      />
       {/* Hero Section */}
       <section className="bg-primary text-white py-16 lg:py-24">
         <div className="container-custom mx-auto px-4">
@@ -345,6 +355,13 @@ export default function SpecialsPage() {
                         First visit special
                       </p>
                     </div>
+                    <p className="text-sm text-foreground-muted mt-4 max-w-xs mx-auto text-pretty">
+                      Your first visit is also step one of our new{" "}
+                      <span className="font-semibold text-foreground">
+                        Keep the Momentum Going
+                      </span>{" "}
+                      card — see below.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -352,6 +369,9 @@ export default function SpecialsPage() {
           </div>
         </div>
       </section>
+
+      {/* Keep the Momentum Going program */}
+      <MomentumProgramSection className="section-padding bg-background" />
     </>
   );
 }
