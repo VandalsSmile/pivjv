@@ -18,7 +18,7 @@ export const ARTICLES: Article[] = [
     category: "Offers",
     readTime: "6 min read",
     date: "August 28, 2026",
-    image: "/images/intro-offer-vip-chairs.jpg",
+    image: "/images/prime-iv-jones-valley-storefront.webp",
   },
   {
     slug: "does-nad-therapy-actually-work-evidence",
