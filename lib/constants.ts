@@ -119,6 +119,11 @@ export const NAV_LINKS = [
     href: "#",
     children: [
       { label: "$85 IV Intro Offer", href: "/intro-offer" },
+      {
+        label: "Keep the Momentum Going",
+        href: "/learn-more/keep-the-momentum-going",
+        highlight: true,
+      },
       { label: "NAD+ & Niagen", href: "/nad-niagen-special", highlight: true },
       { label: "Full Menu", href: "/menu" },
       {

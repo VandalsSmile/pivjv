@@ -10,6 +10,17 @@ export type Article = {
 
 export const ARTICLES: Article[] = [
   {
+    slug: "keep-the-momentum-going",
+    title:
+      "Introducing Keep the Momentum Going: Your First Three Visits, Discounted",
+    excerpt:
+      "One IV feels great. Three in a row is where things actually change. Our new-guest card takes 20% off your second visit and 10% off your third — no promo code, no subscription, no catch.",
+    category: "Offers",
+    readTime: "6 min read",
+    date: "August 28, 2026",
+    image: "/images/intro-offer-vip-chairs.jpg",
+  },
+  {
     slug: "does-nad-therapy-actually-work-evidence",
     title:
       "Does NAD+ Actually Work? A Straight Look at the Real Research",

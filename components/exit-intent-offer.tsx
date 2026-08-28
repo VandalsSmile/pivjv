@@ -2,10 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { X, Sparkles, Clock } from "lucide-react";
-import { BOOKING_LINKS } from "@/lib/constants";
+import { X, Sparkles, Clock, ChevronRight } from "lucide-react";
+import { PRICING } from "@/lib/constants";
+import { MOMENTUM_PROGRAM } from "@/lib/momentum-program";
 
-const STORAGE_KEY = "vip-intro-offer-seen";
+// Bumped when the offer content changes so returning visitors see the new one.
+const STORAGE_KEY = "momentum-offer-seen";
 
 export function ExitIntentOffer() {
   const [open, setOpen] = useState(false);
@@ -118,33 +120,52 @@ export function ExitIntentOffer() {
             id="exit-offer-title"
             className="mt-4 text-2xl font-bold leading-tight text-balance"
           >
-            Claim Your VIP Intro Offer Now
+            Your First 3 Visits Are Discounted
           </h2>
 
           <p className="mt-2 text-sm text-white/80 text-pretty">
-            Book your first premium IV therapy session and feel better, faster.
-            This special price won&apos;t last.
+            New guests get our{" "}
+            <span className="font-semibold text-white">
+              {MOMENTUM_PROGRAM.name}
+            </span>{" "}
+            card — three visits, three discounts, no promo code to remember.
           </p>
 
-          <div className="mt-5 flex items-center justify-center gap-2">
-            <span className="text-5xl font-bold">$85</span>
-            <span className="text-left text-xs font-medium leading-tight text-white/70">
-              Intro
-              <br />
-              VIP Offer
-            </span>
-          </div>
+          {/* Mini 3-step ladder */}
+          <ol className="mt-5 flex items-stretch justify-center gap-1.5">
+            {MOMENTUM_PROGRAM.steps.map((step, index) => (
+              <li key={step.number} className="flex flex-1 items-center gap-1.5">
+                <div className="flex-1 rounded-lg bg-white/10 px-2 py-3">
+                  <p className="text-[0.65rem] font-semibold uppercase tracking-wide text-white/60">
+                    Visit {step.number}
+                  </p>
+                  <p className="mt-1 text-lg font-bold leading-none text-accent-light">
+                    {step.value}
+                  </p>
+                </div>
+                {index < MOMENTUM_PROGRAM.steps.length - 1 && (
+                  <ChevronRight
+                    aria-hidden="true"
+                    className="h-4 w-4 flex-shrink-0 text-white/40"
+                  />
+                )}
+              </li>
+            ))}
+          </ol>
 
           <Link
-            href={BOOKING_LINKS.introOffer}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/intro-offer"
             onClick={() => setOpen(false)}
             className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-secondary px-6 py-3.5 font-semibold text-white shadow-lg transition-colors hover:bg-secondary-dark"
           >
             <Sparkles className="h-4 w-4" />
-            Claim My Special Price
+            Book Visit 1 for ${PRICING.introOffer.price}
           </Link>
+
+          <p className="mt-3 text-[0.7rem] leading-relaxed text-white/50">
+            Visit 2 within 60 days &middot; Visit 3 within 45 days of visit 2.
+            Eligible regular-price IVs only.
+          </p>
 
           <button
             type="button"

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/json-ld";
-import { breadcrumbSchema, serviceSchema } from "@/lib/structured-data";
+import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/structured-data";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -27,6 +27,8 @@ import {
 import { CONTACT, PRICING } from "@/lib/constants";
 import { IntroOfferForm } from "./intro-offer-form";
 import { TextToBookLink } from "@/components/text-to-book-link";
+import { MomentumProgramSection } from "@/components/momentum-program-section";
+import { MOMENTUM_FAQS } from "@/lib/momentum-program";
 
 const savings = Math.round(
   ((PRICING.introOffer.regularPrice - PRICING.introOffer.price) /
@@ -201,7 +203,22 @@ const reviews = [
 export default function IntroOfferPage() {
   return (
     <>
-      <JsonLd data={[serviceSchema({ name: "$85 First-Time IV Therapy Offer", description: "New client special: first VIP IV therapy for $85 including a wellness consultation and full-size primary drip in Huntsville, AL.", path: "/intro-offer", serviceType: "IV Therapy" }), breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Intro Offer", path: "/intro-offer" }])]} />
+      <JsonLd
+        data={[
+          serviceSchema({
+            name: "$85 First-Time IV Therapy Offer",
+            description:
+              "New client special: first VIP IV therapy for $85 including a wellness consultation and full-size primary drip in Huntsville, AL. Includes the Keep the Momentum Going card for 20% off visit two and 10% off visit three.",
+            path: "/intro-offer",
+            serviceType: "IV Therapy",
+          }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Intro Offer", path: "/intro-offer" },
+          ]),
+          faqSchema(MOMENTUM_FAQS),
+        ]}
+      />
       {/* Hero */}
       <section className="relative text-white section-padding overflow-hidden">
         <div
@@ -399,8 +416,18 @@ export default function IntroOfferPage() {
         </div>
       </section>
 
+      {/* Keep the Momentum Going — the intro visit is step one */}
+      <MomentumProgramSection
+        className="section-padding bg-background-alt"
+        eyebrow="Your First Visit Is Step One"
+        heading="Keep the Momentum Going"
+        description={`Your $${PRICING.introOffer.price} intro visit isn't a one-and-done. On your way out we hand you a card that takes 20% off your second visit and 10% off your third — then you choose whatever fits your life.`}
+        showNextSteps
+        showCta={false}
+      />
+
       {/* What You Get */}
-      <section className="section-padding bg-background-alt">
+      <section className="section-padding bg-background">
         <div className="container-custom mx-auto">
           <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl border border-border overflow-hidden">
             <div className="p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -473,7 +500,7 @@ export default function IntroOfferPage() {
       </section>
 
       {/* Prefer to call */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-background-alt">
         <div className="container-custom mx-auto">
           <div className="max-w-3xl mx-auto bg-primary text-white rounded-2xl p-8 md:p-10 shadow-lg text-center">
             <p className="text-secondary font-semibold uppercase tracking-wide mb-2">

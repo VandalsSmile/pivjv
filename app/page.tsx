@@ -5,6 +5,7 @@ import { AudienceSection } from "@/components/sections/audience-section";
 import { BenefitsSection } from "@/components/sections/benefits-section";
 import { ServicesSection } from "@/components/sections/services-section";
 import { SpecialsSection } from "@/components/sections/specials-section";
+import { MomentumProgramSection } from "@/components/momentum-program-section";
 import { MahjongEventSection } from "@/components/sections/mahjong-event-section";
 import { WeddingSeasonSection } from "@/components/sections/wedding-season-section";
 import { TrustSection } from "@/components/sections/trust-section";
@@ -35,6 +36,7 @@ export default function HomePage() {
       <BenefitsSection />
       <ServicesSection />
       <SpecialsSection />
+      <MomentumProgramSection className="section-padding bg-background" />
       <WeddingSeasonSection />
       <TrustSection />
       <MembershipsSection />
