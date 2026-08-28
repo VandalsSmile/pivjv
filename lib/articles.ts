@@ -10,6 +10,17 @@ export type Article = {
 
 export const ARTICLES: Article[] = [
   {
+    slug: "cold-season-immune-hack-huntsville",
+    title:
+      "Hack Your Immune System: 10 Things Huntsville Families Can Do Before Everyone Starts Getting Sick",
+    excerpt:
+      "The complete cold-season guide for Huntsville — hydration, vitamins, minerals, antioxidants, recovery, and where IV therapy actually fits. There's no single immune switch, but there is a smarter way to build resilience before peak respiratory-virus season.",
+    category: "Immunity",
+    readTime: "11 min read",
+    date: "September 2, 2026",
+    image: "/images/cold-season-immune-hack-banner.jpg",
+  },
+  {
     slug: "keep-the-momentum-going",
     title:
       "Introducing Keep the Momentum Going: Your First Three Visits, Discounted",
