@@ -31,87 +31,97 @@ export const metadata: Metadata = {
 
 const MONTHLY_SPECIALS = [
   {
-    name: "The Back-to-You Reset",
+    name: "Fall Defense Reset",
     category: "Health & Wellness Special",
-    discount: "30% OFF",
-    price: 161,
-    regularPrice: 230,
-    savingsLabel: "Save $69",
-    description:
-      "Summer heat, vacations, and busy schedules can leave you feeling tired, dehydrated, mentally foggy, and out of routine. As August brings back-to-school schedules and a return to everyday life, it's the perfect time to recharge and feel like yourself again. This bundle pairs a Myers' Cocktail with The Restoration Amplifier to help you reset.",
-    features: [
-      "Myers' Cocktail IV — reg. $180",
-      "The Restoration Amplifier — reg. $50",
-      "Hydration, energy & mental clarity support",
-      "Stress recovery, relaxation & muscle function",
-    ],
-    addOns: [
-      {
-        name: "Amino Acid Blend Injection",
-        detail: "Supports mental clarity and energy production.",
-        price: "$30",
-      },
-      {
-        name: "NAD+ 100mg",
-        detail:
-          "Supports energy production, cellular repair, metabolism, and overall wellness.",
-        price: "$75",
-      },
-      {
-        name: "B-12 Injection",
-        detail: "Boosts energy metabolism and helps combat fatigue.",
-        price: "$30",
-      },
-    ],
-    bestFor:
-      "Busy professionals, parents, and active adults getting back into routine who feel tired, dehydrated, and mentally foggy and want to feel like themselves again.",
-    theme: {
-      card: "bg-accent",
-      badge: "bg-white text-accent",
-      button: "text-accent",
-    },
-  },
-  {
-    name: "Radiance & Renewal",
-    category: "Beauty & Aging Special",
     discount: "$50 OFF",
     price: 130,
     regularPrice: 180,
     savingsLabel: "Save $50",
+    tagline: "",
     description:
-      "After months of sun exposure, heat, and travel, your skin can begin to look dull and dehydrated while fatigue starts to show. August is the perfect time to restore your glow and invest in healthy aging before the busy fall season begins. The Glow Drip pairs beautifully with Glutathione or a beauty-focused amplifier to brighten and rejuvenate.",
-    features: [
-      "The Glow Drip — reg. $180",
-      "Pairs with Glutathione or a beauty amplifier",
-      "Skin hydration & antioxidant support",
-      "Restores your glow after summer sun",
+      "September brings packed schedules, school routines, more time around crowds, and the beginning of seasonal changes. The Immunity IV helps support hydration, immune wellness, energy, and overall replenishment as you settle into the busy fall season.",
+    includes: [
+      { name: "Immunity IV", note: "Glutathione, Vitamin C & Zinc blend", regularPrice: "$180" },
+    ],
+    benefits: [
+      "Hydration & immune wellness support",
+      "Energy & overall replenishment",
     ],
     addOns: [
       {
-        name: "Glutathione",
+        name: "Lysine IV Additive",
         detail:
-          "Master antioxidant that brightens skin and supports detoxification.",
-        price: "$40",
-      },
-      {
-        name: "NAD+ or Niagen® Upgrade",
-        detail:
-          "Premium upgrade to support cellular energy, recovery, mental focus, and healthy aging from the inside out.",
-        price: "$75",
-      },
-      {
-        name: "Biotin",
-        detail:
-          "Supports energy metabolism and healthy hair, skin, and nails.",
+          "Increase energy, support healthy tissue and bones, and protect against viruses and cold sores.",
         price: "$30",
+      },
+      {
+        name: "CoQ10 Injection",
+        detail: "Energy production, antioxidant defense, and heart health.",
+        price: "$35",
+      },
+      {
+        name: "NAD+ 100mg Injection",
+        detail:
+          "Promote longevity, focus, cellular repair, mood balance, energy, metabolic support, and addiction recovery.",
+        price: "$75",
       },
     ],
     bestFor:
-      "Anyone whose skin looks dull or dehydrated after a summer of sun, heat, and travel who wants to restore their glow and invest in healthy aging before fall.",
+      "Busy professionals, parents, and students heading into packed fall schedules and more time around crowds who want to support their immune system, hydration, and energy.",
     theme: {
-      card: "bg-pink",
-      badge: "bg-white text-pink",
-      button: "text-pink",
+      bar: "bg-accent",
+      badge: "bg-accent/10 text-accent-dark",
+      accentText: "text-accent-dark",
+      box: "bg-accent/5 border-accent/15",
+      button: "bg-accent hover:bg-accent-dark text-white",
+    },
+  },
+  {
+    name: "The Calm Drip + Biotin Bundle",
+    category: "Beauty & Aging Special",
+    discount: "$50 OFF",
+    price: 160,
+    regularPrice: 210,
+    savingsLabel: "Save $50",
+    tagline: "Rested Looks Good on You",
+    description:
+      "Stress, busy schedules, and poor-quality rest can leave you feeling drained and looking less refreshed. September is a chance to slow things down and make recovery part of your beauty and healthy-aging routine.",
+    includes: [
+      { name: "The Calm Drip", note: "Relaxation & stress-recovery blend", regularPrice: "$180" },
+      { name: "Biotin Injection", note: "Healthy hair, skin & nails", regularPrice: "$30" },
+    ],
+    benefits: [
+      "Stress recovery & relaxation support",
+      "Healthy hair, skin & nails",
+    ],
+    addOns: [
+      {
+        name: "NAD+ 100mg Injection",
+        detail:
+          "Promote longevity, focus, cellular repair, mood balance, energy, metabolic support, and addiction recovery.",
+        price: "$75",
+      },
+      {
+        name: "Lipolean Injection",
+        detail:
+          "Designed to help the body break down and metabolize fat more efficiently.",
+        price: "$35",
+      },
+      {
+        name: "Immunity Injection",
+        detail:
+          "A concentrated immune boost of Vitamin C, Zinc, and Glutathione working synergistically to enhance defense and recovery.",
+        price: "$35",
+      },
+    ],
+    bestFor:
+      "Anyone feeling drained and looking less refreshed from stress, busy schedules, and poor rest who wants to make recovery part of their beauty and healthy-aging routine.",
+    theme: {
+      bar: "bg-pink",
+      badge: "bg-pink/10 text-pink-dark",
+      accentText: "text-pink-dark",
+      box: "bg-pink/5 border-pink/15",
+      button: "bg-pink hover:bg-pink-dark text-white",
     },
   },
 ];
@@ -152,10 +162,10 @@ export default function SpecialsPage() {
         <div className="container-custom mx-auto">
           <div className="text-center mb-12">
             <p className="text-sm font-semibold text-secondary uppercase tracking-wide mb-2">
-              August 2026
+              September 2026
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-balance">
-              August Specials
+              September Specials
             </h2>
             <p className="text-foreground-muted mt-4">
               Exclusive limited-time offers designed to support your specific
@@ -167,82 +177,131 @@ export default function SpecialsPage() {
             {MONTHLY_SPECIALS.map((special) => (
               <div
                 key={special.name}
-                className={`relative overflow-hidden rounded-2xl shadow-lg text-white ${special.theme.card}`}
+                className="relative overflow-hidden rounded-2xl border border-border bg-background shadow-sm"
               >
-                {/* Decorative bubbles */}
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute inset-0"
-                >
-                  <span className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/10" />
-                  <span className="absolute top-24 -left-12 w-32 h-32 rounded-full bg-white/10" />
-                  <span className="absolute bottom-8 right-10 w-20 h-20 rounded-full bg-white/10" />
-                  <span className="absolute -bottom-12 left-16 w-36 h-36 rounded-full bg-white/5" />
-                  <span className="absolute top-1/2 right-1/3 w-12 h-12 rounded-full bg-white/10" />
-                </div>
+                  className={`h-1.5 w-full ${special.theme.bar}`}
+                />
 
-                <div className="relative p-8">
+                <div className="p-8">
                   <span
                     className={`inline-block ${special.theme.badge} text-xs font-bold px-3 py-1 rounded-full mb-3`}
                   >
                     {special.discount} · {special.category}
                   </span>
-                  <h3 className="text-2xl font-bold mb-2">{special.name}</h3>
+                  <h3 className="text-2xl font-bold mb-2 text-foreground">
+                    {special.name}
+                  </h3>
+                  {special.tagline ? (
+                    <p className="text-foreground-muted italic mb-3">
+                      {special.tagline}
+                    </p>
+                  ) : null}
                   <div className="flex items-baseline gap-2 mb-6">
-                    <span className="text-3xl font-bold">${special.price}</span>
-                    <span className="text-white/60 line-through">
+                    <span
+                      className={`text-3xl font-bold ${special.theme.accentText}`}
+                    >
+                      ${special.price}
+                    </span>
+                    <span className="text-foreground-muted line-through">
                       ${special.regularPrice}
                     </span>
-                    <span className="font-semibold text-white/90">
+                    <span className="font-semibold text-foreground-muted">
                       {special.savingsLabel}
                     </span>
                   </div>
 
-                  <p className="text-white/90 mb-4">{special.description}</p>
+                  <p className="text-foreground-muted mb-4">
+                    {special.description}
+                  </p>
+
+                  <div
+                    className={`rounded-xl p-5 mb-6 border ${special.theme.box}`}
+                  >
+                    <h4
+                      className={`text-sm font-bold uppercase tracking-wide mb-4 ${special.theme.accentText}`}
+                    >
+                      What You Get
+                    </h4>
+                    <ul className="space-y-3">
+                      {special.includes.map((item) => (
+                        <li key={item.name} className="flex items-start gap-3">
+                          <Check
+                            className={`w-5 h-5 flex-shrink-0 mt-0.5 ${special.theme.accentText}`}
+                          />
+                          <div className="flex-1">
+                            <div className="flex items-baseline justify-between gap-3">
+                              <span className="text-base font-bold text-foreground">
+                                {item.name}
+                              </span>
+                              <span className="flex-shrink-0 text-sm text-foreground-muted line-through">
+                                {item.regularPrice}
+                              </span>
+                            </div>
+                            <p className="text-sm text-foreground-muted">
+                              {item.note}
+                            </p>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
                   <ul className="space-y-2 mb-6">
-                    {special.features.map((item) => (
+                    {special.benefits.map((item) => (
                       <li
                         key={item}
-                        className="flex items-center gap-2 text-sm text-white/90"
+                        className="flex items-center gap-2 text-sm text-foreground-muted"
                       >
-                        <Check className="w-4 h-4 flex-shrink-0 text-white" />
+                        <Check
+                          className={`w-4 h-4 flex-shrink-0 ${special.theme.accentText}`}
+                        />
                         {item}
                       </li>
                     ))}
                   </ul>
 
-                  <div className="rounded-xl bg-white/15 p-5 mb-6">
-                    <h4 className="text-sm font-bold uppercase tracking-wide mb-3">
+                  <div className="rounded-xl bg-background-alt p-5 mb-6">
+                    <h4 className="text-sm font-bold uppercase tracking-wide mb-3 text-foreground">
                       Recommended Add-Ons
                     </h4>
                     <ul className="space-y-3">
                       {special.addOns.map((addOn) => (
                         <li key={addOn.name} className="text-sm">
                           <div className="flex items-baseline justify-between gap-3">
-                            <span className="font-semibold">{addOn.name}</span>
-                            <span className="flex-shrink-0 font-semibold text-white/90">
+                            <span className="font-semibold text-foreground">
+                              {addOn.name}
+                            </span>
+                            <span
+                              className={`flex-shrink-0 font-semibold ${special.theme.accentText}`}
+                            >
                               {addOn.price}
                             </span>
                           </div>
-                          <p className="text-white/80">{addOn.detail}</p>
+                          <p className="text-foreground-muted">
+                            {addOn.detail}
+                          </p>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <p className="text-sm text-white/90 mb-6">
-                    <span className="font-bold">Best For: </span>
+                  <p className="text-sm text-foreground-muted mb-6">
+                    <span className="font-bold text-foreground">
+                      Best For:{" "}
+                    </span>
                     {special.bestFor}
                   </p>
 
                   <Link
                     href={`tel:${CONTACT.phoneClean}`}
-                    className={`inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold transition-colors duration-200 hover:bg-white/90 ${special.theme.button}`}
+                    className={`inline-flex w-full items-center justify-center gap-2 rounded-lg px-6 py-3 font-semibold transition-colors duration-200 ${special.theme.button}`}
                   >
                     <Phone className="w-4 h-4" />
                     Call to Book
                   </Link>
-                  <p className="text-xs text-white/70 text-center mt-3">
+                  <p className="text-xs text-foreground-muted text-center mt-3">
                     Telehealth medical clearance may be required and is not
                     included in this special.
                   </p>
