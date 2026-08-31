@@ -13,9 +13,10 @@ const SPECIALS = [
     tagline: "",
     description:
       "September brings packed schedules, school routines, more time around crowds, and the beginning of seasonal changes. The Immunity IV helps support hydration, immune wellness, energy, and overall replenishment as you settle into the busy fall season.",
-    features: [
-      "Immunity IV — reg. $180",
-      "Glutathione, Vitamin C & Zinc blend",
+    includes: [
+      { name: "Immunity IV", note: "Glutathione, Vitamin C & Zinc blend", regularPrice: "$180" },
+    ],
+    benefits: [
       "Hydration & immune wellness support",
       "Energy & overall replenishment",
     ],
@@ -55,9 +56,11 @@ const SPECIALS = [
     tagline: "Rested Looks Good on You",
     description:
       "Stress, busy schedules, and poor-quality rest can leave you feeling drained and looking less refreshed. September is a chance to slow things down and make recovery part of your beauty and healthy-aging routine.",
-    features: [
-      "The Calm Drip — reg. $180",
-      "Biotin Injection — reg. $30",
+    includes: [
+      { name: "The Calm Drip", note: "Relaxation & stress-recovery blend", regularPrice: "$180" },
+      { name: "Biotin Injection", note: "Healthy hair, skin & nails", regularPrice: "$30" },
+    ],
+    benefits: [
       "Stress recovery & relaxation support",
       "Healthy hair, skin & nails",
     ],
@@ -144,8 +147,33 @@ export function SpecialsSection() {
                 </div>
 
                 <p className="text-white/90 mb-4">{special.description}</p>
+
+                <div className="rounded-xl bg-white/20 p-5 mb-6 ring-1 ring-white/30">
+                  <h4 className="text-sm font-bold uppercase tracking-wide mb-4">
+                    What You Get
+                  </h4>
+                  <ul className="space-y-3">
+                    {special.includes.map((item) => (
+                      <li key={item.name} className="flex items-start gap-3">
+                        <Check className="w-5 h-5 flex-shrink-0 text-white mt-0.5" />
+                        <div className="flex-1">
+                          <div className="flex items-baseline justify-between gap-3">
+                            <span className="text-base font-bold">
+                              {item.name}
+                            </span>
+                            <span className="flex-shrink-0 text-sm text-white/80 line-through">
+                              {item.regularPrice}
+                            </span>
+                          </div>
+                          <p className="text-sm text-white/80">{item.note}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
                 <ul className="space-y-2 mb-6">
-                  {special.features.map((item) => (
+                  {special.benefits.map((item) => (
                     <li
                       key={item}
                       className="flex items-center gap-2 text-sm text-white/90"
