@@ -49,20 +49,21 @@ const MONTHLY_SPECIALS = [
     ],
     addOns: [
       {
-        name: "Vitamin C",
-        detail: "Extra antioxidant support to reinforce your immune system.",
-        price: "$30",
-      },
-      {
-        name: "Zinc",
+        name: "Lysine IV Additive",
         detail:
-          "Supports immune function and helps shorten the duration of colds.",
+          "Increase energy, support healthy tissue and bones, and protect against viruses and cold sores.",
         price: "$30",
       },
       {
-        name: "B-12 Injection",
-        detail: "Boosts energy metabolism and helps combat fatigue.",
-        price: "$30",
+        name: "CoQ10 Injection",
+        detail: "Energy production, antioxidant defense, and heart health.",
+        price: "$35",
+      },
+      {
+        name: "NAD+ 100mg Injection",
+        detail:
+          "Promote longevity, focus, cellular repair, mood balance, energy, metabolic support, and addiction recovery.",
+        price: "$75",
       },
     ],
     bestFor:
@@ -93,21 +94,22 @@ const MONTHLY_SPECIALS = [
     ],
     addOns: [
       {
-        name: "Glutathione",
+        name: "NAD+ 100mg Injection",
         detail:
-          "Master antioxidant that brightens skin and supports detoxification.",
-        price: "$45",
-      },
-      {
-        name: "NAD+ or Niagen® Upgrade",
-        detail:
-          "Premium upgrade to support cellular energy, recovery, mental focus, and healthy aging from the inside out.",
+          "Promote longevity, focus, cellular repair, mood balance, energy, metabolic support, and addiction recovery.",
         price: "$75",
       },
       {
-        name: "B-12 Injection",
-        detail: "Boosts energy metabolism and helps combat fatigue.",
-        price: "$30",
+        name: "Lipolean Injection",
+        detail:
+          "Designed to help the body break down and metabolize fat more efficiently.",
+        price: "$35",
+      },
+      {
+        name: "Immunity Injection",
+        detail:
+          "A concentrated immune boost of Vitamin C, Zinc, and Glutathione working synergistically to enhance defense and recovery.",
+        price: "$35",
       },
     ],
     bestFor:
