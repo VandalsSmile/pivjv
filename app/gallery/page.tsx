@@ -40,12 +40,24 @@ async function getUploadedImages(): Promise<GalleryItem[]> {
         (a, b) =>
           new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime(),
       )
-      .map((blob) => ({
-        src: blob.url,
-        alt: "Photo from inside our IV therapy lounge",
-        caption: "",
-        span: "",
-      }));
+      .map((blob) => {
+        // Turn "gallery/vip-lounge-chairs-Ab12Cd.jpg" into readable alt text so
+        // non-photo uploads (flyers, offer cards) aren't mislabeled.
+        const name = blob.pathname
+          .replace(/^gallery\//, "")
+          .replace(/\.[a-z0-9]+$/i, "")
+          .replace(/-[A-Za-z0-9]{20,}$/, "")
+          .replace(/[-_]+/g, " ")
+          .trim();
+        return {
+          src: blob.url,
+          alt: name
+            ? `${name} — Prime IV Hydration & Wellness ${CONTACT.address.city}`
+            : "Photo from inside our IV therapy lounge",
+          caption: "",
+          span: "",
+        };
+      });
   } catch (error) {
     console.error("Failed to load uploaded gallery images:", error);
     return [];
