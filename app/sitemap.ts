@@ -13,7 +13,6 @@ const STATIC_ROUTES: {
   { path: "/", priority: 1.0, changeFrequency: "weekly" },
   { path: "/intro-offer", priority: 0.9, changeFrequency: "weekly" },
   { path: "/iv-packs", priority: 0.9, changeFrequency: "weekly" },
-  { path: "/mahjong-night", priority: 0.9, changeFrequency: "weekly" },
   {
     path: "/corporate-team-wellness",
     priority: 0.8,

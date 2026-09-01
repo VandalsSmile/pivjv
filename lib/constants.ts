@@ -145,7 +145,6 @@ export const NAV_LINKS = [
         href: "/corporate-team-wellness",
         highlight: true,
       },
-      { label: "Mahjong Night Event", href: "/mahjong-night", highlight: true },
       { label: "IV Matcher Quiz", href: "/iv-matcher" },
     ],
   },
