@@ -129,6 +129,24 @@ export function HeroSection() {
               >
                 Claim Your First IV
               </Link>
+
+                <p className="mt-3 text-center text-xs leading-relaxed text-foreground-muted text-pretty">
+                  Then keep the momentum going:{" "}
+                  <span className="font-semibold text-primary">
+                    20% off your 2nd visit
+                  </span>{" "}
+                  and{" "}
+                  <span className="font-semibold text-primary">
+                    10% off your 3rd
+                  </span>
+                  .{" "}
+                  <Link
+                    href="/intro-offer"
+                    className="font-semibold text-secondary underline underline-offset-2 hover:text-primary transition-colors"
+                  >
+                    See how it works
+                  </Link>
+                </p>
               </div>
             </div>
           </div>

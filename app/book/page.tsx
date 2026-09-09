@@ -17,7 +17,7 @@ import { TextToBookLink } from "@/components/text-to-book-link";
 export const metadata: Metadata = {
   title: "Book IV Therapy Huntsville AL | Schedule Your Hydration Drip",
   description:
-    "Schedule your IV or injection therapy at Prime IV Hydration & Wellness in Huntsville, AL. Book the $85 first-time intro offer, non-member, member, or injection appointments online — or call (256) 692-6347.",
+    "Schedule your IV or injection therapy at Prime IV Hydration & Wellness in Huntsville, AL. Book the $85 first-time intro offer, non-member, member, or injection appointments online — or call (256) 678-0033.",
   keywords: [
     "book IV therapy Huntsville",
     "schedule IV drip",
