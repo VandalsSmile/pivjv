@@ -85,8 +85,8 @@ export function localBusinessSchema() {
       {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: "Monday",
-        opens: "00:00",
-        closes: "00:00",
+        opens: "09:00",
+        closes: "15:00",
       },
     ],
     sameAs: [SOCIAL_LINKS.facebook, SOCIAL_LINKS.instagram],
