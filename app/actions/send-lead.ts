@@ -86,7 +86,7 @@ export async function sendLead(payload: LeadPayload): Promise<SendLeadResult> {
       <h2 style="color:#0a4d68;">Thank you, ${escapeHtml(name) || "there"}!</h2>
       <p style="color:#111827;">We've received your request and our team will be in touch within 24 hours. Here's a copy of what you submitted:</p>
       <table style="width:100%;border-collapse:collapse;font-size:14px;margin:16px 0;">${rows}</table>
-      <p style="color:#111827;">If you need immediate assistance, call us at (256) 692-6347.</p>
+      <p style="color:#111827;">If you need immediate assistance, call us at (256) 678-0033.</p>
       <p style="color:#6b7280;font-size:13px;margin-top:24px;">Prime IV Hydration &amp; Wellness — Huntsville, AL</p>
     </div>`;
 

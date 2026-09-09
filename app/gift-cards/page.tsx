@@ -172,7 +172,7 @@ const faqs = [
   {
     question: "How do I purchase a Prime IV gift card?",
     answer:
-      "It's easy — request one through the form on this page, call us at (256) 692-6347, or stop by our spa on Carl T. Jones Drive in Jones Valley. Our team will have your gift card ready to give.",
+      "It's easy — request one through the form on this page, call us at (256) 678-0033, or stop by our spa on Carl T. Jones Drive in Jones Valley. Our team will have your gift card ready to give.",
   },
   {
     question: "Can I choose any gift card amount?",
