@@ -98,7 +98,7 @@ export const BOOKING_LINKS = {
 export const HOURS = {
   days: [
     { day: "Sunday", hours: "10 AM – 5 PM" },
-    { day: "Monday", hours: "Closed" },
+    { day: "Monday", hours: "9 AM – 3 PM" },
     { day: "Tuesday", hours: "10 AM – 7 PM" },
     { day: "Wednesday", hours: "9 AM – 6 PM" },
     { day: "Thursday", hours: "10 AM – 7 PM" },

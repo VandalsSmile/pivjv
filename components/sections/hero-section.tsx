@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Phone, Check } from "lucide-react";
+import { ArrowRight, Phone, Check, Clock } from "lucide-react";
 import { SITE_CONFIG, CONTACT, PRICING, BOOKING_LINKS } from "@/lib/constants";
 import { TextToBookLink } from "@/components/text-to-book-link";
 
@@ -16,6 +16,13 @@ export function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-6">
+            <div className="inline-flex items-center gap-2 rounded-full bg-secondary/20 border border-secondary/40 px-4 py-2 text-sm font-semibold text-white">
+              <Clock className="w-4 h-4 text-secondary" />
+              <span className="text-balance">
+                Now open Mondays 9 AM&nbsp;&ndash;&nbsp;3 PM!
+              </span>
+            </div>
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance">
               Feel Better, Faster — Premium IV Therapy in{" "}
               {CONTACT.address.city}, AL
