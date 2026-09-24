@@ -29,7 +29,7 @@ export function HeroSection() {
             </h1>
 
             <div className="flex flex-wrap gap-3">
-              <Link href="/intro-offer" className="btn-primary">
+              <Link href="/book-intro-offer" className="btn-primary">
                 Claim ${PRICING.introOffer.price} VIP IV
                 <ArrowRight className="w-4 h-4" />
               </Link>
@@ -122,7 +122,7 @@ export function HeroSection() {
                 </h3>
 
               <Link
-                href="/intro-offer"
+                href="/book-intro-offer"
                 className="btn-secondary w-full justify-center"
               >
                 Claim Your First IV

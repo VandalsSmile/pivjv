@@ -384,7 +384,7 @@ export function BookIntroForm() {
         </div>
       </div>
 
-      {/* Step 3 — details */}
+      {/* Step 4 — details */}
       <div>
         <div className="mb-4 flex items-center gap-2">
           <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white">

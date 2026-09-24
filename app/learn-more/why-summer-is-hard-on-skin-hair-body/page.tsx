@@ -344,7 +344,7 @@ export default function Page() {
           welcome.
         </div>
         <Link
-          href="/intro-offer"
+          href="/book-intro-offer"
           className="mt-2 inline-flex items-center justify-center rounded-full bg-secondary px-8 py-3 text-base font-semibold text-foreground-light no-underline transition-colors hover:bg-secondary-dark"
         >
           Claim the ${PRICING.introOffer.price} Intro Offer
