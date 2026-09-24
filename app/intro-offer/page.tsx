@@ -272,8 +272,8 @@ export default function IntroOfferPage() {
               </div>
 
               <div className="flex flex-wrap gap-4 mb-6">
-                <Link href="#claim-offer" className="btn-primary">
-                  Claim With Code
+                <Link href="/book-intro-offer" className="btn-primary">
+                  Book Online Now
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link href={`tel:${CONTACT.phoneClean}`} className="btn-outline">
@@ -465,8 +465,8 @@ export default function IntroOfferPage() {
                   on the form below or mention it when you call.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Link href="#claim-offer" className="btn-primary">
-                    Claim With Code
+                  <Link href="/book-intro-offer" className="btn-primary">
+                    Book Online Now
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                   <Link
@@ -705,8 +705,8 @@ export default function IntroOfferPage() {
               — submit the form or call and mention the code.
             </p>
             <div className="flex flex-wrap justify-center gap-4 mb-6">
-              <Link href="#claim-offer" className="btn-primary">
-                Claim With Code
+              <Link href="/book-intro-offer" className="btn-primary">
+                Book Online Now
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link href={`tel:${CONTACT.phoneClean}`} className="btn-outline">
