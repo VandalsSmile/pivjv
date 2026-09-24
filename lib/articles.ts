@@ -10,6 +10,17 @@ export type Article = {
 
 export const ARTICLES: Article[] = [
   {
+    slug: "you-slept-but-did-you-recover-fall-recovery",
+    title:
+      "You Slept. But Did You Recover? Why Fall Is the Perfect Time to Rethink Your Recovery Routine",
+    excerpt:
+      "Sleep is only one piece of the recovery puzzle. As fall schedules fill up, learn how hydration, magnesium, B vitamins, and simply slowing down can help you build a more intentional recovery routine before the holiday rush.",
+    category: "Wellness",
+    readTime: "7 min read",
+    date: "September 24, 2026",
+    image: "/images/fall-recovery-routine-banner.png",
+  },
+  {
     slug: "cold-season-immune-hack-huntsville",
     title:
       "Hack Your Immune System: 10 Things Huntsville Families Can Do Before Everyone Starts Getting Sick",
