@@ -8,7 +8,6 @@ import {
   CONTACT,
   HOURS,
   PRICING,
-  BOOKING_LINKS,
   SOCIAL_LINKS,
 } from "@/lib/constants";
 import { BookingForm } from "./booking-form";
@@ -55,7 +54,7 @@ const SERVICE_GROUPS: {
         duration: "60–90 min",
         description:
           "Is this your first time? Take advantage now and save. Choose from over a dozen Tier 1 IVs and enjoy the full VIP experience — including our zero-gravity massage chair. Same-day treatment available after your consult.",
-        href: BOOKING_LINKS.introOffer,
+        href: "/book-intro-offer",
         featured: true,
       },
     ],
@@ -69,21 +68,21 @@ const SERVICE_GROUPS: {
         duration: "60–90 min",
         description:
           "Don't have a membership, but you've already used your initial discounted VIP session and are looking to come back in? Our specialists help you choose the ideal drip. Pricing varies by the treatment chosen at the spa.",
-        href: BOOKING_LINKS.nonMember,
+        href: "/book-intro-offer",
       },
       {
         name: "Member Appointment",
         duration: "60 min",
         description:
           "Are you a returning member looking to book? Schedule below to use your membership for a personalized treatment built around your custom care plan. Pricing varies by the treatment chosen at the spa.",
-        href: BOOKING_LINKS.member,
+        href: "/book-intro-offer",
       },
       {
         name: "Injection Therapy Appointment",
         duration: "20 min",
         description:
           "Boost your energy, metabolism, and overall wellness in just minutes with a targeted vitamin injection. Quick and convenient so you can get back to your busy day. Pricing varies by the injection chosen at the spa.",
-        href: BOOKING_LINKS.injection,
+        href: "/book-intro-offer",
       },
     ],
   },
