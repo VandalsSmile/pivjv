@@ -104,7 +104,7 @@ export default function Page() {
         {SITE_CONFIG.name} in {CONTACT.address.city} offers hydration and
         vitamin infusions designed to help support energy, recovery, and
         wellness. <Link href="/iv-matcher">Take our IV Matcher quiz</Link> or{" "}
-        <Link href="/book">book your visit</Link> today.
+        <Link href="/book-intro-offer">book your visit</Link> today.
       </p>
     </ArticleLayout>
   );

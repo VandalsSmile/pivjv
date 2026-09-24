@@ -66,7 +66,7 @@ export default function Page() {
       <p>
         Want to prepare for cold and flu season? Visit {SITE_CONFIG.name} in{" "}
         {CONTACT.address.city} and{" "}
-        <Link href="/book">book an immunity drip</Link> today.
+        <Link href="/book-intro-offer">book an immunity drip</Link> today.
       </p>
     </ArticleLayout>
   );

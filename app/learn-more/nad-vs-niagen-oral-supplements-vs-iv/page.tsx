@@ -67,7 +67,7 @@ export default function Page() {
       <p>
         Want a personalized recommendation? The team at {SITE_CONFIG.name} in{" "}
         {CONTACT.address.city} can help.{" "}
-        <Link href="/book">Book a consultation</Link> or{" "}
+        <Link href="/book-intro-offer">Book a consultation</Link> or{" "}
         <Link href="/learn-more/what-is-nad-energy-molecule">
           learn more about NAD+
         </Link>

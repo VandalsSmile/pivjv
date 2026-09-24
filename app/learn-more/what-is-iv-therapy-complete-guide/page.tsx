@@ -107,7 +107,7 @@ export default function Page() {
       <p>
         Ready to feel your best?{" "}
         <Link href="/iv-matcher">Take our IV Matcher quiz</Link> or{" "}
-        <Link href="/book">book your visit</Link> at {SITE_CONFIG.name} today.
+        <Link href="/book-intro-offer">book your visit</Link> at {SITE_CONFIG.name} today.
       </p>
     </ArticleLayout>
   );

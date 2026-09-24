@@ -67,7 +67,7 @@ export default function Page() {
       <p>
         Ready to invest in your healthspan? Visit {SITE_CONFIG.name} in{" "}
         {CONTACT.address.city} and{" "}
-        <Link href="/book">book your NAD+ session</Link> today.
+        <Link href="/book-intro-offer">book your NAD+ session</Link> today.
       </p>
     </ArticleLayout>
   );

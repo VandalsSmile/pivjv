@@ -67,7 +67,7 @@ export default function Page() {
       <p>
         Want healthier-looking skin, hair, and joints? Visit {SITE_CONFIG.name}{" "}
         in {CONTACT.address.city} and{" "}
-        <Link href="/book">book a beauty-focused drip</Link> today.
+        <Link href="/book-intro-offer">book a beauty-focused drip</Link> today.
       </p>
     </ArticleLayout>
   );

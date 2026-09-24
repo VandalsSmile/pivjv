@@ -198,7 +198,7 @@ export default function Page() {
         </p>
 
         <p>
-          <Link href="/intro-offer">
+          <Link href="/book-intro-offer">
             Claim your ${PRICING.introOffer.price} first visit
           </Link>{" "}
           and we&apos;ll have your card ready.

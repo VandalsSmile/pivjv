@@ -105,9 +105,9 @@ export default function MenuPage() {
               absorption, immediate results.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/intro-offer" className="btn-primary">
-                ${PRICING.introOffer.price} Intro Offer
-                <ArrowRight className="w-4 h-4" />
+            <Link href="/book-intro-offer" className="btn-primary">
+              ${PRICING.introOffer.price} Intro Offer
+              <ArrowRight className="w-4 h-4" />
               </Link>
               <Link href="/iv-matcher" className="btn-outline">
                 Take the IV Matcher Quiz
@@ -476,7 +476,7 @@ export default function MenuPage() {
             quiz or book a free consultation with our licensed medical staff.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/intro-offer" className="btn-primary">
+            <Link href="/book-intro-offer" className="btn-primary">
               Get ${PRICING.introOffer.price} Intro Offer
               <ArrowRight className="w-4 h-4" />
             </Link>

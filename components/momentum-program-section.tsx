@@ -139,7 +139,7 @@ export function MomentumProgramSection({
               card on the way out.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/intro-offer" className="btn-accent">
+              <Link href="/book-intro-offer" className="btn-accent">
                 Book My First Visit
                 <ArrowRight className="h-4 w-4" />
               </Link>

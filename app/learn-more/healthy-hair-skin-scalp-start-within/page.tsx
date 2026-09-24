@@ -67,7 +67,7 @@ export default function Page() {
       <p>
         Ready to nourish your glow from within? Visit {SITE_CONFIG.name} in{" "}
         {CONTACT.address.city} and{" "}
-        <Link href="/book">book a beauty drip</Link> today.
+        <Link href="/book-intro-offer">book a beauty drip</Link> today.
       </p>
     </ArticleLayout>
   );

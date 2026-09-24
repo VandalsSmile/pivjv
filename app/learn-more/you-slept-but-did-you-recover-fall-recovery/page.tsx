@@ -191,7 +191,7 @@ export default function Page() {
       <p>
         <strong>Hydrate. Replenish. Slow down. Recharge.</strong>{" "}
         <Link href="/iv-matcher">Take our IV Matcher quiz</Link> or{" "}
-        <Link href="/book">book your visit</Link> today.
+        <Link href="/book-intro-offer">book your visit</Link> today.
       </p>
 
       <p>

@@ -18,7 +18,6 @@ import {
   CONTACT,
   HOURS,
   PRICING,
-  BOOKING_LINKS,
 } from "@/lib/constants";
 import { BookIntroForm } from "./book-intro-form";
 
@@ -174,25 +173,23 @@ export default function BookIntroOfferPage() {
                 </h2>
                 <p className="mb-4 text-sm text-foreground-muted">
                   The ${PRICING.introOffer.price} price is for first visits
-                  only. Returning guests and members book real-time
-                  availability directly in our scheduler.
+                  only. Returning guests and members can book right here — just
+                  choose{" "}
+                  <span className="font-semibold text-foreground">
+                    Member Visit
+                  </span>{" "}
+                  or{" "}
+                  <span className="font-semibold text-foreground">
+                    Non-Member IV Drip
+                  </span>{" "}
+                  at the top of the form.
                 </p>
                 <div className="space-y-2">
                   <Link
-                    href={BOOKING_LINKS.member}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="#book"
                     className="flex w-full items-center justify-center gap-1 rounded-lg border border-primary px-4 py-2.5 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
                   >
-                    Member Booking
-                  </Link>
-                  <Link
-                    href={BOOKING_LINKS.nonMember}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex w-full items-center justify-center gap-1 rounded-lg border border-primary px-4 py-2.5 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
-                  >
-                    Non-Member Booking
+                    Choose Your Service
                   </Link>
                 </div>
                 <Link

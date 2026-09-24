@@ -67,7 +67,7 @@ export default function Page() {
       <p>
         Curious about NAD+ therapy? Visit {SITE_CONFIG.name} in{" "}
         {CONTACT.address.city} and{" "}
-        <Link href="/book">book a NAD+ session</Link>, or compare{" "}
+        <Link href="/book-intro-offer">book a NAD+ session</Link>, or compare{" "}
         <Link href="/learn-more/nad-vs-niagen-oral-supplements-vs-iv">
           NAD+ vs. Niagen
         </Link>

@@ -66,7 +66,7 @@ export default function Page() {
 
       <p>
         Want to explore a supportive routine?{" "}
-        <Link href="/book">Book a consultation</Link> or{" "}
+        <Link href="/book-intro-offer">Book a consultation</Link> or{" "}
         <Link href="/memberships">learn about our memberships</Link> for regular
         visits.
       </p>

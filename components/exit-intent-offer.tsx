@@ -154,7 +154,7 @@ export function ExitIntentOffer() {
           </div>
 
           <Link
-            href="/intro-offer"
+            href="/book-intro-offer"
             onClick={() => setOpen(false)}
             className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-secondary px-6 py-3.5 font-semibold text-white shadow-lg transition-colors hover:bg-secondary-dark"
           >
