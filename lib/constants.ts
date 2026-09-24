@@ -153,6 +153,11 @@ export const NAV_LINKS = [
     href: "#",
     children: [
       { label: "Book an Appointment", href: "/book" },
+      {
+        label: "Book $85 Intro Online",
+        href: "/book-intro-offer",
+        highlight: true,
+      },
       { label: "Why Prime IV", href: "/#why-primeiv" },
       { label: "Testimonials", href: "/#testimonials" },
       { label: "FAQ", href: "/faq" },
