@@ -94,7 +94,7 @@ export default function Page() {
         {CONTACT.address.city} offers hydration-focused drips designed to restore
         fluids and replenish electrolytes.{" "}
         <Link href="/iv-matcher">Take our IV Matcher quiz</Link> or{" "}
-        <Link href="/book">book your visit</Link> today.
+        <Link href="/book-intro-offer">book your visit</Link> today.
       </p>
     </ArticleLayout>
   );

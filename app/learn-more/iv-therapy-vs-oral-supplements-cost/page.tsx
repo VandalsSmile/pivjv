@@ -62,7 +62,7 @@ export default function Page() {
       <p>
         Curious how the numbers work for your goals?{" "}
         <Link href="/memberships">Explore our memberships</Link> or{" "}
-        <Link href="/book">book a visit</Link> to talk it through.
+        <Link href="/book-intro-offer">book a visit</Link> to talk it through.
       </p>
     </ArticleLayout>
   );

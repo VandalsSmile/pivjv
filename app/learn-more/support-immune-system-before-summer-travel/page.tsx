@@ -69,7 +69,7 @@ export default function Page() {
       <p>
         Planning a getaway from {CONTACT.address.city}? Visit{" "}
         {SITE_CONFIG.name} and{" "}
-        <Link href="/book">book your Immunity Armor drip</Link> or{" "}
+        <Link href="/book-intro-offer">book your Immunity Armor drip</Link> or{" "}
         <Link href="/iv-matcher">take our IV Matcher quiz</Link> to find the
         right blend for your trip.
       </p>

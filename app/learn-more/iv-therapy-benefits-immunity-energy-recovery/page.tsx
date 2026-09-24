@@ -95,7 +95,7 @@ export default function Page() {
         Ready to feel the benefits of IV therapy? {SITE_CONFIG.name} in{" "}
         {CONTACT.address.city} can help you choose the right drip for your goals.{" "}
         <Link href="/iv-matcher">Take our IV Matcher quiz</Link> or{" "}
-        <Link href="/book">book your visit</Link> today.
+        <Link href="/book-intro-offer">book your visit</Link> today.
       </p>
     </ArticleLayout>
   );

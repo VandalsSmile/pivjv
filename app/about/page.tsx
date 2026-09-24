@@ -93,7 +93,7 @@ export default function AboutPage() {
               from our full range of IV drips and injections designed to help
               you feel better, faster.
             </p>
-            <Link href="/book" className="btn-primary">
+            <Link href="/book-intro-offer" className="btn-primary">
               Book Now
               <ArrowRight className="w-4 h-4" />
             </Link>

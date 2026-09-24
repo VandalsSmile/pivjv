@@ -248,7 +248,7 @@ export default function Page() {
       <p>
         Ready to get more out of your NAD+ therapy? Visit {SITE_CONFIG.name} in{" "}
         {CONTACT.address.city} and{" "}
-        <Link href="/book">book your NAD+ session with the Amplifier</Link>, or
+        <Link href="/book-intro-offer">book your NAD+ session with the Amplifier</Link>, or
         learn more about{" "}
         <Link href="/learn-more/what-is-nad-energy-molecule">
           what NAD+ actually is
@@ -282,7 +282,7 @@ export default function Page() {
           {CONTACT.address.city} and feel the difference better prep makes.
         </div>
         <Link
-          href="/book"
+          href="/book-intro-offer"
           className="mt-2 inline-flex items-center justify-center rounded-full bg-secondary px-8 py-3 text-base font-semibold text-foreground-light no-underline transition-colors hover:bg-secondary-dark"
         >
           Book Now

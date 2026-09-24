@@ -96,7 +96,7 @@ export default function Page() {
         {CONTACT.address.city}? {SITE_CONFIG.name} combines premium ingredients,
         licensed medical staff, and a spa-like environment.{" "}
         <Link href="/iv-matcher">Take our IV Matcher quiz</Link> or{" "}
-        <Link href="/book">book your visit</Link> today.
+        <Link href="/book-intro-offer">book your visit</Link> today.
       </p>
     </ArticleLayout>
   );
