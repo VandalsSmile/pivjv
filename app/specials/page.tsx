@@ -8,7 +8,7 @@ import {
   ArrowRight,
   Loader2,
 } from "lucide-react";
-import { CONTACT, PRICING, BOOKING_LINKS } from "@/lib/constants";
+import { CONTACT, PRICING } from "@/lib/constants";
 import { SpecialsForm } from "./specials-form";
 import { MomentumProgramSection } from "@/components/momentum-program-section";
 import { MOMENTUM_FAQS } from "@/lib/momentum-program";
@@ -384,9 +384,7 @@ export default function SpecialsPage() {
                     </ul>
                     <div className="flex flex-wrap gap-4">
                       <Link
-                        href={BOOKING_LINKS.introOffer}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="/book-intro-offer"
                         className="btn-primary"
                       >
                         Book Online Now

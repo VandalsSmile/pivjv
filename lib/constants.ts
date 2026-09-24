@@ -82,18 +82,6 @@ export function getPackMath(pack: { quantity: number; price: number }) {
   return { value, savings, perIv, percentOff };
 }
 
-// Online booking (Booker) deep links — Prime IV Huntsville (Jones Valley)
-export const BOOKING_LINKS = {
-  introOffer:
-    "https://go.booker.com/location/PrimeIVHuntsvilleJonesValleyAL/detail-summary/4748907",
-  nonMember:
-    "https://go.booker.com/location/PrimeIVHuntsvilleJonesValleyAL/detail-summary/4757545",
-  member:
-    "https://go.booker.com/location/PrimeIVHuntsvilleJonesValleyAL/detail-summary/4748948",
-  injection:
-    "https://go.booker.com/location/PrimeIVHuntsvilleJonesValleyAL/detail-summary/4748886",
-};
-
 // Day-by-day location hours (display order matches Google Business Profile)
 export const HOURS = {
   days: [

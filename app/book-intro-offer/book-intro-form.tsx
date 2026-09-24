@@ -45,6 +45,19 @@ const MONTH_LABELS = [
   "December",
 ];
 
+// Services that formerly had individual Booker deep links — all now flow
+// through this single request form via the service selector.
+const SERVICE_OPTIONS = [
+  {
+    id: "intro",
+    label: `$${PRICING.introOffer.price} First-Time Intro Offer`,
+    isIntro: true,
+  },
+  { id: "non-member", label: "Non-Member IV Drip", isIntro: false },
+  { id: "member", label: "Member Visit", isIntro: false },
+  { id: "injection", label: "Injection / Vitamin Shot", isIntro: false },
+] as const;
+
 function startOfToday(): Date {
   const d = new Date();
   d.setHours(0, 0, 0, 0);
@@ -88,6 +101,7 @@ export function BookIntroForm() {
   const [selectedTime, setSelectedTime] = useState<string>("");
 
   const [formData, setFormData] = useState({
+    service: "intro",
     name: "",
     email: "",
     phone: "",
@@ -100,6 +114,12 @@ export function BookIntroForm() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const timeSlots = selectedDate ? timeSlotsForDate(selectedDate) : [];
+
+  const selectedService =
+    SERVICE_OPTIONS.find((s) => s.id === formData.service) ??
+    SERVICE_OPTIONS[0];
+  const isIntro = selectedService.isIntro;
+  const serviceLabel = selectedService.label;
 
   // Build the calendar grid (leading blanks + day cells) for the viewed month.
   const calendarCells = useMemo(() => {
@@ -159,6 +179,7 @@ export function BookIntroForm() {
       email: formData.email,
       honeypot: formData.company,
       fields: [
+        { label: "Service", value: serviceLabel },
         { label: "Name", value: formData.name },
         { label: "Email", value: formData.email },
         { label: "Phone", value: formData.phone },
@@ -167,10 +188,14 @@ export function BookIntroForm() {
           value: formatDateLong(selectedDate),
         },
         { label: "Requested Time", value: selectedTime },
-        {
-          label: "Offer",
-          value: `$${PRICING.introOffer.price} First-Time Intro (code ${PRICING.introOffer.promoCode})`,
-        },
+        ...(isIntro
+          ? [
+              {
+                label: "Offer",
+                value: `$${PRICING.introOffer.price} First-Time Intro (code ${PRICING.introOffer.promoCode})`,
+              },
+            ]
+          : []),
         { label: "Notes", value: formData.message },
         { label: "Text Opt-In", value: formData.textOptIn ? "Yes" : "No" },
         { label: "Email Opt-In", value: formData.emailOptIn ? "Yes" : "No" },
@@ -190,13 +215,49 @@ export function BookIntroForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
-      {/* Step 1 — date + Step 2 — time */}
+      {/* Step 1 — service */}
+      <div>
+        <div className="mb-4 flex items-center gap-2">
+          <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white">
+            1
+          </span>
+          <h3 className="text-lg font-bold text-foreground">
+            Choose your service
+          </h3>
+        </div>
+        <div className="rounded-2xl border border-border bg-white p-4 shadow-sm">
+          <label htmlFor="book-service" className="sr-only">
+            Service
+          </label>
+          <select
+            id="book-service"
+            value={formData.service}
+            onChange={(e) =>
+              setFormData({ ...formData, service: e.target.value })
+            }
+            className="w-full rounded-lg border border-border bg-white px-4 py-3 text-foreground outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-primary"
+          >
+            {SERVICE_OPTIONS.map((opt) => (
+              <option key={opt.id} value={opt.id}>
+                {opt.label}
+              </option>
+            ))}
+          </select>
+          <p className="mt-2 text-xs text-foreground-muted">
+            {isIntro
+              ? `New here? The $${PRICING.introOffer.price} first-visit price is applied automatically with code ${PRICING.introOffer.promoCode}.`
+              : "Returning guest or member? Choose your service and we'll confirm your appointment."}
+          </p>
+        </div>
+      </div>
+
+      {/* Step 2 — date + Step 3 — time */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {/* Choose your date */}
         <div>
           <div className="mb-4 flex items-center gap-2">
             <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white">
-              1
+              2
             </span>
             <h3 className="text-lg font-bold text-foreground">
               Choose your date
@@ -273,7 +334,7 @@ export function BookIntroForm() {
         <div>
           <div className="mb-4 flex items-center gap-2">
             <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white">
-              2
+              3
             </span>
             <h3 className="text-lg font-bold text-foreground">
               Choose your time
@@ -327,7 +388,7 @@ export function BookIntroForm() {
       <div>
         <div className="mb-4 flex items-center gap-2">
           <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white">
-            3
+            4
           </span>
           <h3 className="text-lg font-bold text-foreground">Your details</h3>
         </div>
@@ -394,25 +455,27 @@ export function BookIntroForm() {
             </div>
           </div>
 
-          <div>
-            <label
-              htmlFor="book-promo"
-              className="mb-1 block text-sm font-medium text-foreground"
-            >
-              Promo Code *
-            </label>
-            <input
-              type="text"
-              id="book-promo"
-              readOnly
-              value={PRICING.introOffer.promoCode}
-              className="w-full rounded-lg border border-border bg-background-alt px-4 py-3 font-semibold text-primary outline-none"
-            />
-            <p className="mt-1 text-xs text-foreground-muted">
-              Pre-filled for you. Required to lock in the $
-              {PRICING.introOffer.price} intro price.
-            </p>
-          </div>
+          {isIntro && (
+            <div>
+              <label
+                htmlFor="book-promo"
+                className="mb-1 block text-sm font-medium text-foreground"
+              >
+                Promo Code *
+              </label>
+              <input
+                type="text"
+                id="book-promo"
+                readOnly
+                value={PRICING.introOffer.promoCode}
+                className="w-full rounded-lg border border-border bg-background-alt px-4 py-3 font-semibold text-primary outline-none"
+              />
+              <p className="mt-1 text-xs text-foreground-muted">
+                Pre-filled for you. Required to lock in the $
+                {PRICING.introOffer.price} intro price.
+              </p>
+            </div>
+          )}
 
           <div>
             <label
@@ -466,7 +529,9 @@ export function BookIntroForm() {
               </>
             ) : (
               <>
-                Request My ${PRICING.introOffer.price} Appointment
+                {isIntro
+                  ? `Request My $${PRICING.introOffer.price} Appointment`
+                  : "Request My Appointment"}
                 <ArrowRight className="h-4 w-4" />
               </>
             )}
@@ -480,18 +545,26 @@ export function BookIntroForm() {
 
           <p className="text-center text-xs text-foreground-muted">
             This sends an appointment request — a team member confirms your time
-            before your visit. First-time visitors only. HSA/FSA eligible. A
-            one-time state-mandated ${PRICING.medicalClearance} telehealth
-            screening is required at your first visit.
+            before your visit. {isIntro ? "First-time visitors only. " : ""}
+            HSA/FSA eligible. A one-time state-mandated $
+            {PRICING.medicalClearance} telehealth screening is required at your
+            first visit.
           </p>
 
           <div className="rounded-xl border border-border bg-background-alt p-4 text-center">
             <p className="mb-3 text-sm text-foreground-muted">
-              Prefer to talk to a human? Mention code{" "}
-              <span className="font-semibold text-primary">
-                {PRICING.introOffer.promoCode}
-              </span>{" "}
-              when you call.
+              Prefer to talk to a human?{" "}
+              {isIntro ? (
+                <>
+                  Mention code{" "}
+                  <span className="font-semibold text-primary">
+                    {PRICING.introOffer.promoCode}
+                  </span>{" "}
+                  when you call.
+                </>
+              ) : (
+                "Give us a call and we'll get you booked."
+              )}
             </p>
             <Link
               href={`tel:${CONTACT.phoneClean}`}

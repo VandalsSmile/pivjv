@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Phone, Check, Clock } from "lucide-react";
-import { SITE_CONFIG, CONTACT, PRICING, BOOKING_LINKS } from "@/lib/constants";
+import { SITE_CONFIG, CONTACT, PRICING } from "@/lib/constants";
 import { TextToBookLink } from "@/components/text-to-book-link";
 
 export function HeroSection() {
@@ -64,12 +64,10 @@ export function HeroSection() {
 
             <div className="flex flex-wrap gap-4 pt-4">
             <Link
-              href={BOOKING_LINKS.introOffer}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/book-intro-offer"
               className="inline-flex items-center gap-2 text-white hover:text-secondary transition-colors font-medium"
             >
-              Book Your First Session
+              Book Online Now
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link

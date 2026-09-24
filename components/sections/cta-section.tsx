@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Phone, ArrowRight, Check, Loader2 } from "lucide-react";
-import { CONTACT, PRICING, BOOKING_LINKS } from "@/lib/constants";
+import { CONTACT, PRICING } from "@/lib/constants";
 import { sendLead } from "@/app/actions/send-lead";
 import { HoneypotField } from "@/components/honeypot-field";
 import { OptInCheckboxes } from "@/components/opt-in-checkboxes";
@@ -76,12 +76,10 @@ export function CtaSection() {
 
             <div className="flex flex-wrap gap-4 mb-8">
               <Link
-                href={BOOKING_LINKS.introOffer}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/book-intro-offer"
                 className="btn-primary"
               >
-                Book ${PRICING.introOffer.price} Intro IV
+                Book Online Now
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link

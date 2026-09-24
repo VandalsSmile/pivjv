@@ -14,12 +14,7 @@ import {
   CalendarCheck,
   UserCheck,
 } from "lucide-react";
-import {
-  CONTACT,
-  WHY_PRIME_IV,
-  TRUST_SIGNALS,
-  BOOKING_LINKS,
-} from "@/lib/constants";
+import { CONTACT, WHY_PRIME_IV, TRUST_SIGNALS } from "@/lib/constants";
 
 import { ReviewsSection } from "@/components/sections/reviews-section";
 
@@ -43,28 +38,28 @@ const BOOKING_OPTIONS = [
   {
     title: "First Visit Offer",
     description: "Special pricing for new clients",
-    href: BOOKING_LINKS.introOffer,
+    href: "/book-intro-offer",
     icon: Sparkles,
     featured: true,
   },
   {
     title: "Non-Member Booking",
     description: "Book a one-time IV therapy session",
-    href: BOOKING_LINKS.nonMember,
+    href: "/book-intro-offer",
     icon: CalendarCheck,
     featured: false,
   },
   {
     title: "Member Booking",
     description: "For active Prime IV members",
-    href: BOOKING_LINKS.member,
+    href: "/book-intro-offer",
     icon: UserCheck,
     featured: false,
   },
   {
     title: "Injection Appointment",
     description: "Quick vitamin & wellness shots",
-    href: BOOKING_LINKS.injection,
+    href: "/book-intro-offer",
     icon: Syringe,
     featured: false,
   },
@@ -297,11 +292,9 @@ export default function AboutPage() {
             {BOOKING_OPTIONS.map((option) => {
               const Icon = option.icon;
               return (
-                <a
+                <Link
                   key={option.title}
                   href={option.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className={`group flex flex-col rounded-2xl p-6 border transition-shadow hover:shadow-lg ${
                     option.featured
                       ? "bg-primary text-white border-primary"
@@ -335,7 +328,7 @@ export default function AboutPage() {
                     Book Now
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </span>
-                </a>
+                </Link>
               );
             })}
           </div>

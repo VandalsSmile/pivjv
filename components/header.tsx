@@ -102,8 +102,14 @@ export function Header() {
                 {CONTACT.phone}
               </Link>
               <TextToBookLink className="text-foreground hover:text-primary font-medium" />
-              <Link href="/specials" className="btn-primary text-sm">
+              <Link
+                href="/specials"
+                className="text-sm text-primary/70 hover:text-primary font-medium transition-colors"
+              >
                 Our Specials
+              </Link>
+              <Link href="/book-intro-offer" className="btn-primary text-sm">
+                Book Online Now
               </Link>
             </div>
 
@@ -203,8 +209,15 @@ export function Header() {
                 className="flex items-center justify-center gap-2 py-3 text-primary font-semibold"
               />
               <Link
-                href="/specials"
+                href="/book-intro-offer"
                 className="btn-primary w-full justify-center"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Book Online Now
+              </Link>
+              <Link
+                href="/specials"
+                className="btn-outline w-full justify-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Our Specials

@@ -85,8 +85,8 @@ export function Footer() {
               height={60}
               className="h-12 w-auto mb-6"
             />
-            <Link href="/book" className="btn-primary">
-              Book Now
+            <Link href="/book-intro-offer" className="btn-primary">
+              Book Online Now
             </Link>
             <div className="mt-4 flex items-center gap-3">
               <div className="rounded-full bg-white p-1.5 flex-shrink-0 shadow-sm">
