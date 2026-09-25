@@ -49,10 +49,10 @@ export function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-1">
+            <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 mx-4">
               <Link
                 href="/"
-                className="px-4 py-2 text-sm text-primary/70 hover:text-primary font-medium transition-colors"
+                className="whitespace-nowrap rounded-md px-2.5 xl:px-3 py-2 text-sm text-primary/70 hover:text-primary hover:bg-background-alt font-medium transition-colors"
               >
                 Home
               </Link>
@@ -64,13 +64,35 @@ export function Header() {
                   onMouseEnter={() => setOpenDropdown(link.label)}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <button className="flex items-center gap-1 px-4 py-2 text-sm text-primary/70 hover:text-primary font-medium transition-colors">
+                  <button
+                    type="button"
+                    aria-expanded={openDropdown === link.label}
+                    aria-haspopup="true"
+                    onClick={() =>
+                      setOpenDropdown(
+                        openDropdown === link.label ? null : link.label
+                      )
+                    }
+                    className={cn(
+                      "flex items-center gap-1 whitespace-nowrap rounded-md px-2.5 xl:px-3 py-2 text-sm font-medium transition-colors hover:bg-background-alt hover:text-primary",
+                      openDropdown === link.label
+                        ? "text-primary bg-background-alt"
+                        : "text-primary/70"
+                    )}
+                  >
                     {link.label}
-                    <ChevronDown className="w-4 h-4" />
+                    <ChevronDown
+                      className={cn(
+                        "w-3.5 h-3.5 transition-transform",
+                        openDropdown === link.label && "rotate-180"
+                      )}
+                      aria-hidden="true"
+                    />
                   </button>
 
                   {openDropdown === link.label && link.children && (
-                    <div className="absolute top-full left-0 w-56 bg-white shadow-lg rounded-lg py-2 border border-border">
+                    <div className="absolute top-full left-0 pt-2 w-60">
+                    <div className="bg-white shadow-lg rounded-lg py-2 border border-border">
                       {link.children.map((child) => (
                         <Link
                           key={child.label}
@@ -87,28 +109,37 @@ export function Header() {
                         </Link>
                       ))}
                     </div>
+                    </div>
                   )}
                 </div>
               ))}
-            </nav>
 
-            {/* Desktop CTA */}
-            <div className="hidden lg:flex items-center gap-3">
-              <Link
-                href={`tel:${CONTACT.phoneClean}`}
-                className="flex items-center gap-2 text-foreground hover:text-primary font-medium"
-              >
-                <Phone className="w-4 h-4" />
-                {CONTACT.phone}
-              </Link>
-              <TextToBookLink className="text-foreground hover:text-primary font-medium" />
               <Link
                 href="/specials"
-                className="text-sm text-primary/70 hover:text-primary font-medium transition-colors"
+                className="whitespace-nowrap rounded-md px-2.5 xl:px-3 py-2 text-sm text-primary/70 hover:text-primary hover:bg-background-alt font-medium transition-colors"
               >
                 Our Specials
               </Link>
-              <Link href="/book-intro-offer" className="btn-primary text-sm">
+            </nav>
+
+            {/* Desktop CTA */}
+            <div className="hidden lg:flex items-center gap-1 xl:gap-2 flex-shrink-0">
+              <Link
+                href={`tel:${CONTACT.phoneClean}`}
+                className="flex items-center gap-2 whitespace-nowrap rounded-md p-2 text-sm text-primary hover:bg-background-alt font-semibold transition-colors"
+              >
+                <Phone className="w-4 h-4" aria-hidden="true" />
+                <span className="sr-only xl:not-sr-only">{CONTACT.phone}</span>
+                <span className="sr-only xl:hidden">Call {CONTACT.phone}</span>
+              </Link>
+              <TextToBookLink className="whitespace-nowrap rounded-md p-2 text-sm text-primary hover:bg-background-alt font-semibold transition-colors">
+                <span className="sr-only 2xl:not-sr-only">Text to book</span>
+              </TextToBookLink>
+              <span className="mx-1 h-6 w-px bg-border" aria-hidden="true" />
+              <Link
+                href="/book-intro-offer"
+                className="btn-primary whitespace-nowrap text-sm px-5 py-2.5"
+              >
                 Book Online Now
               </Link>
             </div>
