@@ -52,6 +52,7 @@ export function BookingForm() {
 
     const result = await sendLead({
       formName: "Book an Appointment",
+      confirmationType: "appointment",
       name: formData.name,
       email: formData.email,
       honeypot: formData.company,

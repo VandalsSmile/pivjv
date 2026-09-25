@@ -175,6 +175,7 @@ export function BookIntroForm() {
     const result = await sendLead({
       formName: "Book Intro Offer Online",
       notifySubject: "New IV Booking Request from Website",
+      confirmationType: "appointment",
       name: formData.name,
       email: formData.email,
       honeypot: formData.company,
