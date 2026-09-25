@@ -1,6 +1,7 @@
 "use server";
 
 import { Resend } from "resend";
+import { CONTACT } from "@/lib/constants";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -23,7 +24,16 @@ export type LeadPayload = {
   honeypot?: string;
   /** Optional override for the internal notification email subject. */
   notifySubject?: string;
+  /**
+   * "appointment" sends the submitter an appointment-request confirmation
+   * (their requested details + "We will confirm your appointment shortly!").
+   * Defaults to the generic "we received your request" confirmation.
+   */
+  confirmationType?: "general" | "appointment";
 };
+
+/** Rows that are internal-only and shouldn't be echoed back to the guest. */
+const CONFIRMATION_HIDDEN_LABELS = new Set(["Text Opt-In", "Email Opt-In"]);
 
 export type SendLeadResult = {
   success: boolean;
@@ -56,8 +66,40 @@ function renderRows(fields: LeadField[]): string {
     .join("");
 }
 
+function renderAppointmentConfirmation(
+  name: string,
+  fields: LeadField[],
+): string {
+  const guestRows = renderRows(
+    fields.filter((f) => !CONFIRMATION_HIDDEN_LABELS.has(f.label)),
+  );
+
+  return `
+    <div style="font-family:Arial,Helvetica,sans-serif;max-width:600px;margin:0 auto;color:#1e3a5f;">
+      <h2 style="color:#1e3a5f;margin-bottom:8px;">Thank you, ${escapeHtml(name) || "there"}!</h2>
+      <p style="color:#111827;margin-top:0;">We've received your appointment request at Prime IV Hydration &amp; Wellness &mdash; Huntsville.</p>
+      <div style="background:#f0f7fb;border-left:4px solid #0891b2;border-radius:8px;padding:16px 20px;margin:20px 0;">
+        <p style="margin:0;font-size:18px;font-weight:700;color:#1e3a5f;">We will confirm your appointment shortly!</p>
+        <p style="margin:6px 0 0;font-size:14px;color:#64748b;">This is a request, not a confirmed booking yet. A team member will reach out to lock in your time.</p>
+      </div>
+      <h3 style="color:#1e3a5f;font-size:16px;margin:24px 0 8px;">Your appointment request</h3>
+      <table style="width:100%;border-collapse:collapse;font-size:14px;margin:0 0 20px;">${guestRows}</table>
+      <p style="color:#111827;">Need to make a change or have a question? Call us at <a href="tel:${CONTACT.phoneClean}" style="color:#0891b2;">${CONTACT.phone}</a> or text <a href="sms:${CONTACT.textToBookClean}" style="color:#0891b2;">${CONTACT.textToBook}</a>.</p>
+      <p style="color:#6b7280;font-size:13px;margin-top:24px;">Prime IV Hydration &amp; Wellness &mdash; ${escapeHtml(CONTACT.address.full)}</p>
+    </div>`;
+}
+
 export async function sendLead(payload: LeadPayload): Promise<SendLeadResult> {
-  const { formName, name, email, fields, honeypot, notifySubject } = payload;
+  const {
+    formName,
+    name,
+    email,
+    fields,
+    honeypot,
+    notifySubject,
+    confirmationType = "general",
+  } = payload;
+  const isAppointment = confirmationType === "appointment";
 
   // Honeypot: if the hidden field is filled, it's a bot. Pretend success so
   // the bot gets no signal, but don't send anything.
@@ -81,14 +123,19 @@ export async function sendLead(payload: LeadPayload): Promise<SendLeadResult> {
       <table style="width:100%;border-collapse:collapse;font-size:14px;">${rows}</table>
     </div>`;
 
-  const confirmationHtml = `
+  const confirmationHtml = isAppointment
+    ? renderAppointmentConfirmation(name, fields)
+    : `
     <div style="font-family:Arial,Helvetica,sans-serif;max-width:600px;margin:0 auto;">
       <h2 style="color:#0a4d68;">Thank you, ${escapeHtml(name) || "there"}!</h2>
       <p style="color:#111827;">We've received your request and our team will be in touch within 24 hours. Here's a copy of what you submitted:</p>
       <table style="width:100%;border-collapse:collapse;font-size:14px;margin:16px 0;">${rows}</table>
-      <p style="color:#111827;">If you need immediate assistance, call us at (256) 678-0033.</p>
+      <p style="color:#111827;">If you need immediate assistance, call us at ${CONTACT.phone}.</p>
       <p style="color:#6b7280;font-size:13px;margin-top:24px;">Prime IV Hydration &amp; Wellness — Huntsville, AL</p>
     </div>`;
+  const confirmationSubject = isAppointment
+    ? "Appointment request received — we'll confirm shortly | Prime IV Huntsville"
+    : "We received your request — Prime IV Huntsville";
 
   try {
     // 1) Internal notification to the team
@@ -106,12 +153,19 @@ export async function sendLead(payload: LeadPayload): Promise<SendLeadResult> {
 
     // 2) Confirmation to the submitter (best-effort; don't fail the lead if this errors)
     if (email && email.trim() !== "") {
-      await resend.emails.send({
+      const confirmation = await resend.emails.send({
         from: FROM,
-        to: [email],
-        subject: "We received your request — Prime IV Huntsville",
+        to: [email.trim()],
+        replyTo: CONTACT.email,
+        subject: confirmationSubject,
         html: confirmationHtml,
       });
+      if (confirmation.error) {
+        console.error(
+          `[send-lead] Confirmation email to submitter failed (${formName}):`,
+          confirmation.error.message,
+        );
+      }
     }
 
     return { success: true };
