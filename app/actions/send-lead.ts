@@ -10,6 +10,10 @@ const NOTIFY_TO = ["jonesvalley@primeivhydration.com", "leads@vs.marketing"];
 const FROM = "VS Marketing Alerts <leads@huntsvilleiv.com>";
 const NOTIFY_SUBJECT = "New Lead from your Website";
 
+/** Appointment-request submissions are also forwarded here. */
+const APPOINTMENT_WEBHOOK_URL =
+  "https://hooks.zapier.com/hooks/catch/3803453/ugcfldb/";
+
 export type LeadField = {
   label: string;
   value: string;
@@ -89,6 +93,52 @@ function renderAppointmentConfirmation(
     </div>`;
 }
 
+function toFieldKey(label: string): string {
+  return label
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+}
+
+/** Best-effort: never throws, so a Zapier outage can't block the lead. */
+async function forwardAppointmentToWebhook(
+  formName: string,
+  name: string,
+  email: string,
+  fields: LeadField[],
+): Promise<void> {
+  const body: Record<string, string> = {
+    form_name: formName,
+    name,
+    email,
+    submitted_at: new Date().toISOString(),
+    source: "huntsvilleiv.com",
+  };
+  for (const field of fields) {
+    const key = toFieldKey(field.label);
+    if (key && !(key in body)) body[key] = field.value ?? "";
+  }
+
+  try {
+    const res = await fetch(APPOINTMENT_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!res.ok) {
+      console.error(
+        `[send-lead] Zapier webhook failed (${formName}): ${res.status}`,
+      );
+    }
+  } catch (err) {
+    console.error(
+      `[send-lead] Zapier webhook error (${formName}):`,
+      err instanceof Error ? err.message : err,
+    );
+  }
+}
+
 export async function sendLead(payload: LeadPayload): Promise<SendLeadResult> {
   const {
     formName,
@@ -107,7 +157,12 @@ export async function sendLead(payload: LeadPayload): Promise<SendLeadResult> {
     return { success: true };
   }
 
+  const webhookForward = isAppointment
+    ? forwardAppointmentToWebhook(formName, name, email, fields)
+    : Promise.resolve();
+
   if (!process.env.RESEND_API_KEY) {
+    await webhookForward;
     return { success: false, error: "Email service is not configured." };
   }
 
@@ -138,40 +193,48 @@ export async function sendLead(payload: LeadPayload): Promise<SendLeadResult> {
     : "We received your request — Prime IV Huntsville";
 
   try {
-    // 1) Internal notification to the team
-    const notify = await resend.emails.send({
-      from: FROM,
-      to: NOTIFY_TO,
-      replyTo: email || undefined,
-      subject,
-      html: notifyHtml,
-    });
+    return await sendLeadEmails();
+  } finally {
+    await webhookForward;
+  }
 
-    if (notify.error) {
-      return { success: false, error: notify.error.message };
-    }
-
-    // 2) Confirmation to the submitter (best-effort; don't fail the lead if this errors)
-    if (email && email.trim() !== "") {
-      const confirmation = await resend.emails.send({
+  async function sendLeadEmails(): Promise<SendLeadResult> {
+    try {
+      // 1) Internal notification to the team
+      const notify = await resend.emails.send({
         from: FROM,
-        to: [email.trim()],
-        replyTo: CONTACT.email,
-        subject: confirmationSubject,
-        html: confirmationHtml,
+        to: NOTIFY_TO,
+        replyTo: email || undefined,
+        subject,
+        html: notifyHtml,
       });
-      if (confirmation.error) {
-        console.error(
-          `[send-lead] Confirmation email to submitter failed (${formName}):`,
-          confirmation.error.message,
-        );
-      }
-    }
 
-    return { success: true };
-  } catch (err) {
-    const message =
-      err instanceof Error ? err.message : "Failed to send your request.";
-    return { success: false, error: message };
+      if (notify.error) {
+        return { success: false, error: notify.error.message };
+      }
+
+      // 2) Confirmation to the submitter (best-effort; don't fail the lead if this errors)
+      if (email && email.trim() !== "") {
+        const confirmation = await resend.emails.send({
+          from: FROM,
+          to: [email.trim()],
+          replyTo: CONTACT.email,
+          subject: confirmationSubject,
+          html: confirmationHtml,
+        });
+        if (confirmation.error) {
+          console.error(
+            `[send-lead] Confirmation email to submitter failed (${formName}):`,
+            confirmation.error.message,
+          );
+        }
+      }
+
+      return { success: true };
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "Failed to send your request.";
+      return { success: false, error: message };
+    }
   }
 }
