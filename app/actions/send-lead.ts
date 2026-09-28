@@ -12,7 +12,7 @@ const NOTIFY_SUBJECT = "New Lead from your Website";
 
 /** Appointment-request submissions are also forwarded here. */
 const APPOINTMENT_WEBHOOK_URL =
-  "https://hooks.zapier.com/hooks/catch/3803453/4mtfkl4/";
+  "https://hooks.zapier.com/hooks/catch/3803453/4md4kp5/";
 
 export type LeadField = {
   label: string;
