@@ -16,6 +16,7 @@ import { sendLead } from "@/app/actions/send-lead";
 import { HoneypotField } from "@/components/honeypot-field";
 import { OptInCheckboxes } from "@/components/opt-in-checkboxes";
 import { CONTACT, PRICING } from "@/lib/constants";
+import { SERVICE_OPTIONS, type ServiceId } from "@/lib/booking-services";
 
 // Open hours per weekday (0 = Sunday … 6 = Saturday) for Jones Valley.
 // Matches HOURS in lib/constants.ts. [openHour, closeHour] in 24h time.
@@ -45,18 +46,9 @@ const MONTH_LABELS = [
   "December",
 ];
 
-// Services that formerly had individual Booker deep links — all now flow
-// through this single request form via the service selector.
-const SERVICE_OPTIONS = [
-  {
-    id: "intro",
-    label: `$${PRICING.introOffer.price} First-Time Intro Offer`,
-    isIntro: true,
-  },
-  { id: "non-member", label: "Non-Member IV Drip", isIntro: false },
-  { id: "member", label: "Member Visit", isIntro: false },
-  { id: "injection", label: "Injection / Vitamin Shot", isIntro: false },
-] as const;
+// Latest start time is one hour before close, and same-day requests need
+// at least an hour of lead time so the team can confirm.
+const SAME_DAY_LEAD_HOURS = 1;
 
 function startOfToday(): Date {
   const d = new Date();
@@ -74,8 +66,13 @@ function formatHour(hour: number): string {
 function timeSlotsForDate(date: Date): string[] {
   const [open, close] = WEEKDAY_HOURS[date.getDay()] ?? [];
   if (open === undefined || close === undefined) return [];
+  const now = new Date();
+  const isToday = date.toDateString() === now.toDateString();
+  const earliest = isToday
+    ? Math.max(open, now.getHours() + SAME_DAY_LEAD_HOURS + 1)
+    : open;
   const slots: string[] = [];
-  for (let h = open; h <= close - 1; h++) {
+  for (let h = earliest; h <= close - 1; h++) {
     slots.push(formatHour(h));
   }
   return slots;
@@ -90,7 +87,11 @@ function formatDateLong(date: Date): string {
   });
 }
 
-export function BookIntroForm() {
+export function AppointmentBookingForm({
+  initialService = "intro",
+}: {
+  initialService?: ServiceId;
+}) {
   const router = useRouter();
   const today = useMemo(startOfToday, []);
 
@@ -101,7 +102,7 @@ export function BookIntroForm() {
   const [selectedTime, setSelectedTime] = useState<string>("");
 
   const [formData, setFormData] = useState({
-    service: "intro",
+    service: initialService as string,
     name: "",
     email: "",
     phone: "",
@@ -173,7 +174,7 @@ export function BookIntroForm() {
     setIsSubmitting(true);
 
     const result = await sendLead({
-      formName: "Book Intro Offer Online",
+      formName: isIntro ? "Book Intro Offer Online" : "Book an Appointment",
       notifySubject: "New IV Booking Request from Website",
       confirmationType: "appointment",
       name: formData.name,
@@ -355,6 +356,19 @@ export function BookIntroForm() {
               <p className="mb-3 text-sm font-medium text-foreground">
                 {formatDateLong(selectedDate)}
               </p>
+              {timeSlots.length === 0 && (
+                <p className="text-sm text-foreground-muted">
+                  There are no more online request times today. Pick another
+                  date, or call{" "}
+                  <Link
+                    href={`tel:${CONTACT.phoneClean}`}
+                    className="font-semibold text-primary"
+                  >
+                    {CONTACT.phone}
+                  </Link>{" "}
+                  to check for a same-day opening.
+                </p>
+              )}
               <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                 {timeSlots.map((slot) => {
                   const active = slot === selectedTime;

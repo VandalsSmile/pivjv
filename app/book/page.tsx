@@ -10,7 +10,8 @@ import {
   PRICING,
   SOCIAL_LINKS,
 } from "@/lib/constants";
-import { BookingForm } from "./booking-form";
+import { AppointmentBookingForm } from "@/components/appointment-booking-form";
+import { isServiceId, type ServiceId } from "@/lib/booking-services";
 import { TextToBookLink } from "@/components/text-to-book-link";
 
 export const metadata: Metadata = {
@@ -35,6 +36,7 @@ type Service = {
   duration: string;
   description: string;
   href: string;
+  cta?: string;
   featured?: boolean;
 };
 
@@ -64,25 +66,26 @@ const SERVICE_GROUPS: {
     blurb: "Customized infusions for energy, immunity, recovery, and more.",
     services: [
       {
-        name: "Non-Member Appointment",
+        name: "Non-Member IV Appointment",
+        price: `$${PRICING.nonMemberDrip}`,
         duration: "60–90 min",
         description:
-          "Don't have a membership, but you've already used your initial discounted VIP session and are looking to come back in? Our specialists help you choose the ideal drip. Pricing varies by the treatment chosen at the spa.",
-        href: "/book-intro-offer",
+          "Already used your first-visit intro offer and want to come back without a membership? Our specialists help you choose the ideal drip at the spa.",
+        href: "/book?service=non-member#booking-form",
       },
       {
         name: "Member Appointment",
         duration: "60 min",
         description:
-          "Are you a returning member looking to book? Schedule below to use your membership for a personalized treatment built around your custom care plan. Pricing varies by the treatment chosen at the spa.",
-        href: "/book-intro-offer",
+          "Returning member? Book a visit to use your membership for a personalized treatment built around your custom care plan.",
+        href: "/book?service=member#booking-form",
       },
       {
         name: "Injection Therapy Appointment",
         duration: "20 min",
         description:
-          "Boost your energy, metabolism, and overall wellness in just minutes with a targeted vitamin injection. Quick and convenient so you can get back to your busy day. Pricing varies by the injection chosen at the spa.",
-        href: "/book-intro-offer",
+          "Boost your energy, metabolism, and overall wellness in minutes with a targeted vitamin injection. Pricing varies by the injection chosen at the spa.",
+        href: "/book?service=injection#booking-form",
       },
     ],
   },
@@ -97,6 +100,7 @@ const SERVICE_GROUPS: {
         description:
           "Looking for Medical Weight Loss options? Explore flexible weekly programs designed to support your goals with simple, consistent routines. Call us and our team will help you find the right starting point.",
         href: `tel:${CONTACT.phoneClean}`,
+        cta: `Call ${CONTACT.phone}`,
       },
     ],
   },
@@ -142,14 +146,23 @@ function ServiceCard({ service }: { service: Service }) {
         {service.description}
       </p>
       <span className="inline-flex items-center gap-1 text-primary font-semibold text-sm group-hover:gap-2 transition-all">
-        Book now
+        {service.cta ?? "Pick a date & time"}
         <ArrowRight className="w-4 h-4" />
       </span>
     </Link>
   );
 }
 
-export default function BookPage() {
+export default async function BookPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ service?: string }>;
+}) {
+  const { service } = await searchParams;
+  const initialService: ServiceId = isServiceId(service)
+    ? service
+    : "non-member";
+
   return (
     <>
       <JsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Book", path: "/book" }])} />
@@ -291,12 +304,19 @@ export default function BookPage() {
               Ready to Feel Better?
             </h2>
             <p className="text-foreground-muted">
-              Stop running on empty. Fill out the form and our team will contact
-              you to schedule your IV therapy session in Huntsville, AL.
+              Choose your service, pick a date and time, and our Huntsville team
+              will confirm your appointment.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_22rem] gap-10 items-start">
+            <div className="rounded-2xl border border-border bg-background-alt/40 p-6 md:p-8">
+              <AppointmentBookingForm
+                key={initialService}
+                initialService={initialService}
+              />
+            </div>
+
             <div className="space-y-6">
               <div className="relative rounded-2xl overflow-hidden shadow-sm border border-border aspect-[4/5]">
                 <Image
@@ -366,18 +386,6 @@ export default function BookPage() {
                   </p>
                 </div>
               </div>
-            </div>
-
-            <div>
-              <h3 className="text-2xl font-bold text-foreground mb-2">
-                Request an Appointment
-              </h3>
-              <p className="text-foreground-muted mb-6">
-                Fill out the form below and we&apos;ll get back to you within 24
-                hours. New to Prime IV? Ask about our ${PRICING.introOffer.price}{" "}
-                VIP intro offer.
-              </p>
-              <BookingForm />
             </div>
           </div>
         </div>

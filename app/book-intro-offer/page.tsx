@@ -19,7 +19,7 @@ import {
   HOURS,
   PRICING,
 } from "@/lib/constants";
-import { BookIntroForm } from "./book-intro-form";
+import { AppointmentBookingForm } from "@/components/appointment-booking-form";
 
 export const metadata: Metadata = {
   title: `Book Your $${PRICING.introOffer.price} Intro Offer Online | Prime IV Huntsville`,
@@ -98,7 +98,7 @@ export default function BookIntroOfferPage() {
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_20rem]">
             {/* Left — the interactive booking form */}
             <div className="rounded-2xl border border-border bg-background-alt/40 p-6 md:p-8">
-              <BookIntroForm />
+              <AppointmentBookingForm initialService="intro" />
             </div>
 
             {/* Right — supporting details */}
@@ -173,23 +173,16 @@ export default function BookIntroOfferPage() {
                 </h2>
                 <p className="mb-4 text-sm text-foreground-muted">
                   The ${PRICING.introOffer.price} price is for first visits
-                  only. Returning guests and members can book right here — just
-                  choose{" "}
-                  <span className="font-semibold text-foreground">
-                    Member Visit
-                  </span>{" "}
-                  or{" "}
-                  <span className="font-semibold text-foreground">
-                    Non-Member IV Drip
-                  </span>{" "}
-                  at the top of the form.
+                  only. Returning guests and members can switch the service in
+                  step 1 of the form, or pick from every appointment type on
+                  our booking page.
                 </p>
                 <div className="space-y-2">
                   <Link
-                    href="#book"
+                    href="/book?service=non-member#booking-form"
                     className="flex w-full items-center justify-center gap-1 rounded-lg border border-primary px-4 py-2.5 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
                   >
-                    Choose Your Service
+                    Book a Returning Visit
                   </Link>
                 </div>
                 <Link
