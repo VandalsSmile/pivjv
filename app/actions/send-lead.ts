@@ -53,6 +53,16 @@ function escapeHtml(value: string): string {
     .replace(/'/g, "&#39;");
 }
 
+const FINE_PRINT =
+  "First-time clients must pay a one-time state-mandated $25 telehealth fee";
+
+function withFinePrint(html: string): string {
+  return `${html}
+    <div style="font-family:Arial,Helvetica,sans-serif;max-width:600px;margin:24px auto 0;padding-top:12px;border-top:1px solid #e5e7eb;">
+      <p style="margin:0;color:#9ca3af;font-size:11px;line-height:1.5;">${FINE_PRINT}</p>
+    </div>`;
+}
+
 function renderRows(fields: LeadField[]): string {
   return fields
     .filter((f) => f.value && f.value.trim() !== "")
@@ -206,7 +216,7 @@ export async function sendLead(payload: LeadPayload): Promise<SendLeadResult> {
         to: NOTIFY_TO,
         replyTo: email || undefined,
         subject,
-        html: notifyHtml,
+        html: withFinePrint(notifyHtml),
       });
 
       if (notify.error) {
@@ -220,7 +230,7 @@ export async function sendLead(payload: LeadPayload): Promise<SendLeadResult> {
           to: [email.trim()],
           replyTo: CONTACT.email,
           subject: confirmationSubject,
-          html: confirmationHtml,
+          html: withFinePrint(confirmationHtml),
         });
         if (confirmation.error) {
           console.error(
