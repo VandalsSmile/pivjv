@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Phone, Check, Clock } from "lucide-react";
 import { SITE_CONFIG, CONTACT, PRICING } from "@/lib/constants";
 import { TextToBookLink } from "@/components/text-to-book-link";
+import { TelehealthFeeNote } from "@/components/telehealth-fee-note";
 
 export function HeroSection() {
   return (
@@ -37,6 +38,7 @@ export function HeroSection() {
                 Check out Specials!
               </Link>
             </div>
+            <TelehealthFeeNote className="text-white/60" />
 
             <div className="pt-4">
               <h2 className="text-2xl font-semibold mb-3">
@@ -145,6 +147,7 @@ export function HeroSection() {
                     See how it works
                   </Link>
                 </p>
+                <TelehealthFeeNote className="mt-2 text-center text-[0.7rem] text-foreground-muted" />
               </div>
             </div>
           </div>

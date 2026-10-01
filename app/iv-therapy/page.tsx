@@ -14,6 +14,7 @@ import {
   Check,
 } from "lucide-react";
 import { SERVICES, CONTACT, PRICING, SITE_CONFIG } from "@/lib/constants";
+import { TelehealthFeeNote } from "@/components/telehealth-fee-note";
 
 
 export const metadata: Metadata = {
@@ -237,6 +238,7 @@ export default function IVTherapyPage() {
                 Call {CONTACT.phone}
               </Link>
             </div>
+            <TelehealthFeeNote className="mt-4 text-white/60" />
           </div>
         </div>
       </section>

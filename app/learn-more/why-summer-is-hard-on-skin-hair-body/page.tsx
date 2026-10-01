@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArticleLayout } from "@/components/article-layout";
 import { ARTICLES } from "@/lib/articles";
 import { CONTACT, SITE_CONFIG, PRICING } from "@/lib/constants";
+import { TelehealthFeeNote } from "@/components/telehealth-fee-note";
 import { JsonLd } from "@/components/json-ld";
 import { faqSchema } from "@/lib/structured-data";
 
@@ -349,6 +350,7 @@ export default function Page() {
         >
           Claim the ${PRICING.introOffer.price} Intro Offer
         </Link>
+        <TelehealthFeeNote className="max-w-xl text-foreground-light/70" />
       </div>
     </ArticleLayout>
   );

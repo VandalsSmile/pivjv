@@ -20,6 +20,7 @@ import {
   PRICING,
 } from "@/lib/constants";
 import { AppointmentBookingForm } from "@/components/appointment-booking-form";
+import { TelehealthFeeNote } from "@/components/telehealth-fee-note";
 
 export const metadata: Metadata = {
   title: `Book Your $${PRICING.introOffer.price} Intro Offer Online | Prime IV Huntsville`,
@@ -78,6 +79,7 @@ export default function BookIntroOfferPage() {
             </span>
             .
           </p>
+          <TelehealthFeeNote className="mx-auto mt-3 max-w-2xl text-foreground-muted" />
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
             {TRUST_BADGES.map(({ icon: Icon, label }) => (
               <span
@@ -230,6 +232,7 @@ export default function BookIntroOfferPage() {
               {CONTACT.phone}
             </Link>
           </div>
+          <TelehealthFeeNote className="mt-6 text-white/60" />
         </div>
       </section>
     </>
