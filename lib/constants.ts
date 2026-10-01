@@ -85,14 +85,15 @@ export function getPackMath(pack: { quantity: number; price: number }) {
 // Day-by-day location hours (display order matches Google Business Profile)
 export const HOURS = {
   days: [
-    { day: "Sunday", hours: "10 AM – 5 PM" },
-    { day: "Monday", hours: "9 AM – 3 PM" },
-    { day: "Tuesday", hours: "10 AM – 7 PM" },
-    { day: "Wednesday", hours: "9 AM – 6 PM" },
-    { day: "Thursday", hours: "10 AM – 7 PM" },
-    { day: "Friday", hours: "9 AM – 6 PM" },
-    { day: "Saturday", hours: "9 AM – 5 PM" },
+    { day: "Sunday", hours: "10 AM – 5 PM", open: 10, close: 17 },
+    { day: "Monday", hours: "9 AM – 3 PM", open: 9, close: 15 },
+    { day: "Tuesday", hours: "10 AM – 7 PM", open: 10, close: 19 },
+    { day: "Wednesday", hours: "9 AM – 6 PM", open: 9, close: 18 },
+    { day: "Thursday", hours: "10 AM – 7 PM", open: 10, close: 19 },
+    { day: "Friday", hours: "9 AM – 6 PM", open: 9, close: 18 },
+    { day: "Saturday", hours: "9 AM – 5 PM", open: 9, close: 17 },
   ],
+  timeZone: "America/Chicago",
 };
 
 export const SOCIAL_LINKS = {

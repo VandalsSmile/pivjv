@@ -15,20 +15,26 @@ import {
 import { sendLead } from "@/app/actions/send-lead";
 import { HoneypotField } from "@/components/honeypot-field";
 import { OptInCheckboxes } from "@/components/opt-in-checkboxes";
-import { CONTACT, PRICING } from "@/lib/constants";
+import { CONTACT, HOURS, PRICING } from "@/lib/constants";
 import { SERVICE_OPTIONS, type ServiceId } from "@/lib/booking-services";
 
-// Open hours per weekday (0 = Sunday … 6 = Saturday) for Jones Valley.
-// Matches HOURS in lib/constants.ts. [openHour, closeHour] in 24h time.
-const WEEKDAY_HOURS: Record<number, [number, number]> = {
-  0: [10, 17], // Sunday
-  1: [9, 15], // Monday
-  2: [10, 19], // Tuesday
-  3: [9, 18], // Wednesday
-  4: [10, 19], // Thursday
-  5: [9, 18], // Friday
-  6: [9, 17], // Saturday
+const WEEKDAY_INDEX: Record<string, number> = {
+  Sunday: 0,
+  Monday: 1,
+  Tuesday: 2,
+  Wednesday: 3,
+  Thursday: 4,
+  Friday: 5,
+  Saturday: 6,
 };
+
+const WEEKDAY_HOURS: Record<number, { open: number; close: number }> =
+  Object.fromEntries(
+    HOURS.days.map(({ day, open, close }) => [
+      WEEKDAY_INDEX[day],
+      { open, close },
+    ]),
+  );
 
 const WEEKDAY_LABELS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 const MONTH_LABELS = [
@@ -50,10 +56,29 @@ const MONTH_LABELS = [
 // at least an hour of lead time so the team can confirm.
 const SAME_DAY_LEAD_HOURS = 1;
 
+/** Current date and hour at the clinic, regardless of the visitor's timezone. */
+function clinicNow(): { year: number; month: number; day: number; hour: number } {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: HOURS.timeZone,
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour: "numeric",
+    hourCycle: "h23",
+  }).formatToParts(new Date());
+  const get = (type: string) =>
+    Number(parts.find((p) => p.type === type)?.value ?? 0);
+  return {
+    year: get("year"),
+    month: get("month") - 1,
+    day: get("day"),
+    hour: get("hour"),
+  };
+}
+
 function startOfToday(): Date {
-  const d = new Date();
-  d.setHours(0, 0, 0, 0);
-  return d;
+  const { year, month, day } = clinicNow();
+  return new Date(year, month, day);
 }
 
 function formatHour(hour: number): string {
@@ -64,12 +89,16 @@ function formatHour(hour: number): string {
 
 /** Hourly appointment start times from open until one hour before close. */
 function timeSlotsForDate(date: Date): string[] {
-  const [open, close] = WEEKDAY_HOURS[date.getDay()] ?? [];
-  if (open === undefined || close === undefined) return [];
-  const now = new Date();
-  const isToday = date.toDateString() === now.toDateString();
+  const hours = WEEKDAY_HOURS[date.getDay()];
+  if (!hours) return [];
+  const { open, close } = hours;
+  const now = clinicNow();
+  const isToday =
+    date.getFullYear() === now.year &&
+    date.getMonth() === now.month &&
+    date.getDate() === now.day;
   const earliest = isToday
-    ? Math.max(open, now.getHours() + SAME_DAY_LEAD_HOURS + 1)
+    ? Math.max(open, now.hour + SAME_DAY_LEAD_HOURS + 1)
     : open;
   const slots: string[] = [];
   for (let h = earliest; h <= close - 1; h++) {
