@@ -8,6 +8,7 @@ import {
   CONTACT,
   HOURS,
   PRICING,
+  TELEHEALTH_FEE_NOTE,
   SOCIAL_LINKS,
 } from "@/lib/constants";
 import { AppointmentBookingForm } from "@/components/appointment-booking-form";
@@ -38,6 +39,7 @@ type Service = {
   href: string;
   cta?: string;
   featured?: boolean;
+  finePrint?: string;
 };
 
 const SERVICE_GROUPS: {
@@ -58,6 +60,7 @@ const SERVICE_GROUPS: {
           "Is this your first time? Take advantage now and save. Choose from over a dozen Tier 1 IVs and enjoy the full VIP experience — including our zero-gravity massage chair. Same-day treatment available after your consult.",
         href: "/book-intro-offer",
         featured: true,
+        finePrint: TELEHEALTH_FEE_NOTE,
       },
     ],
   },
@@ -145,6 +148,11 @@ function ServiceCard({ service }: { service: Service }) {
       <p className="text-sm text-foreground-muted mb-4 flex-1">
         {service.description}
       </p>
+      {service.finePrint && (
+        <p className="-mt-2 mb-4 text-xs leading-relaxed text-foreground-muted">
+          {service.finePrint}
+        </p>
+      )}
       <span className="inline-flex items-center gap-1 text-primary font-semibold text-sm group-hover:gap-2 transition-all">
         {service.cta ?? "Pick a date & time"}
         <ArrowRight className="w-4 h-4" />

@@ -25,6 +25,7 @@ import {
   Armchair,
 } from "lucide-react";
 import { CONTACT, PRICING } from "@/lib/constants";
+import { TelehealthFeeNote } from "@/components/telehealth-fee-note";
 import { IntroOfferForm } from "./intro-offer-form";
 import { TextToBookLink } from "@/components/text-to-book-link";
 import { MomentumProgramSection } from "@/components/momentum-program-section";
@@ -38,7 +39,7 @@ const savings = Math.round(
 
 export const metadata: Metadata = {
   title: `$${PRICING.introOffer.price} Intro IV Therapy Offer | Prime IV Hydration Huntsville AL`,
-  description: `First-time clients get a full IV therapy session for just $${PRICING.introOffer.price} in Huntsville, AL. Includes wellness consult, premium drip, and VIP massage chair. Same-day available.`,
+  description: `First-time clients get a full IV therapy session for just $${PRICING.introOffer.price} in Huntsville, AL. Includes wellness consult, primary drip, and VIP massage chair. Same-day available. One-time $${PRICING.medicalClearance} telehealth screening required for new clients.`,
   keywords: [
     "IV therapy intro offer",
     "new client IV special",
@@ -240,7 +241,7 @@ export default function IntroOfferPage() {
                 Huntsville&apos;s Premier IV Therapy Intro Offer
               </h1>
               <p className="text-white/80 text-lg mb-6 text-pretty">
-                A full IV therapy experience—wellness consultation, premium
+                A full IV therapy experience—wellness consultation, primary
                 drip, and VIP massage-chair relaxation—designed to leave you
                 re-energized, rehydrated, and recharged.
               </p>
@@ -374,6 +375,7 @@ export default function IntroOfferPage() {
                   Claim Your ${PRICING.introOffer.price} Intro Offer
                   <ArrowRight className="w-4 h-4" />
                 </Link>
+                <TelehealthFeeNote className="mt-3 text-foreground-muted" />
               </div>
             </div>
           </div>
@@ -464,6 +466,7 @@ export default function IntroOfferPage() {
                   </span>{" "}
                   on the form below or mention it when you call.
                 </p>
+                <TelehealthFeeNote className="-mt-3 mb-6 text-foreground-muted" />
                 <div className="flex flex-wrap gap-4">
                   <Link href="/book-intro-offer" className="btn-primary">
                     Book Online Now
@@ -517,6 +520,7 @@ export default function IntroOfferPage() {
               to lock in your ${PRICING.introOffer.price} intro offer — or use
               the claim form at the top of this page.
             </p>
+            <TelehealthFeeNote className="-mt-3 mb-6 text-white/60" />
             <div className="bg-white/10 rounded-xl p-4 mb-6 inline-block min-w-[min(100%,20rem)]">
               <p className="text-xs uppercase tracking-wide text-white/70 mb-1">
                 Mention this code

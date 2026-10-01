@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Check, MapPin, Phone, ArrowRight } from "lucide-react";
-import { CONTACT } from "@/lib/constants";
+import { CONTACT, TELEHEALTH_FEE_NOTE } from "@/lib/constants";
 import { MOMENTUM_PROGRAM } from "@/lib/momentum-program";
 
 /**
@@ -183,7 +183,7 @@ export function MomentumCard({
         </div>
 
         <p className="mt-5 border-t border-white/15 pt-4 text-center text-xs leading-relaxed text-white/70">
-          {MOMENTUM_PROGRAM.finePrint.join(" ")}
+          {MOMENTUM_PROGRAM.finePrint.join(" ")} {TELEHEALTH_FEE_NOTE}
         </p>
       </div>
     </div>

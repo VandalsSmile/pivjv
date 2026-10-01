@@ -12,6 +12,7 @@ import {
   Star,
 } from "lucide-react";
 import { CONTACT, PRICING } from "@/lib/constants";
+import { TelehealthFeeNote } from "@/components/telehealth-fee-note";
 import {
   PRIMARY_TREATMENT_PRICE,
   PRIMARY_TREATMENTS,
@@ -488,6 +489,7 @@ export default function MenuPage() {
               Call {CONTACT.phone}
             </Link>
           </div>
+          <TelehealthFeeNote className="mt-6 text-white/60" />
         </div>
       </section>
     </>

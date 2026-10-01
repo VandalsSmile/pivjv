@@ -47,6 +47,9 @@ export const PRICING = {
   nonMemberDrip: 180,
 };
 
+/** Small-print disclaimer shown anywhere the intro offer price is advertised. */
+export const TELEHEALTH_FEE_NOTE = `*New clients: a one-time, state-mandated $${PRICING.medicalClearance} telehealth screening is required at your first visit and is not included in the intro offer price.`;
+
 /**
  * Pre-purchase IV packs — built for loyal non-members who want membership-level
  * savings without a monthly commitment. Value/savings/per-IV are derived from

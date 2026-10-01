@@ -645,8 +645,11 @@ export default function GiftCardsPage() {
               </div>
               <p className="text-xs text-foreground-muted mt-6 leading-relaxed">
                 Gift card amounts shown reflect current menu pricing and may be
-                applied toward any service. IV therapy is not intended to
-                diagnose, treat, cure, or prevent disease.
+                applied toward any service. The First-Timer amount covers the
+                intro IV only — new clients also complete a one-time,
+                state-mandated ${PRICING.medicalClearance} telehealth screening
+                at their first visit. IV therapy is not intended to diagnose,
+                treat, cure, or prevent disease.
               </p>
             </div>
 

@@ -3,7 +3,7 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { X, Sparkles, Clock, ChevronRight } from "lucide-react";
-import { PRICING } from "@/lib/constants";
+import { PRICING, TELEHEALTH_FEE_NOTE } from "@/lib/constants";
 import { MOMENTUM_PROGRAM } from "@/lib/momentum-program";
 
 // Bumped when the offer content changes so returning visitors see the new one.
@@ -164,7 +164,7 @@ export function ExitIntentOffer() {
 
           <p className="mt-3 text-[0.7rem] leading-relaxed text-white/50">
             Visit 2 within 60 days &middot; Visit 3 within 45 days of visit 2.
-            Eligible regular-price IVs only.
+            Eligible regular-price IVs only. {TELEHEALTH_FEE_NOTE}
           </p>
 
           <button
