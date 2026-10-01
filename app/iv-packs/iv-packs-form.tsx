@@ -268,8 +268,8 @@ export function IvPacksForm({ variant = "default" }: IvPacksFormProps) {
                   <option value="Afternoon (3 PM - 6 PM)">
                     Afternoon (3 PM - 6 PM)
                   </option>
-                  <option value="Saturday (10 AM - 4 PM)">
-                    Saturday (10 AM - 4 PM)
+                  <option value="Saturday (9 AM - 5 PM)">
+                    Saturday (9 AM - 5 PM)
                   </option>
                 </select>
               </div>
