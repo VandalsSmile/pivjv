@@ -10,6 +10,17 @@ export type Article = {
 
 export const ARTICLES: Article[] = [
   {
+    slug: "niagen-over-50-what-research-says-huntsville",
+    title:
+      "Why Huntsville's 50+ Crowd Is Asking About Niagen®: What the Research Actually Says",
+    excerpt:
+      "Niagen® (nicotinamide riboside) is gaining popularity with adults over 50. A plain-English look at NAD+, the human studies, and Niagen IV and injection series at Prime IV Huntsville.",
+    category: "Healthy Aging",
+    readTime: "8 min read",
+    date: "October 19, 2026",
+    image: "/images/niagen-over-50-research-banner.webp",
+  },
+  {
     slug: "you-slept-but-did-you-recover-fall-recovery",
     title:
       "You Slept. But Did You Recover? Why Fall Is the Perfect Time to Rethink Your Recovery Routine",
