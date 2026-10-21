@@ -8,6 +8,7 @@ import { sendLead } from "@/app/actions/send-lead";
 import { HoneypotField } from "@/components/honeypot-field";
 import { OptInCheckboxes } from "@/components/opt-in-checkboxes";
 import { CONTACT, PRICING } from "@/lib/constants";
+import { beginLeadSubmit, completeLeadSubmit } from "@/lib/tracking";
 
 const EXPECTED_CODE = PRICING.introOffer.promoCode;
 const NOTIFY_SUBJECT = "New Intro Offer Claim from Your Website";
@@ -36,6 +37,7 @@ export function IntroOfferForm({ variant = "default" }: IntroOfferFormProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    beginLeadSubmit();
 
     const enteredCode = formData.promoCode.trim().toUpperCase();
     if (enteredCode !== EXPECTED_CODE) {
@@ -78,6 +80,7 @@ export function IntroOfferForm({ variant = "default" }: IntroOfferFormProps) {
       return;
     }
 
+    completeLeadSubmit("Intro Offer Claim", formData.company);
     router.push("/thank-you");
   };
 

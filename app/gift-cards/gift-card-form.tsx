@@ -6,6 +6,7 @@ import { Loader2, ArrowRight } from "lucide-react";
 import { sendLead } from "@/app/actions/send-lead";
 import { HoneypotField } from "@/components/honeypot-field";
 import { OptInCheckboxes } from "@/components/opt-in-checkboxes";
+import { beginLeadSubmit, completeLeadSubmit } from "@/lib/tracking";
 
 const AMOUNT_LABELS: Record<string, string> = {
   "100-special": "SPECIAL: Buy $100, Get $125 to Spend (Limited Time)",
@@ -47,6 +48,7 @@ export function GiftCardForm() {
 
     setIsSubmitting(true);
     setErrorMessage("");
+    beginLeadSubmit();
 
     const result = await sendLead({
       formName: "Gift Card Inquiry",
@@ -80,6 +82,7 @@ export function GiftCardForm() {
       return;
     }
 
+    completeLeadSubmit("Gift Card Inquiry", formData.company);
     router.push("/thank-you");
   };
 

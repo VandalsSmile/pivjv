@@ -6,6 +6,7 @@ import { Loader2, ArrowRight } from "lucide-react";
 import { sendLead } from "@/app/actions/send-lead";
 import { HoneypotField } from "@/components/honeypot-field";
 import { OptInCheckboxes } from "@/components/opt-in-checkboxes";
+import { beginLeadSubmit, completeLeadSubmit } from "@/lib/tracking";
 
 export function ContactForm() {
   const router = useRouter();
@@ -26,6 +27,7 @@ export function ContactForm() {
 
     setIsSubmitting(true);
     setErrorMessage("");
+    beginLeadSubmit();
 
     const result = await sendLead({
       formName: "Contact",
@@ -50,6 +52,7 @@ export function ContactForm() {
       return;
     }
 
+    completeLeadSubmit("Contact", formData.company);
     router.push("/thank-you");
   };
 

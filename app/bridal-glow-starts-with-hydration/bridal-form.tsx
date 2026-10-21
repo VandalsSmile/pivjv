@@ -6,6 +6,7 @@ import { Loader2, ArrowRight } from "lucide-react";
 import { sendLead } from "@/app/actions/send-lead";
 import { HoneypotField } from "@/components/honeypot-field";
 import { OptInCheckboxes } from "@/components/opt-in-checkboxes";
+import { beginLeadSubmit, completeLeadSubmit } from "@/lib/tracking";
 
 const ROLE_LABELS: Record<string, string> = {
   bride: "Bride - $125 (Special bridal rate)",
@@ -34,6 +35,7 @@ export function BridalForm() {
 
     setIsSubmitting(true);
     setErrorMessage("");
+    beginLeadSubmit();
 
     const result = await sendLead({
       formName: "Bridal Glow Offer",
@@ -60,6 +62,7 @@ export function BridalForm() {
       return;
     }
 
+    completeLeadSubmit("Bridal Glow Offer", formData.company);
     router.push("/thank-you");
   };
 
