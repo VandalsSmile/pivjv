@@ -16,6 +16,7 @@ import { sendLead } from "@/app/actions/send-lead";
 import { HoneypotField } from "@/components/honeypot-field";
 import { OptInCheckboxes } from "@/components/opt-in-checkboxes";
 import { CONTACT, PRICING } from "@/lib/constants";
+import { beginLeadSubmit, completeLeadSubmit } from "@/lib/tracking";
 import { SERVICE_OPTIONS, type ServiceId } from "@/lib/booking-services";
 
 // Open hours per weekday (0 = Sunday … 6 = Saturday) for Jones Valley.
@@ -161,6 +162,7 @@ export function AppointmentBookingForm({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage("");
+    beginLeadSubmit();
 
     if (!selectedDate) {
       setErrorMessage("Please choose a date for your appointment.");
@@ -173,8 +175,12 @@ export function AppointmentBookingForm({
 
     setIsSubmitting(true);
 
+    const formName = isIntro
+      ? "Book Intro Offer Online"
+      : "Book an Appointment";
+
     const result = await sendLead({
-      formName: isIntro ? "Book Intro Offer Online" : "Book an Appointment",
+      formName,
       notifySubject: "New IV Booking Request from Website",
       confirmationType: "appointment",
       name: formData.name,
@@ -212,6 +218,7 @@ export function AppointmentBookingForm({
       return;
     }
 
+    completeLeadSubmit(formName, formData.company);
     router.push("/thank-you");
   };
 

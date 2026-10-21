@@ -7,6 +7,7 @@ import { PRICING } from "@/lib/constants";
 import { sendLead } from "@/app/actions/send-lead";
 import { HoneypotField } from "@/components/honeypot-field";
 import { OptInCheckboxes } from "@/components/opt-in-checkboxes";
+import { beginLeadSubmit, completeLeadSubmit } from "@/lib/tracking";
 
 const SPECIAL_LABELS: Record<string, string> = {
   intro: `$${PRICING.introOffer.price} VIP Intro Offer (New Clients)`,
@@ -34,6 +35,7 @@ export function SpecialsForm() {
 
     setIsSubmitting(true);
     setErrorMessage("");
+    beginLeadSubmit();
 
     const result = await sendLead({
       formName: "Specials",
@@ -62,6 +64,7 @@ export function SpecialsForm() {
       return;
     }
 
+    completeLeadSubmit("Specials", formData.company);
     router.push("/thank-you");
   };
 

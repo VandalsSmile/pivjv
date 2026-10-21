@@ -8,6 +8,7 @@ import { sendLead } from "@/app/actions/send-lead";
 import { HoneypotField } from "@/components/honeypot-field";
 import { OptInCheckboxes } from "@/components/opt-in-checkboxes";
 import { CONTACT, IV_PACKS, PRICING, getPackMath } from "@/lib/constants";
+import { beginLeadSubmit, completeLeadSubmit } from "@/lib/tracking";
 
 const NOTIFY_SUBJECT = "New IV Pack Pre-Purchase Request";
 
@@ -56,6 +57,7 @@ export function IvPacksForm({ variant = "default" }: IvPacksFormProps) {
     e.preventDefault();
     setIsSubmitting(true);
     setErrorMessage("");
+    beginLeadSubmit();
 
     const result = await sendLead({
       formName: "IV Pack Pre-Purchase",
@@ -86,6 +88,7 @@ export function IvPacksForm({ variant = "default" }: IvPacksFormProps) {
       return;
     }
 
+    completeLeadSubmit("IV Pack Pre-Purchase", formData.company);
     router.push("/thank-you");
   };
 

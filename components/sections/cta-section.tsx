@@ -8,6 +8,7 @@ import { CONTACT, PRICING } from "@/lib/constants";
 import { sendLead } from "@/app/actions/send-lead";
 import { HoneypotField } from "@/components/honeypot-field";
 import { OptInCheckboxes } from "@/components/opt-in-checkboxes";
+import { beginLeadSubmit, completeLeadSubmit } from "@/lib/tracking";
 import { TextToBookLink } from "@/components/text-to-book-link";
 
 export function CtaSection() {
@@ -29,6 +30,7 @@ export function CtaSection() {
 
     setIsSubmitting(true);
     setErrorMessage("");
+    beginLeadSubmit();
 
     const result = await sendLead({
       formName: "Homepage Appointment Request",
@@ -53,6 +55,7 @@ export function CtaSection() {
       return;
     }
 
+    completeLeadSubmit("Homepage Appointment Request", formData.company);
     router.push("/thank-you");
   };
 

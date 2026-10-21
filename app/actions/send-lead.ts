@@ -1,7 +1,13 @@
 "use server";
 
+import { cookies } from "next/headers";
 import { Resend } from "resend";
 import { CONTACT } from "@/lib/constants";
+import {
+  ATTRIBUTION_COOKIE,
+  appendAttributionFields,
+  attributionFieldsFromValue,
+} from "@/lib/tracking";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -167,8 +173,22 @@ export async function sendLead(payload: LeadPayload): Promise<SendLeadResult> {
     return { success: true };
   }
 
+  // Click ids and utm_* live in a first-party cookie. Append them as extra
+  // fields so the notification email and appointment webhook receive them
+  // without changing existing field names.
+  let attributionFields: { label: string; value: string }[] = [];
+  try {
+    const cookieStore = await cookies();
+    attributionFields = attributionFieldsFromValue(
+      cookieStore.get(ATTRIBUTION_COOKIE)?.value,
+    );
+  } catch {
+    attributionFields = [];
+  }
+  const leadFields = appendAttributionFields(fields, attributionFields);
+
   const webhookForward = isAppointment
-    ? forwardAppointmentToWebhook(formName, name, email, fields)
+    ? forwardAppointmentToWebhook(formName, name, email, leadFields)
     : Promise.resolve();
 
   if (!process.env.RESEND_API_KEY) {
@@ -176,7 +196,8 @@ export async function sendLead(payload: LeadPayload): Promise<SendLeadResult> {
     return { success: false, error: "Email service is not configured." };
   }
 
-  const rows = renderRows(fields);
+  const rows = renderRows(leadFields);
+  const guestRows = renderRows(fields);
   const subject = notifySubject?.trim() || NOTIFY_SUBJECT;
 
   const notifyHtml = `
@@ -194,7 +215,7 @@ export async function sendLead(payload: LeadPayload): Promise<SendLeadResult> {
     <div style="font-family:Arial,Helvetica,sans-serif;max-width:600px;margin:0 auto;">
       <h2 style="color:#0a4d68;">Thank you, ${escapeHtml(name) || "there"}!</h2>
       <p style="color:#111827;">We've received your request and our team will be in touch within 24 hours. Here's a copy of what you submitted:</p>
-      <table style="width:100%;border-collapse:collapse;font-size:14px;margin:16px 0;">${rows}</table>
+      <table style="width:100%;border-collapse:collapse;font-size:14px;margin:16px 0;">${guestRows}</table>
       <p style="color:#111827;">If you need immediate assistance, call us at ${CONTACT.phone}.</p>
       <p style="color:#6b7280;font-size:13px;margin-top:24px;">Prime IV Hydration &amp; Wellness — Huntsville, AL</p>
     </div>`;

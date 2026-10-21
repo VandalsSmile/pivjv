@@ -6,6 +6,7 @@ import { Loader2, ArrowRight } from "lucide-react";
 import { sendLead } from "@/app/actions/send-lead";
 import { HoneypotField } from "@/components/honeypot-field";
 import { OptInCheckboxes } from "@/components/opt-in-checkboxes";
+import { beginLeadSubmit, completeLeadSubmit } from "@/lib/tracking";
 
 const TEAM_SIZES = [
   "2 - 5 people",
@@ -44,6 +45,7 @@ export function TeamSessionForm() {
 
     setIsSubmitting(true);
     setErrorMessage("");
+    beginLeadSubmit();
 
     const result = await sendLead({
       formName: "Corporate & Team Wellness Sessions",
@@ -72,6 +74,10 @@ export function TeamSessionForm() {
       return;
     }
 
+    completeLeadSubmit(
+      "Corporate & Team Wellness Sessions",
+      formData.website,
+    );
     router.push("/thank-you");
   };
 

@@ -6,6 +6,8 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { JsonLd } from "@/components/json-ld";
 import { ExitIntentOffer } from "@/components/exit-intent-offer";
+import { AttributionCapture } from "@/components/attribution-capture";
+import { GOOGLE_ADS_ID, META_PIXEL_ID } from "@/lib/tracking";
 import {
   localBusinessSchema,
   websiteSchema,
@@ -90,62 +92,47 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} bg-background`}>
       <head>
-        {/* Google Tag Manager */}
-        <Script id="gtm" strategy="afterInteractive">
-          {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-WFC2K873');
-          `}
-        </Script>
-        {/* End Google Tag Manager */}
-
-        {/* Google Ads (gtag.js) */}
+        {/* Google Ads gtag.js, loaded once per page */}
         <Script
           id="gtag-js"
-          src="https://www.googletagmanager.com/gtag/js?id=AW-855692798"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
           strategy="afterInteractive"
         />
         <Script id="gtag-config" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-855692798');
+            if (typeof window.gtag !== "function") {
+              window.gtag = function () { window.dataLayer.push(arguments); };
+            }
+            if (!window.__hivGoogleAdsConfigured) {
+              window.__hivGoogleAdsConfigured = true;
+              window.gtag("js", new Date());
+              window.gtag("config", "${GOOGLE_ADS_ID}");
+            }
           `}
         </Script>
 
-        {/* Meta Pixel */}
+        {/* Meta Pixel — init + PageView once per page */}
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '3160062637430655');
-            fbq('track', 'PageView');
+            if (!window.__hivMetaPixel) {
+              window.__hivMetaPixel = true;
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '${META_PIXEL_ID}');
+              fbq('track', 'PageView');
+            }
           `}
         </Script>
-        {/* End Meta Pixel */}
       </head>
       <body className="font-sans antialiased">
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-WFC2K873"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-            title="Google Tag Manager"
-          />
-        </noscript>
-        {/* End Google Tag Manager (noscript) */}
+        <AttributionCapture />
 
         {/* Meta Pixel (noscript) */}
         <noscript>
@@ -155,7 +142,7 @@ export default function RootLayout({
             width="1"
             style={{ display: "none" }}
             alt=""
-            src="https://www.facebook.com/tr?id=3160062637430655&ev=PageView&noscript=1"
+            src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
           />
         </noscript>
         {/* End Meta Pixel (noscript) */}

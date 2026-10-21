@@ -11,6 +11,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { CONTACT } from "@/lib/constants";
+import { LeadConversion } from "@/components/lead-conversion";
 
 export const metadata: Metadata = {
   title: "Thank You",
@@ -44,6 +45,7 @@ const BENEFITS = [
 export default function ThankYouPage() {
   return (
     <>
+      <LeadConversion />
       {/* Hero */}
       <section className="bg-primary text-white py-16 lg:py-24">
         <div className="container-custom mx-auto px-4">
