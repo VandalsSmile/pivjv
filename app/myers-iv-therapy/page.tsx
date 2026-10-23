@@ -18,7 +18,7 @@ import {
   Heart,
   Droplets,
 } from "lucide-react";
-import { CONTACT, SITE_CONFIG } from "@/lib/constants";
+import { CONTACT, OG_IMAGE, SITE_CONFIG } from "@/lib/constants";
 
 
 export const metadata: Metadata = {
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     "book Myers Cocktail Huntsville",
   ],
   alternates: { canonical: "/myers-iv-therapy" },
-  openGraph: { url: "/myers-iv-therapy" },
+  openGraph: { url: "/myers-iv-therapy", images: [OG_IMAGE] },
 };
 
 const heroBenefits = [

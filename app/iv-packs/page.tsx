@@ -28,7 +28,7 @@ import {
   faqSchema,
   serviceSchema,
 } from "@/lib/structured-data";
-import { CONTACT, IV_PACKS, PRICING, getPackMath } from "@/lib/constants";
+import { CONTACT, IV_PACKS, OG_IMAGE, PRICING, getPackMath } from "@/lib/constants";
 import { TextToBookLink } from "@/components/text-to-book-link";
 import { IvPacksForm } from "./iv-packs-form";
 import { PackCards } from "./pack-cards";
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     "Huntsville AL IV savings",
   ],
   alternates: { canonical: "/iv-packs" },
-  openGraph: { url: "/iv-packs" },
+  openGraph: { url: "/iv-packs", images: [OG_IMAGE] },
 };
 
 const gapPoints = [

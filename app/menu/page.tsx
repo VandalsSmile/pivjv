@@ -11,7 +11,7 @@ import {
   Phone,
   Star,
 } from "lucide-react";
-import { CONTACT, PRICING } from "@/lib/constants";
+import { CONTACT, OG_IMAGE, PRICING } from "@/lib/constants";
 import { TelehealthFeeNote } from "@/components/telehealth-fee-note";
 import {
   PRIMARY_TREATMENT_PRICE,
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     "Huntsville AL IV menu",
   ],
   alternates: { canonical: "/menu" },
-  openGraph: { url: "/menu" },
+  openGraph: { url: "/menu", images: [OG_IMAGE] },
 };
 
 const iconMap = { Zap, Dumbbell, HeartPulse, Flame };

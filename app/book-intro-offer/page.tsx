@@ -17,6 +17,7 @@ import { MomentumProgramSection } from "@/components/momentum-program-section";
 import {
   CONTACT,
   HOURS,
+  OG_IMAGE,
   PRICING,
 } from "@/lib/constants";
 import { AppointmentBookingForm } from "@/components/appointment-booking-form";
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     "Prime IV Huntsville appointment",
   ],
   alternates: { canonical: "/book-intro-offer" },
-  openGraph: { url: "/book-intro-offer" },
+  openGraph: { url: "/book-intro-offer", images: [OG_IMAGE] },
 };
 
 const INCLUDED = [

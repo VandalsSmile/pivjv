@@ -28,7 +28,7 @@ import {
   serviceSchema,
   faqSchema,
 } from "@/lib/structured-data";
-import { CONTACT, SITE_CONFIG, SOCIAL_LINKS } from "@/lib/constants";
+import { CONTACT, OG_IMAGE, SITE_CONFIG, SOCIAL_LINKS } from "@/lib/constants";
 import { TeamSessionForm } from "./team-session-form";
 
 const REEL_URL = "https://www.facebook.com/share/r/1BdYxx2CuG";
@@ -52,6 +52,7 @@ export const metadata: Metadata = {
       "Private team wellness mornings with IV therapy, breakfast, drinks, and massage chairs. We'd love to host your team next.",
     url: `${SITE_CONFIG.url}/corporate-team-wellness`,
     type: "website",
+    images: [OG_IMAGE],
   },
 };
 

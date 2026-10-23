@@ -7,6 +7,7 @@ import { Phone, Mail, MapPin, Clock, ArrowRight, Star, MessageCircle } from "luc
 import {
   CONTACT,
   HOURS,
+  OG_IMAGE,
   PRICING,
   TELEHEALTH_FEE_NOTE,
   SOCIAL_LINKS,
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     "$85 intro offer IV",
   ],
   alternates: { canonical: "/book" },
-  openGraph: { url: "/book" },
+  openGraph: { url: "/book", images: [OG_IMAGE] },
 };
 
 type Service = {

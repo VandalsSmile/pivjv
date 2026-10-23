@@ -8,7 +8,7 @@ import {
   ArrowRight,
   Loader2,
 } from "lucide-react";
-import { CONTACT, PRICING } from "@/lib/constants";
+import { CONTACT, OG_IMAGE, PRICING } from "@/lib/constants";
 import { SpecialsForm } from "./specials-form";
 import { MomentumProgramSection } from "@/components/momentum-program-section";
 import { MOMENTUM_FAQS } from "@/lib/momentum-program";
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "discount IV therapy",
   ],
   alternates: { canonical: "/specials" },
-  openGraph: { url: "/specials" },
+  openGraph: { url: "/specials", images: [OG_IMAGE] },
 };
 
 

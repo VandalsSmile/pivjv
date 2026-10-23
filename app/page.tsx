@@ -13,7 +13,7 @@ import { ReviewsSection } from "@/components/sections/reviews-section";
 import { FaqSection } from "@/components/sections/faq-section";
 import { JsonLd } from "@/components/json-ld";
 import { faqSchema, webPageSchema } from "@/lib/structured-data";
-import { FAQS } from "@/lib/constants";
+import { FAQS, OG_IMAGE } from "@/lib/constants";
 
 export const metadata: Metadata = {
   alternates: {
@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     url: "/",
+    images: [OG_IMAGE],
   },
 };
 
