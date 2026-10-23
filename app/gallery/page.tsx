@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/json-ld";
 import { breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
-  title: "Gallery | Inside Our IV Therapy Lounge",
+  title: "Clinic Gallery",
   description: `Take a look inside Prime IV Hydration & Wellness in ${CONTACT.address.city}, AL — our relaxing VIP lounge, zero-gravity massage chairs, and welcoming wellness space.`,
   keywords: [
     "IV therapy spa photos",

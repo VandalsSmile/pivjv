@@ -2,6 +2,10 @@ export type Article = {
   slug: string;
   title: string;
   excerpt: string;
+  /** Document title when `title` would exceed 60 characters. */
+  metaTitle?: string;
+  /** Meta description when `excerpt` would exceed 160 characters. */
+  metaDescription?: string;
   category: string;
   readTime: string;
   date: string;
@@ -26,6 +30,8 @@ export const ARTICLES: Article[] = [
       "You Slept. But Did You Recover? Why Fall Is the Perfect Time to Rethink Your Recovery Routine",
     excerpt:
       "Sleep is only one piece of the recovery puzzle. As fall schedules fill up, learn how hydration, magnesium, B vitamins, and simply slowing down can help you build a more intentional recovery routine before the holiday rush.",
+    metaTitle: "You Slept, But Did You Recover? A Fall Recovery Guide",
+    metaDescription: "Sleep is only one piece of recovery. As fall schedules fill up, hydration, magnesium, B vitamins, and slowing down help you recover before the holiday rush.",
     category: "Wellness",
     readTime: "7 min read",
     date: "September 24, 2026",
@@ -37,6 +43,8 @@ export const ARTICLES: Article[] = [
       "Hack Your Immune System: 10 Things Huntsville Families Can Do Before Everyone Starts Getting Sick",
     excerpt:
       "The complete cold-season guide for Huntsville — hydration, vitamins, minerals, antioxidants, recovery, and where IV therapy actually fits. There's no single immune switch, but there is a smarter way to build resilience before peak respiratory-virus season.",
+    metaTitle: "10 Things Huntsville Families Can Do Before Cold Season",
+    metaDescription: "A cold-season guide for Huntsville families: hydration, vitamins, minerals, antioxidants, recovery, and where IV therapy fits before virus season.",
     category: "Immunity",
     readTime: "11 min read",
     date: "September 2, 2026",
@@ -48,6 +56,8 @@ export const ARTICLES: Article[] = [
       "Introducing Keep the Momentum Going: Your First Three Visits, Discounted",
     excerpt:
       "One IV feels great. Three in a row is where things actually change. Our new-guest card takes 20% off your second visit and 10% off your third — no promo code, no subscription, no catch.",
+    metaTitle: "Keep the Momentum Going: Your First Three Visits",
+    metaDescription: "One IV feels great. Three in a row is where things change. The new-guest card takes 20% off visit two and 10% off visit three, with no subscription.",
     category: "Offers",
     readTime: "6 min read",
     date: "August 28, 2026",
@@ -59,6 +69,8 @@ export const ARTICLES: Article[] = [
       "Does NAD+ Actually Work? A Straight Look at the Real Research",
     excerpt:
       "We read the human trials — 740 participants across 15 randomized studies, the Parkinson's and heart-failure trials, and the only published IV NAD+ infusion study — and separated what's proven, what's promising, and what's pure hype.",
+    metaTitle: "Does NAD+ Actually Work? A Straight Look at the Research",
+    metaDescription: "A straight look at the human trials on NAD+: randomized studies, Parkinson's and heart-failure research, and the published IV NAD+ infusion study.",
     category: "NAD+ Therapy",
     readTime: "14 min read",
     date: "August 18, 2026",
@@ -70,6 +82,8 @@ export const ARTICLES: Article[] = [
       "Why Is Summer So Hard on Your Skin, Hair & Body? A Layman's Guide (And How IV Therapy Helps)",
     excerpt:
       "Heat, sun, travel, late nights, and packed weekends quietly drain your skin, hair, and energy all summer long. Learn why it happens and how IV therapy helps you look and feel better fast.",
+    metaTitle: "Why Summer Is So Hard on Skin, Hair, and Body",
+    metaDescription: "Heat, sun, travel, and late nights drain skin, hair, and energy all summer. Learn why it happens and how IV therapy helps you feel better.",
     category: "Wellness",
     readTime: "8 min read",
     date: "July 6, 2026",
@@ -80,6 +94,7 @@ export const ARTICLES: Article[] = [
     title: "How to Get More Out of Your NAD+ Therapy",
     excerpt:
       "Prep your body before your NAD+ infusion. Learn how the NAD+ Amplifier — glutathione, B-12, alpha lipoic acid, and magnesium — helps you absorb more, feel fewer side effects, and get the most from every NAD+ session.",
+    metaDescription: "Prep before your NAD+ infusion. The NAD+ Amplifier — glutathione, B-12, alpha lipoic acid, and magnesium — helps you get more from each session.",
     category: "NAD+ Therapy",
     readTime: "6 min read",
     date: "June 19, 2026",
@@ -91,6 +106,7 @@ export const ARTICLES: Article[] = [
     title: "How to Support Your Immune System Before Summer Travel",
     excerpt:
       "Travel can leave you dehydrated and run down. Learn how Immunity Armor IV therapy may support hydration, immune wellness, and recovery before and after summer trips.",
+    metaDescription: "Travel can leave you dehydrated and run down. Learn how Immunity Armor IV therapy may support hydration and recovery around summer trips.",
     category: "Immunity",
     readTime: "5 min read",
     date: "May 21, 2026",
@@ -114,6 +130,8 @@ export const ARTICLES: Article[] = [
       "NAD+ vs. Niagen: Are Oral Supplements Less Effective Than IV Infusions?",
     excerpt:
       "Compare NAD+ IV therapy and Niagen supplements for absorption, effectiveness, and cost — and learn which delivers better support for energy, recovery, and longevity.",
+    metaTitle: "NAD+ vs. Niagen: Oral Supplements vs. IV Infusions",
+    metaDescription: "Compare NAD+ IV therapy and Niagen supplements for absorption, cost, and support for energy, recovery, and longevity.",
     category: "Compare",
     readTime: "6 min read",
     date: "April 25, 2026",
@@ -125,6 +143,7 @@ export const ARTICLES: Article[] = [
     title: "Living Longer Isn't the Goal. This Is: How to Build Your Healthspan",
     excerpt:
       "What is healthspan? Learn how IV therapy, NAD+, and Niagen support longevity, energy, and cellular health for better aging — not just more years.",
+    metaTitle: "How to Build Your Healthspan, Not Just Live Longer",
     category: "Longevity",
     readTime: "6 min read",
     date: "April 21, 2026",
@@ -159,6 +178,8 @@ export const ARTICLES: Article[] = [
       "Collagen Supplements Explained: What They Do & How IV Therapy Supports Real Results",
     excerpt:
       "Wondering if collagen supplements actually work? Learn what collagen does for skin, joints, and hair, the best way to take it, and how IV therapy supports production.",
+    metaTitle: "Collagen Supplements Explained and How IV Therapy Helps",
+    metaDescription: "Do collagen supplements work? Learn what collagen does for skin, joints, and hair, and how IV therapy supports production.",
     category: "Beauty",
     readTime: "6 min read",
     date: "February 11, 2026",
@@ -171,6 +192,7 @@ export const ARTICLES: Article[] = [
       "Why Healthy Hair, Skin, and Scalp Start Within — and How IV Therapy Helps",
     excerpt:
       "Topicals can only do so much. Learn how IV hydration and glutathione support healthier hair, skin, and scalp from within.",
+    metaTitle: "Why Healthy Hair, Skin, and Scalp Start From Within",
     category: "Beauty",
     readTime: "5 min read",
     date: "January 13, 2026",
@@ -183,6 +205,7 @@ export const ARTICLES: Article[] = [
       "Does IV Therapy Help Prepare Your Immune System for Cold and Flu Season?",
     excerpt:
       "Preparing your immune system before cold and flu season may help reduce severity and recovery time. Learn how IV therapy supports immune readiness.",
+    metaTitle: "Can IV Therapy Prepare Immunity for Cold and Flu Season?",
     category: "Immunity",
     readTime: "5 min read",
     date: "January 8, 2026",
@@ -194,6 +217,7 @@ export const ARTICLES: Article[] = [
     title: "What Is NAD+? Understanding the \"Energy Molecule\" That Powers Every Cell",
     excerpt:
       "Discover how NAD+ therapy supports energy, focus, and cellular health — and whether IV NAD+ therapy offers advantages over oral supplements.",
+    metaTitle: "What Is NAD+? The Energy Molecule That Powers Every Cell",
     category: "The Basics",
     readTime: "6 min read",
     date: "January 2, 2026",
@@ -206,6 +230,8 @@ export const ARTICLES: Article[] = [
       "Oral Supplements vs. IV Infusions: Pros, Cons, and Which One Is Right for You?",
     excerpt:
       "From multivitamins to hydration drips, wellness options have never been broader. Compare how oral supplements and IV infusions work, where each shines, and how to choose.",
+    metaTitle: "Oral Supplements vs. IV Infusions: Pros, Cons, and Fit",
+    metaDescription: "Compare how oral supplements and IV infusions work, where each shines, and how to choose between the supplement aisle and a drip.",
     category: "Compare",
     readTime: "6 min read",
     date: "December 21, 2025",
@@ -217,6 +243,7 @@ export const ARTICLES: Article[] = [
     title: "How Do I Know If I'm Dehydrated and How Will IV Therapy Help?",
     excerpt:
       "Many dehydration symptoms are easier to miss than you think. Learn the early signs to watch for and how IV hydration can help you feel better fast.",
+    metaTitle: "How Do I Know If I'm Dehydrated and How IV Therapy Helps",
     category: "Hydration",
     readTime: "5 min read",
     date: "December 16, 2025",
@@ -229,6 +256,8 @@ export const ARTICLES: Article[] = [
       "IV Therapy for Stress, Burnout & Mental Fatigue: How Infusions Support Today's Overloaded Lifestyle",
     excerpt:
       "When stress leaves you depleted, foggy, and run down, IV therapy can help support hydration, energy, recovery, and resilience as part of a broader wellness routine.",
+    metaTitle: "IV Therapy for Stress, Burnout, and Mental Fatigue",
+    metaDescription: "When stress leaves you depleted and foggy, IV therapy can support hydration, energy, recovery, and resilience.",
     category: "Wellness",
     readTime: "6 min read",
     date: "December 10, 2025",
@@ -241,6 +270,7 @@ export const ARTICLES: Article[] = [
       "IV Therapy Safety, Providers, and What to Look for in an IV Studio",
     excerpt:
       "IV therapy is generally safe when performed by trained medical professionals in a clean, well-managed environment. Learn what to look for before you book.",
+    metaTitle: "IV Therapy Safety and What to Look for in an IV Studio",
     category: "Safety",
     readTime: "7 min read",
     date: "December 7, 2025",
@@ -253,6 +283,8 @@ export const ARTICLES: Article[] = [
       "IV Therapy Benefits for Immunity, Energy, Recovery & Wellness",
     excerpt:
       "From immune support and energy to beauty, performance, and recovery, this guide breaks down the most popular IV therapy benefits and which ingredients support each goal.",
+    metaTitle: "IV Therapy Benefits for Immunity, Energy, and Recovery",
+    metaDescription: "From immune support and energy to beauty and recovery, this guide covers popular IV therapy benefits and the ingredients behind them.",
     category: "The Basics",
     readTime: "8 min read",
     date: "November 22, 2025",
@@ -264,6 +296,7 @@ export const ARTICLES: Article[] = [
     title: "The Complete Consumer Guide to IV Therapy",
     excerpt:
       "Curious about IV therapy, how it works, what it helps with, and what to expect at your first appointment? This beginner's guide breaks it all down in simple terms.",
+    metaDescription: "Curious about IV therapy, how it works, and what to expect at your first visit? This beginner's guide breaks it down in simple terms.",
     category: "The Basics",
     readTime: "9 min read",
     date: "November 21, 2025",
@@ -271,3 +304,18 @@ export const ARTICLES: Article[] = [
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/The%20Complete%20Consumer%20Guide%20to%20IV%20Therapy-yxYO3tyv4A89w83gPkqTt96XXpBybH.png",
   },
 ];
+
+const TITLE_BRAND = " | Prime IV";
+
+/** Absolute document title, 60 characters or fewer. */
+export function articleDocumentTitle(article: Article): string {
+  if (article.metaTitle) return article.metaTitle;
+  const branded = `${article.title}${TITLE_BRAND}`;
+  if (branded.length <= 60) return branded;
+  return article.title;
+}
+
+/** Meta description, 160 characters or fewer when a shorter override exists. */
+export function articleDocumentDescription(article: Article): string {
+  return article.metaDescription ?? article.excerpt;
+}

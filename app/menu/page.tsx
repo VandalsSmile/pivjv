@@ -28,9 +28,9 @@ import {
 
 
 export const metadata: Metadata = {
-  title: "Full Menu | IV Therapy, Injections & Premium Infusions",
+  title: "IV Therapy Menu",
   description:
-    "Explore the complete Prime IV Hydration & Wellness menu in Huntsville, AL — primary and specialty IV treatments, vitamin injections, treatment additives, injection packages, and advanced high-dose infusions.",
+    "The full Prime IV menu in Huntsville, AL: primary and specialty drips, vitamin injections, additives, injection packages, and high-dose infusions.",
   keywords: [
     "IV therapy menu",
     "IV drip list",

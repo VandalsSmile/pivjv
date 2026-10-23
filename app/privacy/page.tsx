@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/json-ld";
 import { breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | How We Protect Your Data",
+  title: "Privacy Policy",
   description: `Learn how Prime IV Hydration & Wellness in ${CONTACT.address.city}, AL collects, uses, and protects information gathered through our website and online services.`,
   keywords: [
     "privacy policy",

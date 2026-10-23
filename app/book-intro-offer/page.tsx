@@ -23,8 +23,8 @@ import { AppointmentBookingForm } from "@/components/appointment-booking-form";
 import { TelehealthFeeNote } from "@/components/telehealth-fee-note";
 
 export const metadata: Metadata = {
-  title: `Book Your $${PRICING.introOffer.price} Intro Offer Online | Prime IV Huntsville`,
-  description: `Pick the date and time that works for you and we'll confirm it — no phone tag required. Your first IV drip at Prime IV Hydration & Wellness Jones Valley is just $${PRICING.introOffer.price} with code ${PRICING.introOffer.promoCode}.`,
+  title: `Book $${PRICING.introOffer.price} Intro`,
+  description: `Pick a time and we'll confirm it. Your first IV at Prime IV Jones Valley is $${PRICING.introOffer.price} with code ${PRICING.introOffer.promoCode}.`,
   keywords: [
     "book IV therapy Huntsville online",
     "$85 intro offer IV Huntsville",

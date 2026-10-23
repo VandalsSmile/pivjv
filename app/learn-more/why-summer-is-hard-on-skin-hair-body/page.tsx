@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/article-layout";
-import { ARTICLES } from "@/lib/articles";
+import {
+  ARTICLES,
+  articleDocumentDescription,
+  articleDocumentTitle,
+} from "@/lib/articles";
 import { CONTACT, SITE_CONFIG, PRICING } from "@/lib/constants";
 import { TelehealthFeeNote } from "@/components/telehealth-fee-note";
 import { JsonLd } from "@/components/json-ld";
@@ -11,8 +15,8 @@ const slug = "why-summer-is-hard-on-skin-hair-body";
 const article = ARTICLES.find((a) => a.slug === slug)!;
 
 export const metadata: Metadata = {
-  title: `${article.title} | Resource Center`,
-  description: article.excerpt,
+  title: { absolute: articleDocumentTitle(article) },
+  description: articleDocumentDescription(article),
   alternates: { canonical: `/learn-more/${slug}` },
   keywords: [
     "why is summer hard on skin",

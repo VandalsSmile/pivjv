@@ -19,9 +19,9 @@ import {
 } from "@/lib/monthly-specials";
 
 export const metadata: Metadata = {
-  title: "IV Therapy Specials & Promotions | Monthly Deals",
+  title: "Monthly Specials",
   description:
-    "Take advantage of our exclusive IV therapy offers and experience premium treatments at special rates. New client specials and monthly promotions available now in Huntsville, AL.",
+    "Exclusive IV therapy offers and monthly promotions at Prime IV in Huntsville, AL. New-client specials are available now.",
   keywords: [
     "IV therapy specials",
     "IV drip deals",

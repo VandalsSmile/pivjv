@@ -3,6 +3,8 @@ import {
   CONTACT,
   LOGO_URL,
   SOCIAL_LINKS,
+  HOME_TITLE,
+  OG_IMAGE,
 } from "@/lib/constants";
 
 const SITE_URL = SITE_CONFIG.url;
@@ -96,6 +98,28 @@ export function localBusinessSchema() {
       reviewCount: "6",
       bestRating: "5",
     },
+  };
+}
+
+/** Homepage WebPage entity, including the last content modification date. */
+export function webPageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${SITE_URL}/#webpage`,
+    url: SITE_URL,
+    name: HOME_TITLE,
+    description: SITE_CONFIG.description,
+    dateModified: "2026-10-23",
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": BUSINESS_ID },
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: absoluteUrl(OG_IMAGE.url),
+      width: OG_IMAGE.width,
+      height: OG_IMAGE.height,
+    },
+    inLanguage: "en-US",
   };
 }
 

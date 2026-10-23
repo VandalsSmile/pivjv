@@ -34,10 +34,9 @@ import { TeamSessionForm } from "./team-session-form";
 const REEL_URL = "https://www.facebook.com/share/r/1BdYxx2CuG";
 
 export const metadata: Metadata = {
-  title:
-    "Corporate & Team Wellness Sessions | Prime IV Hydration Huntsville, AL",
+  title: "Team Wellness",
   description:
-    "Treat your team to a Monday morning that doesn't feel like a Monday morning. Prime IV Huntsville hosts private corporate team wellness mornings with IV therapy, breakfast, drinks, and massage chairs. Request your team session.",
+    "Private team wellness mornings at Prime IV Huntsville with IV therapy, breakfast, drinks, and massage chairs. Request your team session.",
   keywords: [
     "corporate wellness Huntsville",
     "team wellness event Huntsville AL",

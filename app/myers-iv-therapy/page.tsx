@@ -22,9 +22,9 @@ import { CONTACT, SITE_CONFIG } from "@/lib/constants";
 
 
 export const metadata: Metadata = {
-  title: "America's Favorite IV | The Myers' Cocktail",
+  title: "Myers' Cocktail",
   description:
-    "Book the Myers' Cocktail — the original, time-tested IV drip that started it all — at Prime IV Hydration & Wellness in Huntsville, AL. Energy, immunity, recovery, and clarity in one nurse-administered session.",
+    "Book the Myers' Cocktail at Prime IV in Huntsville, AL. The classic IV for energy, immunity, recovery, and clarity, administered by a nurse.",
   keywords: [
     "Myers Cocktail",
     "America's favorite IV",

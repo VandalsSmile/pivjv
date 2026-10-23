@@ -3,7 +3,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { Star } from "lucide-react";
 import { ArticleLayout } from "@/components/article-layout";
-import { ARTICLES } from "@/lib/articles";
+import {
+  ARTICLES,
+  articleDocumentDescription,
+  articleDocumentTitle,
+} from "@/lib/articles";
 import { CONTACT, SITE_CONFIG, PRICING } from "@/lib/constants";
 import { PREMIUM_INFUSIONS, NAD_INJECTIONS } from "@/lib/menu-data";
 import { JsonLd } from "@/components/json-ld";
@@ -15,8 +19,8 @@ const article = ARTICLES.find((a) => a.slug === slug)!;
 const nadInfusion = PREMIUM_INFUSIONS.find((i) => i.name === "NAD+ Infusions")!;
 
 export const metadata: Metadata = {
-  title: `${article.title} | Resource Center`,
-  description: article.excerpt,
+  title: { absolute: articleDocumentTitle(article) },
+  description: articleDocumentDescription(article),
   alternates: { canonical: `/learn-more/${slug}` },
   keywords: [
     "does NAD+ therapy work",

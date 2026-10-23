@@ -34,10 +34,9 @@ import {
 
 
 export const metadata: Metadata = {
-  title:
-    "Medical Weight Management Injections & Weight Loss in Huntsville, AL | Prime IV",
+  title: "Weight Loss",
   description:
-    "Provider-guided medical weight management in Huntsville, AL. Medical weight management injections and personalized plans paired with IV hydration support at Prime IV Hydration & Wellness. Consultation required.",
+    "Provider-guided medical weight management in Huntsville, AL. Injections and personalized plans paired with IV hydration at Prime IV. Consultation required.",
   keywords: [
     "medical weight management injections Huntsville",
     "medical weight loss Huntsville AL",

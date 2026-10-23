@@ -5,9 +5,19 @@ export const SITE_CONFIG = {
   location: "Huntsville",
   tagline: "Feel Better, Faster — Premium IV Therapy in Huntsville, AL",
   description:
-    "Boost your energy, recover faster, support longevity, and optimize your health with doctor-supervised IV hydration therapy—conveniently located in Huntsville, AL.",
+    "Boost your energy, recover faster, support longevity, and optimize your health with doctor-supervised IV hydration therapy in Huntsville, AL.",
   url: "https://www.huntsvilleiv.com",
 };
+
+/** Homepage `<title>`. Stays within the 60-character document-title limit. */
+export const HOME_TITLE = "IV Therapy near Huntsville AL | Prime IV Hydration";
+
+export const OG_IMAGE = {
+  url: "/huntsville-og.jpg",
+  width: 1200,
+  height: 630,
+  alt: "Ann and John Van Steenburgh, owners of Prime IV Hydration & Wellness, in front of the lit Prime IV sign in Huntsville, Alabama",
+} as const;
 
 export const CONTACT = {
   phone: "(256) 678-0033",

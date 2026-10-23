@@ -38,8 +38,8 @@ const savings = Math.round(
 );
 
 export const metadata: Metadata = {
-  title: `$${PRICING.introOffer.price} Intro IV Therapy Offer | Prime IV Hydration Huntsville AL`,
-  description: `First-time clients get a full IV therapy session for just $${PRICING.introOffer.price} in Huntsville, AL. Includes wellness consult, primary drip, and VIP massage chair. Same-day available. One-time $${PRICING.medicalClearance} telehealth screening required for new clients.`,
+  title: `$${PRICING.introOffer.price} Intro Offer`,
+  description: `First-time clients get a full IV session for $${PRICING.introOffer.price} in Huntsville, AL, with a consult, primary drip, and VIP chair. A one-time $${PRICING.medicalClearance} telehealth screening applies.`,
   keywords: [
     "IV therapy intro offer",
     "new client IV special",

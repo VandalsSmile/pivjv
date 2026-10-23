@@ -9,9 +9,9 @@ const slug = "niagen-over-50-what-research-says-huntsville";
 const article = ARTICLES.find((a) => a.slug === slug)!;
 
 const metaTitle =
-  "Niagen® After 50: What the Research Says | Prime IV Huntsville";
+  "Niagen® After 50: What Research Says | Prime IV Huntsville";
 const metaDescription =
-  "Niagen® (nicotinamide riboside) is gaining popularity with adults over 50. A plain-English look at NAD+, the human studies, and Niagen IV and injection series at Prime IV Huntsville.";
+  "Niagen® (nicotinamide riboside) is popular with adults over 50. A plain-English look at NAD+, the human studies, and Niagen IV at Prime IV Huntsville.";
 
 export const metadata: Metadata = {
   title: { absolute: metaTitle },

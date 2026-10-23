@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 
 export const metadata: Metadata = {
-  title: "IV Therapy Memberships | Monthly Wellness Plans",
+  title: "Memberships",
   description:
     "Simplify and save with a Prime IV membership. Get monthly IV drips, injections, VIP status, and exclusive discounts on additional treatments in Huntsville, AL.",
   keywords: [

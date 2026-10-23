@@ -39,8 +39,8 @@ const sixMath = getPackMath(sixPack);
 const twelveMath = getPackMath(twelvePack);
 
 export const metadata: Metadata = {
-  title: `Pre-Purchase IV Packs — 6 IVs $${sixPack.price} or 12 IVs $${twelvePack.price.toLocaleString()} | Prime IV Huntsville`,
-  description: `Save a bundle without a membership. Pre-purchase 6 IV drips for $${sixPack.price} ($${sixMath.perIv}/IV) or 12 for $${twelvePack.price.toLocaleString()} ($${twelveMath.perIv}/IV) in Huntsville, AL. No monthly commitment, no expiration.`,
+  title: "IV Therapy Packs",
+  description: `Save without a membership. Pre-purchase 6 IV drips for $${sixPack.price} ($${sixMath.perIv}/IV) or 12 for $${twelvePack.price.toLocaleString()} ($${twelveMath.perIv}/IV) in Huntsville, AL. No monthly commitment, no expiration.`,
   keywords: [
     "IV therapy packages Huntsville",
     "pre-purchase IV drips",
