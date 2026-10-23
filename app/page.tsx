@@ -12,8 +12,8 @@ import { MembershipsSection } from "@/components/sections/memberships-section";
 import { ReviewsSection } from "@/components/sections/reviews-section";
 import { FaqSection } from "@/components/sections/faq-section";
 import { JsonLd } from "@/components/json-ld";
-import { faqSchema } from "@/lib/structured-data";
-import { FAQS } from "@/lib/constants";
+import { faqSchema, webPageSchema } from "@/lib/structured-data";
+import { FAQS, OG_IMAGE } from "@/lib/constants";
 
 export const metadata: Metadata = {
   alternates: {
@@ -21,13 +21,14 @@ export const metadata: Metadata = {
   },
   openGraph: {
     url: "/",
+    images: [OG_IMAGE],
   },
 };
 
 export default function HomePage() {
   return (
     <>
-      <JsonLd data={faqSchema(FAQS)} />
+      <JsonLd data={[faqSchema(FAQS), webPageSchema()]} />
       <HeroSection />
       <WhyPrimeSection />
       <AudienceSection />

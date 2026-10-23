@@ -5,7 +5,11 @@ import { MomentumCard } from "@/components/momentum-card";
 import { MomentumProgramSection } from "@/components/momentum-program-section";
 import { JsonLd } from "@/components/json-ld";
 import { faqSchema } from "@/lib/structured-data";
-import { ARTICLES } from "@/lib/articles";
+import {
+  ARTICLES,
+  articleDocumentDescription,
+  articleDocumentTitle,
+} from "@/lib/articles";
 import { CONTACT, PRICING } from "@/lib/constants";
 import { MOMENTUM_FAQS, MOMENTUM_PROGRAM } from "@/lib/momentum-program";
 
@@ -13,8 +17,8 @@ const slug = "keep-the-momentum-going";
 const article = ARTICLES.find((a) => a.slug === slug)!;
 
 export const metadata: Metadata = {
-  title: `${article.title} | Prime IV Huntsville`,
-  description: article.excerpt,
+  title: { absolute: articleDocumentTitle(article) },
+  description: articleDocumentDescription(article),
   alternates: { canonical: `/learn-more/${slug}` },
   keywords: [
     "Keep the Momentum Going",

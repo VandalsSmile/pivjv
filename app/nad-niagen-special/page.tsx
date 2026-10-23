@@ -28,7 +28,7 @@ import { CONTACT, SITE_CONFIG } from "@/lib/constants";
 
 
 export const metadata: Metadata = {
-  title: "NAD+ IV Therapy Huntsville AL | Niagen® Cellular Energy | Prime IV",
+  title: "NAD+ & Niagen",
   description:
     "NAD+ IV infusions and Niagen® therapy in Huntsville, AL. Restore cellular energy, sharpen focus, and slow aging at Prime IV Hydration & Wellness.",
   keywords: [

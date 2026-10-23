@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/article-layout";
-import { ARTICLES } from "@/lib/articles";
+import {
+  ARTICLES,
+  articleDocumentDescription,
+  articleDocumentTitle,
+} from "@/lib/articles";
 import { CONTACT, SITE_CONFIG } from "@/lib/constants";
 
 const slug = "what-is-iv-therapy-complete-guide";
 const article = ARTICLES.find((a) => a.slug === slug)!;
 
 export const metadata: Metadata = {
-  title: `${article.title} | Resource Center`,
-  description: article.excerpt,
+  title: { absolute: articleDocumentTitle(article) },
+  description: articleDocumentDescription(article),
   alternates: { canonical: `/learn-more/${slug}` },
   keywords: [
     "what is IV therapy",

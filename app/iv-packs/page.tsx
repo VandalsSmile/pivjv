@@ -28,7 +28,7 @@ import {
   faqSchema,
   serviceSchema,
 } from "@/lib/structured-data";
-import { CONTACT, IV_PACKS, PRICING, getPackMath } from "@/lib/constants";
+import { CONTACT, IV_PACKS, OG_IMAGE, PRICING, getPackMath } from "@/lib/constants";
 import { TextToBookLink } from "@/components/text-to-book-link";
 import { IvPacksForm } from "./iv-packs-form";
 import { PackCards } from "./pack-cards";
@@ -39,8 +39,8 @@ const sixMath = getPackMath(sixPack);
 const twelveMath = getPackMath(twelvePack);
 
 export const metadata: Metadata = {
-  title: `Pre-Purchase IV Packs — 6 IVs $${sixPack.price} or 12 IVs $${twelvePack.price.toLocaleString()} | Prime IV Huntsville`,
-  description: `Save a bundle without a membership. Pre-purchase 6 IV drips for $${sixPack.price} ($${sixMath.perIv}/IV) or 12 for $${twelvePack.price.toLocaleString()} ($${twelveMath.perIv}/IV) in Huntsville, AL. No monthly commitment, no expiration.`,
+  title: "IV Therapy Packs",
+  description: `Save without a membership. Pre-purchase 6 IV drips for $${sixPack.price} ($${sixMath.perIv}/IV) or 12 for $${twelvePack.price.toLocaleString()} ($${twelveMath.perIv}/IV) in Huntsville, AL. No monthly commitment, no expiration.`,
   keywords: [
     "IV therapy packages Huntsville",
     "pre-purchase IV drips",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     "Huntsville AL IV savings",
   ],
   alternates: { canonical: "/iv-packs" },
-  openGraph: { url: "/iv-packs" },
+  openGraph: { url: "/iv-packs", images: [OG_IMAGE] },
 };
 
 const gapPoints = [

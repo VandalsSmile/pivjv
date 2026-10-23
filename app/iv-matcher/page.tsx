@@ -5,9 +5,9 @@ import { JsonLd } from "@/components/json-ld";
 import { breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
-  title: "Which IV Drip Is Right for Me? | IV Therapy Matcher | Prime IV Huntsville",
+  title: "IV Drip Matcher",
   description:
-    "Not sure which IV is right for you? Use our IV Therapy Matcher to choose a concern, type your symptoms, or pick a wellness category and see which Prime IV drips may be the best fit in Huntsville, AL.",
+    "Not sure which IV is right for you? Use the IV Therapy Matcher to match a concern or symptoms with Prime IV drips in Huntsville, AL.",
   keywords: [
     "IV matcher",
     "IV therapy matcher",

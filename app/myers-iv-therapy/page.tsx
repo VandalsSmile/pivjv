@@ -18,13 +18,13 @@ import {
   Heart,
   Droplets,
 } from "lucide-react";
-import { CONTACT, SITE_CONFIG } from "@/lib/constants";
+import { CONTACT, OG_IMAGE, SITE_CONFIG } from "@/lib/constants";
 
 
 export const metadata: Metadata = {
-  title: "America's Favorite IV | The Myers' Cocktail",
+  title: "Myers' Cocktail",
   description:
-    "Book the Myers' Cocktail — the original, time-tested IV drip that started it all — at Prime IV Hydration & Wellness in Huntsville, AL. Energy, immunity, recovery, and clarity in one nurse-administered session.",
+    "Book the Myers' Cocktail at Prime IV in Huntsville, AL. The classic IV for energy, immunity, recovery, and clarity, administered by a nurse.",
   keywords: [
     "Myers Cocktail",
     "America's favorite IV",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     "book Myers Cocktail Huntsville",
   ],
   alternates: { canonical: "/myers-iv-therapy" },
-  openGraph: { url: "/myers-iv-therapy" },
+  openGraph: { url: "/myers-iv-therapy", images: [OG_IMAGE] },
 };
 
 const heroBenefits = [

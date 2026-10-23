@@ -13,7 +13,7 @@ import {
   websiteSchema,
   organizationSchema,
 } from "@/lib/structured-data";
-import { SITE_CONFIG, CONTACT } from "@/lib/constants";
+import { SITE_CONFIG, CONTACT, HOME_TITLE, OG_IMAGE } from "@/lib/constants";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,7 +23,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
   title: {
-    default: `IV Therapy near ${CONTACT.address.city} AL | Hydration & Vitamin Drips | ${SITE_CONFIG.name}`,
+    default: HOME_TITLE,
     template: `%s | ${SITE_CONFIG.name} ${CONTACT.address.city}`,
   },
   description: SITE_CONFIG.description,
@@ -52,10 +52,10 @@ export const metadata: Metadata = {
     description: SITE_CONFIG.description,
     images: [
       {
-        url: "/images/vip-spa-lounge.jpg",
-        width: 1200,
-        height: 630,
-        alt: `${SITE_CONFIG.name} VIP IV therapy lounge in ${CONTACT.address.city}, AL`,
+        url: OG_IMAGE.url,
+        width: OG_IMAGE.width,
+        height: OG_IMAGE.height,
+        alt: OG_IMAGE.alt,
       },
     ],
   },
@@ -63,7 +63,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${SITE_CONFIG.name} ${CONTACT.address.city}`,
     description: SITE_CONFIG.description,
-    images: ["/images/vip-spa-lounge.jpg"],
+    images: [
+      {
+        url: OG_IMAGE.url,
+        width: OG_IMAGE.width,
+        height: OG_IMAGE.height,
+        alt: OG_IMAGE.alt,
+      },
+    ],
   },
   robots: {
     index: true,

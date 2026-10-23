@@ -18,9 +18,9 @@ import { TelehealthFeeNote } from "@/components/telehealth-fee-note";
 
 
 export const metadata: Metadata = {
-  title: "IV Therapy Services | Vitamin Drips & Hydration Treatments",
+  title: "Vitamin Drips",
   description:
-    "Explore our full menu of IV therapy treatments including energy boosters, recovery drips, immunity support, beauty IVs, and advanced NAD+ therapies in Huntsville, AL.",
+    "Explore IV therapy treatments in Huntsville, AL, including energy, recovery, immunity, beauty drips, and NAD+ therapies.",
   keywords: [
     "IV therapy",
     "vitamin drips",

@@ -5,7 +5,7 @@ import { LoginForm } from "./login-form";
 import { UPLOAD_AUTH_COOKIE, UPLOAD_AUTH_TOKEN } from "@/lib/upload-auth";
 
 export const metadata: Metadata = {
-  title: "Gallery Image Uploader",
+  title: "Gallery Upload",
   robots: { index: false, follow: false },
 };
 

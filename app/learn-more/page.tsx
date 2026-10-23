@@ -9,7 +9,7 @@ import { breadcrumbSchema, absoluteUrl } from "@/lib/structured-data";
 
 
 export const metadata: Metadata = {
-  title: "Resource Center | IV Therapy Guides & Education",
+  title: "Resource Center",
   description: `Learn the science behind IV therapy. Browse beginner guides, comparisons, and wellness articles from Prime IV Hydration & Wellness in ${CONTACT.address.city}, AL.`,
   keywords: [
     "IV therapy guide",

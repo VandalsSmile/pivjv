@@ -19,9 +19,9 @@ import { CONTACT, WHY_PRIME_IV, TRUST_SIGNALS } from "@/lib/constants";
 import { ReviewsSection } from "@/components/sections/reviews-section";
 
 export const metadata: Metadata = {
-  title: "About Us | Prime IV Hydration & Wellness Huntsville, AL",
+  title: "About Us",
   description:
-    "Meet Ann & John Van Steenburgh, the family behind Prime IV Jones Valley in Huntsville, AL. A locally owned wellness space built on care, connection, and preventive wellness.",
+    "Meet Ann & John Van Steenburgh, the family behind Prime IV Jones Valley in Huntsville, AL. A locally owned wellness space built on care and connection.",
   keywords: [
     "about Prime IV",
     "IV therapy Huntsville",

@@ -8,7 +8,7 @@ import {
   ArrowRight,
   Loader2,
 } from "lucide-react";
-import { CONTACT, PRICING } from "@/lib/constants";
+import { CONTACT, OG_IMAGE, PRICING } from "@/lib/constants";
 import { SpecialsForm } from "./specials-form";
 import { MomentumProgramSection } from "@/components/momentum-program-section";
 import { MOMENTUM_FAQS } from "@/lib/momentum-program";
@@ -19,9 +19,9 @@ import {
 } from "@/lib/monthly-specials";
 
 export const metadata: Metadata = {
-  title: "IV Therapy Specials & Promotions | Monthly Deals",
+  title: "Monthly Specials",
   description:
-    "Take advantage of our exclusive IV therapy offers and experience premium treatments at special rates. New client specials and monthly promotions available now in Huntsville, AL.",
+    "Exclusive IV therapy offers and monthly promotions at Prime IV in Huntsville, AL. New-client specials are available now.",
   keywords: [
     "IV therapy specials",
     "IV drip deals",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "discount IV therapy",
   ],
   alternates: { canonical: "/specials" },
-  openGraph: { url: "/specials" },
+  openGraph: { url: "/specials", images: [OG_IMAGE] },
 };
 
 

@@ -7,7 +7,7 @@ import { JsonLd } from "@/components/json-ld";
 import { faqSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions | IV Therapy FAQ",
+  title: "IV Therapy FAQ",
   description: `Get answers to common questions about IV therapy at Prime IV ${CONTACT.address.city}. Learn about treatments, benefits, safety, and what to expect during your visit.`,
   keywords: [
     "IV therapy FAQ",

@@ -33,7 +33,7 @@ import {
 import { CONTACT, SITE_CONFIG, PRICING } from "@/lib/constants";
 import { GiftCardForm } from "./gift-card-form";
 
-const PAGE_TITLE = "IV Therapy Gift Cards | Give the Gift of Wellness";
+const PAGE_TITLE = "IV Gift Cards";
 const PAGE_DESCRIPTION =
   "Give someone the same great feeling you get from IV therapy at Prime IV in Jones Valley, Huntsville, AL. Gift cards in any amount for drips & injections.";
 

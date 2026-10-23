@@ -29,9 +29,9 @@ import { CONTACT, SITE_CONFIG } from "@/lib/constants";
 import { BridalForm } from "./bridal-form";
 
 export const metadata: Metadata = {
-  title: "Bridal Glow Starts With Hydration | Wedding IV Therapy in Huntsville",
+  title: "Bridal IV Therapy",
   description:
-    "Get wedding-ready with The Glow IV at Prime IV Hydration & Wellness in Huntsville, AL. Beauty-focused IV hydration to support glowing skin, energy, and recovery for brides and bridal parties. Claim your exclusive bridal discount.",
+    "Get wedding-ready with The Glow IV at Prime IV in Huntsville, AL. Hydration support for skin, energy, and recovery for brides and bridal parties.",
   keywords: [
     "bridal IV therapy Huntsville",
     "wedding IV hydration",
