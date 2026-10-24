@@ -23,5 +23,5 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", "lib/tracking.test.ts"]
+  "exclude": ["node_modules", "lib/tracking.test.ts", "lib/lead-guard.test.ts"]
 }

@@ -1,8 +1,9 @@
 "use server";
 
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { Resend } from "resend";
 import { CONTACT } from "@/lib/constants";
+import { assessLeadSubmission, clientIpFromHeaders } from "@/lib/lead-guard";
 import {
   ATTRIBUTION_COOKIE,
   appendAttributionFields,
@@ -30,8 +31,15 @@ export type LeadPayload = {
   name: string;
   email: string;
   fields: LeadField[];
-  /** Hidden honeypot field value — should always be empty for real users. */
+  /**
+   * Decoy field rendered off-screen. Real visitors leave it empty.
+   * Any non-empty value is dropped before email or CRM delivery.
+   */
+  officeExtension?: string;
+  /** Previous decoy key. Still dropped when a bot fills it. */
   honeypot?: string;
+  /** HMAC token issued when the form mounted. Required. */
+  formToken?: string;
   /** Optional override for the internal notification email subject. */
   notifySubject?: string;
   /**
@@ -48,6 +56,12 @@ const CONFIRMATION_HIDDEN_LABELS = new Set(["Text Opt-In", "Email Opt-In"]);
 export type SendLeadResult = {
   success: boolean;
   error?: string;
+  /**
+   * Dropped as spam. The action still resolves successfully (HTTP 200)
+   * so a bot is not told which check failed. No alert, CRM post, or
+   * conversion should follow.
+   */
+  filtered?: boolean;
 };
 
 function escapeHtml(value: string): string {
@@ -155,23 +169,50 @@ async function forwardAppointmentToWebhook(
   }
 }
 
+function fieldValue(fields: LeadField[], pattern: RegExp): string {
+  return fields.find((field) => pattern.test(field.label))?.value ?? "";
+}
+
 export async function sendLead(payload: LeadPayload): Promise<SendLeadResult> {
+  const fields = payload.fields ?? [];
+  let headerList: Awaited<ReturnType<typeof headers>>;
+  try {
+    headerList = await headers();
+  } catch (error) {
+    console.error(
+      "[lead-guard] header read failed:",
+      error instanceof Error ? error.message : "unknown",
+    );
+    return {
+      success: false,
+      error: "Something went wrong. Please try again or call us.",
+    };
+  }
+
+  const filterReason = assessLeadSubmission({
+    name: payload.name || fieldValue(fields, /^name$/i),
+    email: payload.email || fieldValue(fields, /email/i),
+    phone: fieldValue(fields, /phone/i),
+    officeExtension: payload.officeExtension,
+    honeypot: payload.honeypot,
+    formToken: payload.formToken,
+    origin: headerList.get("origin"),
+    referer: headerList.get("referer"),
+    ip: clientIpFromHeaders((name) => headerList.get(name)),
+  });
+  if (filterReason) {
+    console.warn(`[lead-guard] filtered: ${filterReason}`);
+    return { success: true, filtered: true };
+  }
+
   const {
     formName,
     name,
     email,
-    fields,
-    honeypot,
     notifySubject,
     confirmationType = "general",
   } = payload;
   const isAppointment = confirmationType === "appointment";
-
-  // Honeypot: if the hidden field is filled, it's a bot. Pretend success so
-  // the bot gets no signal, but don't send anything.
-  if (honeypot && honeypot.trim() !== "") {
-    return { success: true };
-  }
 
   // Click ids and utm_* live in a first-party cookie. Append them as extra
   // fields so the notification email and appointment webhook receive them

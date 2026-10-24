@@ -216,13 +216,27 @@ export function beginLeadSubmit(): void {
   captureAttribution();
 }
 
+type LeadSubmitGuard = {
+  /** Server dropped the submission. Do not fire ad conversions. */
+  filtered?: boolean;
+  honeypot?: string;
+};
+
 /**
  * Queue the thank-you conversion after sendLead returns success.
- * Honeypot hits are fake successes and do not fire ads events.
+ * Filtered and honeypot submissions are fake successes and do not fire ads events.
  */
-export function completeLeadSubmit(formName: string, honeypot?: string): void {
+export function completeLeadSubmit(
+  formName: string,
+  honeypotOrGuard?: string | LeadSubmitGuard,
+): void {
   if (typeof window === "undefined") return;
-  if (honeypot && honeypot.trim() !== "") return;
+  const guard: LeadSubmitGuard =
+    typeof honeypotOrGuard === "string"
+      ? { honeypot: honeypotOrGuard }
+      : (honeypotOrGuard ?? {});
+  if (guard.filtered) return;
+  if (guard.honeypot && guard.honeypot.trim() !== "") return;
   queuePendingLead(formName, window.location.pathname);
 }
 

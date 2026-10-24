@@ -229,6 +229,10 @@ test("consumePendingLead fires once and a direct visit does not", () => {
 
     completeLeadSubmit("Contact", "bot-company");
     assert.equal(consumePendingLead(), null);
+
+    completeLeadSubmit("Contact", { filtered: true });
+    assert.equal(consumePendingLead(), null);
+    assert.equal(gtagCalls.length, 1);
   } finally {
     if (previousWindow === undefined) {
       delete (globalThis as { window?: unknown }).window;

@@ -6,6 +6,10 @@ import { useRouter } from "next/navigation";
 import { Loader2, ArrowRight, Phone, Check } from "lucide-react";
 import { sendLead } from "@/app/actions/send-lead";
 import { HoneypotField } from "@/components/honeypot-field";
+import {
+  LEAD_GUARD_UNAVAILABLE_MESSAGE,
+  useLeadGuard,
+} from "@/components/use-lead-guard";
 import { OptInCheckboxes } from "@/components/opt-in-checkboxes";
 import { CONTACT, IV_PACKS, PRICING, getPackMath } from "@/lib/constants";
 import { beginLeadSubmit, completeLeadSubmit } from "@/lib/tracking";
@@ -23,6 +27,7 @@ type IvPacksFormProps = {
 export function IvPacksForm({ variant = "default" }: IvPacksFormProps) {
   const isHero = variant === "hero";
   const router = useRouter();
+  const leadGuard = useLeadGuard(isHero ? "pack-hero-company" : "pack-company");
   // Default to the 12-pack — the best per-IV value.
   const [packId, setPackId] = useState(IV_PACKS[IV_PACKS.length - 1].id);
   const [formData, setFormData] = useState({
@@ -31,7 +36,6 @@ export function IvPacksForm({ variant = "default" }: IvPacksFormProps) {
     phone: "",
     preferredTime: "",
     message: "",
-    company: "",
     textOptIn: true,
     emailOptIn: true,
   });
@@ -59,11 +63,19 @@ export function IvPacksForm({ variant = "default" }: IvPacksFormProps) {
     setErrorMessage("");
     beginLeadSubmit();
 
+    const guard = await leadGuard.readSubmissionGuard();
+    if (!guard) {
+      setIsSubmitting(false);
+      setErrorMessage(LEAD_GUARD_UNAVAILABLE_MESSAGE);
+      return;
+    }
+
     const result = await sendLead({
       formName: "IV Pack Pre-Purchase",
       name: formData.name,
       email: formData.email,
-      honeypot: formData.company,
+      officeExtension: guard.officeExtension,
+      formToken: guard.formToken,
       notifySubject: NOTIFY_SUBJECT,
       fields: [
         { label: "Name", value: formData.name },
@@ -88,7 +100,10 @@ export function IvPacksForm({ variant = "default" }: IvPacksFormProps) {
       return;
     }
 
-    completeLeadSubmit("IV Pack Pre-Purchase", formData.company);
+    completeLeadSubmit("IV Pack Pre-Purchase", {
+      filtered: result.filtered,
+      honeypot: guard.officeExtension,
+    });
     router.push("/thank-you");
   };
 
@@ -312,8 +327,8 @@ export function IvPacksForm({ variant = "default" }: IvPacksFormProps) {
 
           <HoneypotField
             id={isHero ? "pack-hero-company" : "pack-company"}
-            value={formData.company}
-            onChange={(value) => setFormData({ ...formData, company: value })}
+            value={leadGuard.officeExtension}
+            onChange={leadGuard.setOfficeExtension}
           />
 
           <button

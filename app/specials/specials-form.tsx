@@ -6,6 +6,10 @@ import { Loader2, ArrowRight } from "lucide-react";
 import { PRICING } from "@/lib/constants";
 import { sendLead } from "@/app/actions/send-lead";
 import { HoneypotField } from "@/components/honeypot-field";
+import {
+  LEAD_GUARD_UNAVAILABLE_MESSAGE,
+  useLeadGuard,
+} from "@/components/use-lead-guard";
 import { OptInCheckboxes } from "@/components/opt-in-checkboxes";
 import { beginLeadSubmit, completeLeadSubmit } from "@/lib/tracking";
 
@@ -17,13 +21,13 @@ const SPECIAL_LABELS: Record<string, string> = {
 
 export function SpecialsForm() {
   const router = useRouter();
+  const leadGuard = useLeadGuard("specials-company");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     special: "",
     message: "",
-    company: "",
     textOptIn: true,
     emailOptIn: true,
   });
@@ -37,11 +41,19 @@ export function SpecialsForm() {
     setErrorMessage("");
     beginLeadSubmit();
 
+    const guard = await leadGuard.readSubmissionGuard();
+    if (!guard) {
+      setIsSubmitting(false);
+      setErrorMessage(LEAD_GUARD_UNAVAILABLE_MESSAGE);
+      return;
+    }
+
     const result = await sendLead({
       formName: "Specials",
       name: formData.name,
       email: formData.email,
-      honeypot: formData.company,
+      officeExtension: guard.officeExtension,
+      formToken: guard.formToken,
       fields: [
         { label: "Name", value: formData.name },
         { label: "Email", value: formData.email },
@@ -64,7 +76,10 @@ export function SpecialsForm() {
       return;
     }
 
-    completeLeadSubmit("Specials", formData.company);
+    completeLeadSubmit("Specials", {
+      filtered: result.filtered,
+      honeypot: guard.officeExtension,
+    });
     router.push("/thank-you");
   };
 
@@ -191,8 +206,8 @@ export function SpecialsForm() {
 
         <HoneypotField
           id="specials-company"
-          value={formData.company}
-          onChange={(value) => setFormData({ ...formData, company: value })}
+          value={leadGuard.officeExtension}
+          onChange={leadGuard.setOfficeExtension}
         />
 
         <button
