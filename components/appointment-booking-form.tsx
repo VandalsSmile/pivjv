@@ -14,6 +14,10 @@ import {
 } from "lucide-react";
 import { sendLead } from "@/app/actions/send-lead";
 import { HoneypotField } from "@/components/honeypot-field";
+import {
+  LEAD_GUARD_UNAVAILABLE_MESSAGE,
+  useLeadGuard,
+} from "@/components/use-lead-guard";
 import { OptInCheckboxes } from "@/components/opt-in-checkboxes";
 import { CONTACT, PRICING } from "@/lib/constants";
 import { beginLeadSubmit, completeLeadSubmit } from "@/lib/tracking";
@@ -94,6 +98,7 @@ export function AppointmentBookingForm({
   initialService?: ServiceId;
 }) {
   const router = useRouter();
+  const leadGuard = useLeadGuard("book-intro-company");
   const today = useMemo(startOfToday, []);
 
   const [viewMonth, setViewMonth] = useState(
@@ -108,7 +113,6 @@ export function AppointmentBookingForm({
     email: "",
     phone: "",
     message: "",
-    company: "",
     textOptIn: true,
     emailOptIn: true,
   });
@@ -175,6 +179,13 @@ export function AppointmentBookingForm({
 
     setIsSubmitting(true);
 
+    const guard = await leadGuard.readSubmissionGuard();
+    if (!guard) {
+      setIsSubmitting(false);
+      setErrorMessage(LEAD_GUARD_UNAVAILABLE_MESSAGE);
+      return;
+    }
+
     const formName = isIntro
       ? "Book Intro Offer Online"
       : "Book an Appointment";
@@ -185,7 +196,8 @@ export function AppointmentBookingForm({
       confirmationType: "appointment",
       name: formData.name,
       email: formData.email,
-      honeypot: formData.company,
+      officeExtension: guard.officeExtension,
+      formToken: guard.formToken,
       fields: [
         { label: "Service", value: serviceLabel },
         { label: "Name", value: formData.name },
@@ -218,7 +230,10 @@ export function AppointmentBookingForm({
       return;
     }
 
-    completeLeadSubmit(formName, formData.company);
+    completeLeadSubmit(formName, {
+      filtered: result.filtered,
+      honeypot: guard.officeExtension,
+    });
     router.push("/thank-you");
   };
 
@@ -535,8 +550,8 @@ export function AppointmentBookingForm({
 
           <HoneypotField
             id="book-intro-company"
-            value={formData.company}
-            onChange={(value) => setFormData({ ...formData, company: value })}
+            value={leadGuard.officeExtension}
+            onChange={leadGuard.setOfficeExtension}
           />
 
           <button

@@ -7,18 +7,22 @@ import { Phone, ArrowRight, Check, Loader2 } from "lucide-react";
 import { CONTACT, PRICING } from "@/lib/constants";
 import { sendLead } from "@/app/actions/send-lead";
 import { HoneypotField } from "@/components/honeypot-field";
+import {
+  LEAD_GUARD_UNAVAILABLE_MESSAGE,
+  useLeadGuard,
+} from "@/components/use-lead-guard";
 import { OptInCheckboxes } from "@/components/opt-in-checkboxes";
 import { beginLeadSubmit, completeLeadSubmit } from "@/lib/tracking";
 import { TextToBookLink } from "@/components/text-to-book-link";
 
 export function CtaSection() {
   const router = useRouter();
+  const leadGuard = useLeadGuard("cta-company");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     message: "",
-    company: "",
     textOptIn: true,
     emailOptIn: true,
   });
@@ -32,11 +36,19 @@ export function CtaSection() {
     setErrorMessage("");
     beginLeadSubmit();
 
+    const guard = await leadGuard.readSubmissionGuard();
+    if (!guard) {
+      setIsSubmitting(false);
+      setErrorMessage(LEAD_GUARD_UNAVAILABLE_MESSAGE);
+      return;
+    }
+
     const result = await sendLead({
       formName: "Homepage Appointment Request",
       name: formData.name,
       email: formData.email,
-      honeypot: formData.company,
+      officeExtension: guard.officeExtension,
+      formToken: guard.formToken,
       fields: [
         { label: "Name", value: formData.name },
         { label: "Email", value: formData.email },
@@ -55,7 +67,10 @@ export function CtaSection() {
       return;
     }
 
-    completeLeadSubmit("Homepage Appointment Request", formData.company);
+    completeLeadSubmit("Homepage Appointment Request", {
+      filtered: result.filtered,
+      honeypot: guard.officeExtension,
+    });
     router.push("/thank-you");
   };
 
@@ -214,10 +229,8 @@ export function CtaSection() {
 
                 <HoneypotField
                   id="cta-company"
-                  value={formData.company}
-                  onChange={(value) =>
-                    setFormData({ ...formData, company: value })
-                  }
+                  value={leadGuard.officeExtension}
+                  onChange={leadGuard.setOfficeExtension}
                 />
 
                 <button

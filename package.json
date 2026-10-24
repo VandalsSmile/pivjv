@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test lib/lead-guard.test.ts lib/tracking.test.ts"
   },
   "dependencies": {
     "@vercel/blob": "^2.4.0",

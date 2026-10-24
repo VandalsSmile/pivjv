@@ -5,6 +5,10 @@ import { useRouter } from "next/navigation";
 import { Loader2, ArrowRight } from "lucide-react";
 import { sendLead } from "@/app/actions/send-lead";
 import { HoneypotField } from "@/components/honeypot-field";
+import {
+  LEAD_GUARD_UNAVAILABLE_MESSAGE,
+  useLeadGuard,
+} from "@/components/use-lead-guard";
 import { OptInCheckboxes } from "@/components/opt-in-checkboxes";
 import { beginLeadSubmit, completeLeadSubmit } from "@/lib/tracking";
 
@@ -25,6 +29,7 @@ const TIMEFRAMES = [
 
 export function TeamSessionForm() {
   const router = useRouter();
+  const leadGuard = useLeadGuard("team-website");
   const [formData, setFormData] = useState({
     name: "",
     company: "",
@@ -33,7 +38,6 @@ export function TeamSessionForm() {
     teamSize: "",
     timeframe: "",
     message: "",
-    website: "",
     textOptIn: true,
     emailOptIn: true,
   });
@@ -47,11 +51,19 @@ export function TeamSessionForm() {
     setErrorMessage("");
     beginLeadSubmit();
 
+    const guard = await leadGuard.readSubmissionGuard();
+    if (!guard) {
+      setIsSubmitting(false);
+      setErrorMessage(LEAD_GUARD_UNAVAILABLE_MESSAGE);
+      return;
+    }
+
     const result = await sendLead({
       formName: "Corporate & Team Wellness Sessions",
       name: formData.name,
       email: formData.email,
-      honeypot: formData.website,
+      officeExtension: guard.officeExtension,
+      formToken: guard.formToken,
       notifySubject: "New team session inquiry from your website!",
       fields: [
         { label: "Name", value: formData.name },
@@ -74,10 +86,10 @@ export function TeamSessionForm() {
       return;
     }
 
-    completeLeadSubmit(
-      "Corporate & Team Wellness Sessions",
-      formData.website,
-    );
+    completeLeadSubmit("Corporate & Team Wellness Sessions", {
+      filtered: result.filtered,
+      honeypot: guard.officeExtension,
+    });
     router.push("/thank-you");
   };
 
@@ -262,8 +274,8 @@ export function TeamSessionForm() {
 
         <HoneypotField
           id="team-website"
-          value={formData.website}
-          onChange={(value) => setFormData({ ...formData, website: value })}
+          value={leadGuard.officeExtension}
+          onChange={leadGuard.setOfficeExtension}
         />
 
         <button

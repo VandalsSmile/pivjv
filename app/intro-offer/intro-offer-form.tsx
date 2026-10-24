@@ -6,6 +6,10 @@ import { useRouter } from "next/navigation";
 import { Loader2, ArrowRight, Phone } from "lucide-react";
 import { sendLead } from "@/app/actions/send-lead";
 import { HoneypotField } from "@/components/honeypot-field";
+import {
+  LEAD_GUARD_UNAVAILABLE_MESSAGE,
+  useLeadGuard,
+} from "@/components/use-lead-guard";
 import { OptInCheckboxes } from "@/components/opt-in-checkboxes";
 import { CONTACT, PRICING } from "@/lib/constants";
 import { beginLeadSubmit, completeLeadSubmit } from "@/lib/tracking";
@@ -21,6 +25,9 @@ type IntroOfferFormProps = {
 export function IntroOfferForm({ variant = "default" }: IntroOfferFormProps) {
   const isHero = variant === "hero";
   const router = useRouter();
+  const leadGuard = useLeadGuard(
+    isHero ? "intro-hero-company" : "intro-company",
+  );
   const [formData, setFormData] = useState({
     promoCode: EXPECTED_CODE,
     name: "",
@@ -28,7 +35,6 @@ export function IntroOfferForm({ variant = "default" }: IntroOfferFormProps) {
     phone: "",
     preferredTime: "",
     message: "",
-    company: "",
     textOptIn: true,
     emailOptIn: true,
   });
@@ -50,11 +56,19 @@ export function IntroOfferForm({ variant = "default" }: IntroOfferFormProps) {
     setIsSubmitting(true);
     setErrorMessage("");
 
+    const guard = await leadGuard.readSubmissionGuard();
+    if (!guard) {
+      setIsSubmitting(false);
+      setErrorMessage(LEAD_GUARD_UNAVAILABLE_MESSAGE);
+      return;
+    }
+
     const result = await sendLead({
       formName: "Intro Offer Claim",
       name: formData.name,
       email: formData.email,
-      honeypot: formData.company,
+      officeExtension: guard.officeExtension,
+      formToken: guard.formToken,
       notifySubject: NOTIFY_SUBJECT,
       fields: [
         { label: "Name", value: formData.name },
@@ -80,7 +94,10 @@ export function IntroOfferForm({ variant = "default" }: IntroOfferFormProps) {
       return;
     }
 
-    completeLeadSubmit("Intro Offer Claim", formData.company);
+    completeLeadSubmit("Intro Offer Claim", {
+      filtered: result.filtered,
+      honeypot: guard.officeExtension,
+    });
     router.push("/thank-you");
   };
 
@@ -270,8 +287,8 @@ export function IntroOfferForm({ variant = "default" }: IntroOfferFormProps) {
 
           <HoneypotField
             id={isHero ? "intro-hero-company" : "intro-company"}
-            value={formData.company}
-            onChange={(value) => setFormData({ ...formData, company: value })}
+            value={leadGuard.officeExtension}
+            onChange={leadGuard.setOfficeExtension}
           />
 
           <button
