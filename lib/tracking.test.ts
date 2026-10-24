@@ -257,6 +257,6 @@ test("layout loads gtag and the meta pixel once and omits GTM-WFC2K873", () => {
 
   const layout = readFileSync(path.join(root, "app/layout.tsx"), "utf8");
   assert.match(layout, /statcounter/);
-  assert.match(layout, /chatway/);
+  assert.match(layout, /IvChatGate/);
   assert.match(layout, /pintrk/);
 });

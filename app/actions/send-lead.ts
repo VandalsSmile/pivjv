@@ -10,7 +10,11 @@ import {
   attributionFieldsFromValue,
 } from "@/lib/tracking";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend(): Resend | null {
+  const key = process.env.RESEND_API_KEY;
+  if (!key) return null;
+  return new Resend(key);
+}
 
 // Internal recipients for every form submission
 const NOTIFY_TO = ["jonesvalley@primeivhydration.com", "leads@vs.marketing"];
@@ -271,6 +275,11 @@ export async function sendLead(payload: LeadPayload): Promise<SendLeadResult> {
   }
 
   async function sendLeadEmails(): Promise<SendLeadResult> {
+    const resend = getResend();
+    if (!resend) {
+      return { success: false, error: "Email service is not configured." };
+    }
+
     try {
       // 1) Internal notification to the team
       const notify = await resend.emails.send({

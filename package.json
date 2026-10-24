@@ -7,17 +7,20 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test lib/lead-guard.test.ts lib/tracking.test.ts"
+    "test": "node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./scripts/test-loader-register.mjs --test lib/lead-guard.test.ts lib/tracking.test.ts lib/iv-chat.test.ts"
   },
   "dependencies": {
+    "@ai-sdk/react": "4.0.155",
     "@vercel/blob": "^2.4.0",
+    "ai": "7.0.151",
     "clsx": "^2.1.1",
     "lucide-react": "^0.513.0",
     "next": "^15.3.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "resend": "^6.12.4",
-    "tailwind-merge": "^3.1.0"
+    "tailwind-merge": "^3.1.0",
+    "zod": "4.6.7"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

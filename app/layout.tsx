@@ -6,6 +6,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { JsonLd } from "@/components/json-ld";
 import { ExitIntentOffer } from "@/components/exit-intent-offer";
+import { IvChatGate } from "@/components/iv-chat/iv-chat-gate";
 import { AttributionCapture } from "@/components/attribution-capture";
 import { GOOGLE_ADS_ID, META_PIXEL_ID } from "@/lib/tracking";
 import {
@@ -165,6 +166,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <ExitIntentOffer />
+        <IvChatGate />
 
         {/* Statcounter */}
         <Script id="statcounter-config" strategy="afterInteractive">
@@ -197,13 +199,6 @@ export default function RootLayout({
             </a>
           </div>
         </noscript>
-
-        {/* Chatway */}
-        <Script
-          id="chatway"
-          src="https://cdn.chatway.app/widget.js?id=MmSi4HbTXMyv"
-          strategy="afterInteractive"
-        />
 
         {/* Pinterest Tag */}
         <Script id="pinterest-tag" strategy="afterInteractive">
