@@ -1,4 +1,4 @@
-import { PRICING } from "@/lib/constants";
+import { PRICING } from "./constants";
 
 // Labels intentionally match the service cards on /book so guests see the
 // same name from card → form → confirmation.
