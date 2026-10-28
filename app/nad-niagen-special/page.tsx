@@ -287,6 +287,34 @@ export default function NadNiagenPage() {
         </div>
       </section>
 
+      <section className="bg-background-alt border-y border-border">
+        <div className="container-custom mx-auto px-4 py-8">
+          <Link
+            href="/learn-more/niagen-nad-injections"
+            className="group flex flex-col gap-4 rounded-2xl border border-border bg-white p-6 shadow-lg transition-shadow hover:shadow-xl sm:flex-row sm:items-center sm:justify-between sm:p-8"
+          >
+            <div className="flex items-start gap-4">
+              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-secondary/10">
+                <BookOpen className="h-6 w-6 text-secondary" />
+              </div>
+              <div>
+                <h2 className="text-xl font-bold text-foreground text-balance">
+                  Why Niagen injections instead of oral NAD+
+                </h2>
+                <p className="mt-1 text-foreground-muted">
+                  Oral NAD+ is broken down before your cells can use it. See
+                  why a Niagen injection skips that step.
+                </p>
+              </div>
+            </div>
+            <span className="inline-flex items-center gap-1 font-semibold text-secondary group-hover:gap-2 transition-all">
+              Read the science
+              <ArrowRight className="h-4 w-4" />
+            </span>
+          </Link>
+        </div>
+      </section>
+
       {/* What is NAD+ */}
       <section className="section-padding bg-background">
         <div className="container-custom mx-auto">

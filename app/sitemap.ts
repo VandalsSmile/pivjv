@@ -35,6 +35,11 @@ const STATIC_ROUTES: {
   { path: "/gallery", priority: 0.6, changeFrequency: "monthly" },
   { path: "/learn-more", priority: 0.7, changeFrequency: "weekly" },
   {
+    path: "/learn-more/niagen-nad-injections",
+    priority: 0.6,
+    changeFrequency: "monthly",
+  },
+  {
     path: "/bridal-glow-starts-with-hydration",
     priority: 0.7,
     changeFrequency: "monthly",
