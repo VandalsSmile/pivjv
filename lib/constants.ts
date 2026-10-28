@@ -191,6 +191,10 @@ export const NAV_LINKS = [
         label: "IV Therapy for Stress",
         href: "/learn-more/chronic-stress-iv-therapy-recovery",
       },
+      {
+        label: "Niagen vs Oral NAD+",
+        href: "/learn-more/niagen-nad-injections",
+      },
     ],
   },
 ];
