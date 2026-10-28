@@ -35,6 +35,19 @@ const GREETING: UIMessage = {
 const TEASER_DELAY_MS = 12000;
 const DECOY_ID = "iv-chat-office";
 
+function chatLauncherPosition(pathname: string, gap: "gap-2" | "gap-3") {
+  // Intro heroes keep the price and claim button in the top of the first screen.
+  // On a phone, shift the bubble left so it does not sit on the right end of
+  // that row. Lifting it (a higher bottom offset) parks it on the button on
+  // short screens, so it stays along the bottom edge.
+  const offerLanding =
+    pathname === "/intro-offer" || pathname === "/book-intro-offer";
+  const corner = offerLanding
+    ? "bottom-4 left-4 right-auto items-start sm:bottom-6 sm:left-auto sm:right-6 sm:items-end"
+    : "bottom-4 right-4 items-end sm:bottom-6 sm:right-6";
+  return `fixed z-[60] flex flex-col ${corner} ${gap}`;
+}
+
 function messageText(message: UIMessage) {
   return message.parts.map((part) => (part.type === "text" ? part.text : "")).join("");
 }
@@ -54,8 +67,9 @@ function toolCallId(part: UIMessage["parts"][number]) {
 }
 
 export function IvChatFallback() {
+  const pathname = usePathname();
   return (
-    <div className="fixed bottom-4 right-4 z-[60] flex flex-col items-end gap-2 sm:bottom-6 sm:right-6">
+    <div className={chatLauncherPosition(pathname, "gap-2")}>
       <a
         href={`tel:${CONTACT.phoneClean}`}
         className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-3 text-sm font-semibold text-white shadow-xl"
@@ -233,7 +247,7 @@ export function IvChatWidget() {
   return (
     <>
       {!open && (
-        <div className="fixed bottom-4 right-4 z-[60] flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
+        <div className={chatLauncherPosition(pathname, "gap-3")}>
           {teaser && (
             <div className="relative max-w-[260px] rounded-2xl border border-border bg-white p-4 pr-9 text-sm text-foreground shadow-xl">
               <button

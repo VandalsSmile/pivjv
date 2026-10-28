@@ -16,6 +16,11 @@ import { beginLeadSubmit, completeLeadSubmit } from "@/lib/tracking";
 
 const EXPECTED_CODE = PRICING.introOffer.promoCode;
 const NOTIFY_SUBJECT = "New Intro Offer Claim from Your Website";
+const introSavings = Math.round(
+  ((PRICING.introOffer.regularPrice - PRICING.introOffer.price) /
+    PRICING.introOffer.regularPrice) *
+    100,
+);
 
 type IntroOfferFormProps = {
   /** Compact layout for the hero card. */
@@ -106,57 +111,51 @@ export function IntroOfferForm({ variant = "default" }: IntroOfferFormProps) {
       id={isHero ? "claim-offer" : undefined}
       className="bg-white rounded-2xl text-foreground shadow-xl border border-border overflow-hidden scroll-mt-24"
     >
-      <div className="bg-secondary p-4 text-center text-white">
-        <span className="inline-block bg-white text-secondary text-xs font-bold px-3 py-1 rounded-full">
-          Enter code {EXPECTED_CODE} to claim ${PRICING.introOffer.price}
-        </span>
+      <div className="bg-primary p-4 text-center text-white">
+        <p className="text-sm font-semibold">
+          Claim your ${PRICING.introOffer.price} visit
+        </p>
       </div>
 
       <div className={isHero ? "p-5 sm:p-6" : "p-6 sm:p-8"}>
         <div className="mb-5">
-          <div className="flex items-baseline gap-3 mb-2">
-            <span className="text-4xl sm:text-5xl font-bold text-secondary">
+          <div className="mb-2 hidden flex-wrap items-center gap-3 sm:flex">
+            <span className="text-4xl sm:text-5xl font-bold text-primary">
               ${PRICING.introOffer.price}
             </span>
             <span className="text-lg text-foreground-muted line-through">
               ${PRICING.introOffer.regularPrice}
             </span>
+            <span className="bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-full">
+              Save {introSavings}%
+            </span>
           </div>
-          <h3 className="text-xl font-bold mb-1">Claim Your Intro Offer</h3>
-          <p className="text-sm text-foreground-muted">
-            Enter promo code{" "}
-            <span className="font-mono font-semibold text-foreground">
-              {EXPECTED_CODE}
-            </span>{" "}
-            below, or call and mention the code to book.
+          <h3 className="text-xl font-bold mb-1">Tell us how to reach you</h3>
+          <p className="text-sm font-medium text-foreground">
+            Price applied automatically.
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-3.5">
-          <div>
-            <label
-              htmlFor="intro-code"
-              className="block text-sm font-medium text-foreground mb-1"
-            >
-              Promo / Claim Code *
-            </label>
-            <input
-              type="text"
-              id="intro-code"
-              required
-              value={formData.promoCode}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  promoCode: e.target.value.toUpperCase(),
-                })
-              }
-              className="w-full px-4 py-3 border border-secondary/40 bg-secondary/5 rounded-lg font-mono font-semibold tracking-wide text-secondary focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
-              placeholder={EXPECTED_CODE}
-              autoComplete="off"
-              spellCheck={false}
-            />
-          </div>
+          <label htmlFor="intro-code" className="sr-only">
+            Promo code
+          </label>
+          <input
+            type="text"
+            id="intro-code"
+            readOnly
+            value={formData.promoCode}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                promoCode: e.target.value.toUpperCase(),
+              })
+            }
+            className="sr-only"
+            autoComplete="off"
+            spellCheck={false}
+            tabIndex={-1}
+          />
 
           <div>
             <label
@@ -324,8 +323,8 @@ export function IntroOfferForm({ variant = "default" }: IntroOfferFormProps) {
           )}
 
           <p className="text-xs text-foreground-muted text-center">
-            Mention code {EXPECTED_CODE} when calling. First-time clients only.
-            One-time ${PRICING.medicalClearance} telehealth screening required.
+            First-time clients only. One-time ${PRICING.medicalClearance}{" "}
+            telehealth screening is added at your first visit.
           </p>
         </form>
       </div>
