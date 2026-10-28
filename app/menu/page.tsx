@@ -11,7 +11,11 @@ import {
   Phone,
   Star,
 } from "lucide-react";
-import { CONTACT, OG_IMAGE, PRICING } from "@/lib/constants";
+import { CONTACT, NIAGEN_50MG_SPECIAL, OG_IMAGE, PRICING } from "@/lib/constants";
+import {
+  isNiagen50SpecialActive,
+  niagenSpecialEndLabel,
+} from "@/lib/niagen-special";
 import { TelehealthFeeNote } from "@/components/telehealth-fee-note";
 import {
   PRIMARY_TREATMENT_PRICE,
@@ -44,6 +48,72 @@ export const metadata: Metadata = {
 };
 
 const iconMap = { Zap, Dumbbell, HeartPulse, Flame };
+
+function NiagenDoseTable() {
+  const specialOn = isNiagen50SpecialActive();
+  return (
+    <div>
+      {specialOn ? (
+        <p className="mb-4 rounded-xl border border-secondary/30 bg-secondary/10 px-4 py-3 text-sm leading-relaxed text-foreground">
+          <span className="font-bold">{NIAGEN_50MG_SPECIAL.label}:</span> a
+          50mg injection is ${NIAGEN_50MG_SPECIAL.price} through{" "}
+          {niagenSpecialEndLabel()}. Regular single and 4-pack prices stay in
+          the table. {NIAGEN_50MG_SPECIAL.packNote} Call {CONTACT.phone} to
+          book.
+        </p>
+      ) : null}
+      <div className="bg-white rounded-2xl shadow-sm border border-border overflow-hidden">
+        <div className="grid grid-cols-3 gap-4 p-4 bg-primary text-white text-sm font-semibold">
+          <span>Dose</span>
+          <span className="text-center">Single Injection</span>
+          <span className="text-right">4-Pack</span>
+        </div>
+        {NIAGEN_INJECTIONS.map((row) => {
+          const featured = specialOn && row.dose === NIAGEN_50MG_SPECIAL.dose;
+          return (
+            <div
+              key={row.dose}
+              className="grid grid-cols-3 gap-4 p-4 border-t border-border items-center"
+            >
+              <span className="font-bold text-foreground">{row.dose}</span>
+              {featured ? (
+                <span className="text-center">
+                  <span className="block text-xs text-foreground-muted line-through">
+                    {row.single}
+                  </span>
+                  <span className="block text-lg font-bold text-secondary">
+                    ${NIAGEN_50MG_SPECIAL.price}
+                  </span>
+                  <span className="block text-[11px] font-semibold uppercase tracking-wide text-secondary">
+                    November special
+                  </span>
+                </span>
+              ) : (
+                <span className="text-center font-semibold text-secondary">
+                  {row.single}
+                </span>
+              )}
+              {featured ? (
+                <span className="text-right">
+                  <span className="block font-semibold text-foreground">
+                    Ask the team
+                  </span>
+                  <span className="block text-[11px] leading-snug text-foreground-muted">
+                    Even better deal. Standard 4-pack {row.pack}.
+                  </span>
+                </span>
+              ) : (
+                <span className="text-right font-semibold text-secondary">
+                  {row.pack}
+                </span>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
 function DoseTable({
   rows,
@@ -424,7 +494,7 @@ export default function MenuPage() {
                 Advanced NAD+ support — boost cellular energy, clarity, and
                 resilience.
               </p>
-              <DoseTable rows={NIAGEN_INJECTIONS} />
+              <NiagenDoseTable />
             </div>
           </div>
         </div>

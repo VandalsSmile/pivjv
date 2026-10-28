@@ -1,313 +1,354 @@
 import type { Metadata } from "next";
-import { JsonLd } from "@/components/json-ld";
-import { breadcrumbSchema, serviceSchema } from "@/lib/structured-data";
 import Link from "next/link";
-import Image from "next/image";
 import {
-  Phone,
-  Check,
   ArrowRight,
-  Dna,
-  Battery,
-  Brain,
-  Clock,
-  HeartPulse,
-  Dumbbell,
-  Sparkles,
-  Briefcase,
-  Plane,
-  Microscope,
-  TrendingUp,
-  ShieldCheck,
-  Star,
-  BadgeCheck,
-  Zap,
   BookOpen,
+  CalendarCheck,
+  Check,
+  Stethoscope,
+  Syringe,
 } from "lucide-react";
-import { CONTACT, SITE_CONFIG } from "@/lib/constants";
+import { JsonLd } from "@/components/json-ld";
+import {
+  GoogleRatingLink,
+  GoogleReviewSection,
+} from "@/components/google-reviews";
+import { TextToBookLink } from "@/components/text-to-book-link";
+import { GOOGLE_REVIEW_BLOCK, GOOGLE_REVIEWS } from "@/lib/google-reviews";
+import { CONTACT, NIAGEN_50MG_SPECIAL, OG_IMAGE, SITE_CONFIG } from "@/lib/constants";
+import {
+  NIAGEN_INJECTION_BOOKING_PATH,
+  isNiagen50SpecialActive,
+  niagen50OfferSchema,
+  niagen50mgStandard,
+  niagenSpecialEndLabel,
+} from "@/lib/niagen-special";
+import {
+  absoluteUrl,
+  breadcrumbSchema,
+  faqSchema,
+  serviceSchema,
+} from "@/lib/structured-data";
 
+const path = "/nad-niagen-special";
+const standard50 = niagen50mgStandard();
+const specialActive = isNiagen50SpecialActive();
+const endLabel = niagenSpecialEndLabel();
+const specialPrice = NIAGEN_50MG_SPECIAL.price;
+
+const pageDescription = specialActive
+  ? `November 2026 special: a 50mg Niagen injection is $${specialPrice} through ${endLabel} at ${SITE_CONFIG.name} in Huntsville, AL. Regular price ${standard50.single}. Call ${CONTACT.phone}. No promo code.`
+  : `50mg Niagen injections at ${SITE_CONFIG.name} in Huntsville, AL. A single injection is ${standard50.single}. Call ${CONTACT.phone}.`;
 
 export const metadata: Metadata = {
-  title: "NAD+ & Niagen",
-  description:
-    "NAD+ IV infusions and Niagen® therapy in Huntsville, AL. Restore cellular energy, sharpen focus, and slow aging at Prime IV Hydration & Wellness.",
+  title: specialActive ? `$${specialPrice} Niagen Injection` : "Niagen Injection",
+  description: pageDescription,
   keywords: [
-    "NAD+ IV therapy",
-    "Niagen therapy",
-    "cellular energy IV",
-    "longevity therapy Huntsville",
-    "Huntsville AL NAD+",
+    "Niagen injection Huntsville",
+    "50mg Niagen",
+    "NAD+ injection Huntsville",
+    "nicotinamide riboside",
+    "November 2026 Niagen special",
+    "Prime IV Jones Valley",
   ],
-  alternates: { canonical: "/nad-niagen-special" },
+  alternates: { canonical: path },
+  openGraph: {
+    url: path,
+    title: specialActive
+      ? `$${specialPrice} Niagen injection — November 2026 special`
+      : "Niagen injection in Huntsville",
+    description: pageDescription,
+    images: [OG_IMAGE],
+  },
 };
 
-const whatItHelps = [
+const benefits = [
   {
-    icon: Battery,
-    title: "Restore Cellular Energy",
-    description:
-      "NAD+ powers the mitochondria—your cells' energy factories. Replenishing it helps reverse the sluggish, drained feeling that comes with age and stress.",
+    title: "Skips the stomach",
+    text: "An injection does not pass through digestion. That is a different route than a capsule, not proof of a higher NAD+ level.",
   },
   {
-    icon: Brain,
-    title: "Sharpen Mental Clarity",
-    description:
-      "Cut through brain fog and recover focus, memory, and processing speed by supporting the neurons that keep your mind sharp.",
+    title: "A precursor, not an NAD+ IV",
+    text: "Niagen is nicotinamide riboside, a building block cells use to make NAD+. An NAD+ infusion is a separate visit.",
   },
   {
-    icon: Clock,
-    title: "Support Healthy Aging",
-    description:
-      "NAD+ activates sirtuins and PARPs—the proteins responsible for DNA repair and cellular longevity—so you age on your terms.",
+    title: "A short appointment",
+    text: "Injection visits are listed at about 20 minutes, not a full lounge drip.",
   },
   {
-    icon: HeartPulse,
-    title: "Speed Up Recovery",
-    description:
-      "Whether it's a hard workout, a long week, or a late night, NAD+ helps your body repair and bounce back faster.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Boost Metabolism",
-    description:
-      "NAD+ is essential for converting food into usable energy, supporting a healthy metabolism and steady stamina throughout the day.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Strengthen Resilience",
-    description:
-      "By protecting cells from oxidative stress, NAD+ helps your body stay resilient against the daily wear and tear of modern life.",
+    title: "A nurse consults first",
+    text: "Licensed staff review your history before the injection. It does not treat disease or reverse aging.",
   },
 ];
 
-const whoItHelps = [
+const steps = [
   {
-    icon: Briefcase,
-    title: "Driven Professionals",
-    description:
-      "Demanding schedules drain you. Reclaim the focus and stamina to perform at the top of your game.",
+    icon: CalendarCheck,
+    title: "Book",
+    text: specialActive
+      ? `Request the ${NIAGEN_50MG_SPECIAL.label} online, by text, or call ${CONTACT.phone}. There is no promo code.`
+      : `Book an injection visit online, by text, or call ${CONTACT.phone}.`,
   },
   {
-    icon: Dumbbell,
-    title: "Athletes & Active People",
-    description:
-      "Train harder and recover faster with cellular fuel that supports endurance and repair.",
+    icon: Stethoscope,
+    title: "Consult",
+    text: "A nurse reviews your history, medications, and goals, and confirms an injection is appropriate.",
   },
   {
-    icon: Sparkles,
-    title: "Anyone Feeling the Years",
-    description:
-      "If energy, recovery, and clarity aren't what they used to be, NAD+ helps turn back the clock at the cellular level.",
+    icon: Syringe,
+    title: "Inject",
+    text: "You receive the 50mg Niagen injection. Most injection visits are about 20 minutes.",
   },
-  {
-    icon: Plane,
-    title: "Burnout & Travel Recovery",
-    description:
-      "Reset after jet lag, chronic stress, or a season of running on empty—and feel like yourself again.",
-  },
-];
-
-const compare = [
-  {
-    label: "NAD+ IV Infusion",
-    points: [
-      "Delivers NAD+ directly into your bloodstream",
-      "100% absorption—nothing lost to digestion",
-      "Fast, powerful cellular recharge",
-      "Ideal for a deep reset or intensive boost",
-    ],
-  },
-  {
-    label: "Niagen® (NAD+ Precursor)",
-    points: [
-      "Patented, clinically studied NR formula",
-      "Helps your body raise its own NAD+ levels",
-      "Gentle, sustained daily support",
-      "Perfect for long-term longevity goals",
-    ],
-  },
-];
-
-const reviews = [
-  {
-    initials: "JW",
-    name: "Jennifer W.",
-    text: "I've been coming in for the NAD+ treatments and the difference in my energy and mental clarity is remarkable. This is what premium wellness should feel like.",
-  },
-  {
-    initials: "DC",
-    name: "David C.",
-    text: "As someone who travels constantly for work, NAD+ has become my secret weapon. Quick, professional, and I'm back to 100% in no time.",
-  },
-  {
-    initials: "RS",
-    name: "Rachel S.",
-    text: "I felt sharper and more energized within a day. The team is incredible and the spa-like setting makes every visit something to look forward to.",
-  },
-];
-
-const trustSignals = [
-  { icon: BadgeCheck, label: "Licensed Medical Staff On Site" },
-  { icon: Microscope, label: "Pharmaceutical-Grade NAD+ & Niagen®" },
-  { icon: Sparkles, label: "Premium, Spa-Like Experience" },
-  { icon: Zap, label: "Personalized to Your Goals" },
 ];
 
 const faqs = [
   {
-    question: "What does NAD+ actually do?",
+    question: "What is Niagen?",
     answer:
-      "NAD+ (nicotinamide adenine dinucleotide) is a coenzyme found in every living cell. It's essential for producing energy, repairing DNA, and keeping your cells functioning at their best. Levels naturally decline with age, which is why replenishing it can help you feel more energized, focused, and resilient.",
+      "Niagen is a branded form of nicotinamide riboside (NR), a precursor your cells can use to make NAD+. It is not the same thing as an NAD+ IV, which delivers the finished molecule. An injection skips the stomach. That is a difference in route, not proof it raises NAD+ more than a capsule.",
   },
   {
-    question: "How is NAD+ different from Niagen®?",
+    question: "How long does it take?",
     answer:
-      "An NAD+ IV delivers the molecule directly into your bloodstream for an immediate, powerful boost. Niagen® is a patented NAD+ precursor (nicotinamide riboside) that helps your body raise its own NAD+ levels more gradually. Many clients use them together—NAD+ for a reset and Niagen® for sustained, long-term support.",
+      "An injection visit is shorter than a lounge IV. Injection appointments are listed at about 20 minutes, plus a quick consult with our nurse before the injection.",
   },
   {
-    question: "How soon will I feel the effects?",
+    question: "Who is it for?",
     answer:
-      "Many clients notice improved energy and mental clarity within 24-48 hours, with benefits building over a series of sessions. Our team will recommend a personalized schedule based on your goals.",
+      "Adults who want to ask about NAD+ support and prefer an injection to swallowing a capsule. Our nurse reviews your history and decides whether it is appropriate. It is not a treatment for disease, fatigue, or aging.",
+  },
+  {
+    question: "Can I buy a multi-injection pack?",
+    answer: `Yes. Ask us for an even better deal on a multi-injection pack. Call ${CONTACT.phone}. We do not publish a special pack price. The standard 50mg 4-pack on the menu is ${standard50.pack}.`,
   },
   {
     question: "Is it safe?",
     answer:
-      "Yes. Every treatment is administered by licensed medical professionals using pharmaceutical-grade ingredients in a clean, comfortable, spa-like setting. We review your health and goals before every session.",
-  },
-  {
-    question: "Where is Prime IV Huntsville located?",
-    answer:
-      "We're located in Jones Valley, Huntsville, AL 35802 — easy access from I-565 with same-day and weekend appointments available.",
+      "A licensed nurse consults with you before any injection and reviews your health history. Tell the team about medications and conditions. This page is education, not medical advice, and the injection does not diagnose, treat, cure, or prevent any disease.",
   },
 ];
 
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: specialActive
+    ? `$${specialPrice} Niagen injection — November 2026 special`
+    : "Niagen injection",
+  description: pageDescription,
+  url: absoluteUrl(path),
+  dateModified: "2026-10-28",
+  inLanguage: "en-US",
+};
+
+function OfferActions({
+  tone,
+  buttonLabel,
+}: {
+  tone: "dark" | "light";
+  buttonLabel: string;
+}) {
+  const onDark = tone === "dark";
+  return (
+    <div className="w-full">
+      <Link
+        href={NIAGEN_INJECTION_BOOKING_PATH}
+        className="btn-primary w-full justify-center"
+      >
+        {buttonLabel}
+        <ArrowRight className="h-4 w-4" />
+      </Link>
+      <a
+        href={`tel:${CONTACT.phoneClean}`}
+        className={`mt-3 block text-center text-sm font-medium underline underline-offset-4 ${
+          onDark
+            ? "text-white decoration-white/50"
+            : "text-primary decoration-primary/40"
+        }`}
+      >
+        or call {CONTACT.phone}
+      </a>
+      <p
+        className={`mt-2 text-center text-sm ${
+          onDark ? "text-white/90" : "text-foreground-muted"
+        }`}
+      >
+        <TextToBookLink
+          showIcon={false}
+          className={`underline underline-offset-4 ${
+            onDark ? "text-white" : "text-primary"
+          }`}
+        >
+          Text to book
+        </TextToBookLink>
+        <span aria-hidden="true"> / </span>
+        <Link
+          href={NIAGEN_INJECTION_BOOKING_PATH}
+          className={`underline underline-offset-4 ${
+            onDark ? "text-white" : "text-primary"
+          }`}
+        >
+          book online
+        </Link>
+      </p>
+    </div>
+  );
+}
+
 export default function NadNiagenPage() {
+  const buttonLabel = specialActive
+    ? `Book the $${specialPrice} injection`
+    : "Book a Niagen injection";
+
   return (
     <>
-      <JsonLd data={[serviceSchema({ name: "NAD+ & Niagen Therapy", description: "NAD+ and Niagen therapies to restore cellular energy, mental clarity, and support healthy aging in Huntsville, AL.", path: "/nad-niagen-special", serviceType: "NAD+ Therapy" }), breadcrumbSchema([{ name: "Home", path: "/" }, { name: "NAD+ & Niagen", path: "/nad-niagen-special" }])]} />
-      {/* Hero */}
-      <section className="relative text-white section-padding overflow-hidden">
+      <JsonLd
+        data={[
+          webPageSchema,
+          serviceSchema({
+            name: "Niagen injection",
+            description: pageDescription,
+            path,
+            serviceType: "Niagen Injection",
+          }),
+          niagen50OfferSchema(path),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "NAD+ & Niagen", path },
+          ]),
+          faqSchema(faqs),
+        ]}
+      />
+
+      <section className="relative overflow-hidden px-4 pb-6 pt-5 text-white md:px-8 md:py-16">
         <div
           className="absolute inset-0 bg-cover"
           style={{
             backgroundImage: "url('/images/niagen-background.png')",
             backgroundPosition: "center 30%",
           }}
+          aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-primary/85" />
-        <div className="container-custom mx-auto relative">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-secondary font-semibold uppercase tracking-wide mb-3">
-                Cellular Energy &amp; Longevity Therapy
-              </p>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-                NAD+ IV Therapy in Huntsville — Recharge Your Cells. Reclaim
-                Your Energy.
-              </h1>
-              <p className="text-white/80 text-lg mb-8 text-pretty">
-                NAD+ and Niagen® are the most advanced longevity therapies
-                available—designed to restore cellular energy, sharpen your
-                mind, and help you age on your terms, right here at{" "}
-                {SITE_CONFIG.name} in {CONTACT.address.city}, AL. Looking for
-                NAD+ therapy near Huntsville? Our Jones Valley clinic offers
-                same-week appointments with licensed medical staff.
-              </p>
+        <div className="absolute inset-0 bg-primary/85" aria-hidden="true" />
+        <div className="container-custom relative mx-auto">
+          <div className="max-w-xl">
+            <h1 className="text-[1.65rem] font-bold leading-[1.15] text-balance sm:text-4xl lg:text-5xl">
+              {specialActive
+                ? `50mg Niagen injection, $${specialPrice}.`
+                : "50mg Niagen injection."}
+              <span className="mt-1 block">
+                {specialActive ? "November 2026 special." : "Book it in Jones Valley."}
+              </span>
+            </h1>
+            <p className="mt-3 text-base text-pretty text-white/90 sm:text-lg">
+              {specialActive
+                ? "One injection at our Huntsville lounge. No promo code — the November price is the price."
+                : "One injection at our Huntsville lounge. Our nurse consults with you before the visit."}
+            </p>
 
-              <div className="flex items-center gap-4 mb-8">
-                <span className="text-3xl font-bold text-secondary-light">
-                  Feel the Difference
-                </span>
-                <span className="bg-accent text-white text-sm font-bold px-3 py-1 rounded-full">
-                  NAD+ &amp; Niagen® Therapies
+            <div className="mt-4">
+              {specialActive ? (
+                <p className="text-xs font-semibold tracking-wide text-secondary-light">
+                  {NIAGEN_50MG_SPECIAL.label} · through {endLabel}
+                </p>
+              ) : null}
+              <div className="mt-1 flex flex-wrap items-center gap-3">
+                {specialActive ? (
+                  <span className="text-2xl text-white/70 line-through">
+                    {standard50.single}
+                  </span>
+                ) : null}
+                <span className="text-5xl font-bold text-white">
+                  {specialActive ? `$${specialPrice}` : standard50.single}
                 </span>
               </div>
-
-              <div className="flex flex-wrap gap-4 mb-6">
-                <Link href="tel:2566780033" className="btn-primary">
-                  Book Your Session
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link href={`tel:${CONTACT.phoneClean}`} className="btn-outline">
-                  <Phone className="w-4 h-4" />
-                  {CONTACT.phone}
-                </Link>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-5 h-5 fill-yellow-400 text-yellow-400"
-                    />
-                  ))}
-                </div>
-                <span className="text-white/80 text-sm">
-                  Rated 5.0 by happy clients in {CONTACT.address.city}
-                </span>
+              <div className="mt-2 leading-5">
+                <GoogleRatingLink tone="dark" />
               </div>
             </div>
 
-            {/* Offer Card */}
-            <div className="bg-white text-foreground rounded-2xl shadow-xl overflow-hidden">
-              <div className="bg-secondary p-4 text-center text-white">
-                <span className="inline-block bg-white text-secondary text-xs font-bold px-3 py-1 rounded-full">
-                  Limited spots available each week
-                </span>
-              </div>
-              <div className="p-8">
-                <div className="w-14 h-14 bg-secondary/10 rounded-xl flex items-center justify-center mb-5">
-                  <Dna className="w-7 h-7 text-secondary" />
-                </div>
-                <div className="flex items-baseline gap-3 mb-1">
-                  <span className="text-4xl font-bold text-secondary">
-                    Cellular Recharge
-                  </span>
-                </div>
-                <p className="text-foreground-muted mb-6">
-                  Your NAD+ &amp; Niagen® longevity therapy
-                </p>
-                <ul className="space-y-3 mb-6">
-                  {[
-                    "Doctor-supervised cellular therapy",
-                    "Personalized dosing for your goals",
-                    "Relaxing VIP massage-chair session",
-                    "Expert guidance from licensed staff",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <div className="mt-4 max-w-md">
+              <OfferActions tone="dark" buttonLabel={buttonLabel} />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-background-alt border-y border-border">
-        <div className="container-custom mx-auto px-4 py-8">
+      <GoogleReviewSection
+        className="bg-background"
+        reviews={GOOGLE_REVIEW_BLOCK}
+        pullQuote={GOOGLE_REVIEWS.jenna}
+      />
+
+      <section className="section-padding bg-background-alt">
+        <div className="container-custom mx-auto max-w-3xl">
+          <h2 className="text-3xl font-bold text-balance md:text-4xl">
+            How a Niagen injection visit works
+          </h2>
+          <ol className="mt-8 space-y-6">
+            {steps.map((step, index) => (
+              <li key={step.title} className="flex gap-4">
+                <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-secondary font-bold text-white">
+                  {index + 1}
+                </div>
+                <div>
+                  <div className="mb-1 flex items-center gap-2">
+                    <step.icon
+                      className="h-4 w-4 flex-shrink-0 text-secondary"
+                      aria-hidden="true"
+                    />
+                    <h3 className="text-lg font-bold">{step.title}</h3>
+                  </div>
+                  <p className="text-sm leading-relaxed text-foreground-muted sm:text-base">
+                    {step.text}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="section-padding bg-background">
+        <div className="container-custom mx-auto max-w-3xl">
+          <h2 className="text-3xl font-bold text-balance md:text-4xl">
+            What this visit is
+          </h2>
+          <ul className="mt-8 space-y-4">
+            {benefits.map((benefit) => (
+              <li key={benefit.title} className="flex items-start gap-3">
+                <Check
+                  className="mt-0.5 h-5 w-5 flex-shrink-0 text-secondary"
+                  aria-hidden="true"
+                />
+                <p className="text-foreground-muted">
+                  <span className="font-semibold text-foreground">
+                    {benefit.title}.
+                  </span>{" "}
+                  {benefit.text}
+                </p>
+              </li>
+            ))}
+          </ul>
+
           <Link
             href="/learn-more/niagen-nad-injections"
-            className="group flex flex-col gap-4 rounded-2xl border border-border bg-white p-6 shadow-lg transition-shadow hover:shadow-xl sm:flex-row sm:items-center sm:justify-between sm:p-8"
+            className="group mt-10 flex flex-col gap-4 rounded-2xl border border-border bg-white p-6 shadow-lg transition-shadow hover:shadow-xl sm:flex-row sm:items-center sm:justify-between"
           >
             <div className="flex items-start gap-4">
               <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-secondary/10">
-                <BookOpen className="h-6 w-6 text-secondary" />
+                <BookOpen className="h-6 w-6 text-secondary" aria-hidden="true" />
               </div>
               <div>
-                <h2 className="text-xl font-bold text-foreground text-balance">
+                <h3 className="text-xl font-bold text-balance">
                   Why Niagen injections instead of oral NAD+
-                </h2>
+                </h3>
                 <p className="mt-1 text-foreground-muted">
-                  Oral NAD+ is broken down before your cells can use it. See
-                  why a Niagen injection skips that step.
+                  Oral NAD+ is broken down before your cells can use it. Read
+                  the plain-English comparison.
                 </p>
               </div>
             </div>
-            <span className="inline-flex items-center gap-1 font-semibold text-secondary group-hover:gap-2 transition-all">
+            <span className="inline-flex items-center gap-1 font-semibold text-secondary transition-all group-hover:gap-2">
               Read the science
               <ArrowRight className="h-4 w-4" />
             </span>
@@ -315,240 +356,19 @@ export default function NadNiagenPage() {
         </div>
       </section>
 
-      {/* What is NAD+ */}
-      <section className="section-padding bg-background">
-        <div className="container-custom mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-                <Microscope className="w-7 h-7 text-primary" />
-              </div>
-              <p className="text-secondary font-semibold uppercase tracking-wide mb-2">
-                What Is It?
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
-                The Molecule Behind Your Energy
-              </h2>
-              <p className="text-foreground-muted leading-relaxed mb-5">
-                NAD+ (nicotinamide adenine dinucleotide) is a coenzyme found in
-                every cell of your body. It fuels energy production, repairs
-                DNA, and keeps your cells running like new. The problem? Your
-                NAD+ levels can fall by up to 50% as you age—leaving you tired,
-                foggy, and slower to recover.
-              </p>
-              <p className="text-foreground-muted leading-relaxed mb-6">
-                Niagen® is a patented, clinically studied NAD+ precursor that
-                helps your body rebuild its own NAD+ supply. Together, they
-                deliver a powerful one-two punch for energy, clarity, and
-                healthy aging—straight to the cellular level.
-              </p>
-              <div className="relative rounded-2xl overflow-hidden shadow-lg mb-6 aspect-[4/3]">
-                <Image
-                  src="/images/nad-intake-room.png"
-                  alt="Two clients reviewing their treatment plans on tablets in a Prime IV therapy room beneath NAD+ Anti-Aging and Brain Regeneration posters"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-              <Link href="tel:2566780033" className="btn-primary">
-                Start Feeling the Difference
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {compare.map((option) => (
-                <div
-                  key={option.label}
-                  className="bg-white rounded-xl shadow-lg p-6 border border-border"
-                >
-                  <h3 className="text-lg font-bold mb-4 text-foreground">
-                    {option.label}
-                  </h3>
-                  <ul className="space-y-3">
-                    {option.points.map((point) => (
-                      <li key={point} className="flex items-start gap-2">
-                        <Check className="w-4 h-4 text-secondary flex-shrink-0 mt-1" />
-                        <span className="text-sm text-foreground-muted leading-relaxed">
-                          {point}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How it helps */}
       <section className="section-padding bg-background-alt">
-        <div className="container-custom mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-secondary font-semibold uppercase tracking-wide mb-2">
-              How It Helps
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
-              Feel the Benefits—Inside and Out
-            </h2>
-            <p className="text-foreground-muted text-lg text-pretty">
-              When you replenish NAD+, you&apos;re not masking symptoms—
-              you&apos;re fueling the very source of your energy and recovery.
-              Our NAD+ anti-aging IV protocol is one of the most advanced
-              cellular wellness treatments available without a hospital setting.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {whatItHelps.map((benefit) => (
-              <div
-                key={benefit.title}
-                className="bg-white rounded-xl shadow-lg p-6 border border-border card-hover"
-              >
-                <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
-                  <benefit.icon className="w-6 h-6 text-secondary" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">{benefit.title}</h3>
-                <p className="text-foreground-muted leading-relaxed">
-                  {benefit.description}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-10">
-            <Link href="tel:2566780033" className="btn-primary">
-              Book Your Session Today
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Who it helps */}
-      <section className="section-padding bg-background">
-        <div className="container-custom mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-secondary font-semibold uppercase tracking-wide mb-2">
-              Who It&apos;s For
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-balance">
-              Built for People Who Refuse to Slow Down
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {whoItHelps.map((item) => (
-              <div
-                key={item.title}
-                className="bg-white rounded-xl shadow-lg p-6 border border-border text-center card-hover"
-              >
-                <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4 mx-auto">
-                  <item.icon className="w-7 h-7 text-primary" />
-                </div>
-                <h3 className="text-lg font-bold mb-2">{item.title}</h3>
-                <p className="text-foreground-muted leading-relaxed text-sm">
-                  {item.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Reviews */}
-      <section className="section-padding bg-background-alt">
-        <div className="container-custom mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-sm mb-4">
-              <span className="font-bold text-2xl">5.0</span>
-              <div className="flex gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="w-5 h-5 fill-yellow-400 text-yellow-400"
-                  />
-                ))}
-              </div>
-              <span className="text-foreground-muted">Google Reviews</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-balance">
-              Real Results from Our {CONTACT.address.city} Community
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {reviews.map((review) => (
-              <div
-                key={review.name}
-                className="bg-white rounded-xl shadow-lg p-6 border border-border"
-              >
-                <div className="flex gap-0.5 mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-4 h-4 fill-yellow-400 text-yellow-400"
-                    />
-                  ))}
-                </div>
-                <p className="text-foreground mb-4 leading-relaxed">
-                  &ldquo;{review.text}&rdquo;
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-semibold">
-                    {review.initials}
-                  </div>
-                  <span className="font-medium text-foreground">
-                    {review.name}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Trust signals */}
-      <section className="bg-primary text-white py-10">
-        <div className="container-custom mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {trustSignals.map((signal) => (
-              <div
-                key={signal.label}
-                className="flex items-center gap-3 justify-center text-center sm:text-left sm:justify-start"
-              >
-                <signal.icon className="w-6 h-6 text-secondary-light flex-shrink-0" />
-                <span className="text-sm text-white/90">{signal.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="section-padding bg-background">
-        <div className="container-custom mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-secondary font-semibold uppercase tracking-wide mb-2">
-              Common Questions
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-balance">
-              Everything You Need to Know
-            </h2>
-          </div>
-
-          <div className="max-w-3xl mx-auto space-y-4">
+        <div className="container-custom mx-auto max-w-3xl">
+          <h2 className="text-3xl font-bold text-balance md:text-4xl">
+            Common questions
+          </h2>
+          <div className="mt-8 space-y-4">
             {faqs.map((faq) => (
               <div
                 key={faq.question}
-                className="bg-white rounded-xl shadow-lg p-6 border border-border"
+                className="rounded-xl border border-border bg-white p-6 shadow-sm"
               >
-                <h3 className="text-lg font-bold mb-2 text-foreground">
-                  {faq.question}
-                </h3>
-                <p className="text-foreground-muted leading-relaxed">
+                <h3 className="text-lg font-bold">{faq.question}</h3>
+                <p className="mt-2 leading-relaxed text-foreground-muted">
                   {faq.answer}
                 </p>
               </div>
@@ -557,92 +377,38 @@ export default function NadNiagenPage() {
         </div>
       </section>
 
-      {/* Research highlight */}
-      <section className="section-padding bg-background-alt">
-        <div className="container-custom mx-auto">
-          <div className="bg-white rounded-2xl shadow-lg border border-border overflow-hidden max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-5">
-              <div className="relative aspect-[16/10] lg:aspect-auto lg:col-span-2 min-h-[220px]">
-                <Image
-                  src="/images/nad-evidence-banner.png"
-                  alt="A glass NAD+ vial and IV bag illustrating the research behind NAD+ therapy"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                />
-              </div>
-
-              <div className="p-8 lg:p-10 lg:col-span-3 flex flex-col items-start gap-4">
-                <div className="flex items-center gap-2">
-                  <BookOpen
-                    className="w-5 h-5 text-secondary"
-                    aria-hidden="true"
-                  />
-                  <p className="text-secondary font-semibold uppercase tracking-wide text-sm">
-                    From Our Research Desk
-                  </p>
-                </div>
-
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance">
-                  Learn the Truth About NAD+
-                </h2>
-
-                <p className="text-foreground-muted leading-relaxed text-pretty">
-                  NAD+ is surrounded by big promises and bigger marketing. So we
-                  read the actual human research — 740 participants across 15
-                  randomized trials, the Parkinson&apos;s and heart-failure
-                  studies, and the only published IV NAD+ infusion study — and
-                  separated what&apos;s proven from what&apos;s still just hype.
-                  No overselling, just the evidence.
-                </p>
-
-                <Link
-                  href="/learn-more/does-nad-therapy-actually-work-evidence"
-                  className="btn-primary"
-                >
-                  Learn the Truth About NAD+
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-
-                <p className="text-sm text-foreground-muted">
-                  14 min read &middot; Honest, source-backed, and written for
-                  real people
-                </p>
-              </div>
-            </div>
+      <section className="section-padding bg-primary text-white">
+        <div className="container-custom mx-auto max-w-xl text-center">
+          <p className="text-sm font-semibold uppercase tracking-wide text-secondary-light">
+            {specialActive ? NIAGEN_50MG_SPECIAL.label : "Niagen injection"}
+          </p>
+          <h2 className="mt-2 text-3xl font-bold text-balance md:text-4xl">
+            {specialActive
+              ? `$${specialPrice} for a 50mg Niagen injection`
+              : `${standard50.single} for a 50mg Niagen injection`}
+          </h2>
+          <p className="mt-3 text-pretty text-white/90">
+            {specialActive
+              ? `This price runs through ${endLabel}. Regular single injection is ${standard50.single}. `
+              : "The November 2026 special has ended. "}
+            {NIAGEN_50MG_SPECIAL.packNote} Call {CONTACT.phone}.
+          </p>
+          <div className="mx-auto mt-6 max-w-md text-left">
+            <OfferActions tone="dark" buttonLabel={buttonLabel} />
           </div>
         </div>
       </section>
 
-      {/* Final offer CTA banner */}
-      <section className="section-padding bg-background-alt">
-        <div className="container-custom mx-auto">
-          <div className="bg-primary text-white rounded-2xl p-8 lg:p-12 text-center max-w-4xl mx-auto">
-            <p className="text-secondary-light font-semibold uppercase tracking-wide mb-3">
-              Limited spots each week
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
-              Invest in Your Energy. Invest in Your Future.
-            </h2>
-            <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto text-pretty">
-              There&apos;s never been a better time to experience the power of
-              NAD+ and Niagen®. Book your session today and discover why{" "}
-              {CONTACT.address.city} trusts {SITE_CONFIG.name} for cellular
-              wellness.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-            <Link href="tel:2566780033" className="btn-primary">
-              Book Your Session
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-              <Link href={`tel:${CONTACT.phoneClean}`} className="btn-outline">
-                <Phone className="w-4 h-4" />
-                Call {CONTACT.phone}
-              </Link>
-            </div>
-          </div>
-        </div>
+      <section className="bg-background px-4 py-8">
+        <p className="container-custom mx-auto max-w-3xl text-xs leading-relaxed text-foreground-muted">
+          These statements have not been evaluated by the FDA. This page is for
+          education, not medical advice. Niagen&reg; is a registered trademark
+          of Niagen Bioscience. Injections at {SITE_CONFIG.name} are not
+          intended to diagnose, treat, cure, or prevent any disease, and they
+          do not reverse aging. Results vary.
+        </p>
       </section>
+
     </>
   );
 }

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./scripts/test-loader-register.mjs --test lib/lead-guard.test.ts lib/tracking.test.ts lib/iv-chat.test.ts lib/google-reviews.test.ts"
+    "test": "node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./scripts/test-loader-register.mjs --test lib/lead-guard.test.ts lib/tracking.test.ts lib/iv-chat.test.ts lib/google-reviews.test.ts lib/niagen-special.test.ts"
   },
   "dependencies": {
     "@ai-sdk/react": "4.0.155",

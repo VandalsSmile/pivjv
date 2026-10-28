@@ -2,7 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { JsonLd } from "@/components/json-ld";
-import { CONTACT, PRICING, SITE_CONFIG } from "@/lib/constants";
+import { CONTACT, NIAGEN_50MG_SPECIAL, SITE_CONFIG } from "@/lib/constants";
+import {
+  NIAGEN_INJECTION_BOOKING_PATH,
+  isNiagen50SpecialActive,
+  niagen50OfferSchema,
+  niagen50mgStandard,
+  niagenSpecialEndLabel,
+} from "@/lib/niagen-special";
 import { absoluteUrl, breadcrumbSchema, faqSchema } from "@/lib/structured-data";
 
 const path = "/learn-more/niagen-nad-injections";
@@ -72,8 +79,12 @@ const faqs = [
       "No. NR may support healthy NAD+ levels. It is not a treatment for aging, memory loss, or sleep. A small trial in older adults with mild cognitive impairment raised NAD+ and did not change cognitive scores.",
   },
   {
-    question: "What is the November 2026 special?",
-    answer: `For November 2026, a 50 mg Niagen injection is $85. Call ${CONTACT.phone} or book online. New clients complete a one-time, state-required $${PRICING.medicalClearance} telehealth screening at the first visit, not included in the special price. Ask us about a multi-injection pack.`,
+    question: isNiagen50SpecialActive()
+      ? "What is the November 2026 special?"
+      : "What does a 50mg Niagen injection cost?",
+    answer: isNiagen50SpecialActive()
+      ? `For the ${NIAGEN_50MG_SPECIAL.label}, a 50mg Niagen injection is $${NIAGEN_50MG_SPECIAL.price} through ${niagenSpecialEndLabel()}. Call ${CONTACT.phone} to book. The regular single price is ${niagen50mgStandard().single}. ${NIAGEN_50MG_SPECIAL.packNote}`
+      : `A 50mg Niagen injection is ${niagen50mgStandard().single}. Call ${CONTACT.phone} to book. The November 2026 special has ended. ${NIAGEN_50MG_SPECIAL.packNote}`,
   },
 ];
 
@@ -276,6 +287,7 @@ export default function Page() {
             { name: pageTitle, path },
           ]),
           faqSchema(faqs),
+          niagen50OfferSchema(path),
         ]}
       />
       <section className="bg-primary text-white py-16 lg:py-20">
@@ -587,15 +599,19 @@ export default function Page() {
 
       <div className="my-10 flex flex-col items-center gap-4 rounded-2xl bg-primary px-6 py-10 text-center">
         <div className="text-sm font-semibold uppercase tracking-wide text-secondary">
-          November 2026 special
+          {isNiagen50SpecialActive()
+            ? NIAGEN_50MG_SPECIAL.label
+            : "50mg Niagen injection"}
         </div>
         <div className="text-2xl font-bold text-balance text-foreground-light sm:text-3xl">
-          $85 for a 50 mg Niagen injection
+          {isNiagen50SpecialActive()
+            ? `$${NIAGEN_50MG_SPECIAL.price} for a 50mg Niagen injection`
+            : `${niagen50mgStandard().single} for a 50mg Niagen injection`}
         </div>
         <div className="max-w-xl text-pretty text-foreground-light/90">
-          This price is for November 2026. Call us or book a visit and ask for
-          the Niagen injection special. It is a precursor appointment, screened
-          like every other visit.
+          {isNiagen50SpecialActive()
+            ? `This price runs through ${niagenSpecialEndLabel()}. The regular single injection is ${niagen50mgStandard().single}. Call us or book a visit and ask for the Niagen injection special.`
+            : "The November 2026 special has ended. Call us or book a visit."}
         </div>
         <div className="mt-2 flex flex-col gap-3 sm:flex-row">
           <a
@@ -605,7 +621,7 @@ export default function Page() {
             Call {CONTACT.phone}
           </a>
           <Link
-            href="/book"
+            href={NIAGEN_INJECTION_BOOKING_PATH}
             className="inline-flex items-center justify-center rounded-full border border-white/40 px-8 py-3 text-base font-semibold text-foreground-light no-underline transition-colors hover:bg-white/10"
           >
             Book a visit
@@ -613,11 +629,6 @@ export default function Page() {
         </div>
         <div className="max-w-xl text-pretty font-semibold text-foreground-light">
           Want a multi-injection pack? Ask us and get an even better deal.
-        </div>
-        <div className="max-w-xl text-sm text-pretty text-foreground-light/80">
-          New clients: a one-time, state-required ${PRICING.medicalClearance}{" "}
-          telehealth screening is required at your first visit and is not
-          included in the November special price.
         </div>
       </div>
 

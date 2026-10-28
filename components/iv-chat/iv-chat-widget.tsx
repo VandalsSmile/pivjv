@@ -41,7 +41,9 @@ function chatLauncherPosition(pathname: string, gap: "gap-2" | "gap-3") {
   // that row. Lifting it (a higher bottom offset) parks it on the button on
   // short screens, so it stays along the bottom edge.
   const offerLanding =
-    pathname === "/intro-offer" || pathname === "/book-intro-offer";
+    pathname === "/intro-offer" ||
+    pathname === "/book-intro-offer" ||
+    pathname === "/nad-niagen-special";
   const corner = offerLanding
     ? "bottom-4 left-4 right-auto items-start sm:bottom-6 sm:left-auto sm:right-6 sm:items-end"
     : "bottom-4 right-4 items-end sm:bottom-6 sm:right-6";
