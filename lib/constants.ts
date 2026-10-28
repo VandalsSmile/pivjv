@@ -57,6 +57,22 @@ export const PRICING = {
   nonMemberDrip: 180,
 };
 
+/**
+ * November 2026 price for one 50mg Niagen injection.
+ * Standard single ($150) and 4-pack ($525) stay on NIAGEN_INJECTIONS.
+ * To revert in December, set endsOn to a date before today and redeploy.
+ * Chat quotes follow the clinic calendar date; static pages pick this up on the next build.
+ */
+export const NIAGEN_50MG_SPECIAL = {
+  dose: "50mg",
+  price: 85,
+  label: "November 2026 special",
+  /** Inclusive last day, America/Chicago. */
+  endsOn: "2026-11-30",
+  packNote:
+    "Multi-injection packs are available at an even better deal. Ask the team.",
+} as const;
+
 /** Small-print disclaimer shown anywhere the intro offer price is advertised. */
 export const TELEHEALTH_FEE_NOTE = `*New clients: a one-time, state-mandated $${PRICING.medicalClearance} telehealth screening is required at your first visit and is not included in the intro offer price.`;
 

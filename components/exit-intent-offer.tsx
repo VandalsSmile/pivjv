@@ -13,7 +13,11 @@ const STORAGE_KEY = "momentum-offer-seen";
 // These pages already lead with the intro offer. The touch timer and
 // upward-scroll trigger cover the claim button, so they stay off here.
 // Desktop cursor exit-intent still runs, and every other page is unchanged.
-const MOBILE_EXIT_INTENT_OFF = new Set(["/intro-offer", "/book-intro-offer"]);
+const MOBILE_EXIT_INTENT_OFF = new Set([
+  "/intro-offer",
+  "/book-intro-offer",
+  "/nad-niagen-special",
+]);
 
 export function ExitIntentOffer() {
   const pathname = usePathname();

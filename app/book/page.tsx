@@ -7,11 +7,17 @@ import { Phone, Mail, MapPin, Clock, ArrowRight, Star, MessageCircle } from "luc
 import {
   CONTACT,
   HOURS,
+  NIAGEN_50MG_SPECIAL,
   OG_IMAGE,
   PRICING,
   TELEHEALTH_FEE_NOTE,
   SOCIAL_LINKS,
 } from "@/lib/constants";
+import {
+  isNiagen50SpecialActive,
+  niagen50mgStandard,
+  niagenSpecialEndLabel,
+} from "@/lib/niagen-special";
 import { AppointmentBookingForm } from "@/components/appointment-booking-form";
 import { isServiceId, type ServiceId } from "@/lib/booking-services";
 import { TextToBookLink } from "@/components/text-to-book-link";
@@ -87,8 +93,9 @@ const SERVICE_GROUPS: {
       {
         name: "Injection Therapy Appointment",
         duration: "20 min",
-        description:
-          "Boost your energy, metabolism, and overall wellness in minutes with a targeted vitamin injection. Pricing varies by the injection chosen at the spa.",
+        description: isNiagen50SpecialActive()
+          ? `Boost your energy, metabolism, and overall wellness in minutes with a targeted vitamin injection. Pricing varies by the injection chosen at the spa. ${NIAGEN_50MG_SPECIAL.label}: a 50mg Niagen injection is $${NIAGEN_50MG_SPECIAL.price} through ${niagenSpecialEndLabel()} (regular ${niagen50mgStandard().single}). ${NIAGEN_50MG_SPECIAL.packNote} Call ${CONTACT.phone} to book.`
+          : "Boost your energy, metabolism, and overall wellness in minutes with a targeted vitamin injection. Pricing varies by the injection chosen at the spa.",
         href: "/book?service=injection#booking-form",
       },
     ],

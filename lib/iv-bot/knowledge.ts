@@ -15,9 +15,11 @@ import {
   SERVICES,
   SITE_CONFIG,
   SOCIAL_LINKS,
+  NIAGEN_50MG_SPECIAL,
   TELEHEALTH_FEE_NOTE,
   getPackMath,
 } from "../constants";
+import { niagen50KnowledgeLine } from "../niagen-special";
 import {
   ADDITIVES,
   INJECTION_GUIDE,
@@ -81,7 +83,7 @@ function section(title: string, lines: string[]) {
   return `## ${title}\n${lines.join("\n")}`;
 }
 
-function buildKnowledgeBase() {
+function buildKnowledgeBase(now: Date) {
   const cityLine = `${SITE_CONFIG.name} — ${CONTACT.address.city}, ${CONTACT.address.state} (Jones Valley). ${CONTACT.address.full}.`;
 
   const hours = HOURS.days.map((entry) => `${entry.day} ${entry.hours}`).join("; ");
@@ -122,8 +124,10 @@ function buildKnowledgeBase() {
   const nad = NAD_INJECTIONS.map(
     (row) => `- NAD+ injection ${row.dose}: single ${row.single}, pack ${row.pack}`,
   );
-  const niagen = NIAGEN_INJECTIONS.map(
-    (row) => `- Niagen injection ${row.dose}: single ${row.single}, pack ${row.pack}`,
+  const niagen = NIAGEN_INJECTIONS.map((row) =>
+    row.dose === NIAGEN_50MG_SPECIAL.dose
+      ? niagen50KnowledgeLine(now)
+      : `- Niagen injection ${row.dose}: single ${row.single}, pack ${row.pack}`,
   );
 
   const premium = PREMIUM_INFUSIONS.map((item) => {
@@ -226,7 +230,7 @@ function buildKnowledgeBase() {
       ...niagen,
       ...premium,
       "NAD+ IV delivers NAD+ into the bloodstream. Niagen (nicotinamide riboside) is described as a precursor that helps the body raise its own NAD+. The site says many clients use NAD+ for a reset and Niagen for longer support. Pre-order is required for NAD+ infusions. A G6PD test is needed for 25,000mg vitamin C.",
-      "Do not promise disease treatment, anti-aging results, or that NAD+ improves a medical condition. Point curious guests to /nad-niagen-special and /learn-more/does-nad-therapy-actually-work-evidence.",
+      "Do not promise disease treatment, anti-aging results, or that NAD+ improves a medical condition. Point curious guests to /nad-niagen-special and /learn-more/niagen-nad-injections and /learn-more/does-nad-therapy-actually-work-evidence.",
     ]),
     section(`${SPECIALS_MONTH} ${SPECIALS_YEAR} specials`, [
       ...specials,
@@ -286,15 +290,13 @@ function buildKnowledgeBase() {
     ]),
     section("Learn-more articles (link, do not invent studies)", articles),
     section("Useful pages", [
-      "/menu, /iv-therapy, /myers-iv-therapy, /specials, /memberships, /iv-packs, /gift-cards, /faq, /about, /gallery, /book, /book-intro-offer, /intro-offer, /nad-niagen-special, /medical-weight-loss, /corporate-team-wellness, /bridal-glow-starts-with-hydration, /iv-matcher, /learn-more, /privacy",
+      "/menu, /iv-therapy, /myers-iv-therapy, /specials, /memberships, /iv-packs, /gift-cards, /faq, /about, /gallery, /book, /book-intro-offer, /intro-offer, /nad-niagen-special, /learn-more/niagen-nad-injections, /medical-weight-loss, /corporate-team-wellness, /bridal-glow-starts-with-hydration, /iv-matcher, /learn-more, /privacy",
     ]),
     section("Not on this site", [
       "Do not mention other Prime IV cities, their street addresses, their prices, or their promo codes. Do not mention a member portal URL, mobile IV, a midday happy-hour special, or Mahjong Night. A mahjong data file exists for a past August 31, 2026 date and there is no live page. If asked, say no upcoming event is listed and offer the phone number.",
     ]),
   ].join("\n\n");
 }
-
-const KNOWLEDGE_BASE = buildKnowledgeBase();
 
 export function buildIvInstructions({
   now,
@@ -303,6 +305,7 @@ export function buildIvInstructions({
   now: Date;
   pagePath?: string;
 }) {
+  const knowledge = buildKnowledgeBase(now);
   const clock = clinicNowParts(now);
 
   return `You are ${IV_BOT_NAME}, the friendly virtual concierge for ${SITE_CONFIG.name} in ${CONTACT.address.city}, ${CONTACT.address.state} (Jones Valley). You chat with visitors at ${SITE_CONFIG.url}. Nobody from the spa watches this chat live. You are the front line. You pass a request to the team with the requestBooking or notifyStaff tool.
@@ -325,7 +328,7 @@ One question at a time:
 4. Recap service, day, and time and wait for a clear yes. Then call requestBooking with the exact date and time strings from checkAvailability.
 5. On success: it is a request, they will get a confirmation email, and the team will call or text to lock the time. Do not also call notifyStaff.
 6. If the tool fails, ask them to call ${CONTACT.phone}.
-Mention the one-time $${PRICING.medicalClearance} telehealth screening for first visits. It is not included in the intro price.
+Mention the one-time $${PRICING.medicalClearance} telehealth screening for first IV visits. It is not included in the intro price. Do not add that fee to an injection-only Niagen booking.
 
 # notifyStaff
 Use it when staff must act and you have a name plus a phone or email:
@@ -352,7 +355,7 @@ If prices on the site disagree, quote each published figure and tell them the te
 - Visitor page: ${pagePath || "unknown"}.
 
 # Knowledge base
-${KNOWLEDGE_BASE}`;
+${knowledge}`;
 }
 
 function clinicNowParts(now: Date) {

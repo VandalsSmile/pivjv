@@ -243,7 +243,14 @@ const VISITOR_QUESTIONS: { question: string; facts: RegExp[] }[] = [
   },
   {
     question: "How much is NAD+ and Niagen?",
-    facts: [/500mg · 1x \$499/, /Niagen injection 100mg/],
+    facts: [
+      /500mg · 1x \$499/,
+      /Niagen injection 100mg/,
+      /November 2026 special \$85/,
+      /\(256\) 678-0033 to book/,
+      /even better deal/,
+      /injection-only Niagen booking/,
+    ],
   },
   {
     question: "Do you offer weight loss and what does it cost?",
