@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  Star,
   ShieldCheck,
   Clock,
   Check,
@@ -11,6 +10,12 @@ import {
   Users,
   ArrowRight,
 } from "lucide-react";
+import {
+  GoogleRatingLink,
+  GoogleReviewPullQuote,
+  GoogleReviewSection,
+} from "@/components/google-reviews";
+import { GOOGLE_REVIEW_BLOCK, GOOGLE_REVIEWS } from "@/lib/google-reviews";
 import { JsonLd } from "@/components/json-ld";
 import { breadcrumbSchema } from "@/lib/structured-data";
 import { MomentumProgramSection } from "@/components/momentum-program-section";
@@ -44,7 +49,6 @@ const INCLUDED = [
 ];
 
 const TRUST_BADGES = [
-  { icon: Star, label: "5.0 Google Rating" },
   { icon: ShieldCheck, label: "Licensed Medical Team" },
   { icon: Clock, label: "About 60 Minutes" },
 ];
@@ -81,7 +85,8 @@ export default function BookIntroOfferPage() {
             .
           </p>
           <TelehealthFeeNote className="mx-auto mt-3 max-w-2xl text-foreground-muted" />
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            <GoogleRatingLink className="whitespace-nowrap" />
             {TRUST_BADGES.map(({ icon: Icon, label }) => (
               <span
                 key={label}
@@ -106,6 +111,8 @@ export default function BookIntroOfferPage() {
 
             {/* Right — supporting details */}
             <aside className="space-y-6">
+              <GoogleReviewPullQuote review={GOOGLE_REVIEWS.jenna} />
+
               {/* What's included */}
               <div className="rounded-2xl border border-border bg-white p-6 shadow-sm">
                 <h2 className="mb-4 text-lg font-bold text-foreground">
@@ -200,6 +207,8 @@ export default function BookIntroOfferPage() {
           </div>
         </div>
       </section>
+
+      <GoogleReviewSection reviews={GOOGLE_REVIEW_BLOCK} />
 
       {/* Keep the Momentum Going */}
       <MomentumProgramSection
