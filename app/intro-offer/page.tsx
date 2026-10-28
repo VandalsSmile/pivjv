@@ -7,7 +7,6 @@ import {
   Phone,
   Check,
   ArrowRight,
-  Star,
   Battery,
   Droplets,
   Brain,
@@ -24,6 +23,12 @@ import {
   Zap,
   Armchair,
 } from "lucide-react";
+import {
+  GoogleRatingLink,
+  GoogleReviewPullQuote,
+  GoogleReviewSection,
+} from "@/components/google-reviews";
+import { GOOGLE_REVIEW_BLOCK, GOOGLE_REVIEWS } from "@/lib/google-reviews";
 import { CONTACT, OG_IMAGE, PRICING } from "@/lib/constants";
 import { IntroOfferForm } from "./intro-offer-form";
 import { TextToBookLink } from "@/components/text-to-book-link";
@@ -181,24 +186,6 @@ const goodToKnow = [
   },
 ];
 
-const reviews = [
-  {
-    initials: "E",
-    name: "Emily R.",
-    text: "I felt amazing afterwards—energized and clear-headed. The spa-like atmosphere made me so relaxed. Already booked my next visit!",
-  },
-  {
-    initials: "M",
-    name: "Marcus T.",
-    text: "First time trying IV therapy and it exceeded my expectations. The massage chairs are a game changer. Highly recommend the intro offer.",
-  },
-  {
-    initials: "R",
-    name: "Rachel S.",
-    text: "Came in run down after a tough week and left feeling like a new person. Beautiful facility, kind staff, real results.",
-  },
-];
-
 export default function IntroOfferPage() {
   return (
     <>
@@ -235,12 +222,12 @@ export default function IntroOfferPage() {
                 Your first IV, ${PRICING.introOffer.price}. Consult, full-size
                 drip and massage chair included.
               </h1>
-              <p className="mb-5 text-base text-white/90 text-pretty sm:text-lg">
+              <p className="mb-4 text-base text-white/90 text-pretty sm:text-lg">
                 Tell us how to reach you and we&apos;ll confirm your first visit
                 at our Jones Valley lounge.
               </p>
 
-              <div className="mb-5">
+              <div className="mb-4">
                 <div className="flex flex-wrap items-center gap-3">
                   <span className="text-2xl text-white/70 line-through">
                     ${PRICING.introOffer.regularPrice}
@@ -256,6 +243,9 @@ export default function IntroOfferPage() {
                   ${PRICING.introOffer.price} + one-time $
                   {PRICING.medicalClearance} state-required telehealth screening
                 </p>
+                <div className="mt-2 leading-5">
+                  <GoogleRatingLink tone="dark" />
+                </div>
               </div>
 
               <a href="#claim-offer" className="btn-primary w-full justify-center">
@@ -267,6 +257,11 @@ export default function IntroOfferPage() {
               >
                 or call {CONTACT.phone}
               </a>
+              <GoogleReviewPullQuote
+                review={GOOGLE_REVIEWS.jenna}
+                tone="dark"
+                className="mt-4 text-left"
+              />
             </div>
 
             {/* Hero claim form */}
@@ -274,6 +269,11 @@ export default function IntroOfferPage() {
           </div>
         </div>
       </section>
+
+      <GoogleReviewSection
+        className="bg-background"
+        reviews={GOOGLE_REVIEW_BLOCK}
+      />
 
       {/* Top 5 reasons + VIP lounge image */}
       <section className="section-padding bg-background-alt">
@@ -525,49 +525,6 @@ export default function IntroOfferPage() {
                 <p className="text-foreground-muted leading-relaxed">
                   {step.description}
                 </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Reviews */}
-      <section className="section-padding bg-background-alt">
-        <div className="container-custom mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-balance">
-              What guests in {CONTACT.address.city} tell us
-            </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-foreground-muted text-pretty">
-              Notes from people who have visited the lounge.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {reviews.map((review) => (
-              <div
-                key={review.name}
-                className="bg-white rounded-xl shadow-lg p-6 border border-border"
-              >
-                <div className="flex gap-0.5 mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-4 h-4 fill-yellow-400 text-yellow-400"
-                    />
-                  ))}
-                </div>
-                <p className="text-foreground mb-4 leading-relaxed">
-                  &ldquo;{review.text}&rdquo;
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-semibold">
-                    {review.initials}
-                  </div>
-                  <span className="font-medium text-foreground">
-                    {review.name}
-                  </span>
-                </div>
               </div>
             ))}
           </div>

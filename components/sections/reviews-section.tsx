@@ -1,6 +1,8 @@
 import { Star } from "lucide-react";
 import Link from "next/link";
+import { GoogleReviewPullQuote } from "@/components/google-reviews";
 import { REVIEWS, CONTACT } from "@/lib/constants";
+import { GOOGLE_REVIEWS } from "@/lib/google-reviews";
 
 export function ReviewsSection() {
   return (
@@ -24,6 +26,11 @@ export function ReviewsSection() {
             <span className="text-foreground-muted">Google Reviews</span>
           </div>
         </div>
+
+        <GoogleReviewPullQuote
+          review={GOOGLE_REVIEWS.brandy}
+          className="mx-auto mb-10 max-w-3xl"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {REVIEWS.map((review, index) => (

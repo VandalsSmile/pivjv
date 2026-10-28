@@ -10,6 +10,12 @@ import {
   Users,
   ArrowRight,
 } from "lucide-react";
+import {
+  GoogleRatingLink,
+  GoogleReviewPullQuote,
+  GoogleReviewSection,
+} from "@/components/google-reviews";
+import { GOOGLE_REVIEW_BLOCK, GOOGLE_REVIEWS } from "@/lib/google-reviews";
 import { JsonLd } from "@/components/json-ld";
 import { breadcrumbSchema } from "@/lib/structured-data";
 import { MomentumProgramSection } from "@/components/momentum-program-section";
@@ -90,8 +96,11 @@ export default function BookIntroOfferPage() {
               ${PRICING.introOffer.price} + one-time $
               {PRICING.medicalClearance} state-required telehealth screening
             </p>
+            <div className="mt-2 leading-5">
+              <GoogleRatingLink />
+            </div>
           </div>
-          <div className="mx-auto mt-5 w-full max-w-md">
+          <div className="mx-auto mt-4 w-full max-w-md">
             <a href="#book" className="btn-primary w-full justify-center">
               Claim my ${PRICING.introOffer.price} visit
             </a>
@@ -127,6 +136,8 @@ export default function BookIntroOfferPage() {
 
             {/* Right — supporting details */}
             <aside className="space-y-6">
+              <GoogleReviewPullQuote review={GOOGLE_REVIEWS.jenna} />
+
               {/* What's included */}
               <div className="rounded-2xl border border-border bg-white p-6 shadow-sm">
                 <h2 className="mb-4 text-lg font-bold text-foreground">
@@ -221,6 +232,8 @@ export default function BookIntroOfferPage() {
           </div>
         </div>
       </section>
+
+      <GoogleReviewSection reviews={GOOGLE_REVIEW_BLOCK} />
 
       {/* Keep the Momentum Going */}
       <MomentumProgramSection
