@@ -18,6 +18,7 @@ export function MomentumProgramSection({
   showCta = true,
   showLearnMore = true,
   showUseByLines = false,
+  showTelehealthNote = true,
 }: {
   className?: string;
   eyebrow?: string;
@@ -27,6 +28,8 @@ export function MomentumProgramSection({
   showCta?: boolean;
   showLearnMore?: boolean;
   showUseByLines?: boolean;
+  /** Passed through to the card. Landing pages that state the fee once can hide it here. */
+  showTelehealthNote?: boolean;
 }) {
   return (
     <section className={className}>
@@ -45,7 +48,10 @@ export function MomentumProgramSection({
 
         {/* The card itself */}
         <div className="mx-auto max-w-4xl">
-          <MomentumCard showUseByLines={showUseByLines} />
+          <MomentumCard
+            showUseByLines={showUseByLines}
+            showTelehealthNote={showTelehealthNote}
+          />
           <p className="mt-4 text-center text-sm text-foreground-muted">
             You&apos;ll receive this card at the end of your first visit — we
             write your use-by dates on it before you leave, so there&apos;s no

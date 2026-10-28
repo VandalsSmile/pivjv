@@ -25,7 +25,6 @@ import {
   Armchair,
 } from "lucide-react";
 import { CONTACT, OG_IMAGE, PRICING } from "@/lib/constants";
-import { TelehealthFeeNote } from "@/components/telehealth-fee-note";
 import { IntroOfferForm } from "./intro-offer-form";
 import { TextToBookLink } from "@/components/text-to-book-link";
 import { MomentumProgramSection } from "@/components/momentum-program-section";
@@ -126,15 +125,14 @@ const included = [
   "Comprehensive wellness consultation",
   "Full-size primary IV drip (your choice)",
   "State-of-the-art massage chair session",
-  "VIP one-hour vacation amenities",
   "Same-day treatment available (if ready)",
 ];
 
 const steps = [
   {
     icon: CalendarCheck,
-    title: "Claim With the Code",
-    description: `Submit the form with promo code ${PRICING.introOffer.promoCode} — or call and mention the code — to lock in your $${PRICING.introOffer.price} intro pricing.`,
+    title: "Claim Your Visit",
+    description: `Request your $${PRICING.introOffer.price} intro online, or call ${CONTACT.phone}. The intro price is applied automatically.`,
   },
   {
     icon: Stethoscope,
@@ -221,7 +219,7 @@ export default function IntroOfferPage() {
         ]}
       />
       {/* Hero */}
-      <section className="relative text-white section-padding overflow-hidden">
+      <section className="relative overflow-hidden px-4 py-8 text-white md:px-8 md:py-16 lg:py-24">
         <div
           className="absolute inset-0 bg-cover"
           style={{
@@ -231,78 +229,44 @@ export default function IntroOfferPage() {
         />
         <div className="absolute inset-0 bg-primary/85" />
         <div className="container-custom mx-auto relative">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-12">
             <div>
-              <p className="text-secondary font-semibold uppercase tracking-wide mb-3">
-                First-Time Client Exclusive
-              </p>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-                Feel Your Best for Just ${PRICING.introOffer.price} —
-                Huntsville&apos;s Premier IV Therapy Intro Offer
+              <h1 className="mb-3 text-[1.65rem] font-bold leading-[1.15] text-balance sm:text-4xl lg:text-5xl">
+                Your first IV, ${PRICING.introOffer.price}. Consult, full-size
+                drip and massage chair included.
               </h1>
-              <p className="text-white/80 text-lg mb-6 text-pretty">
-                A full IV therapy experience—wellness consultation, primary
-                drip, and VIP massage-chair relaxation—designed to leave you
-                re-energized, rehydrated, and recharged.
+              <p className="mb-5 text-base text-white/90 text-pretty sm:text-lg">
+                Tell us how to reach you and we&apos;ll confirm your first visit
+                at our Jones Valley lounge.
               </p>
 
-              <div className="bg-white/10 border border-white/20 rounded-xl p-4 mb-8">
-                <p className="text-secondary font-semibold text-sm uppercase tracking-wide mb-1">
-                  How to claim ${PRICING.introOffer.price} pricing
-                </p>
-                <p className="text-white/90 text-sm leading-relaxed">
-                  You must use promo code{" "}
-                  <span className="font-mono font-bold text-secondary-light">
-                    {PRICING.introOffer.promoCode}
-                  </span>{" "}
-                  — submit it with the form below, or mention it when you call to
-                  book.
-                </p>
-              </div>
-
-              <div className="flex items-center gap-4 mb-8">
-                <span className="text-2xl text-white/60 line-through">
-                  ${PRICING.introOffer.regularPrice}
-                </span>
-                <span className="text-5xl font-bold text-secondary-light">
-                  ${PRICING.introOffer.price}
-                </span>
-                <span className="bg-accent text-white text-sm font-bold px-3 py-1 rounded-full">
-                  Save {savings}%
-                </span>
-              </div>
-
-              <div className="flex flex-wrap gap-4 mb-6">
-                <Link href="/book-intro-offer" className="btn-primary">
-                  Book Online Now
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link href={`tel:${CONTACT.phoneClean}`} className="btn-outline">
-                  <Phone className="w-4 h-4" />
-                  Call Now to Book &amp; Claim
-                </Link>
-              </div>
-
-              <div className="flex items-center gap-2 mb-6">
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-5 h-5 fill-yellow-400 text-yellow-400"
-                    />
-                  ))}
+              <div className="mb-5">
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="text-2xl text-white/70 line-through">
+                    ${PRICING.introOffer.regularPrice}
+                  </span>
+                  <span className="text-5xl font-bold text-white">
+                    ${PRICING.introOffer.price}
+                  </span>
+                  <span className="rounded-full bg-accent px-3 py-1 text-sm font-bold text-white">
+                    Save {savings}%
+                  </span>
                 </div>
-                <span className="text-white/80 text-sm">
-                  Rated 5.0 by happy clients in {CONTACT.address.city}
-                </span>
+                <p className="mt-2 text-sm font-medium text-white">
+                  ${PRICING.introOffer.price} + one-time $
+                  {PRICING.medicalClearance} state-required telehealth screening
+                </p>
               </div>
 
-              <p className="text-white/60 text-xs">
-                *First-time clients only. Mention code{" "}
-                {PRICING.introOffer.promoCode} when calling. One-time
-                state-mandated ${PRICING.medicalClearance} telehealth screening
-                required at first visit.
-              </p>
+              <a href="#claim-offer" className="btn-primary w-full justify-center">
+                Claim my ${PRICING.introOffer.price} visit
+              </a>
+              <a
+                href={`tel:${CONTACT.phoneClean}`}
+                className="mt-3 block text-center text-sm font-medium text-white underline decoration-white/50 underline-offset-4"
+              >
+                or call {CONTACT.phone}
+              </a>
             </div>
 
             {/* Hero claim form */}
@@ -375,7 +339,6 @@ export default function IntroOfferPage() {
                   Claim Your ${PRICING.introOffer.price} Intro Offer
                   <ArrowRight className="w-4 h-4" />
                 </Link>
-                <TelehealthFeeNote className="mt-3 text-foreground-muted" />
               </div>
             </div>
           </div>
@@ -426,6 +389,7 @@ export default function IntroOfferPage() {
         description={`Your $${PRICING.introOffer.price} intro visit isn't a one-and-done. On your way out we hand you a card that takes 20% off your second visit and 10% off your third — then you choose whatever fits your life.`}
         showNextSteps
         showCta={false}
+        showTelehealthNote={false}
       />
 
       {/* What You Get */}
@@ -437,36 +401,27 @@ export default function IntroOfferPage() {
                 <p className="text-secondary font-semibold uppercase tracking-wide mb-2">
                   What You Get for ${PRICING.introOffer.price}
                 </p>
-                <div className="flex items-baseline gap-3 mb-4">
+                <div className="mb-4 flex flex-wrap items-baseline gap-3">
                   <span className="text-5xl font-bold text-secondary">
                     ${PRICING.introOffer.price}
                   </span>
                   <span className="text-xl text-foreground-muted line-through">
                     ${PRICING.introOffer.regularPrice}
                   </span>
+                  <span className="text-sm font-bold text-accent">
+                    Save {savings}%
+                  </span>
                   <span className="text-foreground-muted">· ~1 Hour</span>
                 </div>
                 <p className="text-foreground-muted leading-relaxed mb-6">
-                  Experience the ultimate in customizable wellness with our
-                  exclusive First-Time Client Introductory Offer. Your visit
-                  begins with a comprehensive wellness consultation and includes
-                  a full-size primary drip, time in our massage chair, and VIP
-                  one-hour vacation amenities designed to help you unwind and
-                  recharge.
+                  Your visit begins with a wellness consultation and includes a
+                  full-size primary drip and time in our massage chair.
                 </p>
                 <p className="text-foreground-muted leading-relaxed mb-6">
                   Choose from our full menu of IV drips — Myers Cocktail,
                   Vitamin C, Glutathione, NAD+, hangover recovery, and more —
                   all customized to your goals at our Huntsville IV bar.
                 </p>
-                <p className="text-sm text-foreground mb-6 bg-secondary/10 border border-secondary/20 rounded-lg px-4 py-3">
-                  To get the ${PRICING.introOffer.price} rate, claim with code{" "}
-                  <span className="font-mono font-bold text-secondary">
-                    {PRICING.introOffer.promoCode}
-                  </span>{" "}
-                  on the form below or mention it when you call.
-                </p>
-                <TelehealthFeeNote className="-mt-3 mb-6 text-foreground-muted" />
                 <div className="flex flex-wrap gap-4">
                   <Link href="/book-intro-offer" className="btn-primary">
                     Book Online Now
@@ -506,29 +461,17 @@ export default function IntroOfferPage() {
       <section className="section-padding bg-background-alt">
         <div className="container-custom mx-auto">
           <div className="max-w-3xl mx-auto bg-primary text-white rounded-2xl p-8 md:p-10 shadow-lg text-center">
-            <p className="text-secondary font-semibold uppercase tracking-wide mb-2">
+            <p className="mb-2 font-semibold uppercase tracking-wide text-white/80">
               Prefer to call?
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
-              Call Now to Book &amp; Claim
+            <h2 className="mb-4 text-3xl font-bold text-balance md:text-4xl">
+              Call to book your visit
             </h2>
-            <p className="text-white/80 text-lg mb-6 text-pretty">
-              Mention promo code{" "}
-              <span className="font-mono font-bold text-secondary-light">
-                {PRICING.introOffer.promoCode}
-              </span>{" "}
-              to lock in your ${PRICING.introOffer.price} intro offer — or use
-              the claim form at the top of this page.
+            <p className="mb-6 text-lg text-white/90 text-pretty">
+              Call {CONTACT.phone} and we&apos;ll find a time. The $
+              {PRICING.introOffer.price} intro price is applied automatically,
+              or use the claim form at the top of this page.
             </p>
-            <TelehealthFeeNote className="-mt-3 mb-6 text-white/60" />
-            <div className="bg-white/10 rounded-xl p-4 mb-6 inline-block min-w-[min(100%,20rem)]">
-              <p className="text-xs uppercase tracking-wide text-white/70 mb-1">
-                Mention this code
-              </p>
-              <p className="text-2xl font-mono font-bold text-secondary-light tracking-wide">
-                {PRICING.introOffer.promoCode}
-              </p>
-            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href={`tel:${CONTACT.phoneClean}`}
@@ -592,21 +535,12 @@ export default function IntroOfferPage() {
       <section className="section-padding bg-background-alt">
         <div className="container-custom mx-auto">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-sm mb-4">
-              <span className="font-bold text-2xl">5.0</span>
-              <div className="flex gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="w-5 h-5 fill-yellow-400 text-yellow-400"
-                  />
-                ))}
-              </div>
-              <span className="text-foreground-muted">Google Reviews</span>
-            </div>
             <h2 className="text-3xl md:text-4xl font-bold text-balance">
-              Loved by Our {CONTACT.address.city} Community
+              What guests in {CONTACT.address.city} tell us
             </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-foreground-muted text-pretty">
+              Notes from people who have visited the lounge.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -694,19 +628,15 @@ export default function IntroOfferPage() {
       <section className="section-padding bg-background-alt">
         <div className="container-custom mx-auto">
           <div className="bg-primary text-white rounded-2xl p-8 lg:p-12 text-center max-w-4xl mx-auto">
-            <p className="text-secondary-light font-semibold uppercase tracking-wide mb-3">
+            <p className="mb-3 font-semibold uppercase tracking-wide text-white/80">
               First-time spots are limited
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
+            <h2 className="mb-4 text-3xl font-bold text-balance md:text-4xl">
               Ready to Feel the Difference?
             </h2>
-            <p className="text-white/80 text-lg mb-4 max-w-2xl mx-auto text-pretty">
-              Claim your ${PRICING.introOffer.price} intro session with promo
-              code{" "}
-              <span className="font-mono font-bold text-secondary-light">
-                {PRICING.introOffer.promoCode}
-              </span>{" "}
-              — submit the form or call and mention the code.
+            <p className="mx-auto mb-4 max-w-2xl text-lg text-white/90 text-pretty">
+              Request your ${PRICING.introOffer.price} intro session online or
+              call us. First-time clients only.
             </p>
             <div className="flex flex-wrap justify-center gap-4 mb-6">
               <Link href="/book-intro-offer" className="btn-primary">
@@ -718,12 +648,6 @@ export default function IntroOfferPage() {
                 Call Now
               </Link>
             </div>
-            <p className="text-white/60 text-xs mt-6">
-              *First-time clients only. Code {PRICING.introOffer.promoCode}{" "}
-              required. One-time state-mandated $
-              {PRICING.medicalClearance} telehealth screening required at first
-              visit.
-            </p>
           </div>
         </div>
       </section>

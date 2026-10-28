@@ -269,7 +269,7 @@ export function AppointmentBookingForm({
           </select>
           <p className="mt-2 text-xs text-foreground-muted">
             {isIntro
-              ? `New here? The $${PRICING.introOffer.price} first-visit price is applied automatically with code ${PRICING.introOffer.promoCode}.`
+              ? "New here? Pick a date below and we'll confirm your first visit."
               : "Returning guest or member? Choose your service and we'll confirm your appointment."}
           </p>
         </div>
@@ -494,23 +494,21 @@ export function AppointmentBookingForm({
 
           {isIntro && (
             <div>
-              <label
-                htmlFor="book-promo"
-                className="mb-1 block text-sm font-medium text-foreground"
-              >
-                Promo Code *
+              <p className="text-sm font-medium text-foreground">
+                Price applied automatically.
+              </p>
+              <label htmlFor="book-promo" className="sr-only">
+                Promo code
               </label>
               <input
                 type="text"
                 id="book-promo"
                 readOnly
                 value={PRICING.introOffer.promoCode}
-                className="w-full rounded-lg border border-border bg-background-alt px-4 py-3 font-semibold text-primary outline-none"
+                className="sr-only"
+                autoComplete="off"
+                tabIndex={-1}
               />
-              <p className="mt-1 text-xs text-foreground-muted">
-                Pre-filled for you. Required to lock in the $
-                {PRICING.introOffer.price} intro price.
-              </p>
             </div>
           )}
 
@@ -582,26 +580,16 @@ export function AppointmentBookingForm({
 
           <p className="text-center text-xs text-foreground-muted">
             This sends an appointment request — a team member confirms your time
-            before your visit. {isIntro ? "First-time visitors only. " : ""}
-            HSA/FSA eligible. A one-time state-mandated $
-            {PRICING.medicalClearance} telehealth screening is required at your
-            first visit.
+            before your visit. HSA/FSA eligible.
+            {isIntro
+              ? ` First-time visitors only. One-time $${PRICING.medicalClearance} telehealth screening is added at your first visit.`
+              : ` A one-time state-mandated $${PRICING.medicalClearance} telehealth screening is required at your first visit.`}
           </p>
 
           <div className="rounded-xl border border-border bg-background-alt p-4 text-center">
             <p className="mb-3 text-sm text-foreground-muted">
-              Prefer to talk to a human?{" "}
-              {isIntro ? (
-                <>
-                  Mention code{" "}
-                  <span className="font-semibold text-primary">
-                    {PRICING.introOffer.promoCode}
-                  </span>{" "}
-                  when you call.
-                </>
-              ) : (
-                "Give us a call and we'll get you booked."
-              )}
+              Prefer to talk to a human? Give us a call and we&apos;ll get you
+              booked.
             </p>
             <Link
               href={`tel:${CONTACT.phoneClean}`}
