@@ -2,6 +2,7 @@
 
 import { Fragment, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { X, Sparkles, Clock, ChevronRight } from "lucide-react";
 import { PRICING, TELEHEALTH_FEE_NOTE } from "@/lib/constants";
 import { MOMENTUM_PROGRAM } from "@/lib/momentum-program";
@@ -9,7 +10,13 @@ import { MOMENTUM_PROGRAM } from "@/lib/momentum-program";
 // Bumped when the offer content changes so returning visitors see the new one.
 const STORAGE_KEY = "momentum-offer-seen";
 
+// These pages already lead with the intro offer. The touch timer and
+// upward-scroll trigger cover the claim button, so they stay off here.
+// Desktop cursor exit-intent still runs, and every other page is unchanged.
+const MOBILE_EXIT_INTENT_OFF = new Set(["/intro-offer", "/book-intro-offer"]);
+
 export function ExitIntentOffer() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const dismissedRef = useRef(false);
 
@@ -49,10 +56,11 @@ export function ExitIntentOffer() {
     const isTouch =
       typeof window !== "undefined" &&
       window.matchMedia("(pointer: coarse)").matches;
+    const skipMobileTrigger = MOBILE_EXIT_INTENT_OFF.has(pathname);
 
     document.addEventListener("mouseout", handleMouseOut);
     let fallbackTimer: ReturnType<typeof setTimeout> | undefined;
-    if (isTouch) {
+    if (isTouch && !skipMobileTrigger) {
       window.addEventListener("scroll", handleScroll, { passive: true });
       // Fallback so touch users who never scroll up still see the offer.
       fallbackTimer = setTimeout(trigger, 25000);
@@ -63,7 +71,7 @@ export function ExitIntentOffer() {
       window.removeEventListener("scroll", handleScroll);
       if (fallbackTimer) clearTimeout(fallbackTimer);
     };
-  }, []);
+  }, [pathname]);
 
   // Close on Escape key.
   useEffect(() => {

@@ -26,11 +26,16 @@ import {
   PRICING,
 } from "@/lib/constants";
 import { AppointmentBookingForm } from "@/components/appointment-booking-form";
-import { TelehealthFeeNote } from "@/components/telehealth-fee-note";
+
+const introSavings = Math.round(
+  ((PRICING.introOffer.regularPrice - PRICING.introOffer.price) /
+    PRICING.introOffer.regularPrice) *
+    100,
+);
 
 export const metadata: Metadata = {
   title: `Book $${PRICING.introOffer.price} Intro`,
-  description: `Pick a time and we'll confirm it. Your first IV at Prime IV Jones Valley is $${PRICING.introOffer.price} with code ${PRICING.introOffer.promoCode}.`,
+  description: `Pick a time and we'll confirm it. Your first IV at Prime IV Jones Valley is $${PRICING.introOffer.price}. A one-time $${PRICING.medicalClearance} telehealth screening applies.`,
   keywords: [
     "book IV therapy Huntsville online",
     "$85 intro offer IV Huntsville",
@@ -51,6 +56,7 @@ const INCLUDED = [
 const TRUST_BADGES = [
   { icon: ShieldCheck, label: "Licensed Medical Team" },
   { icon: Clock, label: "About 60 Minutes" },
+  { icon: Check, label: "Massage chair included" },
 ];
 
 export default function BookIntroOfferPage() {
@@ -65,28 +71,47 @@ export default function BookIntroOfferPage() {
 
       {/* Hero */}
       <section className="bg-background-alt">
-        <div className="container-custom mx-auto px-4 py-14 text-center md:px-8 lg:py-16">
-          <span className="mb-4 inline-block rounded-full bg-primary px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white">
-            First-Time Visitors Only
-          </span>
-          <h1 className="mx-auto max-w-3xl text-4xl font-bold text-balance text-foreground md:text-5xl">
-            Book Your{" "}
-            <span className="text-secondary">${PRICING.introOffer.price}</span>{" "}
-            Intro Offer Online
+        <div className="container-custom mx-auto px-4 py-8 text-center md:px-8 md:py-14 lg:py-16">
+          <h1 className="mx-auto max-w-3xl text-[1.65rem] font-bold leading-[1.15] text-balance text-foreground sm:text-4xl md:text-5xl">
+            Your first IV, ${PRICING.introOffer.price}. Consult, full-size drip
+            and massage chair included.
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-muted text-pretty">
-            Pick the date and time that works for you and we&apos;ll confirm it
-            — no phone tag required. Our standard rate is $
-            {PRICING.nonMemberDrip} per drip; your first visit is $
-            {PRICING.introOffer.price} with code{" "}
-            <span className="font-semibold text-primary">
-              {PRICING.introOffer.promoCode}
-            </span>
-            .
+          <p className="mx-auto mt-3 max-w-2xl text-base text-foreground-muted text-pretty sm:text-lg">
+            Choose a time and we&apos;ll confirm your first visit at our Jones
+            Valley lounge.
           </p>
-          <TelehealthFeeNote className="mx-auto mt-3 max-w-2xl text-foreground-muted" />
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-            <GoogleRatingLink className="whitespace-nowrap" />
+          <div className="mt-5">
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <span className="text-2xl text-foreground-muted line-through">
+                ${PRICING.introOffer.regularPrice}
+              </span>
+              <span className="text-5xl font-bold text-primary">
+                ${PRICING.introOffer.price}
+              </span>
+              <span className="rounded-full bg-accent px-3 py-1 text-sm font-bold text-white">
+                Save {introSavings}%
+              </span>
+            </div>
+            <p className="mt-2 text-sm font-medium text-foreground">
+              ${PRICING.introOffer.price} + one-time $
+              {PRICING.medicalClearance} state-required telehealth screening
+            </p>
+            <div className="mt-2 leading-5">
+              <GoogleRatingLink />
+            </div>
+          </div>
+          <div className="mx-auto mt-4 w-full max-w-md">
+            <a href="#book" className="btn-primary w-full justify-center">
+              Claim my ${PRICING.introOffer.price} visit
+            </a>
+            <a
+              href={`tel:${CONTACT.phoneClean}`}
+              className="mt-3 block text-center text-sm font-medium text-primary underline decoration-primary/40 underline-offset-4"
+            >
+              or call {CONTACT.phone}
+            </a>
+          </div>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
             {TRUST_BADGES.map(({ icon: Icon, label }) => (
               <span
                 key={label}
@@ -217,6 +242,7 @@ export default function BookIntroOfferPage() {
         showNextSteps
         showCta={false}
         showLearnMore={false}
+        showTelehealthNote={false}
       />
 
       {/* Final CTA */}
@@ -242,7 +268,6 @@ export default function BookIntroOfferPage() {
               {CONTACT.phone}
             </Link>
           </div>
-          <TelehealthFeeNote className="mt-6 text-white/60" />
         </div>
       </section>
     </>

@@ -15,9 +15,12 @@ import { MOMENTUM_PROGRAM } from "@/lib/momentum-program";
  */
 export function MomentumCard({
   showUseByLines = false,
+  showTelehealthNote = true,
   className = "",
 }: {
   showUseByLines?: boolean;
+  /** Landing pages that already state the fee can hide this repeat. */
+  showTelehealthNote?: boolean;
   className?: string;
 }) {
   const { steps } = MOMENTUM_PROGRAM;
@@ -183,7 +186,8 @@ export function MomentumCard({
         </div>
 
         <p className="mt-5 border-t border-white/15 pt-4 text-center text-xs leading-relaxed text-white/70">
-          {MOMENTUM_PROGRAM.finePrint.join(" ")} {TELEHEALTH_FEE_NOTE}
+          {MOMENTUM_PROGRAM.finePrint.join(" ")}
+          {showTelehealthNote ? ` ${TELEHEALTH_FEE_NOTE}` : ""}
         </p>
       </div>
     </div>
