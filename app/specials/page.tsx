@@ -11,6 +11,7 @@ import {
 import { CONTACT, OG_IMAGE, PRICING } from "@/lib/constants";
 import { SpecialsForm } from "./specials-form";
 import { MomentumProgramSection } from "@/components/momentum-program-section";
+import { VeteransDaySpecial } from "@/components/veterans-day-special";
 import { MOMENTUM_FAQS } from "@/lib/momentum-program";
 import {
   MONTHLY_SPECIALS,
@@ -65,6 +66,9 @@ export default function SpecialsPage() {
           </div>
         </div>
       </section>
+
+      {/* Veterans Day Special */}
+      <VeteransDaySpecial />
 
       {/* Monthly Specials */}
       <section className="section-padding bg-background">
