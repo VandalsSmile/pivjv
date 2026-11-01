@@ -15,11 +15,10 @@ import {
   SERVICES,
   SITE_CONFIG,
   SOCIAL_LINKS,
-  NIAGEN_50MG_SPECIAL,
   TELEHEALTH_FEE_NOTE,
   getPackMath,
 } from "../constants";
-import { niagen50KnowledgeLine } from "../niagen-special";
+import { holidaySpecialKnowledgeLines } from "../niagen-special";
 import {
   ADDITIVES,
   INJECTION_GUIDE,
@@ -124,11 +123,10 @@ function buildKnowledgeBase(now: Date) {
   const nad = NAD_INJECTIONS.map(
     (row) => `- NAD+ injection ${row.dose}: single ${row.single}, pack ${row.pack}`,
   );
-  const niagen = NIAGEN_INJECTIONS.map((row) =>
-    row.dose === NIAGEN_50MG_SPECIAL.dose
-      ? niagen50KnowledgeLine(now)
-      : `- Niagen injection ${row.dose}: single ${row.single}, pack ${row.pack}`,
+  const niagen = NIAGEN_INJECTIONS.map(
+    (row) => `- Niagen injection ${row.dose}: single ${row.single}, pack ${row.pack}`,
   );
+  const nadSpecial = holidaySpecialKnowledgeLines(now);
 
   const premium = PREMIUM_INFUSIONS.map((item) => {
     const tiers = item.tiers.map((tier) => `${tier.label} ${tier.price}`).join("; ");
@@ -229,6 +227,7 @@ function buildKnowledgeBase(now: Date) {
       ...nad,
       ...niagen,
       ...premium,
+      ...nadSpecial,
       "NAD+ IV delivers NAD+ into the bloodstream. Niagen (nicotinamide riboside) is described as a precursor that helps the body raise its own NAD+. The site says many clients use NAD+ for a reset and Niagen for longer support. Pre-order is required for NAD+ infusions. A G6PD test is needed for 25,000mg vitamin C.",
       "Do not promise disease treatment, anti-aging results, or that NAD+ improves a medical condition. Point curious guests to /nad-niagen-special and /learn-more/niagen-nad-injections and /learn-more/does-nad-therapy-actually-work-evidence.",
     ]),

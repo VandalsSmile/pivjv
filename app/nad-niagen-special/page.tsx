@@ -5,6 +5,8 @@ import {
   BookOpen,
   CalendarCheck,
   Check,
+  Droplets,
+  Gift,
   Stethoscope,
   Syringe,
 } from "lucide-react";
@@ -15,13 +17,19 @@ import {
 } from "@/components/google-reviews";
 import { TextToBookLink } from "@/components/text-to-book-link";
 import { GOOGLE_REVIEW_BLOCK, GOOGLE_REVIEWS } from "@/lib/google-reviews";
-import { CONTACT, NIAGEN_50MG_SPECIAL, OG_IMAGE, SITE_CONFIG } from "@/lib/constants";
+import {
+  CONTACT,
+  NAD_HOLIDAY_SPECIAL,
+  OG_IMAGE,
+  SITE_CONFIG,
+} from "@/lib/constants";
 import {
   NIAGEN_INJECTION_BOOKING_PATH,
-  isNiagen50SpecialActive,
-  niagen50OfferSchema,
-  niagen50mgStandard,
-  niagenSpecialEndLabel,
+  holidaySpecialItems,
+  holidaySpecialOfferSchema,
+  holidaySpecialRangeLabel,
+  isHolidaySpecialActive,
+  type HolidaySpecialItem,
 } from "@/lib/niagen-special";
 import {
   absoluteUrl,
@@ -31,32 +39,35 @@ import {
 } from "@/lib/structured-data";
 
 const path = "/nad-niagen-special";
-const standard50 = niagen50mgStandard();
-const specialActive = isNiagen50SpecialActive();
-const endLabel = niagenSpecialEndLabel();
-const specialPrice = NIAGEN_50MG_SPECIAL.price;
+const specialActive = isHolidaySpecialActive();
+const rangeLabel = holidaySpecialRangeLabel();
+const percentOff = NAD_HOLIDAY_SPECIAL.percentOff;
+const items = holidaySpecialItems();
 
 const pageDescription = specialActive
-  ? `November 2026 special: a 50mg Niagen injection is $${specialPrice} through ${endLabel} at ${SITE_CONFIG.name} in Huntsville, AL. Regular price ${standard50.single}. Call ${CONTACT.phone}. No promo code.`
-  : `50mg Niagen injections at ${SITE_CONFIG.name} in Huntsville, AL. A single injection is ${standard50.single}. Call ${CONTACT.phone}.`;
+  ? `Holiday special: ${percentOff}% off NAD+ and Niagen injections and NAD+ and Niagen infusion IVs, ${rangeLabel}, at ${SITE_CONFIG.name} in Huntsville, AL. Call ${CONTACT.phone}. No promo code.`
+  : `NAD+ and Niagen injections and infusion IVs at ${SITE_CONFIG.name} in Huntsville, AL. Call ${CONTACT.phone}.`;
 
 export const metadata: Metadata = {
-  title: specialActive ? `$${specialPrice} Niagen Injection` : "Niagen Injection",
+  title: specialActive
+    ? `${percentOff}% Off NAD+ & Niagen — Holiday Special`
+    : "NAD+ & Niagen Injections and IVs",
   description: pageDescription,
   keywords: [
-    "Niagen injection Huntsville",
-    "50mg Niagen",
+    "NAD+ IV Huntsville",
     "NAD+ injection Huntsville",
-    "nicotinamide riboside",
-    "November 2026 Niagen special",
+    "Niagen injection Huntsville",
+    "Niagen IV",
+    "NAD+ holiday special",
+    "50% off NAD+",
     "Prime IV Jones Valley",
   ],
   alternates: { canonical: path },
   openGraph: {
     url: path,
     title: specialActive
-      ? `$${specialPrice} Niagen injection — November 2026 special`
-      : "Niagen injection in Huntsville",
+      ? `${percentOff}% off NAD+ & Niagen — holiday special`
+      : "NAD+ & Niagen in Huntsville",
     description: pageDescription,
     images: [OG_IMAGE],
   },
@@ -64,20 +75,20 @@ export const metadata: Metadata = {
 
 const benefits = [
   {
-    title: "Skips the stomach",
-    text: "An injection does not pass through digestion. That is a different route than a capsule, not proof of a higher NAD+ level.",
+    title: "Two routes, two timelines",
+    text: "An injection is a short visit, about 20 minutes. An infusion IV is a longer, seated lounge visit. Both skip the stomach.",
   },
   {
-    title: "A precursor, not an NAD+ IV",
-    text: "Niagen is nicotinamide riboside, a building block cells use to make NAD+. An NAD+ infusion is a separate visit.",
+    title: "NAD+ and Niagen are different",
+    text: "An NAD+ IV or injection delivers the finished molecule. Niagen is nicotinamide riboside, a precursor cells use to make their own NAD+.",
   },
   {
-    title: "A short appointment",
-    text: "Injection visits are listed at about 20 minutes, not a full lounge drip.",
+    title: "NAD+ infusions are pre-ordered",
+    text: "We prepare NAD+ infusions ahead of your visit, so book early during the holiday rush.",
   },
   {
     title: "A nurse consults first",
-    text: "Licensed staff review your history before the injection. It does not treat disease or reverse aging.",
+    text: "Licensed staff review your history before any injection or infusion. It does not treat disease or reverse aging.",
   },
 ];
 
@@ -86,45 +97,44 @@ const steps = [
     icon: CalendarCheck,
     title: "Book",
     text: specialActive
-      ? `Request the ${NIAGEN_50MG_SPECIAL.label} online, by text, or call ${CONTACT.phone}. There is no promo code.`
-      : `Book an injection visit online, by text, or call ${CONTACT.phone}.`,
+      ? `Request your visit online, by text, or call ${CONTACT.phone}. No promo code — the ${percentOff}% off is automatic through the holidays.`
+      : `Book online, by text, or call ${CONTACT.phone}.`,
   },
   {
     icon: Stethoscope,
     title: "Consult",
-    text: "A nurse reviews your history, medications, and goals, and confirms an injection is appropriate.",
+    text: "A nurse reviews your history, medications, and goals, and helps you choose an injection or an infusion.",
   },
   {
     icon: Syringe,
-    title: "Inject",
-    text: "You receive the 50mg Niagen injection. Most injection visits are about 20 minutes.",
+    title: "Relax",
+    text: "Injection visits are about 20 minutes. Infusions take longer in a zero-gravity lounge chair.",
   },
 ];
 
 const faqs = [
   {
-    question: "What is Niagen?",
-    answer:
-      "Niagen is a branded form of nicotinamide riboside (NR), a precursor your cells can use to make NAD+. It is not the same thing as an NAD+ IV, which delivers the finished molecule. An injection skips the stomach. That is a difference in route, not proof it raises NAD+ more than a capsule.",
+    question: specialActive
+      ? "What is included in the holiday special?"
+      : "What NAD+ and Niagen options do you offer?",
+    answer: specialActive
+      ? `${percentOff}% off ${NAD_HOLIDAY_SPECIAL.appliesTo}, ${rangeLabel}. ${NAD_HOLIDAY_SPECIAL.priceNote} No promo code needed. Call ${CONTACT.phone} to book.`
+      : `NAD+ injections, Niagen injections, NAD+ infusions, and Niagen infusions. Prices are on our menu. Call ${CONTACT.phone} to book.`,
   },
   {
-    question: "How long does it take?",
+    question: "What is the difference between NAD+ and Niagen?",
     answer:
-      "An injection visit is shorter than a lounge IV. Injection appointments are listed at about 20 minutes, plus a quick consult with our nurse before the injection.",
+      "NAD+ is a coenzyme found in every cell. An NAD+ IV or injection delivers that finished molecule. Niagen is a branded form of nicotinamide riboside (NR), a precursor your cells can use to make NAD+. Our nurse can help you decide which fits your goals.",
   },
   {
-    question: "Who is it for?",
+    question: "Injection or infusion IV?",
     answer:
-      "Adults who want to ask about NAD+ support and prefer an injection to swallowing a capsule. Our nurse reviews your history and decides whether it is appropriate. It is not a treatment for disease, fatigue, or aging.",
-  },
-  {
-    question: "Can I buy a multi-injection pack?",
-    answer: `Yes. Ask us for an even better deal on a multi-injection pack. Call ${CONTACT.phone}. We do not publish a special pack price. The standard 50mg 4-pack on the menu is ${standard50.pack}.`,
+      "An injection is a quick visit, listed at about 20 minutes. An infusion IV is a longer lounge visit with a higher dose. NAD+ infusions require a pre-order, so call ahead.",
   },
   {
     question: "Is it safe?",
     answer:
-      "A licensed nurse consults with you before any injection and reviews your health history. Tell the team about medications and conditions. This page is education, not medical advice, and the injection does not diagnose, treat, cure, or prevent any disease.",
+      "A licensed nurse consults with you before any injection or infusion and reviews your health history. Tell the team about medications and conditions. This page is education, not medical advice, and these services do not diagnose, treat, cure, or prevent any disease.",
   },
 ];
 
@@ -132,11 +142,11 @@ const webPageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: specialActive
-    ? `$${specialPrice} Niagen injection — November 2026 special`
-    : "Niagen injection",
+    ? `${percentOff}% off NAD+ & Niagen — holiday special`
+    : "NAD+ & Niagen injections and IVs",
   description: pageDescription,
   url: absoluteUrl(path),
-  dateModified: "2026-10-28",
+  dateModified: "2026-11-01",
   inLanguage: "en-US",
 };
 
@@ -194,10 +204,100 @@ function OfferActions({
   );
 }
 
+const PRICE_GROUPS: {
+  title: string;
+  icon: typeof Syringe;
+  note: string;
+  group?: HolidaySpecialItem["group"];
+}[] = [
+  {
+    title: "NAD+ Injections",
+    icon: Syringe,
+    note: "About a 20-minute visit",
+    group: "NAD+ injection",
+  },
+  {
+    title: "Niagen® Injections",
+    icon: Syringe,
+    note: "About a 20-minute visit",
+    group: "Niagen injection",
+  },
+  {
+    title: "NAD+ Infusion IVs",
+    icon: Droplets,
+    note: "Pre-order required",
+    group: "NAD+ infusion",
+  },
+  {
+    title: "Niagen® Infusion IVs",
+    icon: Droplets,
+    note: "Call for dose and pricing",
+  },
+];
+
+function PriceCard({ group }: { group: (typeof PRICE_GROUPS)[number] }) {
+  const rows = group.group
+    ? items.filter((item) => item.group === group.group)
+    : [];
+  return (
+    <div className="flex flex-col rounded-2xl border border-border bg-white p-6 shadow-sm">
+      <div className="flex items-center gap-3">
+        <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-secondary/10">
+          <group.icon className="h-5 w-5 text-secondary" aria-hidden="true" />
+        </div>
+        <div>
+          <h3 className="text-lg font-bold">{group.title}</h3>
+          <p className="text-xs font-semibold uppercase tracking-wide text-foreground-muted">
+            {group.note}
+          </p>
+        </div>
+      </div>
+
+      {rows.length > 0 ? (
+        <ul className="mt-5 divide-y divide-border">
+          {rows.map((row) => (
+            <li
+              key={row.dose}
+              className="flex items-center justify-between gap-4 py-3"
+            >
+              <span className="font-semibold text-foreground">{row.dose}</span>
+              <span className="flex items-baseline gap-2">
+                {specialActive ? (
+                  <>
+                    <span className="text-sm text-foreground-muted line-through">
+                      {row.regular}
+                    </span>
+                    <span className="text-xl font-bold text-secondary">
+                      {row.sale}
+                    </span>
+                  </>
+                ) : (
+                  <span className="text-xl font-bold text-secondary">
+                    {row.regular}
+                  </span>
+                )}
+              </span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div className="mt-5 flex flex-1 flex-col justify-center rounded-xl bg-background-alt p-4">
+          <p className="text-xl font-bold text-secondary">
+            {specialActive ? `${percentOff}% off` : "Ask the team"}
+          </p>
+          <p className="mt-1 text-sm text-foreground-muted">
+            Call {CONTACT.phone} for dose options and your holiday price.
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function NadNiagenPage() {
   const buttonLabel = specialActive
-    ? `Book the $${specialPrice} injection`
-    : "Book a Niagen injection";
+    ? `Book ${percentOff}% off NAD+ or Niagen`
+    : "Book NAD+ or Niagen";
 
   return (
     <>
@@ -205,12 +305,12 @@ export default function NadNiagenPage() {
         data={[
           webPageSchema,
           serviceSchema({
-            name: "Niagen injection",
+            name: "NAD+ and Niagen injections and infusions",
             description: pageDescription,
             path,
-            serviceType: "Niagen Injection",
+            serviceType: "NAD+ Therapy",
           }),
-          niagen50OfferSchema(path),
+          holidaySpecialOfferSchema(path),
           breadcrumbSchema([
             { name: "Home", path: "/" },
             { name: "NAD+ & Niagen", path },
@@ -231,36 +331,29 @@ export default function NadNiagenPage() {
         <div className="absolute inset-0 bg-primary/85" aria-hidden="true" />
         <div className="container-custom relative mx-auto">
           <div className="max-w-xl">
-            <h1 className="text-[1.65rem] font-bold leading-[1.15] text-balance sm:text-4xl lg:text-5xl">
+            {specialActive ? (
+              <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-secondary-light">
+                <Gift className="h-3.5 w-3.5" aria-hidden="true" />
+                {NAD_HOLIDAY_SPECIAL.label} · {rangeLabel}
+              </p>
+            ) : null}
+            <h1 className="mt-3 text-[1.65rem] font-bold leading-[1.15] text-balance sm:text-4xl lg:text-5xl">
               {specialActive
-                ? `50mg Niagen injection, $${specialPrice}.`
-                : "50mg Niagen injection."}
-              <span className="mt-1 block">
-                {specialActive ? "November 2026 special." : "Book it in Jones Valley."}
-              </span>
+                ? `${percentOff}% off NAD+ & Niagen for the holidays.`
+                : "NAD+ & Niagen in Jones Valley."}
             </h1>
             <p className="mt-3 text-base text-pretty text-white/90 sm:text-lg">
               {specialActive
-                ? "One injection at our Huntsville lounge. No promo code — the November price is the price."
-                : "One injection at our Huntsville lounge. Our nurse consults with you before the visit."}
+                ? "Injections and infusion IVs, half price through December 31 at our Huntsville lounge. No promo code needed."
+                : "Injections and infusion IVs at our Huntsville lounge. Our nurse consults with you before every visit."}
             </p>
 
             <div className="mt-4">
               {specialActive ? (
-                <p className="text-xs font-semibold tracking-wide text-secondary-light">
-                  {NIAGEN_50MG_SPECIAL.label} · through {endLabel}
+                <p className="text-5xl font-bold text-white sm:text-6xl">
+                  {percentOff}% off
                 </p>
               ) : null}
-              <div className="mt-1 flex flex-wrap items-center gap-3">
-                {specialActive ? (
-                  <span className="text-2xl text-white/70 line-through">
-                    {standard50.single}
-                  </span>
-                ) : null}
-                <span className="text-5xl font-bold text-white">
-                  {specialActive ? `$${specialPrice}` : standard50.single}
-                </span>
-              </div>
               <div className="mt-2 leading-5">
                 <GoogleRatingLink tone="dark" />
               </div>
@@ -273,16 +366,44 @@ export default function NadNiagenPage() {
         </div>
       </section>
 
+      <section className="section-padding bg-background" aria-labelledby="holiday-prices">
+        <div className="container-custom mx-auto">
+          <div className="max-w-2xl">
+            <p className="text-sm font-semibold uppercase tracking-wide text-secondary">
+              {specialActive ? `Holiday pricing · ${rangeLabel}` : "Pricing"}
+            </p>
+            <h2
+              id="holiday-prices"
+              className="mt-2 text-3xl font-bold text-balance md:text-4xl"
+            >
+              {specialActive
+                ? "Every NAD+ and Niagen injection and IV, half off"
+                : "NAD+ and Niagen pricing"}
+            </h2>
+            <p className="mt-3 text-pretty text-foreground-muted">
+              {specialActive
+                ? `${NAD_HOLIDAY_SPECIAL.priceNote} Great for a holiday reset — or a gift for someone who needs one.`
+                : "Prices per single injection or infusion. Ask the team about packs."}
+            </p>
+          </div>
+          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+            {PRICE_GROUPS.map((group) => (
+              <PriceCard key={group.title} group={group} />
+            ))}
+          </div>
+        </div>
+      </section>
+
       <GoogleReviewSection
-        className="bg-background"
+        className="bg-background-alt"
         reviews={GOOGLE_REVIEW_BLOCK}
         pullQuote={GOOGLE_REVIEWS.jenna}
       />
 
-      <section className="section-padding bg-background-alt">
+      <section className="section-padding bg-background">
         <div className="container-custom mx-auto max-w-3xl">
           <h2 className="text-3xl font-bold text-balance md:text-4xl">
-            How a Niagen injection visit works
+            How an NAD+ or Niagen visit works
           </h2>
           <ol className="mt-8 space-y-6">
             {steps.map((step, index) => (
@@ -308,10 +429,10 @@ export default function NadNiagenPage() {
         </div>
       </section>
 
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-background-alt">
         <div className="container-custom mx-auto max-w-3xl">
           <h2 className="text-3xl font-bold text-balance md:text-4xl">
-            What this visit is
+            What to know before you book
           </h2>
           <ul className="mt-8 space-y-4">
             {benefits.map((benefit) => (
@@ -356,7 +477,7 @@ export default function NadNiagenPage() {
         </div>
       </section>
 
-      <section className="section-padding bg-background-alt">
+      <section className="section-padding bg-background">
         <div className="container-custom mx-auto max-w-3xl">
           <h2 className="text-3xl font-bold text-balance md:text-4xl">
             Common questions
@@ -380,18 +501,18 @@ export default function NadNiagenPage() {
       <section className="section-padding bg-primary text-white">
         <div className="container-custom mx-auto max-w-xl text-center">
           <p className="text-sm font-semibold uppercase tracking-wide text-secondary-light">
-            {specialActive ? NIAGEN_50MG_SPECIAL.label : "Niagen injection"}
+            {specialActive ? NAD_HOLIDAY_SPECIAL.label : "NAD+ & Niagen"}
           </p>
           <h2 className="mt-2 text-3xl font-bold text-balance md:text-4xl">
             {specialActive
-              ? `$${specialPrice} for a 50mg Niagen injection`
-              : `${standard50.single} for a 50mg Niagen injection`}
+              ? `${percentOff}% off NAD+ and Niagen through December 31`
+              : "Book NAD+ or Niagen in Jones Valley"}
           </h2>
           <p className="mt-3 text-pretty text-white/90">
             {specialActive
-              ? `This price runs through ${endLabel}. Regular single injection is ${standard50.single}. `
-              : "The November 2026 special has ended. "}
-            {NIAGEN_50MG_SPECIAL.packNote} Call {CONTACT.phone}.
+              ? `Injections and infusion IVs, ${rangeLabel}. NAD+ infusions require a pre-order. `
+              : "Our holiday special has ended. "}
+            Call {CONTACT.phone}.
           </p>
           <div className="mx-auto mt-6 max-w-md text-left">
             <OfferActions tone="dark" buttonLabel={buttonLabel} />
@@ -401,14 +522,16 @@ export default function NadNiagenPage() {
 
       <section className="bg-background px-4 py-8">
         <p className="container-custom mx-auto max-w-3xl text-xs leading-relaxed text-foreground-muted">
+          {specialActive
+            ? `Holiday special valid ${rangeLabel}. ${NAD_HOLIDAY_SPECIAL.priceNote} `
+            : null}
           These statements have not been evaluated by the FDA. This page is for
           education, not medical advice. Niagen&reg; is a registered trademark
-          of Niagen Bioscience. Injections at {SITE_CONFIG.name} are not
+          of Niagen Bioscience. Services at {SITE_CONFIG.name} are not
           intended to diagnose, treat, cure, or prevent any disease, and they
           do not reverse aging. Results vary.
         </p>
       </section>
-
     </>
   );
 }

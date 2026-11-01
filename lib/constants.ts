@@ -58,19 +58,20 @@ export const PRICING = {
 };
 
 /**
- * November 2026 price for one 50mg Niagen injection.
- * Standard single ($150) and 4-pack ($525) stay on NIAGEN_INJECTIONS.
- * To revert in December, set endsOn to a date before today and redeploy.
+ * Holiday 2026: 50% off NAD+ and Niagen injections and NAD+ / Niagen infusion IVs.
+ * Regular prices stay in menu-data; sale prices are derived in lib/niagen-special.ts.
  * Chat quotes follow the clinic calendar date; static pages pick this up on the next build.
  */
-export const NIAGEN_50MG_SPECIAL = {
-  dose: "50mg",
-  price: 85,
-  label: "November 2026 special",
-  /** Inclusive last day, America/Chicago. */
-  endsOn: "2026-11-30",
-  packNote:
-    "Multi-injection packs are available at an even better deal. Ask the team.",
+export const NAD_HOLIDAY_SPECIAL = {
+  percentOff: 50,
+  label: "Holiday special",
+  /** Inclusive first and last day, America/Chicago. */
+  startsOn: "2026-11-01",
+  endsOn: "2026-12-31",
+  appliesTo:
+    "NAD+ and Niagen® injections and NAD+ and Niagen® infusion IVs",
+  priceNote:
+    "Sale prices are per single injection or single infusion. Ask the team about packs.",
 } as const;
 
 /** Small-print disclaimer shown anywhere the intro offer price is advertised. */

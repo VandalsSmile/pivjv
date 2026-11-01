@@ -246,10 +246,8 @@ const VISITOR_QUESTIONS: { question: string; facts: RegExp[] }[] = [
     facts: [
       /500mg · 1x \$499/,
       /Niagen injection 100mg/,
-      /November 2026 special \$85/,
-      /\(256\) 678-0033 to book/,
-      /even better deal/,
-      /injection-only Niagen booking/,
+      /No NAD\+ or Niagen discount is running yet/,
+      /injection-only NAD\+ or Niagen booking/,
     ],
   },
   {
