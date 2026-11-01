@@ -11,10 +11,11 @@ import {
   Phone,
   Star,
 } from "lucide-react";
-import { CONTACT, NIAGEN_50MG_SPECIAL, OG_IMAGE, PRICING } from "@/lib/constants";
+import { CONTACT, NAD_HOLIDAY_SPECIAL, OG_IMAGE, PRICING } from "@/lib/constants";
 import {
-  isNiagen50SpecialActive,
-  niagenSpecialEndLabel,
+  holidaySalePrice,
+  holidaySpecialRangeLabel,
+  isHolidaySpecialActive,
 } from "@/lib/niagen-special";
 import { TelehealthFeeNote } from "@/components/telehealth-fee-note";
 import {
@@ -49,76 +50,44 @@ export const metadata: Metadata = {
 
 const iconMap = { Zap, Dumbbell, HeartPulse, Flame };
 
-function NiagenDoseTable() {
-  const specialOn = isNiagen50SpecialActive();
+function HolidaySpecialBanner() {
   return (
-    <div>
-      {specialOn ? (
-        <p className="mb-4 rounded-xl border border-secondary/30 bg-secondary/10 px-4 py-3 text-sm leading-relaxed text-foreground">
-          <span className="font-bold">{NIAGEN_50MG_SPECIAL.label}:</span> a
-          50mg injection is ${NIAGEN_50MG_SPECIAL.price} through{" "}
-          {niagenSpecialEndLabel()}. Regular single and 4-pack prices stay in
-          the table. {NIAGEN_50MG_SPECIAL.packNote} Call {CONTACT.phone} to
-          book.
-        </p>
+    <p className="mb-6 rounded-xl border border-secondary/30 bg-secondary/10 px-4 py-3 text-sm leading-relaxed text-foreground">
+      <span className="font-bold">{NAD_HOLIDAY_SPECIAL.label}:</span>{" "}
+      {NAD_HOLIDAY_SPECIAL.percentOff}% off {NAD_HOLIDAY_SPECIAL.appliesTo},{" "}
+      {holidaySpecialRangeLabel()}. {NAD_HOLIDAY_SPECIAL.priceNote}{" "}
+      <Link href="/nad-niagen-special" className="font-semibold text-secondary underline underline-offset-4">
+        See holiday pricing
+      </Link>{" "}
+      or call {CONTACT.phone}.
+    </p>
+  );
+}
+
+function SalePrice({ regular, label }: { regular: string; label?: string }) {
+  return (
+    <span className="block">
+      <span className="block text-xs text-foreground-muted line-through">
+        {regular}
+      </span>
+      <span className="block text-lg font-bold text-secondary">
+        {holidaySalePrice(regular)}
+      </span>
+      {label ? (
+        <span className="block text-[11px] font-semibold uppercase tracking-wide text-secondary">
+          {label}
+        </span>
       ) : null}
-      <div className="bg-white rounded-2xl shadow-sm border border-border overflow-hidden">
-        <div className="grid grid-cols-3 gap-4 p-4 bg-primary text-white text-sm font-semibold">
-          <span>Dose</span>
-          <span className="text-center">Single Injection</span>
-          <span className="text-right">4-Pack</span>
-        </div>
-        {NIAGEN_INJECTIONS.map((row) => {
-          const featured = specialOn && row.dose === NIAGEN_50MG_SPECIAL.dose;
-          return (
-            <div
-              key={row.dose}
-              className="grid grid-cols-3 gap-4 p-4 border-t border-border items-center"
-            >
-              <span className="font-bold text-foreground">{row.dose}</span>
-              {featured ? (
-                <span className="text-center">
-                  <span className="block text-xs text-foreground-muted line-through">
-                    {row.single}
-                  </span>
-                  <span className="block text-lg font-bold text-secondary">
-                    ${NIAGEN_50MG_SPECIAL.price}
-                  </span>
-                  <span className="block text-[11px] font-semibold uppercase tracking-wide text-secondary">
-                    November special
-                  </span>
-                </span>
-              ) : (
-                <span className="text-center font-semibold text-secondary">
-                  {row.single}
-                </span>
-              )}
-              {featured ? (
-                <span className="text-right">
-                  <span className="block font-semibold text-foreground">
-                    Ask the team
-                  </span>
-                  <span className="block text-[11px] leading-snug text-foreground-muted">
-                    Even better deal. Standard 4-pack {row.pack}.
-                  </span>
-                </span>
-              ) : (
-                <span className="text-right font-semibold text-secondary">
-                  {row.pack}
-                </span>
-              )}
-            </div>
-          );
-        })}
-      </div>
-    </div>
+    </span>
   );
 }
 
 function DoseTable({
   rows,
+  specialOn = false,
 }: {
   rows: { dose: string; single: string; pack: string }[];
+  specialOn?: boolean;
 }) {
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-border overflow-hidden">
@@ -133,9 +102,15 @@ function DoseTable({
           className="grid grid-cols-3 gap-4 p-4 border-t border-border items-center"
         >
           <span className="font-bold text-foreground">{row.dose}</span>
-          <span className="text-center font-semibold text-secondary">
-            {row.single}
-          </span>
+          {specialOn ? (
+            <span className="text-center">
+              <SalePrice regular={row.single} label={`${NAD_HOLIDAY_SPECIAL.percentOff}% off`} />
+            </span>
+          ) : (
+            <span className="text-center font-semibold text-secondary">
+              {row.single}
+            </span>
+          )}
           <span className="text-right font-semibold text-secondary">
             {row.pack}
           </span>
@@ -363,6 +338,7 @@ export default function MenuPage() {
               for optimal wellness.
             </p>
           </div>
+          {isHolidaySpecialActive() ? <HolidaySpecialBanner /> : null}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {PREMIUM_INFUSIONS.map((infusion) => (
               <div
@@ -381,19 +357,36 @@ export default function MenuPage() {
                   {infusion.description}
                 </p>
                 <div className="mt-auto grid grid-cols-2 gap-2">
-                  {infusion.tiers.map((tier) => (
-                    <div
-                      key={tier.label}
-                      className="flex items-center justify-between gap-2 bg-background rounded-lg px-3 py-2 border border-border"
-                    >
-                      <span className="text-xs text-foreground-muted">
-                        {tier.label}
-                      </span>
-                      <span className="text-sm font-bold text-secondary">
-                        {tier.price}
-                      </span>
-                    </div>
-                  ))}
+                  {infusion.tiers.map((tier) => {
+                    const onSale =
+                      isHolidaySpecialActive() &&
+                      infusion.name === "NAD+ Infusions" &&
+                      tier.label.endsWith("1x");
+                    return (
+                      <div
+                        key={tier.label}
+                        className="flex items-center justify-between gap-2 bg-background rounded-lg px-3 py-2 border border-border"
+                      >
+                        <span className="text-xs text-foreground-muted">
+                          {tier.label}
+                        </span>
+                        {onSale ? (
+                          <span className="text-right text-sm">
+                            <span className="block text-[11px] text-foreground-muted line-through">
+                              {tier.price}
+                            </span>
+                            <span className="block font-bold text-secondary">
+                              {holidaySalePrice(tier.price)}
+                            </span>
+                          </span>
+                        ) : (
+                          <span className="text-sm font-bold text-secondary">
+                            {tier.price}
+                          </span>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             ))}
@@ -476,6 +469,7 @@ export default function MenuPage() {
           </div>
 
           {/* NAD+ & Niagen Injections */}
+          {isHolidaySpecialActive() ? <HolidaySpecialBanner /> : null}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div>
               <h3 className="text-2xl font-bold text-foreground mb-2">
@@ -484,7 +478,7 @@ export default function MenuPage() {
               <p className="text-foreground-muted mb-6">
                 Enhance cellular energy, slow aging, and boost focus.
               </p>
-              <DoseTable rows={NAD_INJECTIONS} />
+              <DoseTable rows={NAD_INJECTIONS} specialOn={isHolidaySpecialActive()} />
             </div>
             <div>
               <h3 className="text-2xl font-bold text-foreground mb-2">
@@ -494,7 +488,7 @@ export default function MenuPage() {
                 Advanced NAD+ support — boost cellular energy, clarity, and
                 resilience.
               </p>
-              <NiagenDoseTable />
+              <DoseTable rows={NIAGEN_INJECTIONS} specialOn={isHolidaySpecialActive()} />
             </div>
           </div>
         </div>

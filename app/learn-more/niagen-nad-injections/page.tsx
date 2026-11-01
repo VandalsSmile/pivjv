@@ -2,21 +2,25 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { JsonLd } from "@/components/json-ld";
-import { CONTACT, NIAGEN_50MG_SPECIAL, SITE_CONFIG } from "@/lib/constants";
+import { CONTACT, NAD_HOLIDAY_SPECIAL, SITE_CONFIG } from "@/lib/constants";
 import {
   NIAGEN_INJECTION_BOOKING_PATH,
-  isNiagen50SpecialActive,
-  niagen50OfferSchema,
-  niagen50mgStandard,
-  niagenSpecialEndLabel,
+  holidaySpecialItems,
+  holidaySpecialOfferSchema,
+  holidaySpecialRangeLabel,
+  isHolidaySpecialActive,
 } from "@/lib/niagen-special";
+
+const niagen50 = holidaySpecialItems().find(
+  (item) => item.group === "Niagen injection" && item.dose === "50mg",
+);
 import { absoluteUrl, breadcrumbSchema, faqSchema } from "@/lib/structured-data";
 
 const path = "/learn-more/niagen-nad-injections";
 const pageTitle = "Why a Niagen Injection Is a Smart Way to Support NAD+";
 const metaTitle = "Niagen Injection vs Oral NAD+ | Prime IV";
 const metaDescription =
-  "Oral NAD+ breaks down before cells can use it. Why a Niagen injection skips digestion, what research suggests, and our November 2026 special.";
+  "Oral NAD+ breaks down before cells can use it. Why a Niagen injection skips digestion, what research suggests, and our 50% off holiday special.";
 const image = "/images/niagen-background.png";
 
 export const metadata: Metadata = {
@@ -79,12 +83,12 @@ const faqs = [
       "No. NR may support healthy NAD+ levels. It is not a treatment for aging, memory loss, or sleep. A small trial in older adults with mild cognitive impairment raised NAD+ and did not change cognitive scores.",
   },
   {
-    question: isNiagen50SpecialActive()
-      ? "What is the November 2026 special?"
+    question: isHolidaySpecialActive()
+      ? "What is the holiday special?"
       : "What does a 50mg Niagen injection cost?",
-    answer: isNiagen50SpecialActive()
-      ? `For the ${NIAGEN_50MG_SPECIAL.label}, a 50mg Niagen injection is $${NIAGEN_50MG_SPECIAL.price} through ${niagenSpecialEndLabel()}. Call ${CONTACT.phone} to book. The regular single price is ${niagen50mgStandard().single}. ${NIAGEN_50MG_SPECIAL.packNote}`
-      : `A 50mg Niagen injection is ${niagen50mgStandard().single}. Call ${CONTACT.phone} to book. The November 2026 special has ended. ${NIAGEN_50MG_SPECIAL.packNote}`,
+    answer: isHolidaySpecialActive()
+      ? `${NAD_HOLIDAY_SPECIAL.percentOff}% off ${NAD_HOLIDAY_SPECIAL.appliesTo}, ${holidaySpecialRangeLabel()}. A 50mg Niagen injection is ${niagen50?.sale} (regular ${niagen50?.regular}). ${NAD_HOLIDAY_SPECIAL.priceNote} Call ${CONTACT.phone} to book.`
+      : `A 50mg Niagen injection is ${niagen50?.regular}. Call ${CONTACT.phone} to book.`,
   },
 ];
 
@@ -287,7 +291,7 @@ export default function Page() {
             { name: pageTitle, path },
           ]),
           faqSchema(faqs),
-          niagen50OfferSchema(path),
+          holidaySpecialOfferSchema(path),
         ]}
       />
       <section className="bg-primary text-white py-16 lg:py-20">
@@ -599,19 +603,19 @@ export default function Page() {
 
       <div className="my-10 flex flex-col items-center gap-4 rounded-2xl bg-primary px-6 py-10 text-center">
         <div className="text-sm font-semibold uppercase tracking-wide text-secondary">
-          {isNiagen50SpecialActive()
-            ? NIAGEN_50MG_SPECIAL.label
-            : "50mg Niagen injection"}
-        </div>
-        <div className="text-2xl font-bold text-balance text-foreground-light sm:text-3xl">
-          {isNiagen50SpecialActive()
-            ? `$${NIAGEN_50MG_SPECIAL.price} for a 50mg Niagen injection`
-            : `${niagen50mgStandard().single} for a 50mg Niagen injection`}
-        </div>
-        <div className="max-w-xl text-pretty text-foreground-light/90">
-          {isNiagen50SpecialActive()
-            ? `This price runs through ${niagenSpecialEndLabel()}. The regular single injection is ${niagen50mgStandard().single}. Call us or book a visit and ask for the Niagen injection special.`
-            : "The November 2026 special has ended. Call us or book a visit."}
+              {isHolidaySpecialActive()
+                ? NAD_HOLIDAY_SPECIAL.label
+                : "50mg Niagen injection"}
+            </div>
+            <div className="text-2xl font-bold text-balance text-foreground-light sm:text-3xl">
+              {isHolidaySpecialActive()
+                ? `${NAD_HOLIDAY_SPECIAL.percentOff}% off NAD+ and Niagen injections and IVs`
+                : `${niagen50?.regular} for a 50mg Niagen injection`}
+            </div>
+            <div className="max-w-xl text-pretty text-foreground-light/90">
+              {isHolidaySpecialActive()
+                ? `${holidaySpecialRangeLabel()}. A 50mg Niagen injection is ${niagen50?.sale} (regular ${niagen50?.regular}). Call us or book a visit.`
+                : "Call us or book a visit."}
         </div>
         <div className="mt-2 flex flex-col gap-3 sm:flex-row">
           <a
