@@ -32,7 +32,7 @@ import {
   SPECIALTY_TIERS,
 } from "../menu-data";
 import { MOMENTUM_FAQS, MOMENTUM_PROGRAM } from "../momentum-program";
-import { MONTHLY_SPECIALS, SPECIALS_MONTH, SPECIALS_YEAR } from "../monthly-specials";
+import { SPECIALS_MONTH, SPECIALS_YEAR } from "../monthly-specials";
 import { IV_BOT_NAME } from "./config";
 
 // Facts below are generated from the same modules the pages render, plus
@@ -134,16 +134,6 @@ function buildKnowledgeBase(now: Date) {
     return `- ${item.name}.${note} ${item.description} Prices: ${tiers}.`;
   });
 
-  const specials = MONTHLY_SPECIALS.map((special) => {
-    const includes = special.includes
-      .map((item) => `${item.name} (${item.note}, reg. ${item.regularPrice})`)
-      .join("; ");
-    const addOns = special.addOns
-      .map((item) => `${item.name} ${item.price}`)
-      .join("; ");
-    return `- ${special.name} (${special.category}) — $${special.price} (reg. $${special.regularPrice}, ${special.savingsLabel}, ${special.discount}). ${special.tagline}. ${special.description} Includes: ${includes}. Optional add-ons: ${addOns}. Best for: ${special.bestFor}`;
-  });
-
   const memberships = MEMBERSHIPS.map((plan) => {
     const value =
       "value" in plan && plan.value
@@ -232,8 +222,8 @@ function buildKnowledgeBase(now: Date) {
       "Do not promise disease treatment, anti-aging results, or that NAD+ improves a medical condition. Point curious guests to /nad-niagen-special and /learn-more/niagen-nad-injections and /learn-more/does-nad-therapy-actually-work-evidence.",
     ]),
     section(`${SPECIALS_MONTH} ${SPECIALS_YEAR} specials`, [
-      ...specials,
-      "Page: /specials. These are the current monthly specials in the site data. Do not invent other discounts.",
+      "- This month's special is the NAD+ and Niagen holiday special described in the NAD+ and Niagen prices section. The October Go-Mode Reset and Rested & Radiant specials have ended; do not offer them.",
+      "Page: /specials. Do not invent other discounts.",
     ]),
     section("IV packs", [
       ...packs,

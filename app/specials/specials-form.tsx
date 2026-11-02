@@ -15,8 +15,8 @@ import { beginLeadSubmit, completeLeadSubmit } from "@/lib/tracking";
 
 const SPECIAL_LABELS: Record<string, string> = {
   intro: `$${PRICING.introOffer.price} VIP Intro Offer (New Clients)`,
-  "summer-slim": "The Summer Slim - $105 (Beauty & Aging)",
-  "travel-defense": "The Travel Defense - $200 (Health & Wellness)",
+  "holiday-nad": "Holiday Special - 50% off NAD+ & Niagen",
+  "veterans-day": "Veterans Day - 30% off (Nov 11-15)",
 };
 
 export function SpecialsForm() {
@@ -164,11 +164,11 @@ export function SpecialsForm() {
             <option value="intro">
               ${PRICING.introOffer.price} VIP Intro Offer (New Clients)
             </option>
-            <option value="summer-slim">
-              The Summer Slim - $105 (Beauty & Aging)
+            <option value="holiday-nad">
+              {SPECIAL_LABELS["holiday-nad"]}
             </option>
-            <option value="travel-defense">
-              The Travel Defense - $200 (Health & Wellness)
+            <option value="veterans-day">
+              {SPECIAL_LABELS["veterans-day"]}
             </option>
           </select>
         </div>
