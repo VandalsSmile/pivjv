@@ -1,4 +1,8 @@
-import { CONTACT, NAD_HOLIDAY_SPECIAL } from "./constants";
+import {
+  CONTACT,
+  NAD_HOLIDAY_SPECIAL,
+  VETERANS_DAY_SPECIAL,
+} from "./constants";
 import {
   NAD_INJECTIONS,
   NIAGEN_INJECTIONS,
@@ -86,6 +90,11 @@ export function isHolidaySpecialActive(now = new Date()): boolean {
   return (
     today >= NAD_HOLIDAY_SPECIAL.startsOn && today <= NAD_HOLIDAY_SPECIAL.endsOn
   );
+}
+
+/** Shown before and during the offer; hidden once endsOn has passed, clinic time. */
+export function isVeteransDaySpecialVisible(now = new Date()): boolean {
+  return clinicDateISO(now) <= VETERANS_DAY_SPECIAL.endsOn;
 }
 
 function dateLabel(iso: string, withYear: boolean): string {

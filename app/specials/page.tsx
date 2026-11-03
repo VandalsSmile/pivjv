@@ -14,6 +14,13 @@ import { MomentumProgramSection } from "@/components/momentum-program-section";
 import { VeteransDaySpecial } from "@/components/veterans-day-special";
 import { HolidayNadSpecial } from "@/components/holiday-nad-special";
 import { MOMENTUM_FAQS } from "@/lib/momentum-program";
+import {
+  isHolidaySpecialActive,
+  isVeteransDaySpecialVisible,
+} from "@/lib/niagen-special";
+
+// Re-check special start/end dates hourly instead of freezing them at build time.
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Monthly Specials",
@@ -91,7 +98,10 @@ export default function SpecialsPage() {
                 </Link>
               </p>
             </div>
-            <SpecialsForm />
+            <SpecialsForm
+              showHolidayNad={isHolidaySpecialActive()}
+              showVeteransDay={isVeteransDaySpecialVisible()}
+            />
           </div>
         </div>
       </section>
