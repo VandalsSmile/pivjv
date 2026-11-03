@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Calendar, Check, Medal, Phone } from "lucide-react";
 import { CONTACT } from "@/lib/constants";
+import { isVeteransDaySpecialVisible } from "@/lib/niagen-special";
 
 const PERKS = [
   "30% off every IV drip, booster, and add-on",
@@ -9,6 +10,8 @@ const PERKS = [
 ];
 
 export function VeteransDaySpecial() {
+  if (!isVeteransDaySpecialVisible()) return null;
+
   return (
     <section
       aria-labelledby="veterans-day-heading"

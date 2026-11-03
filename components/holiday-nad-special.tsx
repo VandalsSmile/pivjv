@@ -4,6 +4,7 @@ import { CONTACT, NAD_HOLIDAY_SPECIAL } from "@/lib/constants";
 import {
   holidaySpecialItems,
   holidaySpecialRangeLabel,
+  isHolidaySpecialActive,
   priceToNumber,
   type HolidaySpecialItem,
 } from "@/lib/niagen-special";
@@ -32,6 +33,8 @@ type HolidayNadSpecialProps = {
 export function HolidayNadSpecial({
   className = "section-padding bg-background",
 }: HolidayNadSpecialProps) {
+  if (!isHolidaySpecialActive()) return null;
+
   const percentOff = NAD_HOLIDAY_SPECIAL.percentOff;
   const rangeLabel = holidaySpecialRangeLabel();
   const groups = lowestByGroup();

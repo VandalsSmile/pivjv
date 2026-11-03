@@ -60,7 +60,8 @@ export const PRICING = {
 /**
  * Holiday 2026: 50% off NAD+ and Niagen injections and NAD+ / Niagen infusion IVs.
  * Regular prices stay in menu-data; sale prices are derived in lib/niagen-special.ts.
- * Chat quotes follow the clinic calendar date; static pages pick this up on the next build.
+ * Chat quotes follow the clinic calendar date. The banner hides outside these dates;
+ * pages using it revalidate hourly so the change goes live without a rebuild.
  */
 export const NAD_HOLIDAY_SPECIAL = {
   percentOff: 50,
@@ -72,6 +73,13 @@ export const NAD_HOLIDAY_SPECIAL = {
     "NAD+ and Niagen® injections and NAD+ and Niagen® infusion IVs",
   priceNote:
     "Sale prices are per single injection or single infusion. Ask the team about packs.",
+} as const;
+
+/** Veterans Day 2026: 30% off everything. Shown ahead of time, hidden after endsOn. */
+export const VETERANS_DAY_SPECIAL = {
+  /** Inclusive first and last day, America/Chicago. */
+  startsOn: "2026-11-11",
+  endsOn: "2026-11-15",
 } as const;
 
 /** Small-print disclaimer shown anywhere the intro offer price is advertised. */

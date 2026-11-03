@@ -15,6 +15,9 @@ import { JsonLd } from "@/components/json-ld";
 import { faqSchema, webPageSchema } from "@/lib/structured-data";
 import { FAQS, OG_IMAGE } from "@/lib/constants";
 
+// Re-check the holiday special dates hourly instead of freezing them at build time.
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   alternates: {
     canonical: "/",

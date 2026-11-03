@@ -19,7 +19,15 @@ const SPECIAL_LABELS: Record<string, string> = {
   "veterans-day": "Veterans Day - 30% off (Nov 11-15)",
 };
 
-export function SpecialsForm() {
+type SpecialsFormProps = {
+  showHolidayNad: boolean;
+  showVeteransDay: boolean;
+};
+
+export function SpecialsForm({
+  showHolidayNad,
+  showVeteransDay,
+}: SpecialsFormProps) {
   const router = useRouter();
   const leadGuard = useLeadGuard("specials-company");
   const [formData, setFormData] = useState({
@@ -164,12 +172,16 @@ export function SpecialsForm() {
             <option value="intro">
               ${PRICING.introOffer.price} VIP Intro Offer (New Clients)
             </option>
-            <option value="holiday-nad">
-              {SPECIAL_LABELS["holiday-nad"]}
-            </option>
-            <option value="veterans-day">
-              {SPECIAL_LABELS["veterans-day"]}
-            </option>
+            {showHolidayNad && (
+              <option value="holiday-nad">
+                {SPECIAL_LABELS["holiday-nad"]}
+              </option>
+            )}
+            {showVeteransDay && (
+              <option value="veterans-day">
+                {SPECIAL_LABELS["veterans-day"]}
+              </option>
+            )}
           </select>
         </div>
 
