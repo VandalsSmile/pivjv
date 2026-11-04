@@ -14,6 +14,17 @@ export type Article = {
 
 export const ARTICLES: Article[] = [
   {
+    slug: "holiday-wellness-huntsville-iv-nad-niagen",
+    title:
+      "Surviving the Rocket City Holidays: IV Therapy, NAD+ and 50% Off Niagen® in Huntsville",
+    excerpt:
+      "How to stay well through a busy Huntsville holiday season: seasonal IV drips, quick injections, Veterans Day savings, and 50% off NAD+ and Niagen® through December 31.",
+    category: "Wellness",
+    readTime: "8 min read",
+    date: "November 4, 2026",
+    image: "/images/holiday-wellness-huntsville-banner.webp",
+  },
+  {
     slug: "niagen-over-50-what-research-says-huntsville",
     title:
       "Why Huntsville's 50+ Crowd Is Asking About Niagen®: What the Research Actually Says",
